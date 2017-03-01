@@ -347,11 +347,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user | add a new person |
-`* * *` | user | delete a person | remove entries that I no longer need
-`* * *` | user | find a person by name | locate details of persons without having to go through the entire list
-`* *` | user | hide [private contact details](#private-contact-detail) by default | minimize chance of someone else seeing them by accident
-`*` | user with many persons in the address book | sort persons by name | locate a person easily
+`* * *` | user | add a new task with/out a deadline
+`* * *` | user | delete a task | remove entries that I no longer need
+`* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
+`* * *` | user with many devices | have all task managers synced | not have to go through the tedious process of updating every device when I change a task
+`* *` | user | edit details of a task
+`* *` | user | be able to view tasks based on closest deadlines | prioritize tasks to complete first
+`* *` | user who has just completed many tasks | be able to delete multiple tasks at once
+`*` | user with many tasks in the address book | sort persons by name | locate a task easily
+`*` | user | create categories | categorise my task
+`*` | user | specify recurring tasks | deal with tasks that repeats without having to add them repeatedly
+`*` | user | add footnotes
+`*` | forgetful user | be notified of tasks due soon | complete task before deadline
+`*` | user | be able to search for tasks based on certain keywords
+`*` | user | be able to set a task to be 'finished', but not deleted
+`*` | user | be able to restart a task that is finished
+`*` | user | be able to send a task to others through email or text message
+
 
 {More to be added}
 
