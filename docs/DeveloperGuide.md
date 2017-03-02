@@ -348,7 +348,7 @@ Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
 `* * *` | user[C] | add a new task with/out a duration
-`* * *` | user[D] | delete a task | remove entries that I no longer need
+`* * *` | user | delete a task | remove entries that I no longer need
 `* * *` | user[R] | display all task then choose one to view
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
 `* *` | user[U] | edit details of a task
@@ -368,16 +368,16 @@ Priority | As a ... | I want to ... | So that I can...
 
 ## Appendix B : Use Cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `Todolist` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Use case: Delete person
+#### Use case: Delete task
 
 **MSS**
 
-1. User requests to list persons
-2. AddressBook shows a list of persons
-3. User requests to delete a specific person in the list
-4. AddressBook deletes the person <br>
+1. User requests to list task
+2. Todolist shows a list of persons
+3. User requests to delete a specific task in the list
+4. AddressBook deletes the task <br>
 Use case ends.
 
 **Extensions**
@@ -388,7 +388,28 @@ Use case ends.
 
 3a. The given index is invalid
 
-> 3a1. AddressBook shows an error message <br>
+> 3a1. Todolist shows an error message <br>
+  Use case resumes at step 2
+
+#### Use case: Complete task
+
+**MSS**
+
+1. User requests to list task
+2. Todolist shows a list of persons
+3. User requests to mark a specific task in the list as complete
+4. Todolist marks the task as complete <br>
+Use case ends.
+
+**Extensions**
+
+2a. The list is empty
+
+> Use case ends
+
+3a. The given index is invalid
+
+> 3a1. Todolist shows an error message <br>
   Use case resumes at step 2
 
 {More to be added}
