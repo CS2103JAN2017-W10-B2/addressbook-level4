@@ -347,22 +347,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user | add a new task with/out a deadline
+`* * *` | user | add a new task with/out a duration
 `* * *` | user | delete a task | remove entries that I no longer need
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
-`* * *` | user with many devices | have all task managers synced | not have to go through the tedious process of updating every device when I change a task
 `* *` | user | edit details of a task
 `* *` | user | be able to view tasks based on closest deadlines | prioritize tasks to complete first
-`* *` | user who has just completed many tasks | be able to delete multiple tasks at once
-`*` | user with many tasks in the address book | sort persons by name | locate a task easily
-`*` | user | create categories | categorise my task
+`*` | user | be able to categorise tasks
 `*` | user | specify recurring tasks | deal with tasks that repeats without having to add them repeatedly
-`*` | user | add footnotes
+`*` | user | add remarks
 `*` | forgetful user | be notified of tasks due soon | complete task before deadline
 `*` | user | be able to search for tasks based on certain keywords
 `*` | user | be able to set a task to be 'finished', but not deleted
 `*` | user | be able to restart a task that is finished
 `*` | user | be able to send a task to others through email or text message
+`*` | user | be able to undo operation
 
 
 {More to be added}
@@ -400,6 +398,7 @@ Use case ends.
 2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands)
    should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. Should have a cloud based storage location for syncing between multiple devicies a user might have.
 
 {More to be added}
 
