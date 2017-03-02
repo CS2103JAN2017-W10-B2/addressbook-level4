@@ -421,6 +421,12 @@ Use case ends.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands)
    should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should have a cloud based storage location for syncing between multiple devicies a user might have.
+5. Should have an unclutted user interface should be uncluttered that displays tasks ordered by urgency and priority.
+6. Should not need an installer.
+7. Should work on Windows 7 or later.
+8. Data should be stored locally in the form of a human editable text file.
+9. Should work stand-alone, should not be a plug-in to another software.
+10. Should be able to undo at least 10 most recent changes. 
 
 {More to be added}
 
