@@ -347,10 +347,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user | add a new task with/out a duration
-`* * *` | user | delete a task | remove entries that I no longer need
+`* * *` | user[C] | add a new task with/out a duration
+`* * *` | user[D] | delete a task | remove entries that I no longer need
+`* * *` | user[R] | display all task then choose one to view
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
-`* *` | user | edit details of a task
+`* *` | user[U] | edit details of a task
 `* *` | user | be able to view tasks based on closest deadlines | prioritize tasks to complete first
 `*` | user | be able to categorise tasks
 `*` | user | specify recurring tasks | deal with tasks that repeats without having to add them repeatedly
