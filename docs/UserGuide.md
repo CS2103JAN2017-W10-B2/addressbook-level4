@@ -1,4 +1,4 @@
-# AddressBook Level 4 - User Guide
+# doitdoit!! - User Guide
 
 By : `Team SE-EDU`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jun 2016`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
 TODO: Ray[List], Rei[Delete, Complete], ZongQi[edit, search], Irfan[add, select]
@@ -105,12 +105,12 @@ Examples:
 * `find Betsy Tim John`<br>
   Returns Any person having names `Betsy`, `Tim`, or `John`
 
-### 2.6. Deleting a person : `delete`
+### 2.6. Deleting a task : `delete`
 
-Deletes the specified person from the address book. Irreversible.<br>
+Deletes the specified task from the todolist. Can be undone.<br>
 Format: `delete INDEX`
 
-> Deletes the person at the specified `INDEX`. <br>
+> Deletes the task at the specified `INDEX`. <br>
 > The index refers to the index number shown in the most recent listing.<br>
 > The index **must be a positive integer** 1, 2, 3, ...
 
@@ -118,10 +118,10 @@ Examples:
 
 * `list`<br>
   `delete 2`<br>
-  Deletes the 2nd person in the address book.
-* `find Betsy`<br>
+  Deletes the 2nd task in the todolist.
+* `search homework`<br>
   `delete 1`<br>
-  Deletes the 1st person in the results of the `find` command.
+  Deletes the 1st task in the results of the `search` command.
 
 ### 2.7. Select a person : `select`
 
@@ -141,19 +141,37 @@ Examples:
   `select 1`<br>
   Selects the 1st person in the results of the `find` command.
 
-### 2.8. Clearing all entries : `clear`
+### 2.8. Completing a task : `complete`
 
-Clears all entries from the address book.<br>
+Marks the specified task from the todolist as complete. Can be undone.<br>
+Format: `complete INDEX`
+
+> Marks the task at the specified `INDEX` complete. <br>
+> The index refers to the index number shown in the most recent listing.<br>
+> The index **must be a positive integer** 1, 2, 3, ...
+
+Examples:
+
+* `list`<br>
+  `complete 3`<br>
+  Deletes the 3rd task in the todolist.
+* `search reports`<br>
+  `delete 2`<br>
+  Deletes the 2nd task in the results of the `search` command.
+
+### 2.9. Clearing all entries : `clear`
+
+Clears all entries from the todolist.<br>
 Format: `clear`
 
-### 2.9. Exiting the program : `exit`
+### 2.10. Exiting the program : `exit`
 
 Exits the program.<br>
 Format: `exit`
 
-### 2.10. Saving the data
+### 2.11. Saving the data
 
-Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+Todolist data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
 
 ## 3. FAQ
