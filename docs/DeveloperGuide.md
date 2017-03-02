@@ -436,17 +436,24 @@ Use case ends.
 
 ## Appendix E : Product Survey
 
-**Product Name**
+**Todoist**
 
-Author: ...
+Author: Rei Yun
 
 Pros:
 
-* ...
-* ...
+* Can be accessed online and offline, through computers, mobile and tablet devices due to cloud storage.  
+* Allows collaborating on tasks with others.
+* Supports recurring tasks.
+* Allows setting of multiple priorities.
+* Add a task using natural language.
+* Allows for adding description to tasks.
+* Reminders can be set for important tasks.
+* Have a variety of keyboard shortcuts.
 
 Cons:
 
-* ...
-* ...
-
+* Cannot archive completed tasks.
+* Heavy use of mouse needed.
+* Most useful features are in premium version.
+* Unable to set start time and end time to set aside a certain time block.
