@@ -1,6 +1,7 @@
 # AddressBook Level 4 - User Guide
 
 By : `Team SE-EDU`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jun 2016`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
+TODO: Ray[List], Rei[Delete, Complete], ZongQi[edit, search], Irfan[add, select]
 
 ---
 
