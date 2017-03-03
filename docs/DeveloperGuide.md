@@ -391,6 +391,27 @@ Use case ends.
 > 3a1. AddressBook shows an error message <br>
   Use case resumes at step 2
 
+#### Use case: List tasks
+
+**MSS**
+
+1. User request to list persons
+2. Select task by name 
+3. Search by keyword
+4. View task by datelines
+5. View task by categories
+6. Able to send a task to others through email or text message
+
+**Extensions**
+
+1a. Able to list task by options of completed or not completed task.
+
+3a. keyword not found
+
+> 3a1. return an error message " task invalid".
+
+4a. Able to view incomplete task that are over the dateline
+
 {More to be added}
 
 ## Appendix C : Non Functional Requirements
