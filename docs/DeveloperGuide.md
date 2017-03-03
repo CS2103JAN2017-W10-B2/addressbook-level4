@@ -426,7 +426,7 @@ Use case ends.
 7. Should work on Windows 7 or later.
 8. Data should be stored locally in the form of a human editable text file.
 9. Should work stand-alone, should not be a plug-in to another software.
-10. Should be able to undo at least 10 most recent changes. 
+10. Should be able to undo at least 10 most recent changes.
 
 {More to be added}
 
@@ -448,7 +448,7 @@ Author: Rei Yun
 
 Pros:
 
-* Can be accessed online and offline, through computers, mobile and tablet devices due to cloud storage.  
+* Can be accessed online and offline, through computers, mobile and tablet devices due to cloud storage.
 * Allows collaborating on tasks with others.
 * Supports recurring tasks.
 * Allows setting of multiple priorities.
