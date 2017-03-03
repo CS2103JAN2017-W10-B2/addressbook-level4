@@ -38,10 +38,10 @@ Responsibilities: Dev Ops
 
  -----
 
-#### [You Liang](http://github.com/yl-coder)
-<img src="images/YouLiang.jpg" width="150"><br>
+#### [Mohamed Irfan](http://github.com/mdirfanpm)
+<img src="images/MOhamedIrfan.jpg" width="150"><br>
  Role: Developer <br>
- Responsibilities: UI
+ Responsibilities: 
 
  -----
 
