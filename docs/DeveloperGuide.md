@@ -437,15 +437,15 @@ Use case ends.
 
 **Product Name**
 
-Author: ...
+Author: Ming Rui
 
 Pros:
 
-* ...
-* ...
+* Helps to remind me of upcoming deadlines and makes sure that I complete all tasks on time
+* Ability to search makes searching for task easy and convenient
 
 Cons:
 
-* ...
-* ...
+* List tasks displays too much information, making reading through the list troublesome
+* No syncing with other applications such as email or facebook
 
