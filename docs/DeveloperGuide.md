@@ -438,15 +438,15 @@ Use case ends.
 
 **Product Name**
 
-Author: ...
+Author: Mohamed Irfan
 
 Pros:
 
-* ...
-* ...
+* User can be more organise in completing his/her tasks
+* User will not miss out on any tasks
 
 Cons:
 
-* ...
-* ...
+* there are plenty of other task manager application out there
+* will only be used by someone that is not lazy in managing their task
 
