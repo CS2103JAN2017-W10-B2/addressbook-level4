@@ -370,14 +370,16 @@ Priority | As a ... | I want to ... | So that I can...
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Use case: Delete person
+#### Use case: Edit a Task
 
 **MSS**
 
-1. User requests to list persons
-2. AddressBook shows a list of persons
-3. User requests to delete a specific person in the list
-4. AddressBook deletes the person <br>
+1. User requests to list tasks
+2. ToDoList shows a list of tasks
+3. User requests to edit a specific task in the list
+4. ToDoList ask for confirmation
+5. User confirms the modification
+6. Task updated
 Use case ends.
 
 **Extensions**
@@ -388,7 +390,7 @@ Use case ends.
 
 3a. The given index is invalid
 
-> 3a1. AddressBook shows an error message <br>
+> 3a1. ToDoList shows an error message 
   Use case resumes at step 2
 
 {More to be added}
@@ -415,17 +417,17 @@ Use case ends.
 
 ## Appendix E : Product Survey
 
-**Product Name**
+**Iphone Calendar**
 
-Author: ...
+Author: Hu Zongqi
 
 Pros:
 
-* ...
-* ...
+* Able to remind me of event at set time and set frequency
+* Can be viewed as a calendar and indicate differently for days with and without events
 
 Cons:
 
-* ...
-* ...
+* Does not have a diary function
+* Cannot show all tasks in a list form
 

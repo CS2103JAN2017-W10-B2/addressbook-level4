@@ -45,6 +45,13 @@ Responsibilities: Dev Ops
 
  -----
 
+#### [Hu Zongqi](https://github.com/hzqn1234)
+<img src="images/ZQ.png" width="150"><br>
+ Role: Developer <br>
+ Responsibilities: UI
+
+ -----
+ 
 # Contributors
 
 We welcome contributions. See [Contact Us](ContactUs.md) page for more info.

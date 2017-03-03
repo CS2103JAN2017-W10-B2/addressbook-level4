@@ -65,45 +65,45 @@ Examples:
 Shows a list of all persons in the address book.<br>
 Format: `list`
 
-### 2.4. Editing a person : `edit`
+### 2.4. Editing a task : `edit`
 
-Edits an existing person in the address book.<br>
-Format: `edit INDEX [NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Edits an existing task in the ToDoList.<br>
+Format: `edit INDEX (TASK_SUMMARY) (s/START_DATE_DDMMYY)* (d/DUE_DATE_DDMMYY)* (r/REMARKS)* (t/TAG, TAG...)*`
 
-> * Edits the person at the specified `INDEX`.
-    The index refers to the index number shown in the last person listing.<br>
+> * Edits the task at the specified `INDEX`.
+    The index refers to the index number shown in the last task listing.<br>
     The index **must be a positive integer** 1, 2, 3, ...
 > * At least one of the optional fields must be provided.
 > * Existing values will be updated to the input values.
-> * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+> * When editing tags, the existing tags of the task will be removed i.e adding of tags is not cumulative.
 > * You can remove all the person's tags by typing `t/` without specifying any tags after it. 
 
 Examples:
 
-* `edit 1 p/91234567 e/johndoe@yahoo.com`<br>
-  Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@yahoo.com` respectively.
+* `edit 1 s/03032017 d/05032017
+  Edits the start date and due date of the 1st task to be `03032017` and `05032017` respectively.
 
-* `edit 2 Betsy Crower t/`<br>
-  Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* `edit 2 CS2103 homework t/`<br>
+  Edits the task summary of the 2nd task to be `CS2103 homework` and clears all existing tags.
 
-### 2.5. Finding all persons containing any keyword in their name: `find`
+### 2.5. Finding all tasks containing any keyword in their task summary: `find`
 
-Finds persons whose names contain any of the given keywords.<br>
+Finds tasks whose task summarys contain any of the given keywords.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 > * The search is case sensitive. e.g `hans` will not match `Hans`
 > * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-> * Only the name is searched.
+> * Only the task summary is searched.
 > * Only full words will be matched e.g. `Han` will not match `Hans`
-> * Persons matching at least one keyword will be returned (i.e. `OR` search).
+> * Tasks matching at least one keyword will be returned (i.e. `OR` search).
     e.g. `Hans` will match `Hans Bo`
 
 Examples:
 
-* `find John`<br>
-  Returns `John Doe` but not `john`
-* `find Betsy Tim John`<br>
-  Returns Any person having names `Betsy`, `Tim`, or `John`
+* `find homework`<br>
+  Returns `CS2103 homework` but not `EE4212 Homework`
+* `find homework CS2103 EG2401`<br>
+  Returns Any task having following words in task summary `homework`, `CS2103`, or `EG2401`
 
 ### 2.6. Deleting a person : `delete`
 
