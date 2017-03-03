@@ -68,7 +68,7 @@ Format: `list`
 ### 2.4. Editing a task : `edit`
 
 Edits an existing task in the ToDoList.<br>
-Format: `edit INDEX (TASK_SUMMARY) (s/START_DATE_DDMMYY)* (d/DUE_DATE_DDMMYY)* (r/REMARKS)* (t/TAG, TAG...)*`
+Format: `edit INDEX [TASK_SUMMARY] [s/START_DATE_DDMMYY]* [d/DUE_DATE_DDMMYY]* [r/REMARKS]* [t/TAG, TAG...]*`
 
 > * Edits the task at the specified `INDEX`.
     The index refers to the index number shown in the last task listing.<br>
