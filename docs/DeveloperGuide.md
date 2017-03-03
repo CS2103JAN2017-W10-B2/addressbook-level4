@@ -347,7 +347,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user[C] | add a new task with/out a duration
+`* * *` | user | add a new task with/out a duration
 `* * *` | user[D] | delete a task | remove entries that I no longer need
 `* * *` | user[R] | display all task then choose one to view
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
@@ -369,6 +369,26 @@ Priority | As a ... | I want to ... | So that I can...
 ## Appendix B : Use Cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+
+#### Use case: Add a new task
+
+**MSS**
+
+1. User inputs the add command along with relevant task information
+2. ToDoList ask for confirmation
+3. Task added to ToDoList
+Use case ends.
+
+**Extensions**
+
+1a. Input mismatch
+
+> User guide on adding new task displayed
+  Use case ends
+
+2a. User rejects confirmation
+
+> Use case ends
 
 #### Use case: Delete person
 
