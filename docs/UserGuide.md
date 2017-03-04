@@ -51,10 +51,11 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a task to the ToDoList<br>
-Format: `add TASK_SUMMARY (d/DUE_DATE_DDMMYY)* (r/REMARKS)* (t/TAG, TAG...)*`
+Format: `add TASK_SUMMARY [d/DUE_DATE_DDMMYY] [r/REMARKS] [t/TAG]...`
 
 > Other than String TASK_SUMMARY, all other information is optional and defaulted as NONE
 > Each task can have any number of tags (including 0)
+> To add more than 1 tags, space out the tags with colon ","
 
 Examples:
 
