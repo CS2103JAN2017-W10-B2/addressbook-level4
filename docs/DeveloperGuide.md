@@ -347,8 +347,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have)  - `* *`,  Low (un
 Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
-`* * *` | user[C] | add a new task with/out a duration
 `* * *` | user | delete a task | remove entries that I no longer need
+`* * *` | user | add a new task with/out a duration
 `* * *` | user[R] | display all task then choose one to view
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
 `* *` | user[U] | edit details of a task
@@ -369,6 +369,26 @@ Priority | As a ... | I want to ... | So that I can...
 ## Appendix B : Use Cases
 
 (For all use cases below, the **System** is the `Todolist` and the **Actor** is the `user`, unless specified otherwise)
+
+#### Use case: Add a new task
+
+**MSS**
+
+1. User inputs the add command along with relevant task information
+2. ToDoList ask for confirmation
+3. Task added to ToDoList
+Use case ends.
+
+**Extensions**
+
+1a. Input mismatch
+
+> User guide on adding new task displayed
+  Use case ends
+
+2a. User rejects confirmation
+
+> Use case ends
 
 #### Use case: Delete task
 
@@ -463,3 +483,27 @@ Cons:
 * Heavy use of mouse needed.
 * Most useful features are in premium version.
 * Unable to set start time and end time to set aside a certain time block.
+
+**Google Keep**
+
+Author: Ming Rui
+
+Pros:
+
+* Chrome integration
+* Ability to pin important tasks
+* Can create labels
+* Can assign colours
+* Can archive tasks
+* Can take note with drawing
+* Deleted tasks can be retrieved or deleted permamently
+* Able to set a time for reminder
+* Able to sync between mobile/desktop devices which shares google account
+* Able to compose list of task
+* Easy to use keyboard shortcuts
+* Can invite colaborators
+
+Cons:
+
+* Search funciton does not have NLP integration
+* Heavy use of mouse when adding additional features to task
