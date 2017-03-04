@@ -48,17 +48,18 @@ Format: `help`
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
 
-### 2.2. Adding a person: `add`
+### 2.2. Adding a task: `add`
 
-Adds a person to the address book<br>
-Format: `add NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
+Adds a Task to the task list<br>
+Format: `add t/Title s/START DATE e/END DATE r/REMARKS c/CATEGORIES`
 
-> Persons can have any number of tags (including 0)
+> Start date, End date, Remarks, Categories are not compulsory. 
+
 
 Examples:
 
-* `add John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01`
-* `add Betsy Crowe t/friend e/betsycrowe@gmail.com a/Newgate Prison p/1234567 t/criminal`
+* `add t/Complete Assignment 1 s/01022017 e/08022017 r/20% of final grade c/Uni Assignment`
+* `add t/Revise tutorial 1 c/Uni Assignment`
 
 ### 2.3. Listing all persons : `list`
 
