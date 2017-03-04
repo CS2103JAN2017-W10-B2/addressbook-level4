@@ -51,7 +51,7 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a task to the ToDoList<br>
-Format: `add TASK_SUMMARY (s/START_DATE_DDMMYY)* (d/DUE_DATE_DDMMYY)* (r/REMARKS)* (t/TAG, TAG...)*`
+Format: `add TASK_SUMMARY (d/DUE_DATE_DDMMYY)* (r/REMARKS)* (t/TAG, TAG...)*`
 
 > Other than String TASK_SUMMARY, all other information is optional and defaulted as NONE
 > Each task can have any number of tags (including 0)
@@ -60,7 +60,7 @@ Examples:
 
 * `add Do CS2103 T7 d/080317 r/Remember to make pull request on github t/School`
 * `add Buy gift for mom d/200417 t/Birthday, Family`
-* `add Finish studing for mid term s/030317 d/060317 t/School, Exam`
+* `add Finish studing for mid term d/060317 t/School, Exam`
 
 ### 2.3. Listing all persons : `list`
 
