@@ -65,9 +65,9 @@ Examples:
 * `add Buy gift for mom d/20042017 l/Birthday, Family`<br>
 * `add Finish studing for mid term d/06032017 l/School, Exam`<br>
 
-### 2.3. Listing all persons : `list`
+### 2.3. Listing all tasks : `list`
 
-Shows a list of all persons in the address book.<br>
+Shows a list of all tasks in the address book.<br>
 Format: `list`
 
 ### 2.4. Editing a task : `edit`
@@ -129,8 +129,8 @@ Examples:
 
 ### 2.7. Select a Task : `select`
 
-Selects the task identified by the title used in the task listing.<br>
-Format: `select TITLE`
+Selects the task identified by the index used in the task listing.<br>
+Format: `select INDEX`
 
 > Selects the task and loads the task detail according to the 'TITLE`.<br>
 > The Title is ina string format
@@ -182,24 +182,33 @@ There is no need to save manually.
 
 ## 4. Command Summary
 
-* **Add**  `add NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` <br>
-  e.g. `add James Ho p/22224444 e/jamesho@gmail.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+* **Help** : `help` <br>
+  e.g.
 
-* **Clear** : `clear`
-
-* **Delete** : `delete INDEX` <br>
-   e.g. `delete 3`
-
-* **Find** : `find KEYWORD [MORE_KEYWORDS]` <br>
-  e.g. `find James Jake`
+* **Add**  `add TITLE [e/END_DATE_DDMMYYYY] [r/REMARKS] [l/LABELS]...` <br>
+  e.g. `add Do CS2103 T7 d/080317 r/Remember to make pull request on github l/School`
 
 * **List** : `list` <br>
   e.g.
 
-* **Help** : `help` <br>
-  e.g.
+* **Edit** : `edit INDEX [TASK_SUMMARY] [d/DUE_DATE_DDMMYY] [r/REMARKS] [l/LABELS]...` <br>
+  e.g. `edit 2 CS2103 homework l/`<br>
+
+* **Find** : `find KEYWORD [MORE_KEYWORDS]` <br>
+  e.g. `find homework`
+
+* **Delete** : `delete INDEX` <br>
+   e.g. `delete 3`
 
 * **Select** : `select INDEX` <br>
   e.g.`select 2`
+
+* **Complete** : `complete INDEX` <br>
+  e.g.`complete 3`<br>
+
+* **Clear** : `clear`
+
+* **Exit** : `exit` <br>
+  e.g.
 
 
