@@ -124,23 +124,19 @@ Examples:
   `delete 1`<br>
   Deletes the 1st person in the results of the `find` command.
 
-### 2.7. Select a person : `select`
+### 2.7. Select a Task : `select`
 
-Selects the person identified by the index number used in the last person listing.<br>
-Format: `select INDEX`
+Selects the task identified by the title used in the task listing.<br>
+Format: `select TITLE`
 
-> Selects the person and loads the Google search page the person at the specified `INDEX`.<br>
-> The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
+> Selects the task and loads the task detail according to the 'TITLE`.<br>
+> The Title is ina string format
 
 Examples:
 
 * `list`<br>
-  `select 2`<br>
-  Selects the 2nd person in the address book.
-* `find Betsy` <br>
-  `select 1`<br>
-  Selects the 1st person in the results of the `find` command.
+  `select Assignment 1`<br>
+  Selects Assignment 1 in the task list.
 
 ### 2.8. Clearing all entries : `clear`
 
