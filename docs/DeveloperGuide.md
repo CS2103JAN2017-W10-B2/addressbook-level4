@@ -432,6 +432,27 @@ Use case ends.
 > 3a1. Todolist shows an error message <br>
   Use case resumes at step 2
 
+#### Use case: List tasks
+
+**MSS**
+
+1. User request to list persons
+2. Select task by name 
+3. Search by keyword
+4. View task by datelines
+5. View task by categories
+6. Able to send a task to others through email or text message
+
+**Extensions**
+
+1a. Able to list task by options of completed or not completed task.
+
+3a. keyword not found
+
+> 3a1. return an error message " task invalid".
+
+4a. Able to view incomplete task that are over the dateline
+
 {More to be added}
 
 ## Appendix C : Non Functional Requirements
@@ -507,3 +528,17 @@ Cons:
 
 * Search funciton does not have NLP integration
 * Heavy use of mouse when adding additional features to task
+
+**TODO: Add Name**
+
+Author: Mohamed Irfan
+
+Pros:
+
+* User can be more organise in completing his/her tasks
+* User will not miss out on any tasks
+
+Cons:
+
+* there are plenty of other task manager application out there
+* will only be used by someone that is not lazy in managing their task

@@ -50,18 +50,20 @@ Format: `help`
 
 ### 2.2. Adding a task: `add`
 
-Adds a task to the ToDoList<br>
-Format: `add TASK_SUMMARY [d/DUE_DATE_DDMMYY] [r/REMARKS] [t/TAG]...`
+Adds a Task to the task list<br>
+Format: `add TITLE [e/END_DATE_DDMMYYYY] [r/REMARKS] [l/LABELS]...`
 
-> Other than String TASK_SUMMARY, all other information is optional and defaulted as NONE
+> Other than TITLE, all other information is optional
 > Each task can have any number of tags (including 0)
 > To add more than 1 tags, space out the tags with colon ","
 
 Examples:
 
+* `add Complete Assignment 1 e/08022017 r/20% of final grade l/Uni Assignment`
+* `add Revise tutorial 1 l/Uni Assignment`
 * `add Do CS2103 T7 d/080317 r/Remember to make pull request on github t/School`
-* `add Buy gift for mom d/200417 t/Birthday, Family`
-* `add Finish studing for mid term d/060317 t/School, Exam`
+* `add Buy gift for mom d/20042017 t/Birthday, Family`
+* `add Finish studing for mid term d/06032017 t/School, Exam`
 
 ### 2.3. Listing all persons : `list`
 
@@ -126,23 +128,19 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task in the results of the `search` command.
 
-### 2.7. Select a person : `select`
+### 2.7. Select a Task : `select`
 
-Selects the person identified by the index number used in the last person listing.<br>
-Format: `select INDEX`
+Selects the task identified by the title used in the task listing.<br>
+Format: `select TITLE`
 
-> Selects the person and loads the Google search page the person at the specified `INDEX`.<br>
-> The index refers to the index number shown in the most recent listing.<br>
-> The index **must be a positive integer** 1, 2, 3, ...
+> Selects the task and loads the task detail according to the 'TITLE`.<br>
+> The Title is ina string format
 
 Examples:
 
 * `list`<br>
-  `select 2`<br>
-  Selects the 2nd person in the address book.
-* `find Betsy` <br>
-  `select 1`<br>
-  Selects the 1st person in the results of the `find` command.
+  `select Assignment 1`<br>
+  Selects Assignment 1 in the task list.
 
 ### 2.8. Completing a task : `complete`
 
