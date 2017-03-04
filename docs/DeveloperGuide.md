@@ -435,17 +435,26 @@ Use case ends.
 
 ## Appendix E : Product Survey
 
-**Product Name**
+**Google Keep**
 
 Author: Ming Rui
 
 Pros:
 
-* Helps to remind me of upcoming deadlines and makes sure that I complete all tasks on time
-* Ability to search makes searching for task easy and convenient
+* Chrome integration
+* Ability to pin important tasks
+* Can create labels
+* Can assign colours
+* Can archive tasks
+* Can take note with drawing
+* Deleted tasks can be retrieved or deleted permamently
+* Able to set a time for reminder
+* Able to sync between mobile/desktop devices which shares google account
+* Able to compose list of task
+* Easy to use keyboard shortcuts
+* Can invite colaborators
 
 Cons:
 
-* List tasks displays too much information, making reading through the list troublesome
-* No syncing with other applications such as email or facebook
-
+* Search funciton does not have NLP integration
+* Heavy use of mouse when adding additional features to task
