@@ -349,9 +349,9 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
 `* * *` | user | delete a task | remove entries that I no longer need
 `* * *` | user | add a new task with/out a duration
-`* * *` | user[R] | display all task then choose one to view
+`* * *` | user | display all task then choose one to view
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
-`* *` | user[U] | edit details of a task
+`* *` | user | edit details of a task
 `* *` | user | be able to view tasks based on closest deadlines | prioritize tasks to complete first
 `*` | user | be able to categorise tasks
 `*` | user | specify recurring tasks | deal with tasks that repeats without having to add them repeatedly
@@ -453,6 +453,28 @@ Use case ends.
 
 4a. Able to view incomplete task that are over the dateline
 
+#### Use case: Edit a Task
+
+**MSS**
+
+1. User requests to list tasks
+2. ToDoList shows a list of tasks
+3. User requests to edit a specific task in the list
+4. ToDoList ask for confirmation
+5. User confirms the modification
+6. Task updated
+
+**Extensions**
+
+2a. The list is empty
+
+> Use case ends
+
+3a. The given index is invalid
+
+> 3a1. ToDoList shows an error message <br>
+  Use case resumes at step 2
+
 {More to be added}
 
 ## Appendix C : Non Functional Requirements
@@ -542,3 +564,17 @@ Cons:
 
 * there are plenty of other task manager application out there
 * will only be used by someone that is not lazy in managing their task
+
+**Iphone Calendar**
+
+Author: Hu Zongqi
+
+Pros:
+
+* Able to remind me of event at set time and set frequency
+* Can be viewed as a calendar and indicate differently for days with and without events
+
+Cons:
+
+* Does not have a diary function
+* Cannot show all tasks in a list form

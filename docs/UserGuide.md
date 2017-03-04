@@ -55,60 +55,59 @@ Format: `add TITLE [e/END_DATE_DDMMYYYY] [r/REMARKS] [l/LABELS]...`
 
 > Other than TITLE, all other information is optional
 > Each task can have any number of tags (including 0)
-> To add more than 1 tags, space out the tags with colon ","
+> To add more than 1 labels, space out the labels with colon ","
 
 Examples:
 
-* `add Complete Assignment 1 e/08022017 r/20% of final grade l/Uni Assignment`
-* `add Revise tutorial 1 l/Uni Assignment`
-* `add Do CS2103 T7 d/080317 r/Remember to make pull request on github t/School`
-* `add Buy gift for mom d/20042017 t/Birthday, Family`
-* `add Finish studing for mid term d/06032017 t/School, Exam`
+* `add Complete Assignment 1 e/08022017 r/20% of final grade l/Uni Assignment`<br>
+* `add Revise tutorial 1 l/Uni Assignment`<br>
+* `add Do CS2103 T7 d/080317 r/Remember to make pull request on github l/School`<br>
+* `add Buy gift for mom d/20042017 l/Birthday, Family`<br>
+* `add Finish studing for mid term d/06032017 l/School, Exam`<br>
 
 ### 2.3. Listing all persons : `list`
 
 Shows a list of all persons in the address book.<br>
 Format: `list`
 
-### 2.4. Editing a person : `edit`
+### 2.4. Editing a task : `edit`
 
-Edits an existing person in the address book.<br>
-Format: `edit INDEX [NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Edits an existing task in the ToDoList.<br>
+Format: `edit INDEX [TASK_SUMMARY] [d/DUE_DATE_DDMMYY] [r/REMARKS] [l/LABELS]...`
 
-> * Edits the person at the specified `INDEX`.
-    The index refers to the index number shown in the last person listing.<br>
+> * Edits the task at the specified `INDEX`.
+    The index refers to the index number shown in the last task listing.<br>
     The index **must be a positive integer** 1, 2, 3, ...
 > * At least one of the optional fields must be provided.
 > * Existing values will be updated to the input values.
-> * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-> * You can remove all the person's tags by typing `t/` without specifying any tags after it.
+> * When editing labels, the existing labels of the task will be removed i.e adding of labels is not cumulative.
+> * You can remove all the person's labels by typing `l/` without specifying any labels after it.
 
 Examples:
 
-* `edit 1 p/91234567 e/johndoe@yahoo.com`<br>
-  Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@yahoo.com` respectively.
+* `edit 1 d/05032017`<br>
+  Edits the due date of the 1st task to be `05032017` respectively.
+* `edit 2 CS2103 homework l/`<br>
+  Edits the task summary of the 2nd task to be `CS2103 homework` and clears all existing labels.
 
-* `edit 2 Betsy Crower t/`<br>
-  Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+### 2.5. Finding all tasks containing any keyword in their task summary: `find`
 
-### 2.5. Finding all persons containing any keyword in their name: `find`
-
-Finds persons whose names contain any of the given keywords.<br>
+Finds tasks whose task summarys contain any of the given keywords.<br>
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
 > * The search is case sensitive. e.g `hans` will not match `Hans`
 > * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-> * Only the name is searched.
+> * Only the task summary is searched.
 > * Only full words will be matched e.g. `Han` will not match `Hans`
-> * Persons matching at least one keyword will be returned (i.e. `OR` search).
+> * Tasks matching at least one keyword will be returned (i.e. `OR` search).
     e.g. `Hans` will match `Hans Bo`
 
 Examples:
 
-* `find John`<br>
-  Returns `John Doe` but not `john`
-* `find Betsy Tim John`<br>
-  Returns Any person having names `Betsy`, `Tim`, or `John`
+* `find homework`<br>
+  Returns `CS2103 homework` but not `EE4212 Homework`
+* `find homework CS2103 EG2401`<br>
+  Returns Any task having following words in task summary `homework`, `CS2103`, or `EG2401`
 
 ### 2.6. Deleting a task : `delete`
 
