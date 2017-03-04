@@ -551,7 +551,7 @@ Cons:
 * Search funciton does not have NLP integration
 * Heavy use of mouse when adding additional features to task
 
-**TODO: Add Name**
+**Trello**
 
 Author: Mohamed Irfan
 
@@ -559,11 +559,15 @@ Pros:
 
 * User can be more organise in completing his/her tasks
 * User will not miss out on any tasks
+* can be shared among multiple users
+* useful for individuals and groups
+* can be seen and edit across platforms
 
 Cons:
 
 * there are plenty of other task manager application out there
 * will only be used by someone that is not lazy in managing their task
+* only work if willing to constantly update and rearrange the task
 
 **Iphone Calendar**
 
