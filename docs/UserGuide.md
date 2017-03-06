@@ -51,19 +51,21 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a Task to the task list<br>
-Format: `add TITLE [e/END_DATE_DDMMYYYY] [r/REMARKS] [l/LABELS]...`
+Format: `add TITLE [d/DEADLINE] [r/REMARKS] [l/LABELS]...`
 
 > Other than TITLE, all other information is optional
+> DEADLINE format is the format DDMMYY [HHMM] where only the date is compulsory if DEADLINE information is added
+> Time of DEADLINE is in 24hr format and is defaulted as 2359 if not specified
 > Each task can have any number of tags (including 0)
-> To add more than 1 labels, space out the labels with colon ","
+> To add more than 1 labels, start next label with `l/` again
 
 Examples:
 
-* `add Complete Assignment 1 e/08022017 r/20% of final grade l/Uni Assignment`<br>
+* `add Complete Assignment 1 d/080217 r/20% of final grade l/Uni Assignment`<br>
 * `add Revise tutorial 1 l/Uni Assignment`<br>
-* `add Do CS2103 T7 d/080317 r/Remember to make pull request on github l/School`<br>
-* `add Buy gift for mom d/20042017 l/Birthday, Family`<br>
-* `add Finish studing for mid term d/06032017 l/School, Exam`<br>
+* `add Do CS2103 T7 d/080317 1000 r/Remember to make pull request on github l/School`<br>
+* `add Buy gift for mom d/20042017 l/Birthday l/Family`<br>
+* `add Finish studing for mid term d/060317 1600 l/School l/ Exam`<br>
 
 ### 2.3. Listing all tasks : `list`
 
@@ -73,22 +75,23 @@ Format: `list`
 ### 2.4. Editing a task : `edit`
 
 Edits an existing task in the ToDoList.<br>
-Format: `edit INDEX [TASK_SUMMARY] [d/DUE_DATE_DDMMYY] [r/REMARKS] [l/LABELS]...`
+Format: `edit INDEX [TITLE] [d/DEADLINE] [r/REMARKS] [l/LABELS]...`
 
 > * Edits the task at the specified `INDEX`.
     The index refers to the index number shown in the last task listing.<br>
     The index **must be a positive integer** 1, 2, 3, ...
 > * At least one of the optional fields must be provided.
 > * Existing values will be updated to the input values.
-> * When editing labels, the existing labels of the task will be removed i.e adding of labels is not cumulative.
-> * You can remove all the person's labels by typing `l/` without specifying any labels after it.
+> * When editing LABELS, the existing LABELS of the task will be removed i.e adding of LABELS is not cumulative.
+> * You can remove all the person's LABELS by typing `l/` without specifying any LABELS after it.
+> * Similarly you can remove REMARKS and DEADLINES by typing `r/` and `d/` respectively
 
 Examples:
 
-* `edit 1 d/05032017`<br>
-  Edits the due date of the 1st task to be `05032017` respectively.
+* `edit 1 d/050317`<br>
+  Edits the due date of the 1st task to be `050317`.
 * `edit 2 CS2103 homework l/`<br>
-  Edits the task summary of the 2nd task to be `CS2103 homework` and clears all existing labels.
+  Edits the TITLE of the 2nd task to be `CS2103 homework` and clears all existing LABELS.
 
 ### 2.5. Finding all tasks containing any keyword in their task summary: `find`
 
@@ -185,13 +188,13 @@ There is no need to save manually.
 * **Help** : `help` <br>
   e.g.
 
-* **Add**  `add TITLE [e/END_DATE_DDMMYYYY] [r/REMARKS] [l/LABELS]...` <br>
-  e.g. `add Do CS2103 T7 d/080317 r/Remember to make pull request on github l/School`
+* **Add**  `add TITLE [d/DEADLINE] [r/REMARKS] [l/LABELS]...` <br>
+  e.g. `add Do CS2103 T7 d/080317 1600 r/Remember to make pull request on github l/School`
 
 * **List** : `list` <br>
   e.g.
 
-* **Edit** : `edit INDEX [TASK_SUMMARY] [d/DUE_DATE_DDMMYY] [r/REMARKS] [l/LABELS]...` <br>
+* **Edit** : `edit INDEX [TITLE] [d/DEADLINE] [r/REMARKS] [l/LABELS]...` <br>
   e.g. `edit 2 CS2103 homework l/`<br>
 
 * **Find** : `find KEYWORD [MORE_KEYWORDS]` <br>
