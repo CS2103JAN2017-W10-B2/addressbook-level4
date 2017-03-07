@@ -28,7 +28,7 @@ public class PersonCard extends UiPart<Region> {
 
     public PersonCard(ReadOnlyTask person, int displayedIndex) {
         super(FXML);
-        name.setText(person.getTitle().fullName);
+        name.setText(person.getTitle().fullTitle);
         id.setText(displayedIndex + ". ");
         phone.setText(person.getDeadline().value);
         address.setText(person.getNot_in_use().value);

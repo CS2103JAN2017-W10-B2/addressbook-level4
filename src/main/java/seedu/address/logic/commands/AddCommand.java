@@ -27,7 +27,7 @@ public class AddCommand extends Command {
             + " Complete Assignment 1 d/080217 r/20% of final grade l/Uni Assignment";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This task already exists in doitdoit!!";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in doitdoit!!";
 
     private final Task toAdd;
 
@@ -36,18 +36,18 @@ public class AddCommand extends Command {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String name, String phone, String email, String address, Set<String> tags)
+    public AddCommand(String title, String deadline, String remarks, String not_in_use, Set<String> labels)
             throws IllegalValueException {
-        final Set<Tag> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(new Tag(tagName));
+        final Set<Tag> labelSet = new HashSet<>();
+        for (String labelName : labels) {
+            labelSet.add(new Tag(labelName));
         }
         this.toAdd = new Task(
-                new TITLE(name),
-                new DEADLINE(phone),
-                new REMARKS(email),
-                new This_attribute_is_not_in_use(address),
-                new LABELS(tagSet)
+                new TITLE(title),
+                new DEADLINE(deadline),
+                new REMARKS(remarks),
+                new This_attribute_is_not_in_use(not_in_use),
+                new LABELS(labelSet)
         );
     }
 
@@ -55,10 +55,10 @@ public class AddCommand extends Command {
     public CommandResult execute() throws CommandException {
         assert model != null;
         try {
-            model.addPerson(toAdd);
+            model.addTask(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniquePersonList.DuplicatePersonException e) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
 
     }
