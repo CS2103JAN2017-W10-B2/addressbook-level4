@@ -8,12 +8,12 @@ import java.util.logging.Level;
  */
 public class Config {
 
-    public static final String DEFAULT_CONFIG_FILE = "config.json";
+    public static final String DEFAULT_CONFIG_FILE = "config.tim";
 
     // Config values customizable through config file
-    private String appTitle = "Address App";
+    private String appTitle = "doitdoit!!";
     private Level logLevel = Level.INFO;
-    private String userPrefsFilePath = "preferences.json";
+    private String userPrefsFilePath = "preferences.tim";
     private String addressBookFilePath = "data/addressbook.xml";
     private String addressBookName = "MyAddressBook";
 
