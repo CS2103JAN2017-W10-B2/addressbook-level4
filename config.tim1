@@ -1,7 +1,0 @@
-{
-  "appTitle" : "wtf",
-  "logLevel" : "INFO",
-  "userPrefsFilePath" : "preferences.json",
-  "addressBookFilePath" : "data/addressbook.xml",
-  "addressBookName" : "MyAddressBook"
-}

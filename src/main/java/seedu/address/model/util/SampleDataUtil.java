@@ -12,27 +12,27 @@ import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.task.UniquePersonList.DuplicatePersonException;
 
 public class SampleDataUtil {
-    public static Task[] getSamplePersons() {
+    public static Task[] getSampleTasks() {
         try {
             return new Task[] {
-                new Task(new TITLE("Alex Yeoh"), new DEADLINE("87438807"), new REMARKS("alexyeoh@gmail.com"),
-                    new This_attribute_is_not_in_use("Blk 30 Geylang Street 29, #06-40"),
-                    new LABELS("friends")),
-                new Task(new TITLE("Bernice Yu"), new DEADLINE("99272758"), new REMARKS("berniceyu@gmail.com"),
-                    new This_attribute_is_not_in_use("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                    new LABELS("colleagues", "friends")),
-                new Task(new TITLE("Charlotte Oliveiro"), new DEADLINE("93210283"), new REMARKS("charlotte@yahoo.com"),
-                    new This_attribute_is_not_in_use("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                    new LABELS("neighbours")),
-                new Task(new TITLE("David Li"), new DEADLINE("91031282"), new REMARKS("lidavid@google.com"),
-                    new This_attribute_is_not_in_use("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                    new LABELS("family")),
-                new Task(new TITLE("Irfan Ibrahim"), new DEADLINE("92492021"), new REMARKS("irfan@outlook.com"),
-                    new This_attribute_is_not_in_use("Blk 47 Tampines Street 20, #17-35"),
-                    new LABELS("classmates")),
-                new Task(new TITLE("Roy Balakrishnan"), new DEADLINE("92624417"), new REMARKS("royb@gmail.com"),
-                    new This_attribute_is_not_in_use("Blk 45 Aljunied Street 85, #11-31"),
-                    new LABELS("colleagues"))
+                new Task(new TITLE("CS2103"), new DEADLINE("25032017"), new REMARKS("asap"),
+                    new This_attribute_is_not_in_use("N/A"),
+                    new LABELS("important")),
+                new Task(new TITLE("EE4212 CA1"), new DEADLINE("26032017"), new REMARKS("quality needed"),
+                    new This_attribute_is_not_in_use("N/A"),
+                    new LABELS("urgent")),
+                new Task(new TITLE("EG2401 Tutorial4"), new DEADLINE("27032017"), new REMARKS("asap"),
+                    new This_attribute_is_not_in_use("N/A"),
+                    new LABELS("important")),
+                new Task(new TITLE("CS2010 MidTerm"), new DEADLINE("28032017"), new REMARKS("optional"),
+                    new This_attribute_is_not_in_use("N/A"),
+                    new LABELS("optional")),
+                new Task(new TITLE("CS2103"), new DEADLINE("29032017"), new REMARKS("asap"),
+                    new This_attribute_is_not_in_use("N/A"),
+                    new LABELS("important")),
+                new Task(new TITLE("CS2010 Assignment2"), new DEADLINE("30032017"), new REMARKS("asap"),
+                    new This_attribute_is_not_in_use("N/A"),
+                    new LABELS("urgent"))
             };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);
@@ -42,7 +42,7 @@ public class SampleDataUtil {
     public static ReadOnlyAddressBook getSampleAddressBook() {
         try {
             AddressBook sampleAB = new AddressBook();
-            for (Task samplePerson : getSamplePersons()) {
+            for (Task samplePerson : getSampleTasks()) {
                 sampleAB.addPerson(samplePerson);
             }
             return sampleAB;

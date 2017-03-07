@@ -24,7 +24,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to doitdoit!!. "
     		+ "Parameters: TITLE [d/DEADLINE] [r/REMARKS] [l/LABELS]...\n"
             + "Example: " + COMMAND_WORD
-            + " Complete Assignment 1 d/080217 r/20% of final grade l/Uni Assignment";
+            + " Complete Assignment 1 d/080217 r/20% of final grade n/this is a bug l/Uni Assignment";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in doitdoit!!";

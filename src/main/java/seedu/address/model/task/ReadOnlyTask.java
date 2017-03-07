@@ -3,7 +3,7 @@ package seedu.address.model.task;
 import seedu.address.model.tag.LABELS;
 
 /**
- * A read-only immutable interface for a Person in the addressbook.
+ * A read-only immutable interface for a Task in the doitdoit!!.
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
 public interface ReadOnlyTask {
@@ -32,18 +32,18 @@ public interface ReadOnlyTask {
     }
 
     /**
-     * Formats the person as text, showing all contact details.
+     * Formats the Task as text, showing all contact details.
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Phone: ")
+                .append(" Deadline: ")
                 .append(getDeadline())
-                .append(" Email: ")
+                .append(" Remarks: ")
                 .append(getRemarks())
-                .append(" Address: ")
+                .append(" Not_in_use: ")
                 .append(getNot_in_use())
-                .append(" Tags: ");
+                .append(" Labels: ");
         getLabels().forEach(builder::append);
         return builder.toString();
     }
