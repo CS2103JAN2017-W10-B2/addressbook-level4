@@ -14,7 +14,7 @@ public class Config {
     private String appTitle = "doitdoit!!";
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.tim";
-    private String addressBookFilePath = "data/addressbook.xml";
+    private String addressBookFilePath = "data/doitdoit!!.xml";
     private String addressBookName = "MyAddressBook";
 
 

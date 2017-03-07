@@ -21,8 +21,8 @@ public interface Model {
     /** Deletes the given person. */
     void deletePerson(ReadOnlyTask target) throws UniquePersonList.PersonNotFoundException;
 
-    /** Adds the given person */
-    void addTask(Task person) throws UniquePersonList.DuplicatePersonException;
+    /** Adds the given task */
+    void addTask(Task task) throws UniquePersonList.DuplicatePersonException;
 
     /**
      * Updates the person located at {@code filteredPersonListIndex} with {@code editedPerson}.
