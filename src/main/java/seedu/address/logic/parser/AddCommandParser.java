@@ -29,9 +29,9 @@ public class AddCommandParser {
         try {
             return new AddCommand(
                     argsTokenizer.getPreamble().get(),
-                    argsTokenizer.getValue(PREFIX_DEADLINE).get(),
-                    argsTokenizer.getValue(PREFIX_REMARKS).get(),
-                    argsTokenizer.getValue(PREFIX_NOT_IN_USE).get(),
+                    argsTokenizer.getValue(PREFIX_DEADLINE).orElse("123456"),
+                    argsTokenizer.getValue(PREFIX_REMARKS).orElse("temporary remarks"),
+                    argsTokenizer.getValue(PREFIX_NOT_IN_USE).orElse("ignore this for now"),
                     ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))
             );
         } catch (NoSuchElementException nsee) {
