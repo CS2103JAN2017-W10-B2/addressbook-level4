@@ -1,34 +1,34 @@
 package seedu.address.model.person;
 
-import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.tag.LABELS;
 
 /**
  * A read-only immutable interface for a Person in the addressbook.
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
-public interface ReadOnlyPerson {
+public interface ReadOnlyTask {
 
-    Name getName();
-    Phone getPhone();
-    Email getEmail();
-    Address getAddress();
+    TITLE getTitle();
+    DEADLINE getDeadline();
+    REMARKS getRemarks();
+    This_attribute_is_not_in_use getNot_in_use();
 
     /**
      * The returned TagList is a deep copy of the internal TagList,
      * changes on the returned list will not affect the person's internal tags.
      */
-    UniqueTagList getTags();
+    LABELS getLabels();
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
      */
-    default boolean isSameStateAs(ReadOnlyPerson other) {
+    default boolean isSameStateAs(ReadOnlyTask other) {
         return other == this // short circuit if same object
                 || (other != null // this is first to avoid NPE below
-                && other.getName().equals(this.getName()) // state checks here onwards
-                && other.getPhone().equals(this.getPhone())
-                && other.getEmail().equals(this.getEmail())
-                && other.getAddress().equals(this.getAddress()));
+                && other.getTitle().equals(this.getTitle()) // state checks here onwards
+                && other.getDeadline().equals(this.getDeadline())
+                && other.getRemarks().equals(this.getRemarks())
+                && other.getNot_in_use().equals(this.getNot_in_use()));
     }
 
     /**
@@ -36,15 +36,15 @@ public interface ReadOnlyPerson {
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(getTitle())
                 .append(" Phone: ")
-                .append(getPhone())
+                .append(getDeadline())
                 .append(" Email: ")
-                .append(getEmail())
+                .append(getRemarks())
                 .append(" Address: ")
-                .append(getAddress())
+                .append(getNot_in_use())
                 .append(" Tags: ");
-        getTags().forEach(builder::append);
+        getLabels().forEach(builder::append);
         return builder.toString();
     }
 

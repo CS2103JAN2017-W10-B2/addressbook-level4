@@ -6,14 +6,14 @@ import java.util.Optional;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.This_attribute_is_not_in_use;
+import seedu.address.model.person.REMARKS;
+import seedu.address.model.person.TITLE;
 import seedu.address.model.person.Task;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.DEADLINE;
+import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.tag.LABELS;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -51,13 +51,13 @@ public class EditCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException {
-        List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
+        List<ReadOnlyTask> lastShownList = model.getFilteredPersonList();
 
         if (filteredPersonListIndex >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        ReadOnlyPerson personToEdit = lastShownList.get(filteredPersonListIndex);
+        ReadOnlyTask personToEdit = lastShownList.get(filteredPersonListIndex);
         Task editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
         try {
@@ -73,15 +73,15 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Task createEditedPerson(ReadOnlyPerson personToEdit,
+    private static Task createEditedPerson(ReadOnlyTask personToEdit,
                                              EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getName);
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getPhone);
-        Email updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getEmail);
-        Address updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getAddress);
-        UniqueTagList updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getTags);
+        TITLE updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getTitle);
+        DEADLINE updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
+        REMARKS updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
+        This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
+        LABELS updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
 
         return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
     }
@@ -91,11 +91,11 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
-        private Optional<Name> name = Optional.empty();
-        private Optional<Phone> phone = Optional.empty();
-        private Optional<Email> email = Optional.empty();
-        private Optional<Address> address = Optional.empty();
-        private Optional<UniqueTagList> tags = Optional.empty();
+        private Optional<TITLE> name = Optional.empty();
+        private Optional<DEADLINE> phone = Optional.empty();
+        private Optional<REMARKS> email = Optional.empty();
+        private Optional<This_attribute_is_not_in_use> address = Optional.empty();
+        private Optional<LABELS> tags = Optional.empty();
 
         public EditPersonDescriptor() {}
 
@@ -114,48 +114,48 @@ public class EditCommand extends Command {
             return CollectionUtil.isAnyPresent(this.name, this.phone, this.email, this.address, this.tags);
         }
 
-        public void setName(Optional<Name> name) {
+        public void setName(Optional<TITLE> name) {
             assert name != null;
             this.name = name;
         }
 
-        public Optional<Name> getName() {
+        public Optional<TITLE> getName() {
             return name;
         }
 
-        public void setPhone(Optional<Phone> phone) {
+        public void setPhone(Optional<DEADLINE> phone) {
             assert phone != null;
             this.phone = phone;
         }
 
-        public Optional<Phone> getPhone() {
+        public Optional<DEADLINE> getPhone() {
             return phone;
         }
 
-        public void setEmail(Optional<Email> email) {
+        public void setEmail(Optional<REMARKS> email) {
             assert email != null;
             this.email = email;
         }
 
-        public Optional<Email> getEmail() {
+        public Optional<REMARKS> getEmail() {
             return email;
         }
 
-        public void setAddress(Optional<Address> address) {
+        public void setAddress(Optional<This_attribute_is_not_in_use> address) {
             assert address != null;
             this.address = address;
         }
 
-        public Optional<Address> getAddress() {
+        public Optional<This_attribute_is_not_in_use> getAddress() {
             return address;
         }
 
-        public void setTags(Optional<UniqueTagList> tags) {
+        public void setTags(Optional<LABELS> tags) {
             assert tags != null;
             this.tags = tags;
         }
 
-        public Optional<UniqueTagList> getTags() {
+        public Optional<LABELS> getTags() {
             return tags;
         }
     }

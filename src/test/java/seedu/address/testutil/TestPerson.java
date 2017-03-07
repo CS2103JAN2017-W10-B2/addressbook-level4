@@ -1,80 +1,80 @@
 package seedu.address.testutil;
 
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.ReadOnlyPerson;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.person.This_attribute_is_not_in_use;
+import seedu.address.model.person.REMARKS;
+import seedu.address.model.person.TITLE;
+import seedu.address.model.person.DEADLINE;
+import seedu.address.model.person.ReadOnlyTask;
+import seedu.address.model.tag.LABELS;
 
 /**
  * A mutable person object. For testing only.
  */
-public class TestPerson implements ReadOnlyPerson {
+public class TestPerson implements ReadOnlyTask {
 
-    private Name name;
-    private Address address;
-    private Email email;
-    private Phone phone;
-    private UniqueTagList tags;
+    private TITLE name;
+    private This_attribute_is_not_in_use address;
+    private REMARKS email;
+    private DEADLINE phone;
+    private LABELS tags;
 
     public TestPerson() {
-        tags = new UniqueTagList();
+        tags = new LABELS();
     }
 
     /**
      * Creates a copy of {@code personToCopy}.
      */
     public TestPerson(TestPerson personToCopy) {
-        this.name = personToCopy.getName();
-        this.phone = personToCopy.getPhone();
-        this.email = personToCopy.getEmail();
-        this.address = personToCopy.getAddress();
-        this.tags = personToCopy.getTags();
+        this.name = personToCopy.getTitle();
+        this.phone = personToCopy.getDeadline();
+        this.email = personToCopy.getRemarks();
+        this.address = personToCopy.getNot_in_use();
+        this.tags = personToCopy.getLabels();
     }
 
-    public void setName(Name name) {
+    public void setName(TITLE name) {
         this.name = name;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(This_attribute_is_not_in_use address) {
         this.address = address;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(REMARKS email) {
         this.email = email;
     }
 
-    public void setPhone(Phone phone) {
+    public void setPhone(DEADLINE phone) {
         this.phone = phone;
     }
 
-    public void setTags(UniqueTagList tags) {
+    public void setTags(LABELS tags) {
         this.tags = tags;
     }
 
     @Override
-    public Name getName() {
+    public TITLE getTitle() {
         return name;
     }
 
     @Override
-    public Phone getPhone() {
+    public DEADLINE getDeadline() {
         return phone;
     }
 
     @Override
-    public Email getEmail() {
+    public REMARKS getRemarks() {
         return email;
     }
 
     @Override
-    public Address getAddress() {
+    public This_attribute_is_not_in_use getNot_in_use() {
         return address;
     }
 
     @Override
-    public UniqueTagList getTags() {
+    public LABELS getLabels() {
         return tags;
     }
 
@@ -85,11 +85,11 @@ public class TestPerson implements ReadOnlyPerson {
 
     public String getAddCommand() {
         StringBuilder sb = new StringBuilder();
-        sb.append("add " + this.getName().fullName + " ");
-        sb.append("a/" + this.getAddress().value + " ");
-        sb.append("p/" + this.getPhone().value + " ");
-        sb.append("e/" + this.getEmail().value + " ");
-        this.getTags().asObservableList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
+        sb.append("add " + this.getTitle().fullName + " ");
+        sb.append("a/" + this.getNot_in_use().value + " ");
+        sb.append("p/" + this.getDeadline().value + " ");
+        sb.append("e/" + this.getRemarks().value + " ");
+        this.getLabels().asObservableList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
         return sb.toString();
     }
 }

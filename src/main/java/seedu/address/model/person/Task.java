@@ -3,116 +3,116 @@ package seedu.address.model.person;
 import java.util.Objects;
 
 import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.tag.LABELS;
 
 /**
  * Represents a Person in the address book.
  * Guarantees: details are present and not null, field values are validated.
  */
-public class Task implements ReadOnlyPerson {
+public class Task implements ReadOnlyTask {
 
-    private Name name;
-    private Phone phone;
-    private Email email;
-    private Address address;
+    private TITLE title;
+    private DEADLINE deadline;
+    private REMARKS remarks;
+    private This_attribute_is_not_in_use not_in_use;
 
-    private UniqueTagList tags;
+    private LABELS labels;
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Name name, Phone phone, Email email, Address address, UniqueTagList tags) {
-        assert !CollectionUtil.isAnyNull(name, phone, email, address, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags = new UniqueTagList(tags); // protect internal tags from changes in the arg list
+    public Task(TITLE title, DEADLINE deadline, REMARKS remarks, This_attribute_is_not_in_use not_in_use, LABELS labels) {
+        assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
+        this.title = title;
+        this.deadline = deadline;
+        this.remarks = remarks;
+        this.not_in_use = not_in_use;
+        this.labels = new LABELS(labels); // protect internal tags from changes in the arg list
     }
 
     /**
-     * Creates a copy of the given ReadOnlyPerson.
+     * Creates a copy of the given ReadOnlyTask.
      */
-    public Task(ReadOnlyPerson source) {
-        this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(), source.getTags());
+    public Task(ReadOnlyTask source) {
+        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels());
     }
 
-    public void setName(Name name) {
-        assert name != null;
-        this.name = name;
-    }
-
-    @Override
-    public Name getName() {
-        return name;
-    }
-
-    public void setPhone(Phone phone) {
-        assert phone != null;
-        this.phone = phone;
+    public void setTitle(TITLE title) {
+        assert title != null;
+        this.title = title;
     }
 
     @Override
-    public Phone getPhone() {
-        return phone;
+    public TITLE getTitle() {
+        return title;
     }
 
-    public void setEmail(Email email) {
-        assert email != null;
-        this.email = email;
-    }
-
-    @Override
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setAddress(Address address) {
-        assert address != null;
-        this.address = address;
+    public void setDeadline(DEADLINE deadline) {
+        assert deadline != null;
+        this.deadline = deadline;
     }
 
     @Override
-    public Address getAddress() {
-        return address;
+    public DEADLINE getDeadline() {
+        return deadline;
+    }
+
+    public void setRemarks(REMARKS remark) {
+        assert remark != null;
+        this.remarks = remark;
     }
 
     @Override
-    public UniqueTagList getTags() {
-        return new UniqueTagList(tags);
+    public REMARKS getRemarks() {
+        return remarks;
+    }
+
+    public void setNot_in_use(This_attribute_is_not_in_use not_in_use) {
+        assert not_in_use != null;
+        this.not_in_use = not_in_use;
+    }
+
+    @Override
+    public This_attribute_is_not_in_use getNot_in_use() {
+        return not_in_use;
+    }
+
+    @Override
+    public LABELS getLabels() {
+        return new LABELS(labels);
     }
 
     /**
      * Replaces this person's tags with the tags in the argument tag list.
      */
-    public void setTags(UniqueTagList replacement) {
-        tags.setTags(replacement);
+    public void setLabels(LABELS replacement) {
+        labels.setLabels(replacement);
     }
 
     /**
-     * Updates this person with the details of {@code replacement}.
+     * Updates this task with the details of {@code replacement}.
      */
-    public void resetData(ReadOnlyPerson replacement) {
+    public void resetData(ReadOnlyTask replacement) {
         assert replacement != null;
 
-        this.setName(replacement.getName());
-        this.setPhone(replacement.getPhone());
-        this.setEmail(replacement.getEmail());
-        this.setAddress(replacement.getAddress());
-        this.setTags(replacement.getTags());
+        this.setTitle(replacement.getTitle());
+        this.setDeadline(replacement.getDeadline());
+        this.setRemarks(replacement.getRemarks());
+        this.setNot_in_use(replacement.getNot_in_use());
+        this.setLabels(replacement.getLabels());
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ReadOnlyPerson // instanceof handles nulls
-                && this.isSameStateAs((ReadOnlyPerson) other));
+                || (other instanceof ReadOnlyTask // instanceof handles nulls
+                && this.isSameStateAs((ReadOnlyTask) other));
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(title, deadline, remarks, not_in_use, labels);
     }
 
     @Override

@@ -6,14 +6,14 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.This_attribute_is_not_in_use;
+import seedu.address.model.person.REMARKS;
+import seedu.address.model.person.TITLE;
 import seedu.address.model.person.Task;
-import seedu.address.model.person.Phone;
-import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.DEADLINE;
+import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.tag.LABELS;
 
 /**
  * JAXB-friendly version of the Person.
@@ -44,13 +44,13 @@ public class XmlAdaptedPerson {
      *
      * @param source future changes to this will not affect the created XmlAdaptedPerson
      */
-    public XmlAdaptedPerson(ReadOnlyPerson source) {
-        name = source.getName().fullName;
-        phone = source.getPhone().value;
-        email = source.getEmail().value;
-        address = source.getAddress().value;
+    public XmlAdaptedPerson(ReadOnlyTask source) {
+        name = source.getTitle().fullName;
+        phone = source.getDeadline().value;
+        email = source.getRemarks().value;
+        address = source.getNot_in_use().value;
         tagged = new ArrayList<>();
-        for (Tag tag : source.getTags()) {
+        for (Tag tag : source.getLabels()) {
             tagged.add(new XmlAdaptedTag(tag));
         }
     }
@@ -65,11 +65,11 @@ public class XmlAdaptedPerson {
         for (XmlAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());
         }
-        final Name name = new Name(this.name);
-        final Phone phone = new Phone(this.phone);
-        final Email email = new Email(this.email);
-        final Address address = new Address(this.address);
-        final UniqueTagList tags = new UniqueTagList(personTags);
+        final TITLE name = new TITLE(this.name);
+        final DEADLINE phone = new DEADLINE(this.phone);
+        final REMARKS email = new REMARKS(this.email);
+        final This_attribute_is_not_in_use address = new This_attribute_is_not_in_use(this.address);
+        final LABELS tags = new LABELS(personTags);
         return new Task(name, phone, email, address, tags);
     }
 }

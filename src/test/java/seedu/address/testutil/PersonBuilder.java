@@ -1,12 +1,12 @@
 package seedu.address.testutil;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.This_attribute_is_not_in_use;
+import seedu.address.model.person.REMARKS;
+import seedu.address.model.person.TITLE;
+import seedu.address.model.person.DEADLINE;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.tag.UniqueTagList;
+import seedu.address.model.tag.LABELS;
 
 /**
  *
@@ -27,30 +27,30 @@ public class PersonBuilder {
     }
 
     public PersonBuilder withName(String name) throws IllegalValueException {
-        this.person.setName(new Name(name));
+        this.person.setName(new TITLE(name));
         return this;
     }
 
     public PersonBuilder withTags(String ... tags) throws IllegalValueException {
-        person.setTags(new UniqueTagList());
+        person.setTags(new LABELS());
         for (String tag: tags) {
-            person.getTags().add(new Tag(tag));
+            person.getLabels().add(new Tag(tag));
         }
         return this;
     }
 
     public PersonBuilder withAddress(String address) throws IllegalValueException {
-        this.person.setAddress(new Address(address));
+        this.person.setAddress(new This_attribute_is_not_in_use(address));
         return this;
     }
 
     public PersonBuilder withPhone(String phone) throws IllegalValueException {
-        this.person.setPhone(new Phone(phone));
+        this.person.setPhone(new DEADLINE(phone));
         return this;
     }
 
     public PersonBuilder withEmail(String email) throws IllegalValueException {
-        this.person.setEmail(new Email(email));
+        this.person.setEmail(new REMARKS(email));
         return this;
     }
 
