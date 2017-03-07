@@ -12,15 +12,15 @@ public class PhoneTest {
     @Test
     public void isValidPhone() {
         // invalid phone numbers
-        assertFalse(DEADLINE.isValidPhone("")); // empty string
-        assertFalse(DEADLINE.isValidPhone(" ")); // spaces only
-        assertFalse(DEADLINE.isValidPhone("phone")); // non-numeric
-        assertFalse(DEADLINE.isValidPhone("9011p041")); // alphabets within digits
-        assertFalse(DEADLINE.isValidPhone("9312 1534")); // spaces within digits
+        assertFalse(DEADLINE.isValidDeadline("")); // empty string
+        assertFalse(DEADLINE.isValidDeadline(" ")); // spaces only
+        assertFalse(DEADLINE.isValidDeadline("phone")); // non-numeric
+        assertFalse(DEADLINE.isValidDeadline("9011p041")); // alphabets within digits
+        assertFalse(DEADLINE.isValidDeadline("9312 1534")); // spaces within digits
 
         // valid phone numbers
-        assertTrue(DEADLINE.isValidPhone("93121534"));
-        assertTrue(DEADLINE.isValidPhone("4")); // short phone numbers
-        assertTrue(DEADLINE.isValidPhone("124293842033123")); // long phone numbers
+        assertTrue(DEADLINE.isValidDeadline("93121534"));
+        assertTrue(DEADLINE.isValidDeadline("4")); // short phone numbers
+        assertTrue(DEADLINE.isValidDeadline("124293842033123")); // long phone numbers
     }
 }

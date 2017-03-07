@@ -199,7 +199,7 @@ public class LogicManagerTest {
         assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address",
                 TITLE.MESSAGE_TITLE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/not_numbers e/valid@e.mail a/valid, address",
-                DEADLINE.MESSAGE_PHONE_CONSTRAINTS);
+                DEADLINE.MESSAGE_DEADLINE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/notAnEmail a/valid, address",
                 REMARKS.MESSAGE_EMAIL_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag",
