@@ -3,13 +3,13 @@ package seedu.address.model.util;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.This_attribute_is_not_in_use;
-import seedu.address.model.person.REMARKS;
-import seedu.address.model.person.TITLE;
-import seedu.address.model.person.Task;
-import seedu.address.model.person.DEADLINE;
-import seedu.address.model.person.UniquePersonList.DuplicatePersonException;
 import seedu.address.model.tag.LABELS;
+import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.UniquePersonList.DuplicatePersonException;
 
 public class SampleDataUtil {
     public static Task[] getSamplePersons() {

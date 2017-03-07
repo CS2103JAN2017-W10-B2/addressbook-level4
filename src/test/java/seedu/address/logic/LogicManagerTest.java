@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 import java.util.ArrayList;
@@ -39,13 +39,13 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.This_attribute_is_not_in_use;
-import seedu.address.model.person.REMARKS;
-import seedu.address.model.person.TITLE;
-import seedu.address.model.person.Task;
-import seedu.address.model.person.DEADLINE;
-import seedu.address.model.person.ReadOnlyTask;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.tag.LABELS;
 import seedu.address.storage.StorageManager;
 
@@ -277,7 +277,7 @@ public class LogicManagerTest {
      *                    based on visible index.
      */
     private void assertIndexNotFoundBehaviorForCommand(String commandWord) throws Exception {
-        String expectedMessage = MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
+        String expectedMessage = MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
         TestDataHelper helper = new TestDataHelper();
         List<Task> personList = helper.generatePersonList(2);
 

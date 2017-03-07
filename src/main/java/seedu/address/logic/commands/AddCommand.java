@@ -5,13 +5,13 @@ import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.This_attribute_is_not_in_use;
-import seedu.address.model.person.REMARKS;
-import seedu.address.model.person.TITLE;
-import seedu.address.model.person.Task;
-import seedu.address.model.person.DEADLINE;
-import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.UniquePersonList;
 import seedu.address.model.tag.LABELS;
 
 /**

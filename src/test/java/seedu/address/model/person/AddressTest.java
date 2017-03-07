@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import seedu.address.model.task.This_attribute_is_not_in_use;
+
 public class AddressTest {
 
     @Test

@@ -6,14 +6,14 @@ import java.util.Optional;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.This_attribute_is_not_in_use;
-import seedu.address.model.person.REMARKS;
-import seedu.address.model.person.TITLE;
-import seedu.address.model.person.Task;
-import seedu.address.model.person.DEADLINE;
-import seedu.address.model.person.ReadOnlyTask;
-import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.tag.LABELS;
+import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.UniquePersonList;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -54,7 +54,7 @@ public class EditCommand extends Command {
         List<ReadOnlyTask> lastShownList = model.getFilteredPersonList();
 
         if (filteredPersonListIndex >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
         ReadOnlyTask personToEdit = lastShownList.get(filteredPersonListIndex);

@@ -8,11 +8,11 @@ import org.junit.Test;
 import guitests.guihandles.PersonCardHandle;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.model.person.This_attribute_is_not_in_use;
-import seedu.address.model.person.REMARKS;
-import seedu.address.model.person.TITLE;
-import seedu.address.model.person.DEADLINE;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.TITLE;
+import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.TestPerson;
 
@@ -79,7 +79,7 @@ public class EditCommandTest extends AddressBookGuiTest {
     @Test
     public void edit_invalidPersonIndex_failure() {
         commandBox.runCommand("edit 8 Bobby");
-        assertResultMessage(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertResultMessage(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
     }
 
     @Test

@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NOT_IN_USE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -30,7 +30,7 @@ public class EditCommandParser {
     public Command parse(String args) {
         assert args != null;
         ArgumentTokenizer argsTokenizer =
-                new ArgumentTokenizer(PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_NOT_IN_USE, PREFIX_LABELS);
         argsTokenizer.tokenize(args);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);
 
@@ -42,10 +42,10 @@ public class EditCommandParser {
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
         try {
             editPersonDescriptor.setName(ParserUtil.parseName(preambleFields.get(1)));
-            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_PHONE)));
-            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_EMAIL)));
-            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_ADDRESS)));
-            editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_TAG))));
+            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
+            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
+            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_NOT_IN_USE)));
+            editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }

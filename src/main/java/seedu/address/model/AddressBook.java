@@ -10,11 +10,11 @@ import java.util.Set;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.model.person.Task;
-import seedu.address.model.person.ReadOnlyTask;
-import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.person.UniquePersonList.DuplicatePersonException;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.ReadOnlyTask;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.UniquePersonList;
+import seedu.address.model.task.UniquePersonList.DuplicatePersonException;
 import seedu.address.model.tag.LABELS;
 
 /**
