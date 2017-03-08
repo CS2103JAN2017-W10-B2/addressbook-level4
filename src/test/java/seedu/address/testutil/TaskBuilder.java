@@ -26,31 +26,31 @@ public class TaskBuilder {
         this.task = new TestTask(personToCopy);
     }
 
-    public TaskBuilder withName(String name) throws IllegalValueException {
-        this.task.setName(new TITLE(name));
+    public TaskBuilder withName(String title) throws IllegalValueException {
+        this.task.setName(new TITLE(title));
         return this;
     }
 
-    public TaskBuilder withTags(String ... tags) throws IllegalValueException {
+    public TaskBuilder withTags(String ... labels) throws IllegalValueException {
         task.setTags(new LABELS());
-        for (String tag: tags) {
-            task.getLabels().add(new Tag(tag));
+        for (String label: labels) {
+            task.getLabels().add(new Tag(label));
         }
         return this;
     }
 
-    public TaskBuilder withAddress(String address) throws IllegalValueException {
-        this.task.setAddress(new This_attribute_is_not_in_use(address));
+    public TaskBuilder withAddress(String attribute_not_in_use) throws IllegalValueException {
+        this.task.setAddress(new This_attribute_is_not_in_use(attribute_not_in_use));
         return this;
     }
 
-    public TaskBuilder withPhone(String phone) throws IllegalValueException {
-        this.task.setPhone(new DEADLINE(phone));
+    public TaskBuilder withPhone(String deadline) throws IllegalValueException {
+        this.task.setPhone(new DEADLINE(deadline));
         return this;
     }
 
-    public TaskBuilder withEmail(String email) throws IllegalValueException {
-        this.task.setEmail(new REMARKS(email));
+    public TaskBuilder withEmail(String remarks) throws IllegalValueException {
+        this.task.setEmail(new REMARKS(remarks));
         return this;
     }
 
