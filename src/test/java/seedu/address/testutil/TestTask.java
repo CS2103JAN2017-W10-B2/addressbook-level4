@@ -10,7 +10,7 @@ import seedu.address.model.task.This_attribute_is_not_in_use;
 /**
  * A mutable person object. For testing only.
  */
-public class TestPerson implements ReadOnlyTask {
+public class TestTask implements ReadOnlyTask {
 
     private TITLE name;
     private This_attribute_is_not_in_use address;
@@ -18,14 +18,14 @@ public class TestPerson implements ReadOnlyTask {
     private DEADLINE phone;
     private LABELS tags;
 
-    public TestPerson() {
+    public TestTask() {
         tags = new LABELS();
     }
 
     /**
      * Creates a copy of {@code personToCopy}.
      */
-    public TestPerson(TestPerson personToCopy) {
+    public TestTask(TestTask personToCopy) {
         this.name = personToCopy.getTitle();
         this.phone = personToCopy.getDeadline();
         this.email = personToCopy.getRemarks();
