@@ -348,56 +348,49 @@ Priority | As a ... | I want to ... | So that I can...
 -------- | :-------- | :--------- | :-----------
 `* * *` | new user | see usage instructions | refer to instructions when I forget how to use the App
 `* * *` | user | delete a task | remove entries that I no longer need
-`* * *` | user | add a new task with/out a duration
-`* * *` | user | display all task then choose one to view
+`* * *` | user | add a new task with/out a deadline
+`* * *` | user | display all uncompleted task then choose one to view
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
-`* *` | user | edit details of a task
+`* *` | user | edit details of a task | keep up with changes in my schedule
 `* *` | user | be able to view tasks based on closest deadlines | prioritize tasks to complete first
-`*` | user | be able to categorise tasks
+`*` | user | display all completed task then choose one to view | keep track of things I have done 
+`*` | user | be able to categorise tasks | find similar task easily
 `*` | user | specify recurring tasks | deal with tasks that repeats without having to add them repeatedly
-`*` | user | add remarks
+`*` | user | add remarks | easily refer to details of a task
 `*` | forgetful user | be notified of tasks due soon | complete task before deadline
-`*` | user | be able to search for tasks based on certain keywords
+`*` | user | be able to search for tasks based on certain keywords  | in the case where I do not remember much details of a task
 `*` | user | be able to set a task to be 'finished', but not deleted
 `*` | user | be able to restart a task that is finished
 `*` | user | be able to send a task to others through email or text message
 `*` | user | be able to undo operation
 
-
-{More to be added}
-
 ## Appendix B : Use Cases
 
-(For all use cases below, the **System** is the `Todolist` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `doitdoit!!` and the **Actor** is the `user`, unless specified otherwise)
 
 #### Use case: Add a new task
 
 **MSS**
 
 1. User inputs the add command along with relevant task information
-2. ToDoList ask for confirmation
-3. Task added to ToDoList
+2. Task added to doitdoit!!.
 Use case ends.
 
 **Extensions**
 
-1a. Input mismatch
+1a. Input error
 
 > User guide on adding new task displayed
   Use case ends
-
-2a. User rejects confirmation
-
-> Use case ends
 
 #### Use case: Delete task
 
 **MSS**
 
 1. User requests to list task
-2. Todolist shows a list of persons
+2. doitdoit!! shows a list of tasks
 3. User requests to delete a specific task in the list
-4. AddressBook deletes the task <br>
+4. doitdoit!! deletes the task <br>
 Use case ends.
 
 **Extensions**
@@ -408,7 +401,7 @@ Use case ends.
 
 3a. The given index is invalid
 
-> 3a1. Todolist shows an error message <br>
+> 3a1. doitdoit!! shows an error message <br>
   Use case resumes at step 2
 
 #### Use case: Complete task
@@ -416,9 +409,9 @@ Use case ends.
 **MSS**
 
 1. User requests to list task
-2. Todolist shows a list of persons
+2. doitdoit!! shows a list of task
 3. User requests to mark a specific task in the list as complete
-4. Todolist marks the task as complete <br>
+4. doitdoit!! marks the task as complete <br>
 Use case ends.
 
 **Extensions**
@@ -429,40 +422,28 @@ Use case ends.
 
 3a. The given index is invalid
 
-> 3a1. Todolist shows an error message <br>
+> 3a1. doitdoit!! shows an error message <br>
   Use case resumes at step 2
 
 #### Use case: List tasks
 
 **MSS**
 
-1. User request to list persons
-2. Select task by name 
-3. Search by keyword
-4. View task by datelines
-5. View task by categories
-6. Able to send a task to others through email or text message
+1. User request to list tasks
+2. doitdoit!! lists tasks by deadline (by default)
 
 **Extensions**
 
 1a. Able to list task by options of completed or not completed task.
-
-3a. keyword not found
-
-> 3a1. return an error message " task invalid".
-
-4a. Able to view incomplete task that are over the dateline
 
 #### Use case: Edit a Task
 
 **MSS**
 
 1. User requests to list tasks
-2. ToDoList shows a list of tasks
+2. doitdoit!! shows a list of tasks
 3. User requests to edit a specific task in the list
-4. ToDoList ask for confirmation
-5. User confirms the modification
-6. Task updated
+4. Task updated
 
 **Extensions**
 
@@ -480,11 +461,11 @@ Use case ends.
 ## Appendix C : Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java `1.8.0_60` or higher installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2. Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands)
    should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should have a cloud based storage location for syncing between multiple devicies a user might have.
-5. Should have an unclutted user interface should be uncluttered that displays tasks ordered by urgency and priority.
+5. User interface should be uncluttered that displays tasks ordered by urgency and priority.
 6. Should not need an installer.
 7. Should work on Windows 7 or later.
 8. Data should be stored locally in the form of a human editable text file.
@@ -499,9 +480,21 @@ Use case ends.
 
 > Windows, Linux, Unix, OS-X
 
-##### Private contact detail
+##### Task
 
-> A contact detail that is not meant to be shared with others
+> A task has a deadline.
+
+##### Floating task
+
+> A task that does not have a deadline.
+
+##### Recurring task
+
+> A task that is recreated automatically after a specified designated time interval.
+
+##### Completed task
+
+> A task has been marked completed by user. Will not be shown in a list command.
 
 ## Appendix E : Product Survey
 
