@@ -14,29 +14,29 @@ public class TypicalTestPersons {
 
     public TypicalTestPersons() {
         try {
-            alice = new TaskBuilder().withName("Alice Pauline")
-                    .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@gmail.com")
-                    .withPhone("85355255")
-                    .withTags("friends").build();
-            benson = new TaskBuilder().withName("Benson Meier").withAddress("311, Clementi Ave 2, #02-25")
-                    .withEmail("johnd@gmail.com").withPhone("98765432")
-                    .withTags("owesMoney", "friends").build();
-            carl = new TaskBuilder().withName("Carl Kurz").withPhone("95352563")
-                    .withEmail("heinz@yahoo.com").withAddress("wall street").build();
-            daniel = new TaskBuilder().withName("Daniel Meier").withPhone("87652533")
-                    .withEmail("cornelia@google.com").withAddress("10th street").build();
-            elle = new TaskBuilder().withName("Elle Meyer").withPhone("9482224")
-                    .withEmail("werner@gmail.com").withAddress("michegan ave").build();
-            fiona = new TaskBuilder().withName("Fiona Kunz").withPhone("9482427")
-                    .withEmail("lydia@gmail.com").withAddress("little tokyo").build();
-            george = new TaskBuilder().withName("George Best").withPhone("9482442")
-                    .withEmail("anna@google.com").withAddress("4th street").build();
+            alice = new TaskBuilder().withTitle("Alice Pauline")
+                    .with_attribute_not_in_use("123, Jurong West Ave 6, #08-111").withRemarks("alice@gmail.com")
+                    .withDeadline("85355255")
+                    .withLabels("friends").build();
+            benson = new TaskBuilder().withTitle("Benson Meier").with_attribute_not_in_use("311, Clementi Ave 2, #02-25")
+                    .withRemarks("johnd@gmail.com").withDeadline("98765432")
+                    .withLabels("owesMoney", "friends").build();
+            carl = new TaskBuilder().withTitle("Carl Kurz").withDeadline("95352563")
+                    .withRemarks("heinz@yahoo.com").with_attribute_not_in_use("wall street").build();
+            daniel = new TaskBuilder().withTitle("Daniel Meier").withDeadline("87652533")
+                    .withRemarks("cornelia@google.com").with_attribute_not_in_use("10th street").build();
+            elle = new TaskBuilder().withTitle("Elle Meyer").withDeadline("9482224")
+                    .withRemarks("werner@gmail.com").with_attribute_not_in_use("michegan ave").build();
+            fiona = new TaskBuilder().withTitle("Fiona Kunz").withDeadline("9482427")
+                    .withRemarks("lydia@gmail.com").with_attribute_not_in_use("little tokyo").build();
+            george = new TaskBuilder().withTitle("George Best").withDeadline("9482442")
+                    .withRemarks("anna@google.com").with_attribute_not_in_use("4th street").build();
 
             // Manually added
-            hoon = new TaskBuilder().withName("Hoon Meier").withPhone("8482424")
-                    .withEmail("stefan@mail.com").withAddress("little india").build();
-            ida = new TaskBuilder().withName("Ida Mueller").withPhone("8482131")
-                    .withEmail("hans@google.com").withAddress("chicago ave").build();
+            hoon = new TaskBuilder().withTitle("Hoon Meier").withDeadline("8482424")
+                    .withRemarks("stefan@mail.com").with_attribute_not_in_use("little india").build();
+            ida = new TaskBuilder().withTitle("Ida Mueller").withDeadline("8482131")
+                    .withRemarks("hans@google.com").with_attribute_not_in_use("chicago ave").build();
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
