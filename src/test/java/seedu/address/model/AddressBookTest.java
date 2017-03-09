@@ -49,8 +49,8 @@ public class AddressBookTest {
     public void resetData_withDuplicatePersons_throwsAssertionError() {
         TypicalTestPersons td = new TypicalTestPersons();
         // Repeat td.alice twice
-        List<Task> newPersons = Arrays.asList(new Task(td.alice), new Task(td.alice));
-        List<Tag> newTags = td.alice.getLabels().asObservableList();
+        List<Task> newPersons = Arrays.asList(new Task(td.testExample1), new Task(td.testExample1));
+        List<Tag> newTags = td.testExample1.getLabels().asObservableList();
         AddressBookStub newData = new AddressBookStub(newPersons, newTags);
 
         thrown.expect(AssertionError.class);

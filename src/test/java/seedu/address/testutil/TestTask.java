@@ -12,70 +12,70 @@ import seedu.address.model.task.This_attribute_is_not_in_use;
  */
 public class TestTask implements ReadOnlyTask {
 
-    private TITLE name;
-    private This_attribute_is_not_in_use address;
-    private REMARKS email;
-    private DEADLINE phone;
-    private LABELS tags;
+    private TITLE title;
+    private This_attribute_is_not_in_use attribute_not_in_use;
+    private REMARKS remarks;
+    private DEADLINE deadline;
+    private LABELS labels;
 
     public TestTask() {
-        tags = new LABELS();
+        labels = new LABELS();
     }
 
     /**
      * Creates a copy of {@code personToCopy}.
      */
     public TestTask(TestTask personToCopy) {
-        this.name = personToCopy.getTitle();
-        this.phone = personToCopy.getDeadline();
-        this.email = personToCopy.getRemarks();
-        this.address = personToCopy.getNot_in_use();
-        this.tags = personToCopy.getLabels();
+        this.title = personToCopy.getTitle();
+        this.deadline = personToCopy.getDeadline();
+        this.remarks = personToCopy.getRemarks();
+        this.attribute_not_in_use = personToCopy.getNot_in_use();
+        this.labels = personToCopy.getLabels();
     }
 
     public void setName(TITLE name) {
-        this.name = name;
+        this.title = name;
     }
 
     public void setAddress(This_attribute_is_not_in_use address) {
-        this.address = address;
+        this.attribute_not_in_use = address;
     }
 
     public void setEmail(REMARKS email) {
-        this.email = email;
+        this.remarks = email;
     }
 
     public void setPhone(DEADLINE phone) {
-        this.phone = phone;
+        this.deadline = phone;
     }
 
     public void setTags(LABELS tags) {
-        this.tags = tags;
+        this.labels = tags;
     }
 
     @Override
     public TITLE getTitle() {
-        return name;
+        return title;
     }
 
     @Override
     public DEADLINE getDeadline() {
-        return phone;
+        return deadline;
     }
 
     @Override
     public REMARKS getRemarks() {
-        return email;
+        return remarks;
     }
 
     @Override
     public This_attribute_is_not_in_use getNot_in_use() {
-        return address;
+        return attribute_not_in_use;
     }
 
     @Override
     public LABELS getLabels() {
-        return tags;
+        return labels;
     }
 
     @Override
@@ -86,10 +86,10 @@ public class TestTask implements ReadOnlyTask {
     public String getAddCommand() {
         StringBuilder sb = new StringBuilder();
         sb.append("add " + this.getTitle().fullTitle + " ");
-        sb.append("a/" + this.getNot_in_use().value + " ");
-        sb.append("p/" + this.getDeadline().value + " ");
-        sb.append("e/" + this.getRemarks().value + " ");
-        this.getLabels().asObservableList().stream().forEach(s -> sb.append("t/" + s.tagName + " "));
+        sb.append("n/" + this.getNot_in_use().value + " ");
+        sb.append("d/" + this.getDeadline().value + " ");
+        sb.append("r/" + this.getRemarks().value + " ");
+        this.getLabels().asObservableList().stream().forEach(s -> sb.append("l/" + s.tagName + " "));
         return sb.toString();
     }
 }
