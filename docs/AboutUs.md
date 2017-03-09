@@ -20,7 +20,7 @@ We are a team based in the [School of Computing, National University of Singapor
  -----
 
 #### [Mohamed Irfan](http://github.com/mdirfanpm)
-<img src="images/Irfan.jpg" width="150"><br>
+<img src="images/Irfan.JPG" width="150"><br>
  Role: Developer <br>
  Responsibilities: Logic, Testing
 
