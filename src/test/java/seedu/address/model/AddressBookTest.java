@@ -28,8 +28,8 @@ public class AddressBookTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getPersonList());
-        assertEquals(Collections.emptyList(), addressBook.getTagList());
+        assertEquals(Collections.emptyList(), addressBook.getTaskList());
+        assertEquals(Collections.emptyList(), addressBook.getLabelList());
     }
 
     @Test
@@ -60,8 +60,8 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicateTags_throwsAssertionError() {
         AddressBook typicalAddressBook = new TypicalTestPersons().getTypicalAddressBook();
-        List<ReadOnlyTask> newPersons = typicalAddressBook.getPersonList();
-        List<Label> newTags = new ArrayList<>(typicalAddressBook.getTagList());
+        List<ReadOnlyTask> newPersons = typicalAddressBook.getTaskList();
+        List<Label> newTags = new ArrayList<>(typicalAddressBook.getLabelList());
         // Repeat the first tag twice
         newTags.add(newTags.get(0));
         AddressBookStub newData = new AddressBookStub(newPersons, newTags);
@@ -73,7 +73,7 @@ public class AddressBookTest {
     /**
      * A stub ReadOnlyAddressBook whose persons and tags lists can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class AddressBookStub implements ReadOnlyToDoList {
         private final ObservableList<ReadOnlyTask> persons = FXCollections.observableArrayList();
         private final ObservableList<Label> tags = FXCollections.observableArrayList();
 
@@ -83,12 +83,12 @@ public class AddressBookTest {
         }
 
         @Override
-        public ObservableList<ReadOnlyTask> getPersonList() {
+        public ObservableList<ReadOnlyTask> getTaskList() {
             return persons;
         }
 
         @Override
-        public ObservableList<Label> getTagList() {
+        public ObservableList<Label> getLabelList() {
             return tags;
         }
     }

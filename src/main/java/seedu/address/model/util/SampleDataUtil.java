@@ -2,7 +2,7 @@ package seedu.address.model.util;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyToDoList;
 import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
@@ -39,7 +39,7 @@ public class SampleDataUtil {
         }
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
+    public static ReadOnlyToDoList getSampleAddressBook() {
         try {
             AddressBook sampleAB = new AddressBook();
             for (Task samplePerson : getSampleTasks()) {

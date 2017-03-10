@@ -21,10 +21,10 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .equals comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class AddressBook implements ReadOnlyToDoList {
 
-    private final UniqueTaskList persons;
-    private final UniqueLabelList tags;
+    private final UniqueTaskList tasks;
+    private final UniqueLabelList labels;
 
     /*
      * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
@@ -34,8 +34,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniqueTaskList();
-        tags = new UniqueLabelList();
+        tasks = new UniqueTaskList();
+        labels = new UniqueLabelList();
     }
 
     public AddressBook() {}
@@ -43,7 +43,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Creates an AddressBook using the Persons and Tags in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public AddressBook(ReadOnlyToDoList toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -52,40 +52,40 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void setPersons(List<? extends ReadOnlyTask> persons)
             throws UniqueTaskList.DuplicateTaskException {
-        this.persons.setTasks(persons);
+        this.tasks.setTasks(persons);
     }
 
     public void setTags(Collection<Label> tags) throws UniqueLabelList.DuplicateLabelException {
-        this.tags.setLabels(tags);
+        this.labels.setLabels(tags);
     }
 
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyToDoList newData) {
         assert newData != null;
         try {
-            setPersons(newData.getPersonList());
+            setPersons(newData.getTaskList());
         } catch (UniqueTaskList.DuplicateTaskException e) {
             assert false : "AddressBooks should not have duplicate persons";
         }
         try {
-            setTags(newData.getTagList());
+            setTags(newData.getLabelList());
         } catch (UniqueLabelList.DuplicateLabelException e) {
             assert false : "AddressBooks should not have duplicate tags";
         }
-        syncMasterTagListWith(persons);
+        syncMasterTagListWith(tasks);
     }
 
 //// person-level operations
 
     /**
      * Adds a person to the address book.
-     * Also checks the new person's tags and updates {@link #tags} with any new tags found,
-     * and updates the Tag objects in the person to point to those in {@link #tags}.
+     * Also checks the new person's tags and updates {@link #labels} with any new tags found,
+     * and updates the Tag objects in the person to point to those in {@link #labels}.
      *
      * @throws UniqueTaskList.DuplicateTaskException if an equivalent person already exists.
      */
     public void addPerson(Task p) throws UniqueTaskList.DuplicateTaskException {
         syncMasterTagListWith(p);
-        persons.add(p);
+        tasks.add(p);
     }
 
     /**
@@ -106,22 +106,22 @@ public class AddressBook implements ReadOnlyAddressBook {
         // TODO: the tags master list will be updated even though the below line fails.
         // This can cause the tags master list to have additional tags that are not tagged to any person
         // in the person list.
-        persons.updateTask(index, editedPerson);
+        tasks.updateTask(index, editedPerson);
     }
 
     /**
      * Ensures that every tag in this person:
-     *  - exists in the master list {@link #tags}
+     *  - exists in the master list {@link #labels}
      *  - points to a Tag object in the master list
      */
     private void syncMasterTagListWith(Task person) {
         final UniqueLabelList personTags = person.getLabels();
-        tags.mergeFrom(personTags);
+        labels.mergeFrom(personTags);
 
         // Create map with values = tag object references in the master list
         // used for checking person tag references
         final Map<Label, Label> masterTagObjects = new HashMap<>();
-        tags.forEach(tag -> masterTagObjects.put(tag, tag));
+        labels.forEach(tag -> masterTagObjects.put(tag, tag));
 
         // Rebuild the list of person tags to point to the relevant tags in the master tag list.
         final Set<Label> correctTagReferences = new HashSet<>();
@@ -131,7 +131,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Ensures that every tag in these persons:
-     *  - exists in the master list {@link #tags}
+     *  - exists in the master list {@link #labels}
      *  - points to a Tag object in the master list
      *  @see #syncMasterTagListWith(Task)
      */
@@ -140,7 +140,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     public boolean removePerson(ReadOnlyTask key) throws UniqueTaskList.TaskNotFoundException {
-        if (persons.remove(key)) {
+        if (tasks.remove(key)) {
             return true;
         } else {
             throw new UniqueTaskList.TaskNotFoundException();
@@ -150,38 +150,38 @@ public class AddressBook implements ReadOnlyAddressBook {
 //// tag-level operations
 
     public void addTag(Label t) throws UniqueLabelList.DuplicateLabelException {
-        tags.add(t);
+        labels.add(t);
     }
 
 //// util methods
 
     @Override
     public String toString() {
-        return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags";
+        return tasks.asObservableList().size() + " persons, " + labels.asObservableList().size() +  " tags";
         // TODO: refine later
     }
 
     @Override
-    public ObservableList<ReadOnlyTask> getPersonList() {
-        return new UnmodifiableObservableList<>(persons.asObservableList());
+    public ObservableList<ReadOnlyTask> getTaskList() {
+        return new UnmodifiableObservableList<>(tasks.asObservableList());
     }
 
     @Override
-    public ObservableList<Label> getTagList() {
-        return new UnmodifiableObservableList<>(tags.asObservableList());
+    public ObservableList<Label> getLabelList() {
+        return new UnmodifiableObservableList<>(labels.asObservableList());
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && this.persons.equals(((AddressBook) other).persons)
-                && this.tags.equalsOrderInsensitive(((AddressBook) other).tags));
+                && this.tasks.equals(((AddressBook) other).tasks)
+                && this.labels.equalsOrderInsensitive(((AddressBook) other).labels));
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(persons, tags);
+        return Objects.hash(tasks, labels);
     }
 }
