@@ -1,7 +1,7 @@
 package seedu.address.model.util;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.ToDoList;
 import seedu.address.model.ReadOnlyToDoList;
 import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
@@ -41,9 +41,9 @@ public class SampleDataUtil {
 
     public static ReadOnlyToDoList getSampleAddressBook() {
         try {
-            AddressBook sampleAB = new AddressBook();
+            ToDoList sampleAB = new ToDoList();
             for (Task samplePerson : getSampleTasks()) {
-                sampleAB.addPerson(samplePerson);
+                sampleAB.addTask(samplePerson);
             }
             return sampleAB;
         } catch (DuplicateTaskException e) {
