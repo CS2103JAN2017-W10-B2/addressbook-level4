@@ -10,7 +10,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.testutil.TaskBuilder;
@@ -97,7 +97,7 @@ public class EditCommandTest extends AddressBookGuiTest {
         assertResultMessage(Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
 
         commandBox.runCommand("edit 1 e/yahoo!!!");
-        assertResultMessage(REMARKS.MESSAGE_REMARKS_CONSTRAINTS);
+        assertResultMessage(Remarks.MESSAGE_REMARKS_CONSTRAINTS);
 
         commandBox.runCommand("edit 1 a/");
         assertResultMessage(This_attribute_is_not_in_use.MESSAGE_ADDRESS_CONSTRAINTS);

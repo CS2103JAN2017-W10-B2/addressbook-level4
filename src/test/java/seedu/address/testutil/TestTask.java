@@ -2,7 +2,7 @@ package seedu.address.testutil;
 
 import seedu.address.model.tag.LABELS;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.This_attribute_is_not_in_use;
@@ -14,7 +14,7 @@ public class TestTask implements ReadOnlyTask {
 
     private TITLE title;
     private This_attribute_is_not_in_use attribute_not_in_use;
-    private REMARKS remarks;
+    private Remarks remarks;
     private Deadline deadline;
     private LABELS labels;
 
@@ -41,7 +41,7 @@ public class TestTask implements ReadOnlyTask {
         this.attribute_not_in_use = address;
     }
 
-    public void setEmail(REMARKS email) {
+    public void setEmail(Remarks email) {
         this.remarks = email;
     }
 
@@ -64,7 +64,7 @@ public class TestTask implements ReadOnlyTask {
     }
 
     @Override
-    public REMARKS getRemarks() {
+    public Remarks getRemarks() {
         return remarks;
     }
 

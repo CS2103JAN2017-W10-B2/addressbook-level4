@@ -7,7 +7,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
  * Represents remarks for a task in doitdoit!!.
  * Guarantees: immutable; is valid as declared in {@link #isValidRemarks(String)}
  */
-public class REMARKS {
+public class Remarks {
 
     public static final String MESSAGE_REMARKS_CONSTRAINTS =
             "N/A";
@@ -20,7 +20,7 @@ public class REMARKS {
      *
      * @throws IllegalValueException if given remarks string is invalid.
      */
-    public REMARKS(String remarks) throws IllegalValueException {
+    public Remarks(String remarks) throws IllegalValueException {
         assert remarks != null;
         String trimmedRemarks = remarks.trim();
         if (!isValidRemarks(trimmedRemarks)) {
@@ -44,8 +44,8 @@ public class REMARKS {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof REMARKS // instanceof handles nulls
-                && this.value.equals(((REMARKS) other).value)); // state check
+                || (other instanceof Remarks // instanceof handles nulls
+                && this.value.equals(((Remarks) other).value)); // state check
     }
 
     @Override

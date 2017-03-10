@@ -10,7 +10,7 @@ public interface ReadOnlyTask {
 
     TITLE getTitle();
     Deadline getDeadline();
-    REMARKS getRemarks();
+    Remarks getRemarks();
     This_attribute_is_not_in_use getNot_in_use();
 
     /**

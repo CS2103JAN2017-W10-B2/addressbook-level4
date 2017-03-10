@@ -8,7 +8,7 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.LABELS;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.Task;
@@ -79,7 +79,7 @@ public class EditCommand extends Command {
 
         TITLE updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getTitle);
         Deadline updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
-        REMARKS updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
+        Remarks updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
         This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
         LABELS updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
 
@@ -93,7 +93,7 @@ public class EditCommand extends Command {
     public static class EditTaskDescriptor {
         private Optional<TITLE> name = Optional.empty();
         private Optional<Deadline> phone = Optional.empty();
-        private Optional<REMARKS> email = Optional.empty();
+        private Optional<Remarks> email = Optional.empty();
         private Optional<This_attribute_is_not_in_use> address = Optional.empty();
         private Optional<LABELS> tags = Optional.empty();
 
@@ -132,12 +132,12 @@ public class EditCommand extends Command {
             return phone;
         }
 
-        public void setEmail(Optional<REMARKS> email) {
+        public void setEmail(Optional<Remarks> email) {
             assert email != null;
             this.email = email;
         }
 
-        public Optional<REMARKS> getEmail() {
+        public Optional<Remarks> getEmail() {
             return email;
         }
 

@@ -13,7 +13,7 @@ public class Task implements ReadOnlyTask {
 
     private TITLE title;
     private Deadline deadline;
-    private REMARKS remarks;
+    private Remarks remarks;
     private This_attribute_is_not_in_use not_in_use;
 
     private LABELS labels;
@@ -21,7 +21,7 @@ public class Task implements ReadOnlyTask {
     /**
      * Every field must be present and not null.
      */
-    public Task(TITLE title, Deadline deadline, REMARKS remarks, This_attribute_is_not_in_use not_in_use, LABELS labels) {
+    public Task(TITLE title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, LABELS labels) {
         assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
         this.title = title;
         this.deadline = deadline;
@@ -57,13 +57,13 @@ public class Task implements ReadOnlyTask {
         return deadline;
     }
 
-    public void setRemarks(REMARKS remark) {
+    public void setRemarks(Remarks remark) {
         assert remark != null;
         this.remarks = remark;
     }
 
     @Override
-    public REMARKS getRemarks() {
+    public Remarks getRemarks() {
         return remarks;
     }
 

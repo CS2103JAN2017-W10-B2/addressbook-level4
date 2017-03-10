@@ -3,7 +3,7 @@ package seedu.address.testutil;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.tag.LABELS;
@@ -50,7 +50,7 @@ public class TaskBuilder {
     }
 
     public TaskBuilder withRemarks(String remarks) throws IllegalValueException {
-        this.task.setEmail(new REMARKS(remarks));
+        this.task.setEmail(new Remarks(remarks));
         return this;
     }
 

@@ -5,38 +5,38 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.Remarks;
 
 public class EmailTest {
 
     @Test
     public void isValidEmail() {
         // blank email
-        assertFalse(REMARKS.isValidRemarks("")); // empty string
-        assertFalse(REMARKS.isValidRemarks(" ")); // spaces only
+        assertFalse(Remarks.isValidRemarks("")); // empty string
+        assertFalse(Remarks.isValidRemarks(" ")); // spaces only
 
         // missing parts
-        assertFalse(REMARKS.isValidRemarks("@webmail.com")); // missing local part
-        assertFalse(REMARKS.isValidRemarks("peterjackwebmail.com")); // missing '@' symbol
-        assertFalse(REMARKS.isValidRemarks("peterjack@")); // missing domain name
+        assertFalse(Remarks.isValidRemarks("@webmail.com")); // missing local part
+        assertFalse(Remarks.isValidRemarks("peterjackwebmail.com")); // missing '@' symbol
+        assertFalse(Remarks.isValidRemarks("peterjack@")); // missing domain name
 
         // invalid parts
-        assertFalse(REMARKS.isValidRemarks("-@webmail.com")); // invalid local part
-        assertFalse(REMARKS.isValidRemarks("peterjack@-")); // invalid domain name
-        assertFalse(REMARKS.isValidRemarks("peter jack@webmail.com")); // spaces in local part
-        assertFalse(REMARKS.isValidRemarks("peterjack@web mail.com")); // spaces in domain name
-        assertFalse(REMARKS.isValidRemarks("peterjack@@webmail.com")); // double '@' symbol
-        assertFalse(REMARKS.isValidRemarks("peter@jack@webmail.com")); // '@' symbol in local part
-        assertFalse(REMARKS.isValidRemarks("peterjack@webmail@com")); // '@' symbol in domain name
+        assertFalse(Remarks.isValidRemarks("-@webmail.com")); // invalid local part
+        assertFalse(Remarks.isValidRemarks("peterjack@-")); // invalid domain name
+        assertFalse(Remarks.isValidRemarks("peter jack@webmail.com")); // spaces in local part
+        assertFalse(Remarks.isValidRemarks("peterjack@web mail.com")); // spaces in domain name
+        assertFalse(Remarks.isValidRemarks("peterjack@@webmail.com")); // double '@' symbol
+        assertFalse(Remarks.isValidRemarks("peter@jack@webmail.com")); // '@' symbol in local part
+        assertFalse(Remarks.isValidRemarks("peterjack@webmail@com")); // '@' symbol in domain name
 
         // valid email
-        assertTrue(REMARKS.isValidRemarks("PeterJack_1190@WEB.Mail.com"));
-        assertTrue(REMARKS.isValidRemarks("a@b"));  // minimal
-        assertTrue(REMARKS.isValidRemarks("test@localhost"));   // alphabets only
-        assertTrue(REMARKS.isValidRemarks("123@145"));  // numeric local part and domain name
-        assertTrue(REMARKS.isValidRemarks("a1@sg50.org"));  // mixture of alphanumeric and dot characters
-        assertTrue(REMARKS.isValidRemarks("_user_@_do_main_.com_"));    // underscores
-        assertTrue(REMARKS.isValidRemarks("peter_jack@a_very_long_domain_AVLD.com"));   // long domain name
-        assertTrue(REMARKS.isValidRemarks("if.you.dream.it_you.can.do.it@youth_email.com"));    // long local part
+        assertTrue(Remarks.isValidRemarks("PeterJack_1190@WEB.Mail.com"));
+        assertTrue(Remarks.isValidRemarks("a@b"));  // minimal
+        assertTrue(Remarks.isValidRemarks("test@localhost"));   // alphabets only
+        assertTrue(Remarks.isValidRemarks("123@145"));  // numeric local part and domain name
+        assertTrue(Remarks.isValidRemarks("a1@sg50.org"));  // mixture of alphanumeric and dot characters
+        assertTrue(Remarks.isValidRemarks("_user_@_do_main_.com_"));    // underscores
+        assertTrue(Remarks.isValidRemarks("peter_jack@a_very_long_domain_AVLD.com"));   // long domain name
+        assertTrue(Remarks.isValidRemarks("if.you.dream.it_you.can.do.it@youth_email.com"));    // long local part
     }
 }

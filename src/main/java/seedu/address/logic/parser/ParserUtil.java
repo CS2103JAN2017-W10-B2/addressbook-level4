@@ -15,7 +15,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.tag.LABELS;
@@ -93,9 +93,9 @@ public class ParserUtil {
     /**
      * Parses a {@code Optional<String> email} into an {@code Optional<Email>} if {@code email} is present.
      */
-    public static Optional<REMARKS> parseEmail(Optional<String> email) throws IllegalValueException {
+    public static Optional<Remarks> parseEmail(Optional<String> email) throws IllegalValueException {
         assert email != null;
-        return email.isPresent() ? Optional.of(new REMARKS(email.get())) : Optional.empty();
+        return email.isPresent() ? Optional.of(new Remarks(email.get())) : Optional.empty();
     }
 
     /**

@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlElement;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.REMARKS;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.Task;
@@ -67,7 +67,7 @@ public class XmlAdaptedPerson {
         }
         final TITLE name = new TITLE(this.name);
         final Deadline phone = new Deadline(this.phone);
-        final REMARKS email = new REMARKS(this.email);
+        final Remarks email = new Remarks(this.email);
         final This_attribute_is_not_in_use address = new This_attribute_is_not_in_use(this.address);
         final LABELS tags = new LABELS(personTags);
         return new Task(name, phone, email, address, tags);
