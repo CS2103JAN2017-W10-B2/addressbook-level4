@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.label.Label;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
-import seedu.address.testutil.TypicalTestPersons;
+import seedu.address.testutil.TypicalTestTasks;
 
 public class AddressBookTest {
 
@@ -40,14 +40,14 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        ToDoList newData = new TypicalTestPersons().getTypicalAddressBook();
+        ToDoList newData = new TypicalTestTasks().getTypicalToDoList();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
     }
 
     @Test
     public void resetData_withDuplicatePersons_throwsAssertionError() {
-        TypicalTestPersons td = new TypicalTestPersons();
+        TypicalTestTasks td = new TypicalTestTasks();
         // Repeat td.alice twice
         List<Task> newPersons = Arrays.asList(new Task(td.testExample1), new Task(td.testExample1));
         List<Label> newTags = td.testExample1.getLabels().asObservableList();
@@ -59,7 +59,7 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withDuplicateTags_throwsAssertionError() {
-        ToDoList typicalAddressBook = new TypicalTestPersons().getTypicalAddressBook();
+        ToDoList typicalAddressBook = new TypicalTestTasks().getTypicalToDoList();
         List<ReadOnlyTask> newPersons = typicalAddressBook.getTaskList();
         List<Label> newTags = new ArrayList<>(typicalAddressBook.getLabelList());
         // Repeat the first tag twice
