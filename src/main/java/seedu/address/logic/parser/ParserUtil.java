@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.REMARKS;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.This_attribute_is_not_in_use;
@@ -77,9 +77,9 @@ public class ParserUtil {
     /**
      * Parses a {@code Optional<String> phone} into an {@code Optional<Phone>} if {@code phone} is present.
      */
-    public static Optional<DEADLINE> parsePhone(Optional<String> phone) throws IllegalValueException {
+    public static Optional<Deadline> parsePhone(Optional<String> phone) throws IllegalValueException {
         assert phone != null;
-        return phone.isPresent() ? Optional.of(new DEADLINE(phone.get())) : Optional.empty();
+        return phone.isPresent() ? Optional.of(new Deadline(phone.get())) : Optional.empty();
     }
 
     /**

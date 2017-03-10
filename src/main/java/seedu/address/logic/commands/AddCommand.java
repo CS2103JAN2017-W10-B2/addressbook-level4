@@ -6,7 +6,7 @@ import java.util.Set;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.REMARKS;
 import seedu.address.model.task.TITLE;
 import seedu.address.model.task.Task;
@@ -44,7 +44,7 @@ public class AddCommand extends Command {
         }
         this.toAdd = new Task(
                 new TITLE(title),
-                new DEADLINE(deadline),
+                new Deadline(deadline),
                 new REMARKS(remarks),
                 new This_attribute_is_not_in_use(not_in_use),
                 new LABELS(labelSet)

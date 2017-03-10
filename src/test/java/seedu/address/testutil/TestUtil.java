@@ -31,7 +31,7 @@ import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.AddressBook;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.REMARKS;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.TITLE;
@@ -75,15 +75,15 @@ public class TestUtil {
         try {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                new Task(new TITLE("Ali Muster"), new DEADLINE("9482424"), new REMARKS("hans@google.com"), new This_attribute_is_not_in_use("4th street"), new LABELS()),
-                new Task(new TITLE("Boris Mueller"), new DEADLINE("87249245"), new REMARKS("ruth@google.com"), new This_attribute_is_not_in_use("81th street"), new LABELS()),
-                new Task(new TITLE("Carl Kurz"), new DEADLINE("95352563"), new REMARKS("heinz@yahoo.com"), new This_attribute_is_not_in_use("wall street"), new LABELS()),
-                new Task(new TITLE("Daniel Meier"), new DEADLINE("87652533"), new REMARKS("cornelia@google.com"), new This_attribute_is_not_in_use("10th street"), new LABELS()),
-                new Task(new TITLE("Elle Meyer"), new DEADLINE("9482224"), new REMARKS("werner@gmail.com"), new This_attribute_is_not_in_use("michegan ave"), new LABELS()),
-                new Task(new TITLE("Fiona Kunz"), new DEADLINE("9482427"), new REMARKS("lydia@gmail.com"), new This_attribute_is_not_in_use("little tokyo"), new LABELS()),
-                new Task(new TITLE("George Best"), new DEADLINE("9482442"), new REMARKS("anna@google.com"), new This_attribute_is_not_in_use("4th street"), new LABELS()),
-                new Task(new TITLE("Hoon Meier"), new DEADLINE("8482424"), new REMARKS("stefan@mail.com"), new This_attribute_is_not_in_use("little india"), new LABELS()),
-                new Task(new TITLE("Ida Mueller"), new DEADLINE("8482131"), new REMARKS("hans@google.com"), new This_attribute_is_not_in_use("chicago ave"), new LABELS())
+                new Task(new TITLE("Ali Muster"), new Deadline("9482424"), new REMARKS("hans@google.com"), new This_attribute_is_not_in_use("4th street"), new LABELS()),
+                new Task(new TITLE("Boris Mueller"), new Deadline("87249245"), new REMARKS("ruth@google.com"), new This_attribute_is_not_in_use("81th street"), new LABELS()),
+                new Task(new TITLE("Carl Kurz"), new Deadline("95352563"), new REMARKS("heinz@yahoo.com"), new This_attribute_is_not_in_use("wall street"), new LABELS()),
+                new Task(new TITLE("Daniel Meier"), new Deadline("87652533"), new REMARKS("cornelia@google.com"), new This_attribute_is_not_in_use("10th street"), new LABELS()),
+                new Task(new TITLE("Elle Meyer"), new Deadline("9482224"), new REMARKS("werner@gmail.com"), new This_attribute_is_not_in_use("michegan ave"), new LABELS()),
+                new Task(new TITLE("Fiona Kunz"), new Deadline("9482427"), new REMARKS("lydia@gmail.com"), new This_attribute_is_not_in_use("little tokyo"), new LABELS()),
+                new Task(new TITLE("George Best"), new Deadline("9482442"), new REMARKS("anna@google.com"), new This_attribute_is_not_in_use("4th street"), new LABELS()),
+                new Task(new TITLE("Hoon Meier"), new Deadline("8482424"), new REMARKS("stefan@mail.com"), new This_attribute_is_not_in_use("little india"), new LABELS()),
+                new Task(new TITLE("Ida Mueller"), new Deadline("8482131"), new REMARKS("hans@google.com"), new This_attribute_is_not_in_use("chicago ave"), new LABELS())
             };
             //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {

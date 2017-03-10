@@ -40,7 +40,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.tag.Tag;
-import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.REMARKS;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.TITLE;
@@ -199,7 +199,7 @@ public class LogicManagerTest {
         assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address",
                 TITLE.MESSAGE_TITLE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/not_numbers e/valid@e.mail a/valid, address",
-                DEADLINE.MESSAGE_DEADLINE_CONSTRAINTS);
+                Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/notAnEmail a/valid, address",
                 REMARKS.MESSAGE_REMARKS_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag",
@@ -416,7 +416,7 @@ public class LogicManagerTest {
 
         Task adam() throws Exception {
             TITLE name = new TITLE("Adam Brown");
-            DEADLINE privatePhone = new DEADLINE("111111");
+            Deadline privatePhone = new Deadline("111111");
             REMARKS email = new REMARKS("adam@gmail.com");
             This_attribute_is_not_in_use privateAddress = new This_attribute_is_not_in_use("111, alpha street");
             Tag tag1 = new Tag("tag1");
@@ -435,7 +435,7 @@ public class LogicManagerTest {
         Task generatePerson(int seed) throws Exception {
             return new Task(
                     new TITLE("Person " + seed),
-                    new DEADLINE("" + Math.abs(seed)),
+                    new Deadline("" + Math.abs(seed)),
                     new REMARKS(seed + "@email"),
                     new This_attribute_is_not_in_use("House of " + seed),
                     new LABELS(new Tag("tag" + Math.abs(seed)), new Tag("tag" + Math.abs(seed + 1)))
@@ -534,7 +534,7 @@ public class LogicManagerTest {
         Task generatePersonWithName(String name) throws Exception {
             return new Task(
                     new TITLE(name),
-                    new DEADLINE("1"),
+                    new Deadline("1"),
                     new REMARKS("1@email"),
                     new This_attribute_is_not_in_use("House of 1"),
                     new LABELS(new Tag("tag"))

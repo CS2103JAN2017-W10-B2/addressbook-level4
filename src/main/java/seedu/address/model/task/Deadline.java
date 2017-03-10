@@ -6,7 +6,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
  * Represents a Task's deadline in the doitdoit!!.
  * Guarantees: immutable; is valid as declared in {@link #isValidDeadline(String)}
  */
-public class DEADLINE {
+public class Deadline {
 
     public static final String MESSAGE_DEADLINE_CONSTRAINTS = "Task deadline should only contain numbers";
     public static final String DEADLine_VALIDATION_REGEX = "\\d+";
@@ -18,7 +18,7 @@ public class DEADLINE {
      *
      * @throws IllegalValueException if given deadline is invalid.
      */
-    public DEADLINE(String deadline) throws IllegalValueException {
+    public Deadline(String deadline) throws IllegalValueException {
         assert deadline != null;
         String trimmedDeadline = deadline.trim();
         if (!isValidDeadline(trimmedDeadline)) {
@@ -42,8 +42,8 @@ public class DEADLINE {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DEADLINE // instance of handles nulls
-                && this.value.equals(((DEADLINE) other).value)); // state check
+                || (other instanceof Deadline // instance of handles nulls
+                && this.value.equals(((Deadline) other).value)); // state check
     }
 
     @Override

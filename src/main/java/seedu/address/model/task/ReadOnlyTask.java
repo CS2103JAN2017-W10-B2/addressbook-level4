@@ -9,7 +9,7 @@ import seedu.address.model.tag.LABELS;
 public interface ReadOnlyTask {
 
     TITLE getTitle();
-    DEADLINE getDeadline();
+    Deadline getDeadline();
     REMARKS getRemarks();
     This_attribute_is_not_in_use getNot_in_use();
 

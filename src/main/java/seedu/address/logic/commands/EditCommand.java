@@ -7,7 +7,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.LABELS;
-import seedu.address.model.task.DEADLINE;
+import seedu.address.model.task.Deadline;
 import seedu.address.model.task.REMARKS;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.TITLE;
@@ -78,7 +78,7 @@ public class EditCommand extends Command {
         assert personToEdit != null;
 
         TITLE updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getTitle);
-        DEADLINE updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
+        Deadline updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
         REMARKS updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
         This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
         LABELS updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
@@ -92,7 +92,7 @@ public class EditCommand extends Command {
      */
     public static class EditTaskDescriptor {
         private Optional<TITLE> name = Optional.empty();
-        private Optional<DEADLINE> phone = Optional.empty();
+        private Optional<Deadline> phone = Optional.empty();
         private Optional<REMARKS> email = Optional.empty();
         private Optional<This_attribute_is_not_in_use> address = Optional.empty();
         private Optional<LABELS> tags = Optional.empty();
@@ -123,12 +123,12 @@ public class EditCommand extends Command {
             return name;
         }
 
-        public void setPhone(Optional<DEADLINE> phone) {
+        public void setPhone(Optional<Deadline> phone) {
             assert phone != null;
             this.phone = phone;
         }
 
-        public Optional<DEADLINE> getPhone() {
+        public Optional<Deadline> getPhone() {
             return phone;
         }
 
