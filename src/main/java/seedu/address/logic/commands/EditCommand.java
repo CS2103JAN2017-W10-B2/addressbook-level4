@@ -10,7 +10,7 @@ import seedu.address.model.tag.LABELS;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.task.UniquePersonList;
@@ -77,7 +77,7 @@ public class EditCommand extends Command {
                                              EditTaskDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        TITLE updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getTitle);
+        Title updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getTitle);
         Deadline updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
         Remarks updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
         This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
@@ -91,7 +91,7 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditTaskDescriptor {
-        private Optional<TITLE> name = Optional.empty();
+        private Optional<Title> name = Optional.empty();
         private Optional<Deadline> phone = Optional.empty();
         private Optional<Remarks> email = Optional.empty();
         private Optional<This_attribute_is_not_in_use> address = Optional.empty();
@@ -114,12 +114,12 @@ public class EditCommand extends Command {
             return CollectionUtil.isAnyPresent(this.name, this.phone, this.email, this.address, this.tags);
         }
 
-        public void setName(Optional<TITLE> name) {
+        public void setName(Optional<Title> name) {
             assert name != null;
             this.name = name;
         }
 
-        public Optional<TITLE> getName() {
+        public Optional<Title> getName() {
             return name;
         }
 

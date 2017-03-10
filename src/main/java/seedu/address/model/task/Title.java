@@ -6,7 +6,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
  * Represents a Task's title in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidTitle(String)}
  */
-public class TITLE {
+public class Title {
 
     public static final String MESSAGE_TITLE_CONSTRAINTS =
             "Task titles should only contain alphanumeric characters and spaces, and it should not be blank";
@@ -24,7 +24,7 @@ public class TITLE {
      *
      * @throws IllegalValueException if given name string is invalid.
      */
-    public TITLE(String title) throws IllegalValueException {
+    public Title(String title) throws IllegalValueException {
         assert title != null;
         String trimmedTitle = title.trim();
         if (!isValidTitle(trimmedTitle)) {
@@ -49,8 +49,8 @@ public class TITLE {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TITLE // instanceof handles nulls
-                && this.fullTitle.equals(((TITLE) other).fullTitle)); // state check
+                || (other instanceof Title // instanceof handles nulls
+                && this.fullTitle.equals(((Title) other).fullTitle)); // state check
     }
 
     @Override

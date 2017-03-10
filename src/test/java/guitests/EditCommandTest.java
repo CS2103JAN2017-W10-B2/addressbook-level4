@@ -11,7 +11,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TestTask;
@@ -91,7 +91,7 @@ public class EditCommandTest extends AddressBookGuiTest {
     @Test
     public void edit_invalidValues_failure() {
         commandBox.runCommand("edit 1 *&");
-        assertResultMessage(TITLE.MESSAGE_TITLE_CONSTRAINTS);
+        assertResultMessage(Title.MESSAGE_TITLE_CONSTRAINTS);
 
         commandBox.runCommand("edit 1 p/abcd");
         assertResultMessage(Deadline.MESSAGE_DEADLINE_CONSTRAINTS);

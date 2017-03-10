@@ -11,7 +11,7 @@ import seedu.address.model.tag.LABELS;
  */
 public class Task implements ReadOnlyTask {
 
-    private TITLE title;
+    private Title title;
     private Deadline deadline;
     private Remarks remarks;
     private This_attribute_is_not_in_use not_in_use;
@@ -21,7 +21,7 @@ public class Task implements ReadOnlyTask {
     /**
      * Every field must be present and not null.
      */
-    public Task(TITLE title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, LABELS labels) {
+    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, LABELS labels) {
         assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
         this.title = title;
         this.deadline = deadline;
@@ -37,13 +37,13 @@ public class Task implements ReadOnlyTask {
         this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels());
     }
 
-    public void setTitle(TITLE title) {
+    public void setTitle(Title title) {
         assert title != null;
         this.title = title;
     }
 
     @Override
-    public TITLE getTitle() {
+    public Title getTitle() {
         return title;
     }
 

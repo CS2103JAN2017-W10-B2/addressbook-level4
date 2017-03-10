@@ -8,7 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.task.UniquePersonList;
@@ -43,7 +43,7 @@ public class AddCommand extends Command {
             labelSet.add(new Tag(labelName));
         }
         this.toAdd = new Task(
-                new TITLE(title),
+                new Title(title),
                 new Deadline(deadline),
                 new Remarks(remarks),
                 new This_attribute_is_not_in_use(not_in_use),

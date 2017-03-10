@@ -16,7 +16,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.tag.LABELS;
 
@@ -69,9 +69,9 @@ public class ParserUtil {
     /**
      * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
      */
-    public static Optional<TITLE> parseName(Optional<String> name) throws IllegalValueException {
+    public static Optional<Title> parseName(Optional<String> name) throws IllegalValueException {
         assert name != null;
-        return name.isPresent() ? Optional.of(new TITLE(name.get())) : Optional.empty();
+        return name.isPresent() ? Optional.of(new Title(name.get())) : Optional.empty();
     }
 
     /**

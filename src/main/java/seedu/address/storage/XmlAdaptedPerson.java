@@ -10,7 +10,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.tag.LABELS;
@@ -65,7 +65,7 @@ public class XmlAdaptedPerson {
         for (XmlAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());
         }
-        final TITLE name = new TITLE(this.name);
+        final Title name = new Title(this.name);
         final Deadline phone = new Deadline(this.phone);
         final Remarks email = new Remarks(this.email);
         final This_attribute_is_not_in_use address = new This_attribute_is_not_in_use(this.address);

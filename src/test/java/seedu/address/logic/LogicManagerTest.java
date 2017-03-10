@@ -43,7 +43,7 @@ import seedu.address.model.tag.Tag;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.TITLE;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.This_attribute_is_not_in_use;
 import seedu.address.model.tag.LABELS;
@@ -197,7 +197,7 @@ public class LogicManagerTest {
     @Test
     public void execute_add_invalidPersonData() {
         assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address",
-                TITLE.MESSAGE_TITLE_CONSTRAINTS);
+                Title.MESSAGE_TITLE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/not_numbers e/valid@e.mail a/valid, address",
                 Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/notAnEmail a/valid, address",
@@ -415,7 +415,7 @@ public class LogicManagerTest {
     class TestDataHelper {
 
         Task adam() throws Exception {
-            TITLE name = new TITLE("Adam Brown");
+            Title name = new Title("Adam Brown");
             Deadline privatePhone = new Deadline("111111");
             Remarks email = new Remarks("adam@gmail.com");
             This_attribute_is_not_in_use privateAddress = new This_attribute_is_not_in_use("111, alpha street");
@@ -434,7 +434,7 @@ public class LogicManagerTest {
          */
         Task generatePerson(int seed) throws Exception {
             return new Task(
-                    new TITLE("Person " + seed),
+                    new Title("Person " + seed),
                     new Deadline("" + Math.abs(seed)),
                     new Remarks(seed + "@email"),
                     new This_attribute_is_not_in_use("House of " + seed),
@@ -533,7 +533,7 @@ public class LogicManagerTest {
          */
         Task generatePersonWithName(String name) throws Exception {
             return new Task(
-                    new TITLE(name),
+                    new Title(name),
                     new Deadline("1"),
                     new Remarks("1@email"),
                     new This_attribute_is_not_in_use("House of 1"),
