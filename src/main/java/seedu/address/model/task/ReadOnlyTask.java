@@ -32,7 +32,7 @@ public interface ReadOnlyTask {
     }
 
     /**
-     * Formats the Task as text, showing all contact details.
+     * Formats the Task as text, showing all task details.
      */
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
