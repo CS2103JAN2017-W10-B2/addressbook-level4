@@ -103,7 +103,7 @@ public class EditCommandTest extends AddressBookGuiTest {
         assertResultMessage(This_attribute_is_not_in_use.MESSAGE_ADDRESS_CONSTRAINTS);
 
         commandBox.runCommand("edit 1 t/*&");
-        assertResultMessage(Label.MESSAGE_TAG_CONSTRAINTS);
+        assertResultMessage(Label.MESSAGE_LABEL_CONSTRAINTS);
     }
 
     @Test

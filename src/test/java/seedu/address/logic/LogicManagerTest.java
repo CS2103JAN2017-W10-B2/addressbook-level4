@@ -203,7 +203,7 @@ public class LogicManagerTest {
         assertCommandFailure("add Valid Name p/12345 e/notAnEmail a/valid, address",
                 Remarks.MESSAGE_REMARKS_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag",
-                Label.MESSAGE_TAG_CONSTRAINTS);
+                Label.MESSAGE_LABEL_CONSTRAINTS);
 
     }
 
@@ -455,7 +455,7 @@ public class LogicManagerTest {
 
             UniqueLabelList tags = p.getLabels();
             for (Label t: tags) {
-                cmd.append(" t/").append(t.tagName);
+                cmd.append(" t/").append(t.labelName);
             }
 
             return cmd.toString();

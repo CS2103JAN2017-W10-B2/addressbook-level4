@@ -89,7 +89,7 @@ public class TestTask implements ReadOnlyTask {
         sb.append("n/" + this.getNot_in_use().value + " ");
         sb.append("d/" + this.getDeadline().value + " ");
         sb.append("r/" + this.getRemarks().value + " ");
-        this.getLabels().asObservableList().stream().forEach(s -> sb.append("l/" + s.tagName + " "));
+        this.getLabels().asObservableList().stream().forEach(s -> sb.append("l/" + s.labelName + " "));
         return sb.toString();
     }
 }
