@@ -25,32 +25,32 @@ public class TestTask implements ReadOnlyTask {
     /**
      * Creates a copy of {@code personToCopy}.
      */
-    public TestTask(TestTask personToCopy) {
-        this.title = personToCopy.getTitle();
-        this.deadline = personToCopy.getDeadline();
-        this.remarks = personToCopy.getRemarks();
-        this.attribute_not_in_use = personToCopy.getNot_in_use();
-        this.labels = personToCopy.getLabels();
+    public TestTask(TestTask taskToCopy) {
+        this.title = taskToCopy.getTitle();
+        this.deadline = taskToCopy.getDeadline();
+        this.remarks = taskToCopy.getRemarks();
+        this.attribute_not_in_use = taskToCopy.getNot_in_use();
+        this.labels = taskToCopy.getLabels();
     }
 
-    public void setName(Title name) {
-        this.title = name;
+    public void setTitle(Title title) {
+        this.title = title;
     }
 
-    public void setAddress(This_attribute_is_not_in_use address) {
-        this.attribute_not_in_use = address;
+    public void setNotInUse(This_attribute_is_not_in_use attribute_not_in_use) {
+        this.attribute_not_in_use = attribute_not_in_use;
     }
 
-    public void setEmail(Remarks email) {
-        this.remarks = email;
+    public void setRemarks(Remarks remarks) {
+        this.remarks = remarks;
     }
 
-    public void setPhone(Deadline phone) {
-        this.deadline = phone;
+    public void setDeadline(Deadline deadline) {
+        this.deadline = deadline;
     }
 
-    public void setTags(UniqueLabelList tags) {
-        this.labels = tags;
+    public void setLabels(UniqueLabelList labels) {
+        this.labels = labels;
     }
 
     @Override
