@@ -14,8 +14,8 @@ public interface ReadOnlyTask {
     This_attribute_is_not_in_use getNot_in_use();
 
     /**
-     * The returned TagList is a deep copy of the internal TagList,
-     * changes on the returned list will not affect the person's internal tags.
+     * The returned LabelList is a deep copy of the internal LabelList,
+     * changes on the returned list will not affect the task's internal labels.
      */
     UniqueLabelList getLabels();
 
