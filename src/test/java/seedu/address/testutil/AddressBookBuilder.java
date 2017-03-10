@@ -2,7 +2,7 @@ package seedu.address.testutil;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Label;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniquePersonList;
 
@@ -25,7 +25,7 @@ public class AddressBookBuilder {
     }
 
     public AddressBookBuilder withTag(String tagName) throws IllegalValueException {
-        addressBook.addTag(new Tag(tagName));
+        addressBook.addTag(new Label(tagName));
         return this;
     }
 

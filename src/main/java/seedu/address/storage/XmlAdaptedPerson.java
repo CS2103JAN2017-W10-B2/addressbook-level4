@@ -6,7 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
@@ -50,7 +50,7 @@ public class XmlAdaptedPerson {
         email = source.getRemarks().value;
         address = source.getNot_in_use().value;
         tagged = new ArrayList<>();
-        for (Tag tag : source.getLabels()) {
+        for (Label tag : source.getLabels()) {
             tagged.add(new XmlAdaptedTag(tag));
         }
     }
@@ -61,7 +61,7 @@ public class XmlAdaptedPerson {
      * @throws IllegalValueException if there were any data constraints violated in the adapted person
      */
     public Task toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Label> personTags = new ArrayList<>();
         for (XmlAdaptedTag tag : tagged) {
             personTags.add(tag.toModelType());
         }

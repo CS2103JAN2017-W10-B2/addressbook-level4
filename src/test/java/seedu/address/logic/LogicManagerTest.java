@@ -39,7 +39,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
@@ -203,7 +203,7 @@ public class LogicManagerTest {
         assertCommandFailure("add Valid Name p/12345 e/notAnEmail a/valid, address",
                 Remarks.MESSAGE_REMARKS_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag",
-                Tag.MESSAGE_TAG_CONSTRAINTS);
+                Label.MESSAGE_TAG_CONSTRAINTS);
 
     }
 
@@ -419,8 +419,8 @@ public class LogicManagerTest {
             Deadline privatePhone = new Deadline("111111");
             Remarks email = new Remarks("adam@gmail.com");
             This_attribute_is_not_in_use privateAddress = new This_attribute_is_not_in_use("111, alpha street");
-            Tag tag1 = new Tag("tag1");
-            Tag tag2 = new Tag("longertag2");
+            Label tag1 = new Label("tag1");
+            Label tag2 = new Label("longertag2");
             LABELS tags = new LABELS(tag1, tag2);
             return new Task(name, privatePhone, email, privateAddress, tags);
         }
@@ -438,7 +438,7 @@ public class LogicManagerTest {
                     new Deadline("" + Math.abs(seed)),
                     new Remarks(seed + "@email"),
                     new This_attribute_is_not_in_use("House of " + seed),
-                    new LABELS(new Tag("tag" + Math.abs(seed)), new Tag("tag" + Math.abs(seed + 1)))
+                    new LABELS(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1)))
             );
         }
 
@@ -454,7 +454,7 @@ public class LogicManagerTest {
             cmd.append(" a/").append(p.getNot_in_use());
 
             LABELS tags = p.getLabels();
-            for (Tag t: tags) {
+            for (Label t: tags) {
                 cmd.append(" t/").append(t.tagName);
             }
 
@@ -537,7 +537,7 @@ public class LogicManagerTest {
                     new Deadline("1"),
                     new Remarks("1@email"),
                     new This_attribute_is_not_in_use("House of 1"),
-                    new LABELS(new Tag("tag"))
+                    new LABELS(new Label("tag"))
             );
         }
     }

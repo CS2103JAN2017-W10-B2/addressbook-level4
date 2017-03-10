@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
@@ -103,9 +103,9 @@ public class ParserUtil {
      */
     public static LABELS parseTags(Collection<String> tags) throws IllegalValueException {
         assert tags != null;
-        final Set<Tag> tagSet = new HashSet<>();
+        final Set<Label> tagSet = new HashSet<>();
         for (String tagName : tags) {
-            tagSet.add(new Tag(tagName));
+            tagSet.add(new Label(tagName));
         }
         return new LABELS(tagSet);
     }

@@ -20,12 +20,12 @@ import seedu.address.commons.util.CollectionUtil;
  *
  * Supports minimal set of list operations for the app's features.
  *
- * @see Tag#equals(Object)
+ * @see Label#equals(Object)
  * @see CollectionUtil#elementsAreUnique(Collection)
  */
-public class LABELS implements Iterable<Tag> {
+public class LABELS implements Iterable<Label> {
 
-    private final ObservableList<Tag> internalList = FXCollections.observableArrayList();
+    private final ObservableList<Label> internalList = FXCollections.observableArrayList();
 
     /**
      * Constructs empty TagList.
@@ -37,9 +37,9 @@ public class LABELS implements Iterable<Tag> {
      * Enforces no nulls or duplicates.
      */
     public LABELS(String... tags) throws DuplicateTagException, IllegalValueException {
-        final List<Tag> tagList = new ArrayList<Tag>();
+        final List<Label> tagList = new ArrayList<Label>();
         for (String tag : tags) {
-            tagList.add(new Tag(tag));
+            tagList.add(new Label(tag));
         }
         setTags(tagList);
     }
@@ -48,9 +48,9 @@ public class LABELS implements Iterable<Tag> {
      * Creates a UniqueTagList using given tags.
      * Enforces no nulls or duplicates.
      */
-    public LABELS(Tag... tags) throws DuplicateTagException {
+    public LABELS(Label... tags) throws DuplicateTagException {
         assert !CollectionUtil.isAnyNull((Object[]) tags);
-        final List<Tag> initialTags = Arrays.asList(tags);
+        final List<Label> initialTags = Arrays.asList(tags);
         if (!CollectionUtil.elementsAreUnique(initialTags)) {
             throw new DuplicateTagException();
         }
@@ -61,7 +61,7 @@ public class LABELS implements Iterable<Tag> {
      * Creates a UniqueTagList using given tags.
      * Enforces no null or duplicate elements.
      */
-    public LABELS(Collection<Tag> tags) throws DuplicateTagException {
+    public LABELS(Collection<Label> tags) throws DuplicateTagException {
         this();
         setTags(tags);
     }
@@ -70,7 +70,7 @@ public class LABELS implements Iterable<Tag> {
      * Creates a UniqueTagList using given tags.
      * Enforces no nulls.
      */
-    public LABELS(Set<Tag> tags) {
+    public LABELS(Set<Label> tags) {
         assert !CollectionUtil.isAnyNull(tags);
         internalList.addAll(tags);
     }
@@ -87,7 +87,7 @@ public class LABELS implements Iterable<Tag> {
      * Returns all tags in this list as a Set.
      * This set is mutable and change-insulated against the internal list.
      */
-    public Set<Tag> toSet() {
+    public Set<Label> toSet() {
         return new HashSet<>(internalList);
     }
 
@@ -98,7 +98,7 @@ public class LABELS implements Iterable<Tag> {
         this.internalList.setAll(replacement.internalList);
     }
 
-    public void setTags(Collection<Tag> tags) throws DuplicateTagException {
+    public void setTags(Collection<Label> tags) throws DuplicateTagException {
         assert !CollectionUtil.isAnyNull(tags);
         if (!CollectionUtil.elementsAreUnique(tags)) {
             throw new DuplicateTagException();
@@ -110,7 +110,7 @@ public class LABELS implements Iterable<Tag> {
      * Ensures every tag in the argument list exists in this object.
      */
     public void mergeFrom(LABELS from) {
-        final Set<Tag> alreadyInside = this.toSet();
+        final Set<Label> alreadyInside = this.toSet();
         from.internalList.stream()
                 .filter(tag -> !alreadyInside.contains(tag))
                 .forEach(internalList::add);
@@ -119,7 +119,7 @@ public class LABELS implements Iterable<Tag> {
     /**
      * Returns true if the list contains an equivalent Tag as the given argument.
      */
-    public boolean contains(Tag toCheck) {
+    public boolean contains(Label toCheck) {
         assert toCheck != null;
         return internalList.contains(toCheck);
     }
@@ -129,7 +129,7 @@ public class LABELS implements Iterable<Tag> {
      *
      * @throws DuplicateTagException if the Tag to add is a duplicate of an existing Tag in the list.
      */
-    public void add(Tag toAdd) throws DuplicateTagException {
+    public void add(Label toAdd) throws DuplicateTagException {
         assert toAdd != null;
         if (contains(toAdd)) {
             throw new DuplicateTagException();
@@ -138,11 +138,11 @@ public class LABELS implements Iterable<Tag> {
     }
 
     @Override
-    public Iterator<Tag> iterator() {
+    public Iterator<Label> iterator() {
         return internalList.iterator();
     }
 
-    public UnmodifiableObservableList<Tag> asObservableList() {
+    public UnmodifiableObservableList<Label> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
 

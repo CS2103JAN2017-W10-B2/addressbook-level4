@@ -10,7 +10,7 @@ import java.util.Set;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Label;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniquePersonList;
@@ -55,7 +55,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.persons.setPersons(persons);
     }
 
-    public void setTags(Collection<Tag> tags) throws LABELS.DuplicateTagException {
+    public void setTags(Collection<Label> tags) throws LABELS.DuplicateTagException {
         this.tags.setTags(tags);
     }
 
@@ -120,11 +120,11 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         // Create map with values = tag object references in the master list
         // used for checking person tag references
-        final Map<Tag, Tag> masterTagObjects = new HashMap<>();
+        final Map<Label, Label> masterTagObjects = new HashMap<>();
         tags.forEach(tag -> masterTagObjects.put(tag, tag));
 
         // Rebuild the list of person tags to point to the relevant tags in the master tag list.
-        final Set<Tag> correctTagReferences = new HashSet<>();
+        final Set<Label> correctTagReferences = new HashSet<>();
         personTags.forEach(tag -> correctTagReferences.add(masterTagObjects.get(tag)));
         person.setLabels(new LABELS(correctTagReferences));
     }
@@ -149,7 +149,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
 //// tag-level operations
 
-    public void addTag(Tag t) throws LABELS.DuplicateTagException {
+    public void addTag(Label t) throws LABELS.DuplicateTagException {
         tags.add(t);
     }
 
@@ -167,7 +167,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Tag> getTagList() {
+    public ObservableList<Label> getTagList() {
         return new UnmodifiableObservableList<>(tags.asObservableList());
     }
 

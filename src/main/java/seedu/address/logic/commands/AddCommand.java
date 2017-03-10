@@ -5,7 +5,7 @@ import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.tag.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
@@ -38,9 +38,9 @@ public class AddCommand extends Command {
      */
     public AddCommand(String title, String deadline, String remarks, String not_in_use, Set<String> labels)
             throws IllegalValueException {
-        final Set<Tag> labelSet = new HashSet<>();
+        final Set<Label> labelSet = new HashSet<>();
         for (String labelName : labels) {
-            labelSet.add(new Tag(labelName));
+            labelSet.add(new Label(labelName));
         }
         this.toAdd = new Task(
                 new Title(title),
