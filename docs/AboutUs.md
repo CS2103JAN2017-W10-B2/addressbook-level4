@@ -41,7 +41,7 @@ Responsibilities: Dev Ops
 #### [Mohamed Irfan](http://github.com/mdirfanpm)
 <img src="images/MOhamedIrfan.jpg" width="150"><br>
  Role: Developer <br>
- Responsibilities: 
+ Responsibilities:
 
  -----
 
@@ -51,7 +51,7 @@ Responsibilities: Dev Ops
  Responsibilities: UI
 
  -----
- 
+
 # Contributors
 
 We welcome contributions. See [Contact Us](ContactUs.md) page for more info.

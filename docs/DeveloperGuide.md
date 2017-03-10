@@ -353,7 +353,7 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | user | find a task by name | locate tasks of persons without having to go through the entire list
 `* *` | user | edit details of a task | keep up with changes in my schedule
 `* *` | user | be able to view tasks based on closest deadlines | prioritize tasks to complete first
-`*` | user | display all completed task then choose one to view | keep track of things I have done 
+`*` | user | display all completed task then choose one to view | keep track of things I have done
 `*` | user | be able to categorise tasks | find similar task easily
 `*` | user | specify recurring tasks | deal with tasks that repeats without having to add them repeatedly
 `*` | user | add remarks | easily refer to details of a task
