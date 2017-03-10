@@ -5,7 +5,7 @@ import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
@@ -47,7 +47,7 @@ public class AddCommand extends Command {
                 new Deadline(deadline),
                 new Remarks(remarks),
                 new This_attribute_is_not_in_use(not_in_use),
-                new LABELS(labelSet)
+                new UniqueLabelList(labelSet)
         );
     }
 

@@ -15,7 +15,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.logic.commands.IncorrectCommand;
 
 /**
@@ -62,7 +62,7 @@ public class EditCommandParser {
      * If {@code tags} contain only one element which is an empty string, it will be parsed into a
      * {@code Optional<UniqueTagList>} containing zero tags.
      */
-    private Optional<LABELS> parseTagsForEdit(Collection<String> tags) throws IllegalValueException {
+    private Optional<UniqueLabelList> parseTagsForEdit(Collection<String> tags) throws IllegalValueException {
         assert tags != null;
 
         if (tags.isEmpty()) {

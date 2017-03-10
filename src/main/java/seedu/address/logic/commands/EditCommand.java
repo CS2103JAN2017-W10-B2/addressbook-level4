@@ -6,7 +6,7 @@ import java.util.Optional;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
@@ -81,7 +81,7 @@ public class EditCommand extends Command {
         Deadline updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
         Remarks updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
         This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
-        LABELS updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
+        UniqueLabelList updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
 
         return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
     }
@@ -95,7 +95,7 @@ public class EditCommand extends Command {
         private Optional<Deadline> phone = Optional.empty();
         private Optional<Remarks> email = Optional.empty();
         private Optional<This_attribute_is_not_in_use> address = Optional.empty();
-        private Optional<LABELS> tags = Optional.empty();
+        private Optional<UniqueLabelList> tags = Optional.empty();
 
         public EditTaskDescriptor() {}
 
@@ -150,12 +150,12 @@ public class EditCommand extends Command {
             return address;
         }
 
-        public void setTags(Optional<LABELS> tags) {
+        public void setTags(Optional<UniqueLabelList> tags) {
             assert tags != null;
             this.tags = tags;
         }
 
-        public Optional<LABELS> getTags() {
+        public Optional<UniqueLabelList> getTags() {
             return tags;
         }
     }

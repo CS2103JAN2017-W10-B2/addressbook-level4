@@ -1,6 +1,6 @@
 package seedu.address.model.task;
 
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 
 /**
  * A read-only immutable interface for a Task in the doitdoit!!.
@@ -17,7 +17,7 @@ public interface ReadOnlyTask {
      * The returned TagList is a deep copy of the internal TagList,
      * changes on the returned list will not affect the person's internal tags.
      */
-    LABELS getLabels();
+    UniqueLabelList getLabels();
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)

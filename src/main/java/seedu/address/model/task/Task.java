@@ -3,7 +3,7 @@ package seedu.address.model.task;
 import java.util.Objects;
 
 import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 
 /**
  * Represents a Task in the address book.
@@ -16,18 +16,18 @@ public class Task implements ReadOnlyTask {
     private Remarks remarks;
     private This_attribute_is_not_in_use not_in_use;
 
-    private LABELS labels;
+    private UniqueLabelList labels;
 
     /**
      * Every field must be present and not null.
      */
-    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, LABELS labels) {
+    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, UniqueLabelList labels) {
         assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
         this.title = title;
         this.deadline = deadline;
         this.remarks = remarks;
         this.not_in_use = not_in_use;
-        this.labels = new LABELS(labels); // protect internal tags from changes in the arg list
+        this.labels = new UniqueLabelList(labels); // protect internal tags from changes in the arg list
     }
 
     /**
@@ -78,14 +78,14 @@ public class Task implements ReadOnlyTask {
     }
 
     @Override
-    public LABELS getLabels() {
-        return new LABELS(labels);
+    public UniqueLabelList getLabels() {
+        return new UniqueLabelList(labels);
     }
 
     /**
      * Replaces this task's tags with the tags in the argument tag list.
      */
-    public void setLabels(LABELS replacement) {
+    public void setLabels(UniqueLabelList replacement) {
         labels.setLabels(replacement);
     }
 

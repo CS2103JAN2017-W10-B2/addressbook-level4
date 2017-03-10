@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
@@ -16,10 +16,10 @@ public class TestTask implements ReadOnlyTask {
     private This_attribute_is_not_in_use attribute_not_in_use;
     private Remarks remarks;
     private Deadline deadline;
-    private LABELS labels;
+    private UniqueLabelList labels;
 
     public TestTask() {
-        labels = new LABELS();
+        labels = new UniqueLabelList();
     }
 
     /**
@@ -49,7 +49,7 @@ public class TestTask implements ReadOnlyTask {
         this.deadline = phone;
     }
 
-    public void setTags(LABELS tags) {
+    public void setTags(UniqueLabelList tags) {
         this.labels = tags;
     }
 
@@ -74,7 +74,7 @@ public class TestTask implements ReadOnlyTask {
     }
 
     @Override
-    public LABELS getLabels() {
+    public UniqueLabelList getLabels() {
         return labels;
     }
 

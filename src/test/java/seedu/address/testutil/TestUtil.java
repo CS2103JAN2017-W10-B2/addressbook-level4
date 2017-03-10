@@ -30,7 +30,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.AddressBook;
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
@@ -75,15 +75,15 @@ public class TestUtil {
         try {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                new Task(new Title("Ali Muster"), new Deadline("9482424"), new Remarks("hans@google.com"), new This_attribute_is_not_in_use("4th street"), new LABELS()),
-                new Task(new Title("Boris Mueller"), new Deadline("87249245"), new Remarks("ruth@google.com"), new This_attribute_is_not_in_use("81th street"), new LABELS()),
-                new Task(new Title("Carl Kurz"), new Deadline("95352563"), new Remarks("heinz@yahoo.com"), new This_attribute_is_not_in_use("wall street"), new LABELS()),
-                new Task(new Title("Daniel Meier"), new Deadline("87652533"), new Remarks("cornelia@google.com"), new This_attribute_is_not_in_use("10th street"), new LABELS()),
-                new Task(new Title("Elle Meyer"), new Deadline("9482224"), new Remarks("werner@gmail.com"), new This_attribute_is_not_in_use("michegan ave"), new LABELS()),
-                new Task(new Title("Fiona Kunz"), new Deadline("9482427"), new Remarks("lydia@gmail.com"), new This_attribute_is_not_in_use("little tokyo"), new LABELS()),
-                new Task(new Title("George Best"), new Deadline("9482442"), new Remarks("anna@google.com"), new This_attribute_is_not_in_use("4th street"), new LABELS()),
-                new Task(new Title("Hoon Meier"), new Deadline("8482424"), new Remarks("stefan@mail.com"), new This_attribute_is_not_in_use("little india"), new LABELS()),
-                new Task(new Title("Ida Mueller"), new Deadline("8482131"), new Remarks("hans@google.com"), new This_attribute_is_not_in_use("chicago ave"), new LABELS())
+                new Task(new Title("Ali Muster"), new Deadline("9482424"), new Remarks("hans@google.com"), new This_attribute_is_not_in_use("4th street"), new UniqueLabelList()),
+                new Task(new Title("Boris Mueller"), new Deadline("87249245"), new Remarks("ruth@google.com"), new This_attribute_is_not_in_use("81th street"), new UniqueLabelList()),
+                new Task(new Title("Carl Kurz"), new Deadline("95352563"), new Remarks("heinz@yahoo.com"), new This_attribute_is_not_in_use("wall street"), new UniqueLabelList()),
+                new Task(new Title("Daniel Meier"), new Deadline("87652533"), new Remarks("cornelia@google.com"), new This_attribute_is_not_in_use("10th street"), new UniqueLabelList()),
+                new Task(new Title("Elle Meyer"), new Deadline("9482224"), new Remarks("werner@gmail.com"), new This_attribute_is_not_in_use("michegan ave"), new UniqueLabelList()),
+                new Task(new Title("Fiona Kunz"), new Deadline("9482427"), new Remarks("lydia@gmail.com"), new This_attribute_is_not_in_use("little tokyo"), new UniqueLabelList()),
+                new Task(new Title("George Best"), new Deadline("9482442"), new Remarks("anna@google.com"), new This_attribute_is_not_in_use("4th street"), new UniqueLabelList()),
+                new Task(new Title("Hoon Meier"), new Deadline("8482424"), new Remarks("stefan@mail.com"), new This_attribute_is_not_in_use("little india"), new UniqueLabelList()),
+                new Task(new Title("Ida Mueller"), new Deadline("8482131"), new Remarks("hans@google.com"), new This_attribute_is_not_in_use("chicago ave"), new UniqueLabelList())
             };
             //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {

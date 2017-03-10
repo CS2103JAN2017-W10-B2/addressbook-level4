@@ -39,7 +39,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
@@ -421,7 +421,7 @@ public class LogicManagerTest {
             This_attribute_is_not_in_use privateAddress = new This_attribute_is_not_in_use("111, alpha street");
             Label tag1 = new Label("tag1");
             Label tag2 = new Label("longertag2");
-            LABELS tags = new LABELS(tag1, tag2);
+            UniqueLabelList tags = new UniqueLabelList(tag1, tag2);
             return new Task(name, privatePhone, email, privateAddress, tags);
         }
 
@@ -438,7 +438,7 @@ public class LogicManagerTest {
                     new Deadline("" + Math.abs(seed)),
                     new Remarks(seed + "@email"),
                     new This_attribute_is_not_in_use("House of " + seed),
-                    new LABELS(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1)))
+                    new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1)))
             );
         }
 
@@ -453,7 +453,7 @@ public class LogicManagerTest {
             cmd.append(" p/").append(p.getDeadline());
             cmd.append(" a/").append(p.getNot_in_use());
 
-            LABELS tags = p.getLabels();
+            UniqueLabelList tags = p.getLabels();
             for (Label t: tags) {
                 cmd.append(" t/").append(t.tagName);
             }
@@ -537,7 +537,7 @@ public class LogicManagerTest {
                     new Deadline("1"),
                     new Remarks("1@email"),
                     new This_attribute_is_not_in_use("House of 1"),
-                    new LABELS(new Label("tag"))
+                    new UniqueLabelList(new Label("tag"))
             );
         }
     }

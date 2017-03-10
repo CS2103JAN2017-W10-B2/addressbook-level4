@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.label.LABELS;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
@@ -32,7 +32,7 @@ public class TaskBuilder {
     }
 
     public TaskBuilder withLabels(String ... labels) throws IllegalValueException {
-        task.setTags(new LABELS());
+        task.setTags(new UniqueLabelList());
         for (String label: labels) {
             task.getLabels().add(new Label(label));
         }
