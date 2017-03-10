@@ -16,7 +16,7 @@ public class This_attribute_is_not_in_use {
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String ADDRESS_VALIDATION_REGEX = "[^\\s].*";
+    public static final String ADDRESS_VALIDATION_REGEX = "([^\\s].*)|";
 
     public final String value;
 

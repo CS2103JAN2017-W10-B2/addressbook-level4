@@ -10,7 +10,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Remarks {
 
     public static final String MESSAGE_REMARKS_CONSTRAINTS = "N/A";
-    public static final String REMARKS_VALIDATION_REGEX = "[\\w\\.]+@[\\w\\.]+";
+    public static final String REMARKS_VALIDATION_REGEX = "([\\w\\.]+@[\\w\\.]+)|";
 
     public final String value;
 
