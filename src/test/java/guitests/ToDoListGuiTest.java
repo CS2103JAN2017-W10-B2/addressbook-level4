@@ -87,9 +87,9 @@ public abstract class ToDoListGuiTest {
      * Return null to use the data in the file specified in {@link #getDataFileLocation()}
      */
     protected ToDoList getInitialData() {
-        ToDoList ab = new ToDoList();
-        TypicalTestTasks.loadToDoListWithSampleData(ab);
-        return ab;
+        ToDoList tdl = new ToDoList();
+        TypicalTestTasks.loadToDoListWithSampleData(tdl);
+        return tdl;
     }
 
     /**
@@ -105,18 +105,18 @@ public abstract class ToDoListGuiTest {
     }
 
     /**
-     * Asserts the person shown in the card is same as the given person
+     * Asserts the task shown in the card is same as the given task
      */
-    public void assertMatching(ReadOnlyTask person, TaskCardHandle card) {
-        assertTrue(TestUtil.compareCardAndTask(card, person));
+    public void assertMatching(ReadOnlyTask task, TaskCardHandle card) {
+        assertTrue(TestUtil.compareCardAndTask(card, task));
     }
 
     /**
-     * Asserts the size of the person list is equal to the given number.
+     * Asserts the size of the task list is equal to the given number.
      */
     protected void assertListSize(int size) {
-        int numberOfPeople = taskListPanel.getNumberOfPeople();
-        assertEquals(size, numberOfPeople);
+        int numberOfTasks = taskListPanel.getNumberOfPeople();
+        assertEquals(size, numberOfTasks);
     }
 
     /**
