@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Labeled;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import seedu.address.model.tag.LABELS;
+import seedu.address.model.label.LABELS;
 import seedu.address.model.task.ReadOnlyTask;
 
 /**

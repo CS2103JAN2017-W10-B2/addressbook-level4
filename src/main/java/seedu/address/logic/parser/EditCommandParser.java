@@ -15,8 +15,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
+import seedu.address.model.label.LABELS;
 import seedu.address.logic.commands.IncorrectCommand;
-import seedu.address.model.tag.LABELS;
 
 /**
  * Parses input arguments and creates a new EditCommand object

@@ -3,7 +3,7 @@ package seedu.address.model.util;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.tag.LABELS;
+import seedu.address.model.label.LABELS;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;

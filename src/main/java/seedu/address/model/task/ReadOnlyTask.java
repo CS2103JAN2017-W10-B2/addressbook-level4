@@ -1,6 +1,6 @@
 package seedu.address.model.task;
 
-import seedu.address.model.tag.LABELS;
+import seedu.address.model.label.LABELS;
 
 /**
  * A read-only immutable interface for a Task in the doitdoit!!.

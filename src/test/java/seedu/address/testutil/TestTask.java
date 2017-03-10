@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.model.tag.LABELS;
+import seedu.address.model.label.LABELS;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;

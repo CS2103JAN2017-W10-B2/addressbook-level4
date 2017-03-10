@@ -2,7 +2,7 @@ package seedu.address.testutil;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
-import seedu.address.model.tag.Label;
+import seedu.address.model.label.Label;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniquePersonList;
 

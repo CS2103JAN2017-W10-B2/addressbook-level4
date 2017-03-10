@@ -1,4 +1,4 @@
-package seedu.address.model.tag;
+package seedu.address.model.label;
 
 import java.util.ArrayList;
 import java.util.Arrays;
