@@ -16,7 +16,7 @@ public class FindCommandTest extends ToDoListGuiTest {
 
         //find after deleting one result
         commandBox.runCommand("delete 1");
-        assertFindResult("find Meier", td.testExample4);
+        assertFindResult("find assignment", td.testExample4);
     }
 
     @Test

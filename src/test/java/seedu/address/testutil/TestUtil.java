@@ -76,9 +76,9 @@ public class TestUtil {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
                 new Task(new Title("Finish report"), new Deadline("111217"), new Remarks("at most 10 pages!!"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
-                new Task(new Title("Do linear algebra assignment"), new Deadline("111117"), new Remarks("check answers with friends:)"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Do linear algebra homework"), new Deadline("111117"), new Remarks("check answers with friends:)"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
                 new Task(new Title("Discuss project"), new Deadline("011017"), new Remarks("schedule meetup on Wednesday afternoon"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
-                new Task(new Title("Finish up codeing assignment for CS2010"), new Deadline("040917"), new Remarks("must be O(NlogN) runtime"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Finish up coding homework for CS2010"), new Deadline("040917"), new Remarks("must be O(NlogN) runtime"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
                 new Task(new Title("Make cheatsheet for physics"), new Deadline("181217"), new Remarks("Double sided A4 paper"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
                 new Task(new Title("Do module mapping"), new Deadline("221117"), new Remarks("asks seniors"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
                 new Task(new Title("Arrange consultation with prof"), new Deadline("101117"), new Remarks("email: yapvb@gmail.com"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
