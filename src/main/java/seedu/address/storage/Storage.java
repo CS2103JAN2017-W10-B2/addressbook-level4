@@ -30,9 +30,9 @@ public interface Storage extends ToDoListStorage, UserPrefsStorage {
     void saveToDoList(ReadOnlyToDoList addressBook) throws IOException;
 
     /**
-     * Saves the current version of the Address Book to the hard disk.
+     * Saves the current version of the To Do List to the hard disk.
      *   Creates the data file if it is missing.
      * Raises {@link DataSavingExceptionEvent} if there was an error during saving.
      */
-    void handleAddressBookChangedEvent(ToDoListChangedEvent abce);
+    void handleToDoListChangedEvent(ToDoListChangedEvent abce);
 }
