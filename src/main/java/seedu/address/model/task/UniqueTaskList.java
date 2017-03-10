@@ -10,7 +10,7 @@ import seedu.address.commons.exceptions.DuplicateDataException;
 import seedu.address.commons.util.CollectionUtil;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
+ * A list of tasks that enforces uniqueness between its elements and does not allow nulls.
  *
  * Supports a minimal set of list operations.
  *
@@ -32,42 +32,42 @@ public class UniqueTaskList implements Iterable<Task> {
     /**
      * Adds a person to the list.
      *
-     * @throws DuplicatePersonException if the person to add is a duplicate of an existing person in the list.
+     * @throws DuplicateTaskException if the task to add is a duplicate of an existing task in the list.
      */
-    public void add(Task toAdd) throws DuplicatePersonException {
+    public void add(Task toAdd) throws DuplicateTaskException {
         assert toAdd != null;
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateTaskException();
         }
         internalList.add(toAdd);
     }
 
     /**
-     * Updates the person in the list at position {@code index} with {@code editedPerson}.
+     * Updates the task in the list at position {@code index} with {@code editedPerson}.
      *
-     * @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
-     *      another existing person in the list.
+     * @throws DuplicateTaskException if updating the task's details causes the task to be equivalent to
+     *      another existing task in the list.
      * @throws IndexOutOfBoundsException if {@code index} < 0 or >= the size of the list.
      */
-    public void updatePerson(int index, ReadOnlyTask editedPerson) throws DuplicatePersonException {
+    public void updateTask(int index, ReadOnlyTask editedPerson) throws DuplicateTaskException {
         assert editedPerson != null;
 
         Task personToUpdate = internalList.get(index);
         if (!personToUpdate.equals(editedPerson) && internalList.contains(editedPerson)) {
-            throw new DuplicatePersonException();
+            throw new DuplicateTaskException();
         }
 
         personToUpdate.resetData(editedPerson);
         // TODO: The code below is just a workaround to notify observers of the updated person.
-        // The right way is to implement observable properties in the Person class.
-        // Then, PersonCard should then bind its text labels to those observable properties.
+        // The right way is to implement observable properties in the Task class.
+        // Then, TaskCard should then bind its text labels to those observable properties.
         internalList.set(index, personToUpdate);
     }
 
     /**
-     * Removes the equivalent person from the list.
+     * Removes the equivalent task from the list.
      *
-     * @throws TaskNotFoundException if no such person could be found in the list.
+     * @throws TaskNotFoundException if no such task could be found in the list.
      */
     public boolean remove(ReadOnlyTask toRemove) throws TaskNotFoundException {
         assert toRemove != null;
@@ -78,16 +78,16 @@ public class UniqueTaskList implements Iterable<Task> {
         return personFoundAndDeleted;
     }
 
-    public void setPersons(UniqueTaskList replacement) {
+    public void setTasks(UniqueTaskList replacement) {
         this.internalList.setAll(replacement.internalList);
     }
 
-    public void setPersons(List<? extends ReadOnlyTask> persons) throws DuplicatePersonException {
+    public void setTasks(List<? extends ReadOnlyTask> persons) throws DuplicateTaskException {
         final UniqueTaskList replacement = new UniqueTaskList();
         for (final ReadOnlyTask person : persons) {
             replacement.add(new Task(person));
         }
-        setPersons(replacement);
+        setTasks(replacement);
     }
 
     public UnmodifiableObservableList<Task> asObservableList() {
@@ -115,15 +115,15 @@ public class UniqueTaskList implements Iterable<Task> {
     /**
      * Signals that an operation would have violated the 'no duplicates' property of the list.
      */
-    public static class DuplicatePersonException extends DuplicateDataException {
-        protected DuplicatePersonException() {
+    public static class DuplicateTaskException extends DuplicateDataException {
+        protected DuplicateTaskException() {
             super("Operation would result in duplicate persons");
         }
     }
 
     /**
-     * Signals that an operation targeting a specified person in the list would fail because
-     * there is no such matching person in the list.
+     * Signals that an operation targeting a specified task in the list would fail because
+     * there is no such matching task in the list.
      */
     public static class TaskNotFoundException extends Exception {}
 

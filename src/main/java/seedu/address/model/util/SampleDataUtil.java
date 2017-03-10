@@ -9,7 +9,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.This_attribute_is_not_in_use;
-import seedu.address.model.task.UniqueTaskList.DuplicatePersonException;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 public class SampleDataUtil {
     public static Task[] getSampleTasks() {
@@ -46,7 +46,7 @@ public class SampleDataUtil {
                 sampleAB.addPerson(samplePerson);
             }
             return sampleAB;
-        } catch (DuplicatePersonException e) {
+        } catch (DuplicateTaskException e) {
             throw new AssertionError("sample data cannot contain duplicate persons", e);
         }
     }
