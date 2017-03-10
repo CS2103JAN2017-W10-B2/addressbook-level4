@@ -16,7 +16,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.CollectionUtil;
 
 /**
- * A list of tags that enforces no nulls and uniqueness between its elements.
+ * A list of labels that enforces no nulls and uniqueness between its elements.
  *
  * Supports minimal set of list operations for the app's features.
  *
@@ -28,51 +28,51 @@ public class UniqueLabelList implements Iterable<Label> {
     private final ObservableList<Label> internalList = FXCollections.observableArrayList();
 
     /**
-     * Constructs empty TagList.
+     * Constructs empty LabelList.
      */
     public UniqueLabelList() {}
 
     /**
-     * Creates a UniqueTagList using given String tags.
+     * Creates a UniqueLabelList using given String labels.
      * Enforces no nulls or duplicates.
      */
-    public UniqueLabelList(String... tags) throws DuplicateTagException, IllegalValueException {
-        final List<Label> tagList = new ArrayList<Label>();
-        for (String tag : tags) {
-            tagList.add(new Label(tag));
+    public UniqueLabelList(String... labels) throws DuplicateLabelException, IllegalValueException {
+        final List<Label> labelList = new ArrayList<Label>();
+        for (String label : labels) {
+            labelList.add(new Label(label));
         }
-        setTags(tagList);
+        setLabels(labelList);
     }
 
     /**
-     * Creates a UniqueTagList using given tags.
+     * Creates a UniqueLabelList using given labels.
      * Enforces no nulls or duplicates.
      */
-    public UniqueLabelList(Label... tags) throws DuplicateTagException {
-        assert !CollectionUtil.isAnyNull((Object[]) tags);
-        final List<Label> initialTags = Arrays.asList(tags);
-        if (!CollectionUtil.elementsAreUnique(initialTags)) {
-            throw new DuplicateTagException();
+    public UniqueLabelList(Label... labels) throws DuplicateLabelException {
+        assert !CollectionUtil.isAnyNull((Object[]) labels);
+        final List<Label> initialLabels = Arrays.asList(labels);
+        if (!CollectionUtil.elementsAreUnique(initialLabels)) {
+            throw new DuplicateLabelException();
         }
-        internalList.addAll(initialTags);
+        internalList.addAll(initialLabels);
     }
 
     /**
-     * Creates a UniqueTagList using given tags.
+     * Creates a UniqueLabelList using given labels.
      * Enforces no null or duplicate elements.
      */
-    public UniqueLabelList(Collection<Label> tags) throws DuplicateTagException {
+    public UniqueLabelList(Collection<Label> labels) throws DuplicateLabelException {
         this();
-        setTags(tags);
+        setLabels(labels);
     }
 
     /**
-     * Creates a UniqueTagList using given tags.
+     * Creates a UniqueLabelList using given labels.
      * Enforces no nulls.
      */
-    public UniqueLabelList(Set<Label> tags) {
-        assert !CollectionUtil.isAnyNull(tags);
-        internalList.addAll(tags);
+    public UniqueLabelList(Set<Label> labels) {
+        assert !CollectionUtil.isAnyNull(labels);
+        internalList.addAll(labels);
     }
 
     /**
@@ -84,7 +84,7 @@ public class UniqueLabelList implements Iterable<Label> {
     }
 
     /**
-     * Returns all tags in this list as a Set.
+     * Returns all labels in this list as a Set.
      * This set is mutable and change-insulated against the internal list.
      */
     public Set<Label> toSet() {
@@ -92,32 +92,32 @@ public class UniqueLabelList implements Iterable<Label> {
     }
 
     /**
-     * Replaces the Tags in this list with those in the argument tag list.
+     * Replaces the Labels in this list with those in the argument label list.
      */
     public void setLabels(UniqueLabelList replacement) {
         this.internalList.setAll(replacement.internalList);
     }
 
-    public void setTags(Collection<Label> tags) throws DuplicateTagException {
-        assert !CollectionUtil.isAnyNull(tags);
-        if (!CollectionUtil.elementsAreUnique(tags)) {
-            throw new DuplicateTagException();
+    public void setLabels(Collection<Label> labels) throws DuplicateLabelException {
+        assert !CollectionUtil.isAnyNull(labels);
+        if (!CollectionUtil.elementsAreUnique(labels)) {
+            throw new DuplicateLabelException();
         }
-        internalList.setAll(tags);
+        internalList.setAll(labels);
     }
 
     /**
-     * Ensures every tag in the argument list exists in this object.
+     * Ensures every label in the argument list exists in this object.
      */
     public void mergeFrom(UniqueLabelList from) {
         final Set<Label> alreadyInside = this.toSet();
         from.internalList.stream()
-                .filter(tag -> !alreadyInside.contains(tag))
+                .filter(label -> !alreadyInside.contains(label))
                 .forEach(internalList::add);
     }
 
     /**
-     * Returns true if the list contains an equivalent Tag as the given argument.
+     * Returns true if the list contains an equivalent Label as the given argument.
      */
     public boolean contains(Label toCheck) {
         assert toCheck != null;
@@ -125,14 +125,14 @@ public class UniqueLabelList implements Iterable<Label> {
     }
 
     /**
-     * Adds a Tag to the list.
+     * Adds a Label to the list.
      *
-     * @throws DuplicateTagException if the Tag to add is a duplicate of an existing Tag in the list.
+     * @throws DuplicateLabelException if the Label to add is a duplicate of an existing Label in the list.
      */
-    public void add(Label toAdd) throws DuplicateTagException {
+    public void add(Label toAdd) throws DuplicateLabelException {
         assert toAdd != null;
         if (contains(toAdd)) {
-            throw new DuplicateTagException();
+            throw new DuplicateLabelException();
         }
         internalList.add(toAdd);
     }
@@ -166,9 +166,9 @@ public class UniqueLabelList implements Iterable<Label> {
     /**
      * Signals that an operation would have violated the 'no duplicates' property of the list.
      */
-    public static class DuplicateTagException extends DuplicateDataException {
-        protected DuplicateTagException() {
-            super("Operation would result in duplicate tags");
+    public static class DuplicateLabelException extends DuplicateDataException {
+        protected DuplicateLabelException() {
+            super("Operation would result in duplicate labels");
         }
     }
 
