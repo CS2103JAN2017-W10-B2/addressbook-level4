@@ -12,7 +12,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.This_attribute_is_not_in_use;
-import seedu.address.model.task.UniquePersonList;
+import seedu.address.model.task.UniqueTaskList;
 
 /**
  * Adds a person to the address book.
@@ -57,7 +57,7 @@ public class AddCommand extends Command {
         try {
             model.addTask(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
-        } catch (UniquePersonList.DuplicatePersonException e) {
+        } catch (UniqueTaskList.DuplicatePersonException e) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
 

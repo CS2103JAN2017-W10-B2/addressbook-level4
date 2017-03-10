@@ -14,8 +14,8 @@ import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
-import seedu.address.model.task.UniquePersonList;
-import seedu.address.model.task.UniquePersonList.DuplicatePersonException;
+import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.UniqueTaskList.DuplicatePersonException;
 
 /**
  * Wraps all data at the address-book level
@@ -23,7 +23,7 @@ import seedu.address.model.task.UniquePersonList.DuplicatePersonException;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
+    private final UniqueTaskList persons;
     private final UniqueLabelList tags;
 
     /*
@@ -34,7 +34,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        persons = new UniqueTaskList();
         tags = new UniqueLabelList();
     }
 
@@ -51,7 +51,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 //// list overwrite operations
 
     public void setPersons(List<? extends ReadOnlyTask> persons)
-            throws UniquePersonList.DuplicatePersonException {
+            throws UniqueTaskList.DuplicatePersonException {
         this.persons.setPersons(persons);
     }
 
@@ -63,7 +63,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         assert newData != null;
         try {
             setPersons(newData.getPersonList());
-        } catch (UniquePersonList.DuplicatePersonException e) {
+        } catch (UniqueTaskList.DuplicatePersonException e) {
             assert false : "AddressBooks should not have duplicate persons";
         }
         try {
@@ -81,9 +81,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Also checks the new person's tags and updates {@link #tags} with any new tags found,
      * and updates the Tag objects in the person to point to those in {@link #tags}.
      *
-     * @throws UniquePersonList.DuplicatePersonException if an equivalent person already exists.
+     * @throws UniqueTaskList.DuplicatePersonException if an equivalent person already exists.
      */
-    public void addPerson(Task p) throws UniquePersonList.DuplicatePersonException {
+    public void addPerson(Task p) throws UniqueTaskList.DuplicatePersonException {
         syncMasterTagListWith(p);
         persons.add(p);
     }
@@ -98,7 +98,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @throws IndexOutOfBoundsException if {@code index} < 0 or >= the size of the list.
      */
     public void updatePerson(int index, ReadOnlyTask editedReadOnlyPerson)
-            throws UniquePersonList.DuplicatePersonException {
+            throws UniqueTaskList.DuplicatePersonException {
         assert editedReadOnlyPerson != null;
 
         Task editedPerson = new Task(editedReadOnlyPerson);
@@ -135,15 +135,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      *  - points to a Tag object in the master list
      *  @see #syncMasterTagListWith(Task)
      */
-    private void syncMasterTagListWith(UniquePersonList persons) {
+    private void syncMasterTagListWith(UniqueTaskList persons) {
         persons.forEach(this::syncMasterTagListWith);
     }
 
-    public boolean removePerson(ReadOnlyTask key) throws UniquePersonList.TaskNotFoundException {
+    public boolean removePerson(ReadOnlyTask key) throws UniqueTaskList.TaskNotFoundException {
         if (persons.remove(key)) {
             return true;
         } else {
-            throw new UniquePersonList.TaskNotFoundException();
+            throw new UniqueTaskList.TaskNotFoundException();
         }
     }
 
