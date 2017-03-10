@@ -75,15 +75,15 @@ public class TestUtil {
         try {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                new Task(new Title("Ali Muster"), new Deadline("9482424"), new Remarks("hans@google.com"), new This_attribute_is_not_in_use("4th street"), new UniqueLabelList()),
-                new Task(new Title("Boris Mueller"), new Deadline("87249245"), new Remarks("ruth@google.com"), new This_attribute_is_not_in_use("81th street"), new UniqueLabelList()),
-                new Task(new Title("Carl Kurz"), new Deadline("95352563"), new Remarks("heinz@yahoo.com"), new This_attribute_is_not_in_use("wall street"), new UniqueLabelList()),
-                new Task(new Title("Daniel Meier"), new Deadline("87652533"), new Remarks("cornelia@google.com"), new This_attribute_is_not_in_use("10th street"), new UniqueLabelList()),
-                new Task(new Title("Elle Meyer"), new Deadline("9482224"), new Remarks("werner@gmail.com"), new This_attribute_is_not_in_use("michegan ave"), new UniqueLabelList()),
-                new Task(new Title("Fiona Kunz"), new Deadline("9482427"), new Remarks("lydia@gmail.com"), new This_attribute_is_not_in_use("little tokyo"), new UniqueLabelList()),
-                new Task(new Title("George Best"), new Deadline("9482442"), new Remarks("anna@google.com"), new This_attribute_is_not_in_use("4th street"), new UniqueLabelList()),
-                new Task(new Title("Hoon Meier"), new Deadline("8482424"), new Remarks("stefan@mail.com"), new This_attribute_is_not_in_use("little india"), new UniqueLabelList()),
-                new Task(new Title("Ida Mueller"), new Deadline("8482131"), new Remarks("hans@google.com"), new This_attribute_is_not_in_use("chicago ave"), new UniqueLabelList())
+                new Task(new Title("Finish report"), new Deadline("111217"), new Remarks("at most 10 pages!!"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Do linear algebra assignment"), new Deadline("111117"), new Remarks("check answers with friends:)"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Discuss project"), new Deadline("011017"), new Remarks("schedule meetup on Wednesday afternoon"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Finish up codeing assignment for CS2010"), new Deadline("040917"), new Remarks("must be O(NlogN) runtime"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Make cheatsheet for physics"), new Deadline("181217"), new Remarks("Double sided A4 paper"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Do module mapping"), new Deadline("221117"), new Remarks("asks seniors"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Arrange consultation with prof"), new Deadline("101117"), new Remarks("email: yapvb@gmail.com"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("eat apples"), new Deadline("141017"), new Remarks("buy apple 60c"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList()),
+                new Task(new Title("Make appointment with tutor"), new Deadline("131117"), new Remarks("bring graphing calculator"), new This_attribute_is_not_in_use("temp"), new UniqueLabelList())
             };
             //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {
