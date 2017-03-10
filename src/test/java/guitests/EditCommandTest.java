@@ -21,7 +21,7 @@ public class EditCommandTest extends ToDoListGuiTest {
 
     // The list of persons in the person list panel is expected to match this list.
     // This list is updated with every successful call to assertEditSuccess().
-    TestTask[] expectedPersonsList = td.getTypicalTasks();
+    TestTask[] expectedTasksList = td.getTypicalTasks();
 
     @Test
     public void edit_allFieldsSpecified_success() throws Exception {
@@ -39,7 +39,7 @@ public class EditCommandTest extends ToDoListGuiTest {
         String detailsToEdit = "t/sweetie t/bestie";
         int addressBookIndex = 2;
 
-        TestTask personToEdit = expectedPersonsList[addressBookIndex - 1];
+        TestTask personToEdit = expectedTasksList[addressBookIndex - 1];
         TestTask editedPerson = new TaskBuilder(personToEdit).withLabels("sweetie", "bestie").build();
 
         assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedPerson);
@@ -50,7 +50,7 @@ public class EditCommandTest extends ToDoListGuiTest {
         String detailsToEdit = "t/";
         int addressBookIndex = 2;
 
-        TestTask personToEdit = expectedPersonsList[addressBookIndex - 1];
+        TestTask personToEdit = expectedTasksList[addressBookIndex - 1];
         TestTask editedPerson = new TaskBuilder(personToEdit).withLabels().build();
 
         assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedPerson);
@@ -64,7 +64,7 @@ public class EditCommandTest extends ToDoListGuiTest {
         int filteredPersonListIndex = 1;
         int addressBookIndex = 5;
 
-        TestTask personToEdit = expectedPersonsList[addressBookIndex - 1];
+        TestTask personToEdit = expectedTasksList[addressBookIndex - 1];
         TestTask editedPerson = new TaskBuilder(personToEdit).withTitle("Belle").build();
 
         assertEditSuccess(filteredPersonListIndex, addressBookIndex, detailsToEdit, editedPerson);
@@ -131,8 +131,8 @@ public class EditCommandTest extends ToDoListGuiTest {
         assertMatching(editedPerson, editedCard);
 
         // confirm the list now contains all previous persons plus the person with updated details
-        expectedPersonsList[addressBookIndex - 1] = editedPerson;
-        assertTrue(taskListPanel.isListMatching(expectedPersonsList));
+        expectedTasksList[addressBookIndex - 1] = editedPerson;
+        assertTrue(taskListPanel.isListMatching(expectedTasksList));
         assertResultMessage(String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 }

@@ -11,8 +11,8 @@ public class FindCommandTest extends ToDoListGuiTest {
 
     @Test
     public void find_nonEmptyList() {
-        assertFindResult("find Mark"); // no results
-        assertFindResult("find Meier", td.testExample2, td.testExample4); // multiple results
+        assertFindResult("find orange"); // no results
+        assertFindResult("find assignment", td.testExample2, td.testExample4); // multiple results
 
         //find after deleting one result
         commandBox.runCommand("delete 1");
@@ -22,7 +22,7 @@ public class FindCommandTest extends ToDoListGuiTest {
     @Test
     public void find_emptyList() {
         commandBox.runCommand("clear");
-        assertFindResult("find Jean"); // no results
+        assertFindResult("find module"); // no results
     }
 
     @Test
@@ -34,7 +34,7 @@ public class FindCommandTest extends ToDoListGuiTest {
     private void assertFindResult(String command, TestTask... expectedHits) {
         commandBox.runCommand(command);
         assertListSize(expectedHits.length);
-        assertResultMessage(expectedHits.length + " persons listed!");
+        assertResultMessage(expectedHits.length + " tasks listed!");
         assertTrue(taskListPanel.isListMatching(expectedHits));
     }
 }
