@@ -9,8 +9,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
  */
 public class Remarks {
 
-    public static final String MESSAGE_REMARKS_CONSTRAINTS =
-            "N/A";
+    public static final String MESSAGE_REMARKS_CONSTRAINTS = "N/A";
     public static final String REMARKS_VALIDATION_REGEX = "[\\w\\.]+@[\\w\\.]+";
 
     public final String value;
@@ -30,7 +29,7 @@ public class Remarks {
     }
 
     /**
-     * Returns if a given string is a valid person email.
+     * Returns if a given string is a valid person remarks.
      */
     public static boolean isValidRemarks(String test) {
         return true; //test.matches(REMARKS_VALIDATION_REGEX);
