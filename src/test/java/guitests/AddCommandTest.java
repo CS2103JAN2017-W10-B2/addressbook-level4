@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import guitests.guihandles.PersonCardHandle;
+import guitests.guihandles.TaskCardHandle;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.testutil.TestTask;
@@ -18,12 +18,12 @@ public class AddCommandTest extends AddressBookGuiTest {
         TestTask[] currentList = td.getTypicalPersons();
         TestTask personToAdd = td.testExample8;
         assertAddSuccess(personToAdd, currentList);
-        currentList = TestUtil.addPersonsToList(currentList, personToAdd);
+        currentList = TestUtil.addTasksToList(currentList, personToAdd);
 
         //add another person
         personToAdd = td.testExample9;
         assertAddSuccess(personToAdd, currentList);
-        currentList = TestUtil.addPersonsToList(currentList, personToAdd);
+        currentList = TestUtil.addTasksToList(currentList, personToAdd);
 
         //add duplicate person
         commandBox.runCommand(td.testExample8.getAddCommand());
@@ -43,11 +43,11 @@ public class AddCommandTest extends AddressBookGuiTest {
         commandBox.runCommand(personToAdd.getAddCommand());
 
         //confirm the new card contains the right data
-        PersonCardHandle addedCard = personListPanel.navigateToPerson(personToAdd.getTitle().fullTitle);
+        TaskCardHandle addedCard = personListPanel.navigateToPerson(personToAdd.getTitle().fullTitle);
         assertMatching(personToAdd, addedCard);
 
         //confirm the list now contains all previous persons plus the new person
-        TestTask[] expectedList = TestUtil.addPersonsToList(currentList, personToAdd);
+        TestTask[] expectedList = TestUtil.addTasksToList(currentList, personToAdd);
         assertTrue(personListPanel.isListMatching(expectedList));
     }
 
