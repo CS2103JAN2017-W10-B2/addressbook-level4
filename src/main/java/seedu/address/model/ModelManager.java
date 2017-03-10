@@ -22,8 +22,8 @@ import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final ToDoList addressBook;
-    private final FilteredList<ReadOnlyTask> filteredPersons;
+    private final ToDoList toDoList;
+    private final FilteredList<ReadOnlyTask> filteredTasks;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -32,10 +32,10 @@ public class ModelManager extends ComponentManager implements Model {
         super();
         assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with to do list: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new ToDoList(addressBook);
-        filteredPersons = new FilteredList<>(this.addressBook.getTaskList());
+        this.toDoList = new ToDoList(addressBook);
+        filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
     }
 
     public ModelManager() {
@@ -44,68 +44,68 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void resetData(ReadOnlyToDoList newData) {
-        addressBook.resetData(newData);
-        indicateAddressBookChanged();
+        toDoList.resetData(newData);
+        indicateToDoListChanged();
     }
 
     @Override
     public ReadOnlyToDoList getToDoList() {
-        return addressBook;
+        return toDoList;
     }
 
     /** Raises an event to indicate the model has changed */
-    private void indicateAddressBookChanged() {
-        raise(new ToDoListChangedEvent(addressBook));
+    private void indicateToDoListChanged() {
+        raise(new ToDoListChangedEvent(toDoList));
     }
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-        addressBook.removeTask(target);
-        indicateAddressBookChanged();
+        toDoList.removeTask(target);
+        indicateToDoListChanged();
     }
 
     @Override
-    public synchronized void addTask(Task person) throws UniqueTaskList.DuplicateTaskException {
-        addressBook.addTask(person);
+    public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
+        toDoList.addTask(task);
         updateFilteredListToShowAll();
-        indicateAddressBookChanged();
+        indicateToDoListChanged();
     }
 
     @Override
-    public void updateTask(int filteredPersonListIndex, ReadOnlyTask editedPerson)
+    public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException {
-        assert editedPerson != null;
+        assert editedTask != null;
 
-        int addressBookIndex = filteredPersons.getSourceIndex(filteredPersonListIndex);
-        addressBook.updateTask(addressBookIndex, editedPerson);
-        indicateAddressBookChanged();
+        int addressBookIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
+        toDoList.updateTask(addressBookIndex, editedTask);
+        indicateToDoListChanged();
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Task List Accessors =============================================================
 
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
-        return new UnmodifiableObservableList<>(filteredPersons);
+        return new UnmodifiableObservableList<>(filteredTasks);
     }
 
     @Override
     public void updateFilteredListToShowAll() {
-        filteredPersons.setPredicate(null);
+        filteredTasks.setPredicate(null);
     }
 
     @Override
     public void updateFilteredTaskList(Set<String> keywords) {
-        updateFilteredPersonList(new PredicateExpression(new NameQualifier(keywords)));
+        updateFilteredTaskList(new PredicateExpression(new TitleQualifier(keywords)));
     }
 
-    private void updateFilteredPersonList(Expression expression) {
-        filteredPersons.setPredicate(expression::satisfies);
+    private void updateFilteredTaskList(Expression expression) {
+        filteredTasks.setPredicate(expression::satisfies);
     }
 
     //========== Inner classes/interfaces used for filtering =================================================
 
     interface Expression {
-        boolean satisfies(ReadOnlyTask person);
+        boolean satisfies(ReadOnlyTask task);
         String toString();
     }
 
@@ -118,8 +118,8 @@ public class ModelManager extends ComponentManager implements Model {
         }
 
         @Override
-        public boolean satisfies(ReadOnlyTask person) {
-            return qualifier.run(person);
+        public boolean satisfies(ReadOnlyTask task) {
+            return qualifier.run(task);
         }
 
         @Override
@@ -129,28 +129,28 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     interface Qualifier {
-        boolean run(ReadOnlyTask person);
+        boolean run(ReadOnlyTask task);
         String toString();
     }
 
-    private class NameQualifier implements Qualifier {
-        private Set<String> nameKeyWords;
+    private class TitleQualifier implements Qualifier {
+        private Set<String> titleKeyWords;
 
-        NameQualifier(Set<String> nameKeyWords) {
-            this.nameKeyWords = nameKeyWords;
+        TitleQualifier(Set<String> nameKeyWords) {
+            this.titleKeyWords = nameKeyWords;
         }
 
         @Override
-        public boolean run(ReadOnlyTask person) {
-            return nameKeyWords.stream()
-                    .filter(keyword -> StringUtil.containsWordIgnoreCase(person.getTitle().fullTitle, keyword))
+        public boolean run(ReadOnlyTask task) {
+            return titleKeyWords.stream()
+                    .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
                     .findAny()
                     .isPresent();
         }
 
         @Override
         public String toString() {
-            return "name=" + String.join(", ", nameKeyWords);
+            return "title=" + String.join(", ", titleKeyWords);
         }
     }
 
