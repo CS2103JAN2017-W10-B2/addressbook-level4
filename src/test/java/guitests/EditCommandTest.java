@@ -17,7 +17,7 @@ import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TestTask;
 
 // TODO: reduce GUI tests by transferring some tests to be covered by lower level tests.
-public class EditCommandTest extends AddressBookGuiTest {
+public class EditCommandTest extends ToDoListGuiTest {
 
     // The list of persons in the person list panel is expected to match this list.
     // This list is updated with every successful call to assertEditSuccess().
@@ -127,12 +127,12 @@ public class EditCommandTest extends AddressBookGuiTest {
         commandBox.runCommand("edit " + filteredPersonListIndex + " " + detailsToEdit);
 
         // confirm the new card contains the right data
-        TaskCardHandle editedCard = personListPanel.navigateToPerson(editedPerson.getTitle().fullTitle);
+        TaskCardHandle editedCard = taskListPanel.navigateToPerson(editedPerson.getTitle().fullTitle);
         assertMatching(editedPerson, editedCard);
 
         // confirm the list now contains all previous persons plus the person with updated details
         expectedPersonsList[addressBookIndex - 1] = editedPerson;
-        assertTrue(personListPanel.isListMatching(expectedPersonsList));
+        assertTrue(taskListPanel.isListMatching(expectedPersonsList));
         assertResultMessage(String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 }

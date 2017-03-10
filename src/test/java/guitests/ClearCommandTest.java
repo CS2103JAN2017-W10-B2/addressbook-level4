@@ -4,18 +4,18 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class ClearCommandTest extends AddressBookGuiTest {
+public class ClearCommandTest extends ToDoListGuiTest {
 
     @Test
     public void clear() {
 
         //verify a non-empty list can be cleared
-        assertTrue(personListPanel.isListMatching(td.getTypicalTasks()));
+        assertTrue(taskListPanel.isListMatching(td.getTypicalTasks()));
         assertClearCommandSuccess();
 
         //verify other commands can work after a clear command
         commandBox.runCommand(td.testExample8.getAddCommand());
-        assertTrue(personListPanel.isListMatching(td.testExample8));
+        assertTrue(taskListPanel.isListMatching(td.testExample8));
         commandBox.runCommand("delete 1");
         assertListSize(0);
 
