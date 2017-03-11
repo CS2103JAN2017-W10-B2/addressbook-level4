@@ -490,9 +490,9 @@ public class LogicManagerTest {
         /**
          * Adds the given list of Persons to the given AddressBook
          */
-        void addToToDoList(ToDoList addressBook, List<Task> personsToAdd) throws Exception {
-            for (Task p: personsToAdd) {
-                addressBook.addTask(p);
+        void addToToDoList(ToDoList todoList, List<Task> tasksToAdd) throws Exception {
+            for (Task p: tasksToAdd) {
+                todoList.addTask(p);
             }
         }
 
