@@ -211,7 +211,7 @@ public class LogicManagerTest {
     public void execute_add_successful() throws Exception {
         // setup expectations
         TestDataHelper helper = new TestDataHelper();
-        Task toBeAdded = helper.adam();
+        Task toBeAdded = helper.CS2103_ex1();
         ToDoList expectedAB = new ToDoList();
         expectedAB.addTask(toBeAdded);
 
@@ -227,7 +227,7 @@ public class LogicManagerTest {
     public void execute_addDuplicate_notAllowed() throws Exception {
         // setup expectations
         TestDataHelper helper = new TestDataHelper();
-        Task toBeAdded = helper.adam();
+        Task toBeAdded = helper.CS2103_ex1();
 
         // setup starting state
         model.addTask(toBeAdded); // person already in internal address book
@@ -414,15 +414,15 @@ public class LogicManagerTest {
      */
     class TestDataHelper {
 
-        Task adam() throws Exception {
-            Title name = new Title("Adam Brown");
-            Deadline privatePhone = new Deadline("111111");
-            Remarks email = new Remarks("adam@gmail.com");
+        Task CS2103_ex1() throws Exception {
+            Title name = new Title("CS2103 Exercise 1");
+            Deadline deadline = new Deadline("111111");
+            Remarks remark = new Remarks("adam@gmail.com");
             This_attribute_is_not_in_use privateAddress = new This_attribute_is_not_in_use("111, alpha street");
             Label tag1 = new Label("tag1");
             Label tag2 = new Label("longertag2");
             UniqueLabelList tags = new UniqueLabelList(tag1, tag2);
-            return new Task(name, privatePhone, email, privateAddress, tags);
+            return new Task(name, deadline, remark, privateAddress, tags);
         }
 
         /**
