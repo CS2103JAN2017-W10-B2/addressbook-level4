@@ -242,7 +242,7 @@ public class LogicManagerTest {
     public void execute_list_showsAllPersons() throws Exception {
         // prepare expectations
         TestDataHelper helper = new TestDataHelper();
-        ToDoList expectedAB = helper.generateAddressBook(2);
+        ToDoList expectedAB = helper.generateToDoList(2);
         List<? extends ReadOnlyTask> expectedList = expectedAB.getTaskList();
 
         // prepare address book state
@@ -464,7 +464,7 @@ public class LogicManagerTest {
         /**
          * Generates an AddressBook with auto-generated persons.
          */
-        ToDoList generateAddressBook(int numGenerated) throws Exception {
+        ToDoList generateToDoList(int numGenerated) throws Exception {
             ToDoList addressBook = new ToDoList();
             addToAddressBook(addressBook, numGenerated);
             return addressBook;
