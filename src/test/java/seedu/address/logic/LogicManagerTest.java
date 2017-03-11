@@ -111,9 +111,9 @@ public class LogicManagerTest {
      * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList, List)
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage,
-                                      ReadOnlyToDoList expectedAddressBook,
+                                      ReadOnlyToDoList expectedToDoList,
                                       List<? extends ReadOnlyTask> expectedShownList) {
-        assertCommandBehavior(false, inputCommand, expectedMessage, expectedAddressBook, expectedShownList);
+        assertCommandBehavior(false, inputCommand, expectedMessage, expectedToDoList, expectedShownList);
     }
 
     /**
@@ -122,9 +122,9 @@ public class LogicManagerTest {
      * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList, List)
      */
     private void assertCommandFailure(String inputCommand, String expectedMessage) {
-        ToDoList expectedAddressBook = new ToDoList(model.getToDoList());
+        ToDoList expectedToDoList = new ToDoList(model.getToDoList());
         List<ReadOnlyTask> expectedShownList = new ArrayList<>(model.getFilteredTaskList());
-        assertCommandBehavior(true, inputCommand, expectedMessage, expectedAddressBook, expectedShownList);
+        assertCommandBehavior(true, inputCommand, expectedMessage, expectedToDoList, expectedShownList);
     }
 
     /**
@@ -136,7 +136,7 @@ public class LogicManagerTest {
      *      - {@code expectedAddressBook} was saved to the storage file. <br>
      */
     private void assertCommandBehavior(boolean isCommandExceptionExpected, String inputCommand, String expectedMessage,
-                                       ReadOnlyToDoList expectedAddressBook,
+                                       ReadOnlyToDoList expectedToDoList,
                                        List<? extends ReadOnlyTask> expectedShownList) {
 
         try {
@@ -152,8 +152,8 @@ public class LogicManagerTest {
         assertEquals(expectedShownList, model.getFilteredTaskList());
 
         //Confirm the state of data (saved and in-memory) is as expected
-        assertEquals(expectedAddressBook, model.getToDoList());
-        assertEquals(expectedAddressBook, latestSavedToDoList);
+        assertEquals(expectedToDoList, model.getToDoList());
+        assertEquals(expectedToDoList, latestSavedToDoList);
     }
 
     @Test
