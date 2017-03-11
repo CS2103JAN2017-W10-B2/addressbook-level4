@@ -177,9 +177,9 @@ public class LogicManagerTest {
     @Test
     public void execute_clear() throws Exception {
         TestDataHelper helper = new TestDataHelper();
-        model.addTask(helper.generatePerson(1));
-        model.addTask(helper.generatePerson(2));
-        model.addTask(helper.generatePerson(3));
+        model.addTask(helper.generateTask(1));
+        model.addTask(helper.generateTask(2));
+        model.addTask(helper.generateTask(3));
 
         assertCommandSuccess("clear", ClearCommand.MESSAGE_SUCCESS, new ToDoList(), Collections.emptyList());
     }
@@ -432,7 +432,7 @@ public class LogicManagerTest {
          *
          * @param seed used to generate the person data field values
          */
-        Task generatePerson(int seed) throws Exception {
+        Task generateTask(int seed) throws Exception {
             return new Task(
                     new Title("Person " + seed),
                     new Deadline("" + Math.abs(seed)),
@@ -519,7 +519,7 @@ public class LogicManagerTest {
         List<Task> generatePersonList(int numGenerated) throws Exception {
             List<Task> persons = new ArrayList<>();
             for (int i = 1; i <= numGenerated; i++) {
-                persons.add(generatePerson(i));
+                persons.add(generateTask(i));
             }
             return persons;
         }
