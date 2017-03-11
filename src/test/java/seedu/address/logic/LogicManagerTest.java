@@ -481,18 +481,18 @@ public class LogicManagerTest {
 
         /**
          * Adds auto-generated Person objects to the given AddressBook
-         * @param addressBook The AddressBook to which the Persons will be added
+         * @param todoList The AddressBook to which the Persons will be added
          */
-        void addToToDoList(ToDoList addressBook, int numGenerated) throws Exception {
-            addToToDoList(addressBook, generateTaskList(numGenerated));
+        void addToToDoList(ToDoList todoList, int numGenerated) throws Exception {
+            addToToDoList(todoList, generateTaskList(numGenerated));
         }
 
         /**
          * Adds the given list of Persons to the given AddressBook
          */
-        void addToToDoList(ToDoList addressBook, List<Task> personsToAdd) throws Exception {
-            for (Task p: personsToAdd) {
-                addressBook.addTask(p);
+        void addToToDoList(ToDoList todoList, List<Task> tasksToAdd) throws Exception {
+            for (Task p: tasksToAdd) {
+                todoList.addTask(p);
             }
         }
 
