@@ -306,7 +306,7 @@ public class LogicManagerTest {
         TestDataHelper helper = new TestDataHelper();
         List<Task> threePersons = helper.generateTaskList(3);
 
-        ToDoList expectedAB = helper.generateAddressBook(threePersons);
+        ToDoList expectedAB = helper.generateToDoList(threePersons);
         helper.addToModel(model, threePersons);
 
         assertCommandSuccess("select 2",
@@ -334,7 +334,7 @@ public class LogicManagerTest {
         TestDataHelper helper = new TestDataHelper();
         List<Task> threePersons = helper.generateTaskList(3);
 
-        ToDoList expectedAB = helper.generateAddressBook(threePersons);
+        ToDoList expectedAB = helper.generateToDoList(threePersons);
         expectedAB.removeTask(threePersons.get(1));
         helper.addToModel(model, threePersons);
 
@@ -360,7 +360,7 @@ public class LogicManagerTest {
         Task p2 = helper.generateTaskWithTitle("KEYKEYKEY sduauo");
 
         List<Task> fourPersons = helper.generateTaskList(p1, pTarget1, p2, pTarget2);
-        ToDoList expectedAB = helper.generateAddressBook(fourPersons);
+        ToDoList expectedAB = helper.generateToDoList(fourPersons);
         List<Task> expectedList = helper.generateTaskList(pTarget1, pTarget2);
         helper.addToModel(model, fourPersons);
 
@@ -379,7 +379,7 @@ public class LogicManagerTest {
         Task p4 = helper.generateTaskWithTitle("KEy sduauo");
 
         List<Task> fourPersons = helper.generateTaskList(p3, p1, p4, p2);
-        ToDoList expectedAB = helper.generateAddressBook(fourPersons);
+        ToDoList expectedAB = helper.generateToDoList(fourPersons);
         List<Task> expectedList = fourPersons;
         helper.addToModel(model, fourPersons);
 
@@ -398,7 +398,7 @@ public class LogicManagerTest {
         Task p1 = helper.generateTaskWithTitle("sduauo");
 
         List<Task> fourPersons = helper.generateTaskList(pTarget1, p1, pTarget2, pTarget3);
-        ToDoList expectedAB = helper.generateAddressBook(fourPersons);
+        ToDoList expectedAB = helper.generateToDoList(fourPersons);
         List<Task> expectedList = helper.generateTaskList(pTarget1, pTarget2, pTarget3);
         helper.addToModel(model, fourPersons);
 
@@ -473,7 +473,7 @@ public class LogicManagerTest {
         /**
          * Generates an AddressBook based on the list of Persons given.
          */
-        ToDoList generateAddressBook(List<Task> persons) throws Exception {
+        ToDoList generateToDoList(List<Task> persons) throws Exception {
             ToDoList addressBook = new ToDoList();
             addToToDoList(addressBook, persons);
             return addressBook;
