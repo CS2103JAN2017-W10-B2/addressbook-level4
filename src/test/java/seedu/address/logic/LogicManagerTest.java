@@ -354,10 +354,10 @@ public class LogicManagerTest {
     @Test
     public void execute_find_onlyMatchesFullWordsInNames() throws Exception {
         TestDataHelper helper = new TestDataHelper();
-        Task pTarget1 = helper.generatePersonWithName("bla bla KEY bla");
-        Task pTarget2 = helper.generatePersonWithName("bla KEY bla bceofeia");
-        Task p1 = helper.generatePersonWithName("KE Y");
-        Task p2 = helper.generatePersonWithName("KEYKEYKEY sduauo");
+        Task pTarget1 = helper.generateTaskWithTitle("bla bla KEY bla");
+        Task pTarget2 = helper.generateTaskWithTitle("bla KEY bla bceofeia");
+        Task p1 = helper.generateTaskWithTitle("KE Y");
+        Task p2 = helper.generateTaskWithTitle("KEYKEYKEY sduauo");
 
         List<Task> fourPersons = helper.generatePersonList(p1, pTarget1, p2, pTarget2);
         ToDoList expectedAB = helper.generateAddressBook(fourPersons);
@@ -373,10 +373,10 @@ public class LogicManagerTest {
     @Test
     public void execute_find_isNotCaseSensitive() throws Exception {
         TestDataHelper helper = new TestDataHelper();
-        Task p1 = helper.generatePersonWithName("bla bla KEY bla");
-        Task p2 = helper.generatePersonWithName("bla KEY bla bceofeia");
-        Task p3 = helper.generatePersonWithName("key key");
-        Task p4 = helper.generatePersonWithName("KEy sduauo");
+        Task p1 = helper.generateTaskWithTitle("bla bla KEY bla");
+        Task p2 = helper.generateTaskWithTitle("bla KEY bla bceofeia");
+        Task p3 = helper.generateTaskWithTitle("key key");
+        Task p4 = helper.generateTaskWithTitle("KEy sduauo");
 
         List<Task> fourPersons = helper.generatePersonList(p3, p1, p4, p2);
         ToDoList expectedAB = helper.generateAddressBook(fourPersons);
@@ -392,10 +392,10 @@ public class LogicManagerTest {
     @Test
     public void execute_find_matchesIfAnyKeywordPresent() throws Exception {
         TestDataHelper helper = new TestDataHelper();
-        Task pTarget1 = helper.generatePersonWithName("bla bla KEY bla");
-        Task pTarget2 = helper.generatePersonWithName("bla rAnDoM bla bceofeia");
-        Task pTarget3 = helper.generatePersonWithName("key key");
-        Task p1 = helper.generatePersonWithName("sduauo");
+        Task pTarget1 = helper.generateTaskWithTitle("bla bla KEY bla");
+        Task pTarget2 = helper.generateTaskWithTitle("bla rAnDoM bla bceofeia");
+        Task pTarget3 = helper.generateTaskWithTitle("key key");
+        Task p1 = helper.generateTaskWithTitle("sduauo");
 
         List<Task> fourPersons = helper.generatePersonList(pTarget1, p1, pTarget2, pTarget3);
         ToDoList expectedAB = helper.generateAddressBook(fourPersons);
@@ -531,7 +531,7 @@ public class LogicManagerTest {
         /**
          * Generates a Person object with given name. Other fields will have some dummy values.
          */
-        Task generatePersonWithName(String name) throws Exception {
+        Task generateTaskWithTitle(String name) throws Exception {
             return new Task(
                     new Title(name),
                     new Deadline("1"),
