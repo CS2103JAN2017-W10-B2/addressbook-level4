@@ -71,7 +71,7 @@ public class TypicalTestTasks {
         return new TestTask[]{testExample1, testExample2, testExample3, testExample4, testExample5, testExample6, testExample7};
     }
 
-    public ToDoList getTypicalAddressBook() {
+    public ToDoList getTypicalToDoList() {
         ToDoList ab = new ToDoList();
         loadAddressBookWithSampleData(ab);
         return ab;
