@@ -39,7 +39,7 @@ public class ToDoListTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
+    public void resetData_withValidReadOnlyToDoList_replacesData() {
         ToDoList newData = new TypicalTestTasks().getTypicalToDoList();
         todoList.resetData(newData);
         assertEquals(newData, todoList);
