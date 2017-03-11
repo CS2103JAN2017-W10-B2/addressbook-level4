@@ -51,7 +51,7 @@ public class ToDoListTest {
         // Repeat td.alice twice
         List<Task> newPersons = Arrays.asList(new Task(td.testExample1), new Task(td.testExample1));
         List<Label> newTags = td.testExample1.getLabels().asObservableList();
-        AddressBookStub newData = new AddressBookStub(newPersons, newTags);
+        ToDoListStub newData = new ToDoListStub(newPersons, newTags);
 
         thrown.expect(AssertionError.class);
         todoList.resetData(newData);
@@ -64,7 +64,7 @@ public class ToDoListTest {
         List<Label> newTags = new ArrayList<>(typicalAddressBook.getLabelList());
         // Repeat the first tag twice
         newTags.add(newTags.get(0));
-        AddressBookStub newData = new AddressBookStub(newPersons, newTags);
+        ToDoListStub newData = new ToDoListStub(newPersons, newTags);
 
         thrown.expect(AssertionError.class);
         todoList.resetData(newData);
@@ -73,11 +73,11 @@ public class ToDoListTest {
     /**
      * A stub ReadOnlyAddressBook whose persons and tags lists can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyToDoList {
+    private static class ToDoListStub implements ReadOnlyToDoList {
         private final ObservableList<ReadOnlyTask> persons = FXCollections.observableArrayList();
         private final ObservableList<Label> tags = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<? extends ReadOnlyTask> persons, Collection<? extends Label> tags) {
+        ToDoListStub(Collection<? extends ReadOnlyTask> persons, Collection<? extends Label> tags) {
             this.persons.setAll(persons);
             this.tags.setAll(tags);
         }
