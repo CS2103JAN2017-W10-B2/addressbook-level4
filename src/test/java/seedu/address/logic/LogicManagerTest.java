@@ -62,13 +62,13 @@ public class LogicManagerTest {
     private Logic logic;
 
     //These are for checking the correctness of the events raised
-    private ReadOnlyToDoList latestSavedAddressBook;
+    private ReadOnlyToDoList latestSavedToDoList;
     private boolean helpShown;
     private int targetedJumpIndex;
 
     @Subscribe
     private void handleLocalModelChangedEvent(ToDoListChangedEvent abce) {
-        latestSavedAddressBook = new ToDoList(abce.data);
+        latestSavedToDoList = new ToDoList(abce.data);
     }
 
     @Subscribe
@@ -89,7 +89,7 @@ public class LogicManagerTest {
         logic = new LogicManager(model, new StorageManager(tempAddressBookFile, tempPreferencesFile));
         EventsCenter.getInstance().registerHandler(this);
 
-        latestSavedAddressBook = new ToDoList(model.getToDoList()); // last saved assumed to be up to date
+        latestSavedToDoList = new ToDoList(model.getToDoList()); // last saved assumed to be up to date
         helpShown = false;
         targetedJumpIndex = -1; // non yet
     }
@@ -153,7 +153,7 @@ public class LogicManagerTest {
 
         //Confirm the state of data (saved and in-memory) is as expected
         assertEquals(expectedAddressBook, model.getToDoList());
-        assertEquals(expectedAddressBook, latestSavedAddressBook);
+        assertEquals(expectedAddressBook, latestSavedToDoList);
     }
 
     @Test
