@@ -60,11 +60,11 @@ public class ToDoListTest {
     @Test
     public void resetData_withDuplicateTags_throwsAssertionError() {
         ToDoList typicalToDoList = new TypicalTestTasks().getTypicalToDoList();
-        List<ReadOnlyTask> newPersons = typicalToDoList.getTaskList();
+        List<ReadOnlyTask> newTasks = typicalToDoList.getTaskList();
         List<Label> newTags = new ArrayList<>(typicalToDoList.getLabelList());
         // Repeat the first tag twice
         newTags.add(newTags.get(0));
-        ToDoListStub newData = new ToDoListStub(newPersons, newTags);
+        ToDoListStub newData = new ToDoListStub(newTasks, newTags);
 
         thrown.expect(AssertionError.class);
         todoList.resetData(newData);
