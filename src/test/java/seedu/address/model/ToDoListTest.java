@@ -24,25 +24,25 @@ public class ToDoListTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private final ToDoList addressBook = new ToDoList();
+    private final ToDoList todoList = new ToDoList();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getTaskList());
-        assertEquals(Collections.emptyList(), addressBook.getLabelList());
+        assertEquals(Collections.emptyList(), todoList.getTaskList());
+        assertEquals(Collections.emptyList(), todoList.getLabelList());
     }
 
     @Test
     public void resetData_null_throwsAssertionError() {
         thrown.expect(AssertionError.class);
-        addressBook.resetData(null);
+        todoList.resetData(null);
     }
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
         ToDoList newData = new TypicalTestPersons().getTypicalAddressBook();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+        todoList.resetData(newData);
+        assertEquals(newData, todoList);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ToDoListTest {
         AddressBookStub newData = new AddressBookStub(newPersons, newTags);
 
         thrown.expect(AssertionError.class);
-        addressBook.resetData(newData);
+        todoList.resetData(newData);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ToDoListTest {
         AddressBookStub newData = new AddressBookStub(newPersons, newTags);
 
         thrown.expect(AssertionError.class);
-        addressBook.resetData(newData);
+        todoList.resetData(newData);
     }
 
     /**
