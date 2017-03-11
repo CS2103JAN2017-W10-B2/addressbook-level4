@@ -465,18 +465,18 @@ public class LogicManagerTest {
          * Generates an AddressBook with auto-generated persons.
          */
         ToDoList generateToDoList(int numGenerated) throws Exception {
-            ToDoList addressBook = new ToDoList();
-            addToToDoList(addressBook, numGenerated);
-            return addressBook;
+            ToDoList todoList = new ToDoList();
+            addToToDoList(todoList, numGenerated);
+            return todoList;
         }
 
         /**
          * Generates an AddressBook based on the list of Persons given.
          */
-        ToDoList generateToDoList(List<Task> persons) throws Exception {
-            ToDoList addressBook = new ToDoList();
-            addToToDoList(addressBook, persons);
-            return addressBook;
+        ToDoList generateToDoList(List<Task> tasks) throws Exception {
+            ToDoList todoList = new ToDoList();
+            addToToDoList(todoList, tasks);
+            return todoList;
         }
 
         /**
