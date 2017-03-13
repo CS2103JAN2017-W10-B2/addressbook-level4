@@ -39,16 +39,6 @@ public class ToDoListTest {
     }
 
     @Test
-<<<<<<< HEAD:src/test/java/seedu/address/model/AddressBookTest.java
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        ToDoList newData = new TypicalTestTasks().getTypicalToDoList();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
-    }
-
-    @Test
-    public void resetData_withDuplicatePersons_throwsAssertionError() {
-=======
     public void resetData_withValidReadOnlyToDoList_replacesData() {
         ToDoList newData = new TypicalTestTasks().getTypicalToDoList();
         todoList.resetData(newData);
@@ -57,7 +47,6 @@ public class ToDoListTest {
 
     @Test
     public void resetData_withDuplicateTasks_throwsAssertionError() {
->>>>>>> origin/V0.1_irfan:src/test/java/seedu/address/model/ToDoListTest.java
         TypicalTestTasks td = new TypicalTestTasks();
         // Repeat td.alice twice
         List<Task> newTasks = Arrays.asList(new Task(td.testExample1), new Task(td.testExample1));
@@ -70,15 +59,9 @@ public class ToDoListTest {
 
     @Test
     public void resetData_withDuplicateTags_throwsAssertionError() {
-<<<<<<< HEAD:src/test/java/seedu/address/model/AddressBookTest.java
-        ToDoList typicalAddressBook = new TypicalTestTasks().getTypicalToDoList();
-        List<ReadOnlyTask> newPersons = typicalAddressBook.getTaskList();
-        List<Label> newTags = new ArrayList<>(typicalAddressBook.getLabelList());
-=======
         ToDoList typicalToDoList = new TypicalTestTasks().getTypicalToDoList();
         List<ReadOnlyTask> newTasks = typicalToDoList.getTaskList();
         List<Label> newTags = new ArrayList<>(typicalToDoList.getLabelList());
->>>>>>> origin/V0.1_irfan:src/test/java/seedu/address/model/ToDoListTest.java
         // Repeat the first tag twice
         newTags.add(newTags.get(0));
         ToDoListStub newData = new ToDoListStub(newTasks, newTags);
