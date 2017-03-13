@@ -1,54 +1,34 @@
-TODO: Change this
 # About Us
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
 ## Project Team
 
-#### [Damith C. Rajapakse](http://www.comp.nus.edu.sg/~damithch) <br>
-<img src="images/DamithRajapakse.jpg" width="150"><br>
-**Role**: Project Advisor
-
------
-
-#### [Joshua Lee](http://github.com/lejolly)
-<img src="images/JoshuaLee.jpg" width="150"><br>
-Role: Developer <br>
-Responsibilities: UI
-
------
-
-#### [Leow Yijin](http://github.com/yijinl)
-<img src="images/LeowYijin.jpg" width="150"><br>
-Role: Developer <br>
-Responsibilities: Data
-
------
-
-#### [Martin Choo](http://github.com/m133225)
-<img src="images/MartinChoo.jpg" width="150"><br>
-Role: Developer <br>
-Responsibilities: Dev Ops
-
------
-
-#### [Thien Nguyen](https://github.com/ndt93)
+#### [Tan Rei Yun](https://github.com/zireiyun)
+<img src="images/Reiyun.JPG" width="150"><br>
  Role: Developer <br>
- Responsibilities: Threading
+ Responsibilities: GUI, Code Quality
+
+ -----
+
+#### [Wang Ming Rui](https://github.com/mingruimingrui)
+<img src="images/Ray.jpg" width="150"><br>
+ Role: Developer <br>
+ Responsibilities: Storage, Git Manager
 
  -----
 
 #### [Mohamed Irfan](http://github.com/mdirfanpm)
-<img src="images/MOhamedIrfan.jpg" width="150"><br>
+<img src="images/Irfan.JPG" width="150"><br>
  Role: Developer <br>
- Responsibilities: 
+ Responsibilities: Logic, Testing
 
  -----
 
 #### [Hu Zongqi](https://github.com/hzqn1234)
-<img src="images/ZQ.png" width="150"><br>
+<img src="images/ZQ.jpg" width="150"><br>
  Role: Developer <br>
- Responsibilities: UI
+ Responsibilities: Model, Deliverables
 
  -----
  
