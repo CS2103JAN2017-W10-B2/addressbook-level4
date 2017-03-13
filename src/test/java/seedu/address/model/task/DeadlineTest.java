@@ -10,7 +10,7 @@ import seedu.address.model.task.Deadline;
 public class DeadlineTest {
 
     @Test
-    public void isValidPhone() {
+    public void isValidDeadline() {
         // invalid deadines
         assertFalse(Deadline.isValidDeadline("")); // empty string
         assertFalse(Deadline.isValidDeadline(" ")); // spaces only
