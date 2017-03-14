@@ -7,6 +7,9 @@ import javafx.scene.layout.Region;
 import javafx.scene.web.WebView;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.model.task.ReadOnlyTask;
+import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 
 /**
  * The Browser Panel of the App.
@@ -16,7 +19,17 @@ public class BrowserPanel extends UiPart<Region> {
     private static final String FXML = "BrowserPanel.fxml";
 
     @FXML
-    private WebView browser;
+    private VBox browser;
+    @FXML
+    private Label name;
+    @FXML
+    private Label phone;
+    @FXML
+    private Label address;
+    @FXML
+    private Label email;
+    @FXML
+    private FlowPane tags;
 
     /**
      * @param placeholder The AnchorPane where the BrowserPanel must be inserted
@@ -24,19 +37,24 @@ public class BrowserPanel extends UiPart<Region> {
     public BrowserPanel(AnchorPane placeholder) {
         super(FXML);
         placeholder.setOnKeyPressed(Event::consume); // To prevent triggering events for typing inside the
-                                                     // loaded Web page.
+        // loaded Web page.
         FxViewUtil.applyAnchorBoundaryParameters(browser, 0.0, 0.0, 0.0, 0.0);
         placeholder.getChildren().add(browser);
     }
 
     public void loadPersonPage(ReadOnlyTask person) {
-        loadPage("https://www.google.com.sg/#safe=off&q=" + person.getTitle().fullTitle.replaceAll(" ", "+"));
+        name.setText(person.getTitle().fullTitle);
+        phone.setText(person.getDeadline().value);
+        address.setText(person.getNot_in_use().value);
+        email.setText(person.getRemarks().value);
+        initTags(person);
     }
-
-    public void loadPage(String url) {
-        browser.getEngine().load(url);
+    
+    private void initTags(ReadOnlyTask person) {
+        tags.getChildren().clear();
+        person.getLabels().forEach(tag -> tags.getChildren().add(new Label(tag.labelName)));
     }
-
+    
     /**
      * Frees resources allocated to the browser.
      */
