@@ -15,18 +15,21 @@ public class Task implements ReadOnlyTask {
     private Deadline deadline;
     private Remarks remarks;
     private This_attribute_is_not_in_use not_in_use;
+    private Boolean isCompleted;
 
     private UniqueLabelList labels;
 
     /**
      * Every field must be present and not null.
+     * @param isCompleted TODO
      */
-    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, UniqueLabelList labels) {
+    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, UniqueLabelList labels, Boolean isCompleted) {
         assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
         this.title = title;
         this.deadline = deadline;
         this.remarks = remarks;
         this.not_in_use = not_in_use;
+        this.isCompleted = false;
         this.labels = new UniqueLabelList(labels); // protect internal tags from changes in the arg list
     }
 
@@ -34,7 +37,7 @@ public class Task implements ReadOnlyTask {
      * Creates a copy of the given ReadOnlyTask.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels());
+        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels(), false);
     }
 
     public void setTitle(Title title) {

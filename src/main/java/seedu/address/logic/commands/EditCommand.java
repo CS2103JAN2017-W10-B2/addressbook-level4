@@ -83,7 +83,7 @@ public class EditCommand extends Command {
         This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
         UniqueLabelList updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
 
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, false);
     }
 
     /**

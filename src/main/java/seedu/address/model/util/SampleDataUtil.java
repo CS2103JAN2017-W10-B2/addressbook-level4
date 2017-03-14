@@ -17,22 +17,22 @@ public class SampleDataUtil {
             return new Task[] {
                 new Task(new Title("CS2103"), new Deadline("25032017"), new Remarks("asap"),
                     new This_attribute_is_not_in_use("N/A"),
-                    new UniqueLabelList("important")),
+                    new UniqueLabelList("important"), false),
                 new Task(new Title("EE4212 CA1"), new Deadline("26032017"), new Remarks("quality needed"),
                     new This_attribute_is_not_in_use("N/A"),
-                    new UniqueLabelList("urgent")),
+                    new UniqueLabelList("urgent"), false),
                 new Task(new Title("EG2401 Tutorial4"), new Deadline("27032017"), new Remarks("asap"),
                     new This_attribute_is_not_in_use("N/A"),
-                    new UniqueLabelList("important")),
+                    new UniqueLabelList("important"), false),
                 new Task(new Title("CS2010 MidTerm"), new Deadline("28032017"), new Remarks("optional"),
                     new This_attribute_is_not_in_use("N/A"),
-                    new UniqueLabelList("optional")),
+                    new UniqueLabelList("optional"), false),
                 new Task(new Title("CS2103"), new Deadline("29032017"), new Remarks("asap"),
                     new This_attribute_is_not_in_use("N/A"),
-                    new UniqueLabelList("important")),
+                    new UniqueLabelList("important"), false),
                 new Task(new Title("CS2010 Assignment2"), new Deadline("30032017"), new Remarks("asap"),
                     new This_attribute_is_not_in_use("N/A"),
-                    new UniqueLabelList("urgent"))
+                    new UniqueLabelList("urgent"), false)
             };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);

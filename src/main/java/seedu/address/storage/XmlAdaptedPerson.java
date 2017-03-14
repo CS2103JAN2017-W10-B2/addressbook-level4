@@ -70,6 +70,6 @@ public class XmlAdaptedPerson {
         final Remarks email = new Remarks(this.email);
         final This_attribute_is_not_in_use address = new This_attribute_is_not_in_use(this.address);
         final UniqueLabelList tags = new UniqueLabelList(personTags);
-        return new Task(name, phone, email, address, tags);
+        return new Task(name, phone, email, address, tags, false);
     }
 }

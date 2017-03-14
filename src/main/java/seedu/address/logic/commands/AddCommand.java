@@ -47,7 +47,7 @@ public class AddCommand extends Command {
                 new Deadline(deadline),
                 new Remarks(remarks),
                 new This_attribute_is_not_in_use(not_in_use),
-                new UniqueLabelList(labelSet)
+                new UniqueLabelList(labelSet), false
         );
     }
 

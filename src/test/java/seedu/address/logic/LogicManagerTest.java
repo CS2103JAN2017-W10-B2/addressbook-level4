@@ -422,7 +422,7 @@ public class LogicManagerTest {
             Label tag1 = new Label("tag1");
             Label tag2 = new Label("longertag2");
             UniqueLabelList tags = new UniqueLabelList(tag1, tag2);
-            return new Task(name, deadline, remark, privateAddress, tags);
+            return new Task(name, deadline, remark, privateAddress, tags, false);
         }
 
         /**
@@ -438,7 +438,7 @@ public class LogicManagerTest {
                     new Deadline("" + Math.abs(seed)),
                     new Remarks(seed + "@email"),
                     new This_attribute_is_not_in_use("House of " + seed),
-                    new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1)))
+                    new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1))), false
             );
         }
 
@@ -537,7 +537,7 @@ public class LogicManagerTest {
                     new Deadline("1"),
                     new Remarks("1@email"),
                     new This_attribute_is_not_in_use("House of 1"),
-                    new UniqueLabelList(new Label("tag"))
+                    new UniqueLabelList(new Label("tag")), false
             );
         }
     }
