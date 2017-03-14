@@ -115,7 +115,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.address, this.labels);
+            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.address, this.labels)||this.isCompletededited;
         }
 
         public void setName(Optional<Title> name) {
@@ -151,6 +151,10 @@ public class EditCommand extends Command {
         
         public boolean getIsCompleted() {
             return isCompleted;
+        }
+        
+        public void setIsCompletededited(boolean isCompletededited) {
+            this.isCompletededited = isCompletededited;
         }
 
         public void setAddress(Optional<This_attribute_is_not_in_use> address) {
