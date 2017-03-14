@@ -5,7 +5,7 @@ import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Title;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 
 /**
  * A mutable person object. For testing only.
@@ -13,7 +13,7 @@ import seedu.address.model.task.This_attribute_is_not_in_use;
 public class TestTask implements ReadOnlyTask {
 
     private Title title;
-    private This_attribute_is_not_in_use attribute_not_in_use;
+    private StartTime attribute_not_in_use;
     private Remarks remarks;
     private Deadline deadline;
     private UniqueLabelList labels;
@@ -37,7 +37,7 @@ public class TestTask implements ReadOnlyTask {
         this.title = title;
     }
 
-    public void setNotInUse(This_attribute_is_not_in_use attribute_not_in_use) {
+    public void setNotInUse(StartTime attribute_not_in_use) {
         this.attribute_not_in_use = attribute_not_in_use;
     }
 
@@ -69,7 +69,7 @@ public class TestTask implements ReadOnlyTask {
     }
 
     @Override
-    public This_attribute_is_not_in_use getNot_in_use() {
+    public StartTime getNot_in_use() {
         return attribute_not_in_use;
     }
 

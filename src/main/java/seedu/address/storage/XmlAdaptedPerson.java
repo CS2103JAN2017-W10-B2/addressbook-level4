@@ -13,7 +13,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 
 /**
  * JAXB-friendly version of the Person.
@@ -68,7 +68,7 @@ public class XmlAdaptedPerson {
         final Title name = new Title(this.name);
         final Deadline phone = new Deadline(this.phone);
         final Remarks email = new Remarks(this.email);
-        final This_attribute_is_not_in_use address = new This_attribute_is_not_in_use(this.address);
+        final StartTime address = new StartTime(this.address);
         final UniqueLabelList tags = new UniqueLabelList(personTags);
         return new Task(name, phone, email, address, tags);
     }

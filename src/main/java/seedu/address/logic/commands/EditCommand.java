@@ -12,7 +12,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
@@ -80,7 +80,7 @@ public class EditCommand extends Command {
         Title updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getTitle);
         Deadline updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
         Remarks updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
-        This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
+        StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
         UniqueLabelList updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
 
         return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
@@ -94,7 +94,7 @@ public class EditCommand extends Command {
         private Optional<Title> name = Optional.empty();
         private Optional<Deadline> phone = Optional.empty();
         private Optional<Remarks> email = Optional.empty();
-        private Optional<This_attribute_is_not_in_use> address = Optional.empty();
+        private Optional<StartTime> address = Optional.empty();
         private Optional<UniqueLabelList> tags = Optional.empty();
 
         public EditTaskDescriptor() {}
@@ -141,12 +141,12 @@ public class EditCommand extends Command {
             return email;
         }
 
-        public void setAddress(Optional<This_attribute_is_not_in_use> address) {
+        public void setAddress(Optional<StartTime> address) {
             assert address != null;
             this.address = address;
         }
 
-        public Optional<This_attribute_is_not_in_use> getAddress() {
+        public Optional<StartTime> getAddress() {
             return address;
         }
 

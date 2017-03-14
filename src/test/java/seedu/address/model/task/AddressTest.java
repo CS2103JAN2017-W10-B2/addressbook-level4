@@ -5,19 +5,19 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 
 public class AddressTest {
 
     @Test
     public void isValidAddress() {
         // invalid addresses
-        assertFalse(This_attribute_is_not_in_use.isValidAddress("")); // empty string
-        assertFalse(This_attribute_is_not_in_use.isValidAddress(" ")); // spaces only
+        assertFalse(StartTime.isValidStartTime("")); // empty string
+        assertFalse(StartTime.isValidStartTime(" ")); // spaces only
 
         // valid addresses
-        assertTrue(This_attribute_is_not_in_use.isValidAddress("Blk 456, Den Road, #01-355"));
-        assertTrue(This_attribute_is_not_in_use.isValidAddress("-")); // one character
-        assertTrue(This_attribute_is_not_in_use.isValidAddress("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        assertTrue(StartTime.isValidStartTime("Blk 456, Den Road, #01-355"));
+        assertTrue(StartTime.isValidStartTime("-")); // one character
+        assertTrue(StartTime.isValidStartTime("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
     }
 }

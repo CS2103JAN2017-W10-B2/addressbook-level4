@@ -18,7 +18,7 @@ import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes
@@ -85,9 +85,9 @@ public class ParserUtil {
     /**
      * Parses a {@code Optional<String> address} into an {@code Optional<Address>} if {@code address} is present.
      */
-    public static Optional<This_attribute_is_not_in_use> parseAddress(Optional<String> address) throws IllegalValueException {
+    public static Optional<StartTime> parseAddress(Optional<String> address) throws IllegalValueException {
         assert address != null;
-        return address.isPresent() ? Optional.of(new This_attribute_is_not_in_use(address.get())) : Optional.empty();
+        return address.isPresent() ? Optional.of(new StartTime(address.get())) : Optional.empty();
     }
 
     /**

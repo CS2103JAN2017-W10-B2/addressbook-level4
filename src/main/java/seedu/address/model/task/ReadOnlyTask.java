@@ -11,7 +11,7 @@ public interface ReadOnlyTask {
     Title getTitle();
     Deadline getDeadline();
     Remarks getRemarks();
-    This_attribute_is_not_in_use getNot_in_use();
+    StartTime getNot_in_use();
 
     /**
      * The returned LabelList is a deep copy of the internal LabelList,

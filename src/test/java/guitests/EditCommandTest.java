@@ -12,7 +12,7 @@ import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TestTask;
 // TODO edit this
@@ -100,7 +100,7 @@ public class EditCommandTest extends ToDoListGuiTest {
         assertResultMessage(Remarks.MESSAGE_REMARKS_CONSTRAINTS);
 
         commandBox.runCommand("edit 1 a/");
-        assertResultMessage(This_attribute_is_not_in_use.MESSAGE_ADDRESS_CONSTRAINTS);
+        assertResultMessage(StartTime.MESSAGE_START_TIME_CONSTRAINTS);
 
         commandBox.runCommand("edit 1 t/*&");
         assertResultMessage(Label.MESSAGE_LABEL_CONSTRAINTS);

@@ -46,7 +46,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 import seedu.address.storage.StorageManager;
 
 
@@ -418,7 +418,7 @@ public class LogicManagerTest {
             Title name = new Title("CS2103 Exercise 1");
             Deadline deadline = new Deadline("111111");
             Remarks remark = new Remarks("adam@gmail.com");
-            This_attribute_is_not_in_use privateAddress = new This_attribute_is_not_in_use("111, alpha street");
+            StartTime privateAddress = new StartTime("111, alpha street");
             Label tag1 = new Label("tag1");
             Label tag2 = new Label("longertag2");
             UniqueLabelList tags = new UniqueLabelList(tag1, tag2);
@@ -437,7 +437,7 @@ public class LogicManagerTest {
                     new Title("Person " + seed),
                     new Deadline("" + Math.abs(seed)),
                     new Remarks(seed + "@email"),
-                    new This_attribute_is_not_in_use("House of " + seed),
+                    new StartTime("House of " + seed),
                     new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1)))
             );
         }
@@ -536,7 +536,7 @@ public class LogicManagerTest {
                     new Title(name),
                     new Deadline("1"),
                     new Remarks("1@email"),
-                    new This_attribute_is_not_in_use("House of 1"),
+                    new StartTime("House of 1"),
                     new UniqueLabelList(new Label("tag"))
             );
         }
