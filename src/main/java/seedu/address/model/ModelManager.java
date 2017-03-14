@@ -92,6 +92,16 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredListToShowAll() {
         filteredTasks.setPredicate(null);
     }
+    
+    @Override
+    public void updateFilteredListToShowCompleted() {
+    	filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
+    }
+    
+    @Override
+    public void updateFilteredListToShowOngoing() {
+    	filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
+    }
 
     @Override
     public void updateFilteredTaskList(Set<String> keywords) {

@@ -17,6 +17,7 @@ public class TestTask implements ReadOnlyTask {
     private Remarks remarks;
     private Deadline deadline;
     private UniqueLabelList labels;
+    private Boolean isCompleted;
 
     public TestTask() {
         labels = new UniqueLabelList();
@@ -31,6 +32,7 @@ public class TestTask implements ReadOnlyTask {
         this.remarks = taskToCopy.getRemarks();
         this.attribute_not_in_use = taskToCopy.getNot_in_use();
         this.labels = taskToCopy.getLabels();
+        this.isCompleted = taskToCopy.getIsCompleted();
     }
 
     public void setTitle(Title title) {
@@ -51,6 +53,10 @@ public class TestTask implements ReadOnlyTask {
 
     public void setLabels(UniqueLabelList labels) {
         this.labels = labels;
+    }
+    
+    public void setIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
 
     @Override
@@ -76,6 +82,11 @@ public class TestTask implements ReadOnlyTask {
     @Override
     public UniqueLabelList getLabels() {
         return labels;
+    }
+    
+    @Override
+    public boolean getIsCompleted() {
+        return isCompleted;
     }
 
     @Override

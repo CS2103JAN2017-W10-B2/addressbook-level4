@@ -79,6 +79,15 @@ public class Task implements ReadOnlyTask {
     public This_attribute_is_not_in_use getNot_in_use() {
         return not_in_use;
     }
+    
+    public void setIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
+
+    @Override
+    public boolean getIsCompleted() {
+        return isCompleted;
+    }
 
     @Override
     public UniqueLabelList getLabels() {

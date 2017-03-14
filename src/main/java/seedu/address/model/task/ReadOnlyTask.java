@@ -3,7 +3,7 @@ package seedu.address.model.task;
 import seedu.address.model.label.UniqueLabelList;
 
 /**
- * A read-only immutable interface for a Task in the doitdoit!!.
+ * A read-only immutable interface for a Task in the Todolist!!.
  * Implementations should guarantee: details are present and not null, field values are validated.
  */
 public interface ReadOnlyTask {
@@ -12,6 +12,7 @@ public interface ReadOnlyTask {
     Deadline getDeadline();
     Remarks getRemarks();
     This_attribute_is_not_in_use getNot_in_use();
+    boolean getIsCompleted();
 
     /**
      * The returned LabelList is a deep copy of the internal LabelList,
@@ -43,6 +44,8 @@ public interface ReadOnlyTask {
                 .append(getRemarks())
                 .append(" Not_in_use: ")
                 .append(getNot_in_use())
+                .append(" Status: ")
+                .append(getIsCompleted())
                 .append(" Labels: ");
         getLabels().forEach(builder::append);
         return builder.toString();
