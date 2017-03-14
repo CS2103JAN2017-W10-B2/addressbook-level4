@@ -97,6 +97,14 @@ public class ParserUtil {
         assert email != null;
         return email.isPresent() ? Optional.of(new Remarks(email.get())) : Optional.empty();
     }
+    
+    /**
+     * Parses a {@code Optional<String> email} into an {@code Optional<Email>} if {@code email} is present.
+     */
+    public static Optional<String> parseIsCompleted(Optional<String> inCompleted) throws IllegalValueException {
+        assert inCompleted != null;
+        return inCompleted;
+    }
 
     /**
      * Parses {@code Collection<String> tags} into an {@code UniqueTagList}.

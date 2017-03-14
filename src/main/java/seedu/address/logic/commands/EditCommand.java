@@ -77,13 +77,14 @@ public class EditCommand extends Command {
                                              EditTaskDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        Title updatedName = editPersonDescriptor.getName().orElseGet(personToEdit::getTitle);
-        Deadline updatedPhone = editPersonDescriptor.getPhone().orElseGet(personToEdit::getDeadline);
-        Remarks updatedEmail = editPersonDescriptor.getEmail().orElseGet(personToEdit::getRemarks);
+        Title updatedName = editPersonDescriptor.getTitle().orElseGet(personToEdit::getTitle);
+        Deadline updatedPhone = editPersonDescriptor.getDeadline().orElseGet(personToEdit::getDeadline);
+        Remarks updatedEmail = editPersonDescriptor.getRemark().orElseGet(personToEdit::getRemarks);
         This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
-        UniqueLabelList updatedTags = editPersonDescriptor.getTags().orElseGet(personToEdit::getLabels);
-
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, false);
+        UniqueLabelList updatedTags = editPersonDescriptor.getLabels().orElseGet(personToEdit::getLabels);
+        boolean updatedIsCompleted = editPersonDescriptor.getIsCompleted();
+        
+        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedIsCompleted);
     }
 
     /**
@@ -91,54 +92,65 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditTaskDescriptor {
-        private Optional<Title> name = Optional.empty();
-        private Optional<Deadline> phone = Optional.empty();
-        private Optional<Remarks> email = Optional.empty();
+        private Optional<Title> title = Optional.empty();
+        private Optional<Deadline> deadline = Optional.empty();
+        private Optional<Remarks> remark = Optional.empty();
         private Optional<This_attribute_is_not_in_use> address = Optional.empty();
-        private Optional<UniqueLabelList> tags = Optional.empty();
+        private Optional<UniqueLabelList> labels = Optional.empty();
+        private boolean isCompleted = false;
+        private boolean isCompletededited = false;
 
         public EditTaskDescriptor() {}
 
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
-            this.name = toCopy.getName();
-            this.phone = toCopy.getPhone();
-            this.email = toCopy.getEmail();
+            this.title = toCopy.getTitle();
+            this.deadline = toCopy.getDeadline();
+            this.remark = toCopy.getRemark();
             this.address = toCopy.getAddress();
-            this.tags = toCopy.getTags();
+            this.labels = toCopy.getLabels();
+            this.isCompleted = toCopy.getIsCompleted();
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyPresent(this.name, this.phone, this.email, this.address, this.tags);
+            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.address, this.labels);
         }
 
         public void setName(Optional<Title> name) {
             assert name != null;
-            this.name = name;
+            this.title = name;
         }
 
-        public Optional<Title> getName() {
-            return name;
+        public Optional<Title> getTitle() {
+            return title;
         }
 
         public void setPhone(Optional<Deadline> phone) {
             assert phone != null;
-            this.phone = phone;
+            this.deadline = phone;
         }
 
-        public Optional<Deadline> getPhone() {
-            return phone;
+        public Optional<Deadline> getDeadline() {
+            return deadline;
         }
 
         public void setEmail(Optional<Remarks> email) {
             assert email != null;
-            this.email = email;
+            this.remark = email;
         }
 
-        public Optional<Remarks> getEmail() {
-            return email;
+        public Optional<Remarks> getRemark() {
+            return remark;
+        }
+        
+        public void setIsCompleted(boolean isCompleted) {
+            this.isCompleted = isCompleted;
+        }
+        
+        public boolean getIsCompleted() {
+            return isCompleted;
         }
 
         public void setAddress(Optional<This_attribute_is_not_in_use> address) {
@@ -152,11 +164,11 @@ public class EditCommand extends Command {
 
         public void setTags(Optional<UniqueLabelList> tags) {
             assert tags != null;
-            this.tags = tags;
+            this.labels = tags;
         }
 
-        public Optional<UniqueLabelList> getTags() {
-            return tags;
+        public Optional<UniqueLabelList> getLabels() {
+            return labels;
         }
     }
 }
