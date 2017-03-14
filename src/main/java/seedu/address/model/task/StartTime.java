@@ -9,7 +9,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class StartTime {
 
     public static final String MESSAGE_START_TIME_CONSTRAINTS = "Task start time should only contain numbers";
-    public static final String START_TIME_VALIDATION_REGEX = "(\\d+)|";
+    public static final String START_TIME_VALIDATION_REGEX = "\\d{4}(\\s+\\d{6})?|\\d{6}(\\s+\\d{4})?|";
 
     public final String value;
 
