@@ -23,13 +23,14 @@ public class Task implements ReadOnlyTask {
      * Every field must be present and not null.
      * @param isCompleted TODO
      */
-    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, UniqueLabelList labels, Boolean isCompleted) {
+    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, UniqueLabelList labels, 
+    			Boolean isCompleted) {
         assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
         this.title = title;
         this.deadline = deadline;
         this.remarks = remarks;
         this.not_in_use = not_in_use;
-        this.isCompleted = false;
+        this.isCompleted = isCompleted;
         this.labels = new UniqueLabelList(labels); // protect internal tags from changes in the arg list
     }
 
@@ -37,7 +38,8 @@ public class Task implements ReadOnlyTask {
      * Creates a copy of the given ReadOnlyTask.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels(), false);
+        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels(),
+        	source.getIsCompleted());
     }
 
     public void setTitle(Title title) {
@@ -112,6 +114,7 @@ public class Task implements ReadOnlyTask {
         this.setRemarks(replacement.getRemarks());
         this.setNot_in_use(replacement.getNot_in_use());
         this.setLabels(replacement.getLabels());
+        this.setIsCompleted(replacement.getIsCompleted());
     }
 
     @Override

@@ -33,10 +33,11 @@ public class AddCommand extends Command {
 
     /**
      * Creates an AddCommand using raw values.
+     * @param isCompleted TODO
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String title, String deadline, String remarks, String not_in_use, Set<String> labels)
+    public AddCommand(String title, String deadline, String remarks, String not_in_use, String isCompleted, Set<String> labels)
             throws IllegalValueException {
         final Set<Label> labelSet = new HashSet<>();
         for (String labelName : labels) {
@@ -47,7 +48,8 @@ public class AddCommand extends Command {
                 new Deadline(deadline),
                 new Remarks(remarks),
                 new This_attribute_is_not_in_use(not_in_use),
-                new UniqueLabelList(labelSet), false
+                new UniqueLabelList(labelSet), 
+                (isCompleted.trim().equals("yes"))
         );
     }
 

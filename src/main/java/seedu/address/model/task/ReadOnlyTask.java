@@ -44,7 +44,7 @@ public interface ReadOnlyTask {
                 .append(getRemarks())
                 .append(" Not_in_use: ")
                 .append(getNot_in_use())
-                .append(" Status: ")
+                .append(" Completion: ")
                 .append(getIsCompleted())
                 .append(" Labels: ");
         getLabels().forEach(builder::append);

@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NOT_IN_USE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ISCOMPLETED;
 
 import java.util.NoSuchElementException;
 
@@ -24,7 +25,7 @@ public class AddCommandParser {
      */
     public Command parse(String args) {
         ArgumentTokenizer argsTokenizer =
-                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_NOT_IN_USE, PREFIX_LABELS);
+                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_NOT_IN_USE, PREFIX_LABELS, PREFIX_ISCOMPLETED);
         argsTokenizer.tokenize(args);
         try {
             return new AddCommand(
@@ -32,6 +33,7 @@ public class AddCommandParser {
                     argsTokenizer.getValue(PREFIX_DEADLINE).orElse(""),
                     argsTokenizer.getValue(PREFIX_REMARKS).orElse(""),
                     argsTokenizer.getValue(PREFIX_NOT_IN_USE).orElse(""),
+                    argsTokenizer.getValue(PREFIX_ISCOMPLETED).orElse("no"),
                     ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))
             );
         } catch (NoSuchElementException nsee) {
