@@ -12,7 +12,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
@@ -80,7 +80,7 @@ public class EditCommand extends Command {
         Title updatedName = editPersonDescriptor.getTitle().orElseGet(personToEdit::getTitle);
         Deadline updatedPhone = editPersonDescriptor.getDeadline().orElseGet(personToEdit::getDeadline);
         Remarks updatedEmail = editPersonDescriptor.getRemark().orElseGet(personToEdit::getRemarks);
-        This_attribute_is_not_in_use updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
+        StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
         UniqueLabelList updatedTags = editPersonDescriptor.getLabels().orElseGet(personToEdit::getLabels);
         boolean updatedIsCompleted = editPersonDescriptor.getIsCompleted();
         
@@ -95,7 +95,7 @@ public class EditCommand extends Command {
         private Optional<Title> title = Optional.empty();
         private Optional<Deadline> deadline = Optional.empty();
         private Optional<Remarks> remark = Optional.empty();
-        private Optional<This_attribute_is_not_in_use> address = Optional.empty();
+        private Optional<StartTime> address = Optional.empty();
         private Optional<UniqueLabelList> labels = Optional.empty();
         private boolean isCompleted = false;
         private boolean isCompletededited = false;
@@ -157,12 +157,12 @@ public class EditCommand extends Command {
             this.isCompletededited = isCompletededited;
         }
 
-        public void setAddress(Optional<This_attribute_is_not_in_use> address) {
+        public void setAddress(Optional<StartTime> address) {
             assert address != null;
             this.address = address;
         }
 
-        public Optional<This_attribute_is_not_in_use> getAddress() {
+        public Optional<StartTime> getAddress() {
             return address;
         }
 

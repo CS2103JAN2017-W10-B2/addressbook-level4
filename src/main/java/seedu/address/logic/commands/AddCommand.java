@@ -11,7 +11,7 @@ import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
@@ -47,7 +47,7 @@ public class AddCommand extends Command {
                 new Title(title),
                 new Deadline(deadline),
                 new Remarks(remarks),
-                new This_attribute_is_not_in_use(not_in_use),
+                new StartTime(not_in_use),
                 new UniqueLabelList(labelSet), 
                 (isCompleted.trim().equals("yes"))
         );

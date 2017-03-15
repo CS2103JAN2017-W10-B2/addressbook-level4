@@ -14,8 +14,8 @@ public class Task implements ReadOnlyTask {
     private Title title;
     private Deadline deadline;
     private Remarks remarks;
-    private This_attribute_is_not_in_use not_in_use;
-    private Boolean isCompleted;
+    private StartTime not_in_use;
+	private Boolean isCompleted;
 
     private UniqueLabelList labels;
 
@@ -23,8 +23,7 @@ public class Task implements ReadOnlyTask {
      * Every field must be present and not null.
      * @param isCompleted TODO
      */
-    public Task(Title title, Deadline deadline, Remarks remarks, This_attribute_is_not_in_use not_in_use, UniqueLabelList labels, 
-    			Boolean isCompleted) {
+    public Task(Title title, Deadline deadline, Remarks remarks, StartTime not_in_use, UniqueLabelList labels, Boolean isCompleted) {
         assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
         this.title = title;
         this.deadline = deadline;
@@ -72,13 +71,13 @@ public class Task implements ReadOnlyTask {
         return remarks;
     }
 
-    public void setNot_in_use(This_attribute_is_not_in_use not_in_use) {
+    public void setNot_in_use(StartTime not_in_use) {
         assert not_in_use != null;
         this.not_in_use = not_in_use;
     }
 
     @Override
-    public This_attribute_is_not_in_use getNot_in_use() {
+    public StartTime getNot_in_use() {
         return not_in_use;
     }
     

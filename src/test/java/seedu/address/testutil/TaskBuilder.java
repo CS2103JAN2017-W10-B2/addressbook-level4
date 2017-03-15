@@ -6,7 +6,7 @@ import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
-import seedu.address.model.task.This_attribute_is_not_in_use;
+import seedu.address.model.task.StartTime;
 
 /**
  *
@@ -40,7 +40,7 @@ public class TaskBuilder {
     }
 
     public TaskBuilder with_attribute_not_in_use(String attribute_not_in_use) throws IllegalValueException {
-        this.task.setNotInUse(new This_attribute_is_not_in_use(attribute_not_in_use));
+        this.task.setNotInUse(new StartTime(attribute_not_in_use));
         return this;
     }
 

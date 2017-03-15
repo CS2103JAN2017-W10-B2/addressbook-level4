@@ -9,7 +9,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Deadline {
 
     public static final String MESSAGE_DEADLINE_CONSTRAINTS = "Task deadline should only contain numbers";
-    public static final String DEADLine_VALIDATION_REGEX = "(\\d+)|";
+    public static final String DEADLine_VALIDATION_REGEX = "\\d{4}(\\s+\\d{6})?|\\d{6}(\\s+\\d{4})?|";
 
     public final String value;
 
