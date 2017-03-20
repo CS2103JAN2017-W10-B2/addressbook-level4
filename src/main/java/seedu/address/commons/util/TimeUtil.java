@@ -1,3 +1,4 @@
+//@@author A0135795R
 package seedu.address.commons.util;
 
 import java.time.LocalDate;
@@ -6,7 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Helper function for handling String Time.
+ * Helper function for handling String Date and Time.
+ * Will return null when date and time are not detected.
  */
 public class TimeUtil {
 	
@@ -22,9 +24,12 @@ public class TimeUtil {
 	
 	/**
      * Returns the date from a String.
+     * If no date is found, null will be returned.
      */
 	public static LocalDate getDate(String date) {
-		assert doesDateExist(date) : DATE_DOES_NOT_EXIST_WARNING;
+		if (!doesDateExist(date)) {
+			return null;
+		}
 		Matcher matcher;
 		String dateString;
 		if (TIME_REGEX_DATE_TIME.matcher(date).find()) {
@@ -49,9 +54,12 @@ public class TimeUtil {
 	
 	/**
      * Returns the time from a String.
+     * If no time is found, null will be returned.
      */
 	public static LocalTime getTime(String time) {
-		assert doesTimeExist(time) : TIME_DOES_NOT_EXIST_WARNING;
+		if (!doesTimeExist(time)){
+			return null;
+		}
 		Matcher matcher;
 		String timeString;
 		if (TIME_REGEX_DATE_TIME.matcher(time).find()) {
