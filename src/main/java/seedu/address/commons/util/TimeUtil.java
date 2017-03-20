@@ -1,6 +1,7 @@
 //@@author A0135795R
 package seedu.address.commons.util;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.regex.Matcher;
@@ -27,28 +28,32 @@ public class TimeUtil {
      * If no date is found, null will be returned.
      */
 	public static LocalDate getDate(String date) {
-		if (!doesDateExist(date)) {
+		if (!doesDateFitRegex(date)) {
 			return null;
 		}
 		Matcher matcher;
 		String dateString;
-		if (TIME_REGEX_DATE_TIME.matcher(date).find()) {
-			matcher = TIME_REGEX_DATE_TIME.matcher(date);
-			matcher.find();
-			dateString = matcher.group(DATE_GROUP);
-			return transformDateString(dateString);
-		}
-		else if (TIME_REGEX_TIME_DATE.matcher(date).find()) {
-			matcher = TIME_REGEX_TIME_DATE.matcher(date);
-			matcher.find();
-			dateString = matcher.group(DATE_GROUP);
-			return transformDateString(dateString);
-		}
-		else{
-			matcher = TIME_REGEX_DATE_ONLY.matcher(date);
-			matcher.find();
-			dateString = matcher.group(DATE_GROUP);
-			return transformDateString(dateString);
+		try {
+			if (TIME_REGEX_DATE_TIME.matcher(date).find()) {
+				matcher = TIME_REGEX_DATE_TIME.matcher(date);
+				matcher.find();
+				dateString = matcher.group(DATE_GROUP);
+				return transformDateString(dateString);
+			}
+			else if (TIME_REGEX_TIME_DATE.matcher(date).find()) {
+				matcher = TIME_REGEX_TIME_DATE.matcher(date);
+				matcher.find();
+				dateString = matcher.group(DATE_GROUP);
+				return transformDateString(dateString);
+			}
+			else{
+				matcher = TIME_REGEX_DATE_ONLY.matcher(date);
+				matcher.find();
+				dateString = matcher.group(DATE_GROUP);
+				return transformDateString(dateString);
+			}
+		} catch (DateTimeException e) {
+			return null;
 		}
 	}
 	
@@ -57,28 +62,32 @@ public class TimeUtil {
      * If no time is found, null will be returned.
      */
 	public static LocalTime getTime(String time) {
-		if (!doesTimeExist(time)){
+		if (!doesTimeFitRegex(time)){
 			return null;
 		}
 		Matcher matcher;
 		String timeString;
-		if (TIME_REGEX_DATE_TIME.matcher(time).find()) {
-			matcher = TIME_REGEX_DATE_TIME.matcher(time);
-			matcher.find();
-			timeString = matcher.group(TIME_GROUP);
-			return transformTimeString(timeString);
-		}
-		else if (TIME_REGEX_TIME_DATE.matcher(time).find()) {
-			matcher = TIME_REGEX_TIME_DATE.matcher(time);
-			matcher.find();
-			timeString = matcher.group(TIME_GROUP);
-			return transformTimeString(timeString);
-		}
-		else{
-			matcher = TIME_REGEX_TIME_ONLY.matcher(time);
-			matcher.find();
-			timeString = matcher.group(TIME_GROUP);
-			return transformTimeString(timeString);
+		try {
+			if (TIME_REGEX_DATE_TIME.matcher(time).find()) {
+				matcher = TIME_REGEX_DATE_TIME.matcher(time);
+				matcher.find();
+				timeString = matcher.group(TIME_GROUP);
+				return transformTimeString(timeString);
+			}
+			else if (TIME_REGEX_TIME_DATE.matcher(time).find()) {
+				matcher = TIME_REGEX_TIME_DATE.matcher(time);
+				matcher.find();
+				timeString = matcher.group(TIME_GROUP);
+				return transformTimeString(timeString);
+			}
+			else{
+				matcher = TIME_REGEX_TIME_ONLY.matcher(time);
+				matcher.find();
+				timeString = matcher.group(TIME_GROUP);
+				return transformTimeString(timeString);
+			}
+		} catch (DateTimeException e) {
+			return null;
 		}
 	}
 	
@@ -88,7 +97,7 @@ public class TimeUtil {
 	private static LocalDate transformDateString(String date) {
 		int day = Integer.parseInt(date.substring(0, 2));
 		int month = Integer.parseInt(date.substring(2, 4));
-		int year = Integer.parseInt(date.substring(4, 6));
+		int year = Integer.parseInt(date.substring(4, 6)) + 2000;
 		return LocalDate.of(year, month, day);
 	}
 	
@@ -102,9 +111,9 @@ public class TimeUtil {
 	}
 	
 	/**
-     * Returns true if date exists.
+     * Returns true if date fits regex.
      */
-	public static Boolean doesDateExist(String date_time) {
+	private static Boolean doesDateFitRegex(String date_time) {
 		if (TIME_REGEX_DATE_TIME.matcher(date_time).find()) {
 			return true;
 		}
@@ -120,9 +129,9 @@ public class TimeUtil {
 	}
 	
 	/**
-     * Returns true if time exists.
+     * Returns true if time fits regex.
      */
-	public static Boolean doesTimeExist(String date_time) {
+	private static Boolean doesTimeFitRegex(String date_time) {
 		if (TIME_REGEX_DATE_TIME.matcher(date_time).find()) {
 			return true;
 		}
