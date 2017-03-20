@@ -15,42 +15,42 @@ public class TypicalTestTasks {
     public TypicalTestTasks() {
         try {
             testExample1 = new TaskBuilder().withTitle("Project")
-                    .with_attribute_not_in_use("temp")
+                    .with_attribute_not_in_use("111117")
                     .withRemarks("send reminder to groupmates on whatsapp!!")
                     .withDeadline("111117")
                     .withLabels("project").build();
             testExample2 = new TaskBuilder().withTitle("assignment due")
-            		.with_attribute_not_in_use("temp")
+            		.with_attribute_not_in_use("101217")
                     .withRemarks("hand in assignment at LT27")
                     .withDeadline("101217")
                     .withLabels("science", "event").build();
             testExample3 = new TaskBuilder().withTitle("Entry Test")
             		.withDeadline("130712")
                     .withRemarks("Project statement: Write about a theory that is significant to you.")
-                    .with_attribute_not_in_use("temp").build();
+                    .with_attribute_not_in_use("130712").build();
             testExample4 = new TaskBuilder().withTitle("Math assignment")
             		.withDeadline("081017")
-                    .withRemarks("print out assignment for the cover").with_attribute_not_in_use("temp").build();
+                    .withRemarks("print out assignment for the cover").with_attribute_not_in_use("081017").build();
             testExample5 = new TaskBuilder().withTitle("Additional LEcture during recess week")
             		.withDeadline("231112")
                     .withRemarks("bring jacket")
-                    .with_attribute_not_in_use("temp").build();
+                    .with_attribute_not_in_use("231112").build();
             testExample6 = new TaskBuilder().withTitle("Visit park")
             		.withDeadline("101217")
                     .withRemarks("bring umbrella")
-                    .with_attribute_not_in_use("temp").build();
+                    .with_attribute_not_in_use("101217").build();
             testExample7 = new TaskBuilder().withTitle("Schedule meeting with prof")
             		.withDeadline("140917")
                     .withRemarks("check email for updates")
-                    .with_attribute_not_in_use("temp").build();
+                    .with_attribute_not_in_use("140917").build();
             testExample8 = new TaskBuilder().withTitle("Midterms at 12pm")
             		.withDeadline("231117")
                     .withRemarks("eat before")
-                    .with_attribute_not_in_use("temp").build();
+                    .with_attribute_not_in_use("231117").build();
             testExample9 = new TaskBuilder().withTitle("JUnit Test 9")
             		.withDeadline("231217")
                     .withRemarks("find out more information from Mary")
-                    .with_attribute_not_in_use("temp").build();
+                    .with_attribute_not_in_use("231217").build();
         } catch (IllegalValueException e) {
             e.printStackTrace();
             assert false : "not possible";
