@@ -80,7 +80,7 @@ public class EditCommand extends Command {
         Title updatedName = editPersonDescriptor.getTitle().orElseGet(personToEdit::getTitle);
         Deadline updatedPhone = editPersonDescriptor.getDeadline().orElseGet(personToEdit::getDeadline);
         Remarks updatedEmail = editPersonDescriptor.getRemark().orElseGet(personToEdit::getRemarks);
-        StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
+        StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getStartTime);
         UniqueLabelList updatedTags = editPersonDescriptor.getLabels().orElseGet(personToEdit::getLabels);
         boolean updatedIsCompleted = editPersonDescriptor.getIsCompleted();
         

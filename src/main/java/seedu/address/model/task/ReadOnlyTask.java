@@ -11,7 +11,7 @@ public interface ReadOnlyTask {
     Title getTitle();
     Deadline getDeadline();
     Remarks getRemarks();
-    StartTime getNot_in_use();
+    StartTime getStartTime();
 	boolean getIsCompleted();
 
     /**
@@ -29,7 +29,7 @@ public interface ReadOnlyTask {
                 && other.getTitle().equals(this.getTitle()) // state checks here onwards
                 && other.getDeadline().equals(this.getDeadline())
                 && other.getRemarks().equals(this.getRemarks())
-                && other.getNot_in_use().equals(this.getNot_in_use()));
+                && other.getStartTime().equals(this.getStartTime()));
     }
 
     /**
@@ -43,7 +43,7 @@ public interface ReadOnlyTask {
                 .append(" Remarks: ")
                 .append(getRemarks())
                 .append(" Not_in_use: ")
-                .append(getNot_in_use())
+                .append(getStartTime())
                 .append(" Completion: ")
                 .append(getIsCompleted())
                 .append(" Labels: ");

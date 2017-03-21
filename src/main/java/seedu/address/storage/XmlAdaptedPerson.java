@@ -48,7 +48,7 @@ public class XmlAdaptedPerson {
         name = source.getTitle().fullTitle;
         phone = source.getDeadline().value;
         email = source.getRemarks().value;
-        address = source.getNot_in_use().value;
+        address = source.getStartTime().value;
         tagged = new ArrayList<>();
         for (Label tag : source.getLabels()) {
             tagged.add(new XmlAdaptedTag(tag));
