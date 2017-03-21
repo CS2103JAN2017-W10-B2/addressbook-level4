@@ -12,7 +12,7 @@ public class CliSyntax {
     /* Prefix definitions */
     public static final Prefix PREFIX_DEADLINE = new Prefix("d/");
     public static final Prefix PREFIX_REMARKS = new Prefix("r/");
-    public static final Prefix PREFIX_NOT_IN_USE = new Prefix("n/");
+    public static final Prefix PREFIX_START_TIME = new Prefix("n/");
     public static final Prefix PREFIX_LABELS = new Prefix("l/");
     public static final Prefix PREFIX_ISCOMPLETED = new Prefix("c/");
 

@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NOT_IN_USE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
@@ -31,7 +31,7 @@ public class EditCommandParser {
     public Command parse(String args) {
         assert args != null;
         ArgumentTokenizer argsTokenizer =
-                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_NOT_IN_USE, PREFIX_LABELS, PREFIX_ISCOMPLETED);
+                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME, PREFIX_LABELS, PREFIX_ISCOMPLETED);
         argsTokenizer.tokenize(args);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);
 
@@ -45,7 +45,7 @@ public class EditCommandParser {
             editPersonDescriptor.setName(ParserUtil.parseName(preambleFields.get(1)));
             editPersonDescriptor.setPhone(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
             editPersonDescriptor.setEmail(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
-            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_NOT_IN_USE)));
+            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_START_TIME)));
             editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
             editPersonDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
             editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
