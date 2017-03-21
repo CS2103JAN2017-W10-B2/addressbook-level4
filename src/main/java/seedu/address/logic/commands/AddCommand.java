@@ -22,9 +22,9 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to doitdoit!!. "
-    		+ "Parameters: TITLE [from START TIME] [to DEADLINE] [remarks: REMAKRS]  [label: LABELS]...\n"
+    		+ "Parameters: TITLE (from START TIME) (till DEADLINE) (remarks: REMAKRS) (label: LABELS...)\n"
             + "Example: " + COMMAND_WORD
-            + " Complete Assignment 1 d/080217 r/20% of final grade n/this is a bug l/Uni Assignment";
+            + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Uni Assignment";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in doitdoit!!";

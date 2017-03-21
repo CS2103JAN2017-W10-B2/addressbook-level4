@@ -10,7 +10,7 @@ import seedu.address.logic.parser.ArgumentTokenizer.Prefix;
 public class CliSyntax {
 
     /* Prefix definitions */
-    public static final Prefix PREFIX_DEADLINE = new Prefix(" to ");
+    public static final Prefix PREFIX_DEADLINE = new Prefix(" till ");
     public static final Prefix PREFIX_REMARKS = new Prefix(" remark: ");
     public static final Prefix PREFIX_START_TIME = new Prefix(" from ");
     public static final Prefix PREFIX_LABELS = new Prefix(" label: ");
