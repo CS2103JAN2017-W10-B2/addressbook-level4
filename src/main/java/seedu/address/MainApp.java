@@ -186,10 +186,6 @@ public class MainApp extends Application {
         this.stop();
     }
 
-    public void SetPath(String StoragePath) {
-    	config.setAddressBookFilePath(StoragePath);
-    }
-    
     public static void main(String[] args) {
         launch(args);
     }
