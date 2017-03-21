@@ -1,7 +1,6 @@
 # doitdoit!! - User Guide
 
-By : `Team SE-EDU`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jun 2016`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
-TODO: Ray[List], Rei[Delete, Complete], ZongQi[edit, search], Irfan[add, select]
+By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbsp;&nbsp;&nbsp;
 
 ---
 
@@ -17,7 +16,7 @@ TODO: Ray[List], Rei[Delete, Complete], ZongQi[edit, search], Irfan[add, select]
    > Having any Java 8 version is not enough. <br>
    > This app will not work with earlier versions of Java 8.
 
-1. Download the latest `addressbook.jar` from the [releases](../../../releases) tab.
+1. Download the latest `todolist.jar` from the [releases](../../../releases) tab.
 2. Copy the file to the folder you want to use as the home folder for your Address Book.
 3. Double-click the file to start the app. The GUI should appear in a few seconds.
    > <img src="images/Ui.png" width="600">
@@ -26,9 +25,9 @@ TODO: Ray[List], Rei[Delete, Complete], ZongQi[edit, search], Irfan[add, select]
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
 5. Some example commands you can try:
    * **`list`** : lists all contacts
-   * **`add`**` John Doe p/98765432 e/johnd@gmail.com a/John street, block 123, #01-01` :
-     adds a contact named `John Doe` to the Address Book.
-   * **`delete`**` 3` : deletes the 3rd contact shown in the current list
+   * **`add`**` study for the finals from today till next thursday` :
+     adds a new task to study for the finals until next thursday.
+   * **`delete`**` 1` : deletes the first task shown in the current list
    * **`exit`** : exits the app
 6. Refer to the [Features](#features) section below for details of each command.<br>
 
@@ -37,66 +36,66 @@ TODO: Ray[List], Rei[Delete, Complete], ZongQi[edit, search], Irfan[add, select]
 
 > **Command Format**
 >
-> * Words in `UPPER_CASE` are the parameters.
-> * Items in `SQUARE_BRACKETS` are optional.
-> * Items with `...` after them can have multiple instances.
-> * Parameters can be in any order.
+> * `PARAMETER NAME` all caps means to enter the parameters this must have a value!
+> * `(OPTIONAL PARAMETER)` this bracket means that parameter is optional.
+> * `...` which follows parameter mean that the parameter can have multiple inputs.
+> * Parameters can be in any order and of any length.
 
 ### 2.1. Viewing help : `help`
 
 Format: `help`
 
 > Help is also shown if you enter an incorrect command e.g. `abcd`
+> So just type something random to get a quick guide on the commands!
 
 ### 2.2. Adding a task: `add`
 
 Adds a Task to the task list<br>
-Format: `add TITLE [d/DEADLINE] [r/REMARKS] [l/LABELS]...`
+Format: `add TITLE (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS...)`
 
-> Other than TITLE, all other information is optional
-> DEADLINE format is the format DDMMYY [HHMM] where only the date is compulsory if DEADLINE information is added
-> Time of DEADLINE is in 24hr format and is defaulted as 2359 if not specified
-> Each task can have any number of tags (including 0)
-> To add more than 1 labels, start next label with `l/` again
+> Other than TITLE, all other information is purely optional
+> STARTTIME and DEADLINE inputs are very flexible!
+> Try something like `day after like next thursday`, or `4 o'clock`.
+> The program however takes in the date and time in American format.
+> Meaning that it takes the date in the form month, day, year if the calendar date is given.
+> Time is in 24hr format and is defaulted at current time if not specified.
 
 Examples:
 
-* `add Complete Assignment 1 d/080217 r/20% of final grade l/Uni Assignment`<br>
-* `add Revise tutorial 1 l/Uni Assignment`<br>
-* `add Do CS2103 T7 d/080317 1000 r/Remember to make pull request on github l/School`<br>
-* `add Buy gift for mom d/20042017 l/Birthday l/Family`<br>
-* `add Finish studing for mid term d/060317 1600 l/School l/ Exam`<br>
+* `add Complete Assignment 1 from now till friday remark: 20% of final grade label: Uni Assignment`<br>
+* `add Revise tutorial 1 label: Uni Assignment`<br>
+* `add Do CS2103 T7 till thursday 8pm remark: Remember to make pull request on github label: School`<br>
+* `add Buy gift for mom till 7th September label: Birthday Family`<br>
+* `add Finish studing for mid term from now till tomorrow label: School Exam`<br>
 
 ### 2.3. Listing all tasks : `list`
 
-Shows a list of all tasks in the address book.<br>
+Shows a list of all tasks in the to do list.<br>
 Format: `list`
 
 ### 2.4. Editing a task : `edit`
 
 Edits an existing task in the ToDoList.<br>
-Format: `edit INDEX [TITLE] [d/DEADLINE] [r/REMARKS] [l/LABELS]...`
+Format: `edit INDEX (TITLE) (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS)`
 
 > * Edits the task at the specified `INDEX`.
     The index refers to the index number shown in the last task listing.<br>
     The index **must be a positive integer** 1, 2, 3, ...
 > * At least one of the optional fields must be provided.
 > * Existing values will be updated to the input values.
-> * When editing LABELS, the existing LABELS of the task will be removed i.e adding of LABELS is not cumulative.
-> * You can remove all the person's LABELS by typing `l/` without specifying any LABELS after it.
-> * Similarly you can remove REMARKS and DEADLINES by typing `r/` and `d/` respectively
+> * Clear all LABELS by entering `label: `, similarly for REMARKS, type `remark:`
 
 Examples:
 
-* `edit 1 d/050317`<br>
-  Edits the due date of the 1st task to be `050317`.
-* `edit 2 CS2103 homework l/`<br>
+* `edit 1 till next thursday`<br>
+  Edits the due date of the 1st task to be next thursday.
+* `edit 2 CS2103 homework label:`<br>
   Edits the TITLE of the 2nd task to be `CS2103 homework` and clears all existing LABELS.
 
 ### 2.5. Finding all tasks containing any keyword in their task summary: `find`
 
 Finds tasks whose task summarys contain any of the given keywords.<br>
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD (MORE_KEYWORDS)`
 
 > * The search is case sensitive. e.g `hans` will not match `Hans`
 > * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -188,16 +187,16 @@ There is no need to save manually.
 * **Help** : `help` <br>
   e.g.
 
-* **Add**  `add TITLE [d/DEADLINE] [r/REMARKS] [l/LABELS]...` <br>
-  e.g. `add Do CS2103 T7 d/080317 1600 r/Remember to make pull request on github l/School`
+* **Add**  `add TITLE (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS...)` <br>
+  e.g. `add Do CS2103 T7 from today till last day of month remark: Remember to do properly`
 
 * **List** : `list` <br>
   e.g.
 
-* **Edit** : `edit INDEX [TITLE] [d/DEADLINE] [r/REMARKS] [l/LABELS]...` <br>
-  e.g. `edit 2 CS2103 homework l/`<br>
+* **Edit** : `edit INDEX (TITLE) (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS)` <br>
+  e.g. `edit 2 CS2103 homework label: `<br>
 
-* **Find** : `find KEYWORD [MORE_KEYWORDS]` <br>
+* **Find** : `find KEYWORD (MORE_KEYWORDS)` <br>
   e.g. `find homework`
 
 * **Delete** : `delete INDEX` <br>
