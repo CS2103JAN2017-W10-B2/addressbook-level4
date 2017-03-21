@@ -17,8 +17,9 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncorrectCommand;
 import seedu.address.logic.commands.ListAllCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.commands.ListCommand;
-import seedu.address.logic.commands.ShowOngoingCommand;
+import seedu.address.logic.commands.ListCompletedCommand;
+import seedu.address.logic.commands.ListOngoingCommand;
+import seedu.address.logic.commands.SetPathCommand;
 
 /**
  * Parses user input.
@@ -73,11 +74,14 @@ public class Parser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
             
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+        case ListCompletedCommand.COMMAND_WORD:
+            return new ListCompletedCommand();
             
-        case ShowOngoingCommand.COMMAND_WORD:
-            return new ShowOngoingCommand(); 
+        case ListOngoingCommand.COMMAND_WORD:
+            return new ListOngoingCommand(); 
+            
+        case SetPathCommand.COMMAND_WORD:
+            return new SetPathCommand(arguments);
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);
