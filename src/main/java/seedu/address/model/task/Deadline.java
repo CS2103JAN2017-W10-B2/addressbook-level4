@@ -1,6 +1,7 @@
 package seedu.address.model.task;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.TimeUtil;
 
 /**
  * Represents a Task's deadline in the doitdoit!!.
@@ -8,8 +9,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
  */
 public class Deadline {
 
-    public static final String MESSAGE_DEADLINE_CONSTRAINTS = "Task deadline should only contain numbers";
-    public static final String DEADLine_VALIDATION_REGEX = "\\d{4}(\\s+\\d{6})?|\\d{6}(\\s+\\d{4})?|";
+    public static final String MESSAGE_DEADLINE_CONSTRAINTS = "Task deadline is not accepted, try a more formal "
+    		+ "definition.";
 
     public final String value;
 
@@ -31,7 +32,7 @@ public class Deadline {
      * Returns true if a given string is a valid deadline.
      */
     public static boolean isValidDeadline(String test) {
-        return test.matches(DEADLine_VALIDATION_REGEX);
+        return TimeUtil.isValidDateTimeExist(test);
     }
 
     @Override

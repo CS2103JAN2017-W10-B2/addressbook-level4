@@ -1,6 +1,7 @@
 package seedu.address.model.task;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.TimeUtil;
 
 /**
  * Represents a Task's start time in the toDoList.
@@ -8,8 +9,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
  */
 public class StartTime {
 
-    public static final String MESSAGE_START_TIME_CONSTRAINTS = "Task start time should only contain numbers";
-    public static final String START_TIME_VALIDATION_REGEX = "\\d{4}(\\s+\\d{6})?|\\d{6}(\\s+\\d{4})?|";
+    public static final String MESSAGE_START_TIME_CONSTRAINTS = "Task start time is not accepted, try a more formal "
+    		+ "definition.";
 
     public final String value;
 
@@ -31,7 +32,7 @@ public class StartTime {
      * Returns true if a given string is a valid task start time.
      */
     public static boolean isValidStartTime(String test) {
-        return test.matches(START_TIME_VALIDATION_REGEX);
+    	return TimeUtil.isValidDateTimeExist(test);
     }
 
     @Override
