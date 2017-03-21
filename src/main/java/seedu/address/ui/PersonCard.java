@@ -30,9 +30,18 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         name.setText(person.getTitle().fullTitle);
         id.setText(displayedIndex + ". ");
-        phone.setText(person.getDeadline().value);
-        address.setText(person.getStartTime().value);
-        email.setText(person.getRemarks().value);
+        phone.setText("");
+        address.setText("");
+        email.setText("");
+        if (person.hasDeadline()){
+            phone.setText(person.getDeadline().value);
+        }
+        if (person.hasStartTime()){
+            address.setText(person.getStartTime().value);
+        }
+        if (person.hasRemarks()){
+             email.setText(person.getRemarks().value);
+        }
         initTags(person);
     }
 
