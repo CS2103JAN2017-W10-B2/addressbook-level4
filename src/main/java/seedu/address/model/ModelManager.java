@@ -14,6 +14,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
@@ -168,5 +169,28 @@ public class ModelManager extends ComponentManager implements Model {
             return "title=" + String.join(", ", titleKeyWords);
         }
     }
+
+	@Override
+	public void undoTask() {
+		LastSuccessfulAction lsa = undoStack.pop();
+		if(lsa.isAdd){
+			try {
+				deleteTask(lsa.task);
+			} catch (TaskNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(lsa.isDelete){
+			try {
+				addTask((Task) lsa.task);
+			} catch (DuplicateTaskException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
 }
