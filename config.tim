@@ -1,7 +1,7 @@
 {
-  "appTitle" : "doitdoit!!",
+  "appTitle" : "ToDoList",
   "logLevel" : "INFO",
   "userPrefsFilePath" : "preferences.tim",
-  "addressBookFilePath" : "data/doitdoit!!.xml",
-  "addressBookName" : "MyAddressBook"
+  "addressBookFilePath" : "data/ToDoList.xml",
+  "addressBookName" : "MyToDoList"
 }
