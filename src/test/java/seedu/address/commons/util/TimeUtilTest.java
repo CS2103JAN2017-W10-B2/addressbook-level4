@@ -13,40 +13,22 @@ public class TimeUtilTest {
     public ExpectedException thrown = ExpectedException.none();
 	
 	@Test
-	public void isInvalidDate() {
-		//invalid length
-		assertNull(TimeUtil.getDateTime("99999"));
-		assertNull(TimeUtil.getDateTime("9999999"));
-		
+	public void isInvalidDateTime() {
 		//invalid date
-		assertNull(TimeUtil.getDateTime("000100"));
-		assertNull(TimeUtil.getDateTime("010000"));
-		assertNull(TimeUtil.getDateTime("011300"));
-		assertNull(TimeUtil.getDateTime("320100"));
-		assertNull(TimeUtil.getDateTime("290217"));
+		assertNull(TimeUtil.getDateTime("mom's birthday"));
+		assertNull(TimeUtil.getDateTime("CS2103 tutorial"));
+		assertNull(TimeUtil.getDateTime("national day"));
+		assertNull(TimeUtil.getDateTime("christmas"));
+		assertNull(TimeUtil.getDateTime("that day"));
 	}
 	
 	@Test
-	public void isInvalidTime() {
-		//invalid length
-		assertNull(TimeUtil.getDateTime("999"));
-		assertNull(TimeUtil.getDateTime("99999"));
-		
-		//invalid time
-		assertNull(TimeUtil.getDateTime("2400"));
-	}
-	
-	@Test
-	public void isValidDate(){
-		assertNotNull(TimeUtil.getDateTime("010100"));
-		assertNotNull(TimeUtil.getDateTime("311299"));
-		assertNotNull(TimeUtil.getDateTime("290216"));
-	}
-	
-	@Test
-	public void isValidTime(){
-		assertNotNull(TimeUtil.getDateTime("0000"));
-		assertNotNull(TimeUtil.getDateTime("2359"));
+	public void isValidDateTime(){
+		assertNotNull(TimeUtil.getDateTime("Wednesday"));
+		assertNotNull(TimeUtil.getDateTime("ThUrSDay"));
+		assertNotNull(TimeUtil.getDateTime("day after tomorrow"));
+		assertNotNull(TimeUtil.getDateTime("day before next thursday"));
+		assertNotNull(TimeUtil.getDateTime("4 o'clock"));
 	}
 	
 }

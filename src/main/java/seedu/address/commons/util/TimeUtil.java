@@ -42,7 +42,7 @@ public class TimeUtil {
     	try {
     		Date mostLikelyDate = groups.get(0).getDates().get(0);
     		return mostLikelyDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-    	} catch (IndexOutOfBoundsException e) {
+    	} catch (Exception e) {
     		return null;
     	}
     }
