@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISCOMPLETED;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PERIOD;
 
 import java.util.NoSuchElementException;
 
@@ -33,6 +34,7 @@ public class AddCommandParser {
                     argsTokenizer.getValue(PREFIX_DEADLINE).orElse(""),
                     argsTokenizer.getValue(PREFIX_REMARKS).orElse(""),
                     argsTokenizer.getValue(PREFIX_NOT_IN_USE).orElse(""),
+                    argsTokenizer.getValue(PREFIX_PERIOD).orElse(""),
                     argsTokenizer.getValue(PREFIX_ISCOMPLETED).orElse("no"),
                     ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))
             );

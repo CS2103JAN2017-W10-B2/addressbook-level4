@@ -14,6 +14,7 @@ import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Recurring;
 
 /**
  * JAXB-friendly version of the Person.
@@ -28,6 +29,7 @@ public class XmlAdaptedPerson {
     private String email;
     @XmlElement(required = true)
     private String address;
+    private String recurring;
 
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
@@ -49,6 +51,7 @@ public class XmlAdaptedPerson {
         phone = source.getDeadline().value;
         email = source.getRemarks().value;
         address = source.getNot_in_use().value;
+        recurring = source.getRecurring().value;
         tagged = new ArrayList<>();
         for (Label tag : source.getLabels()) {
             tagged.add(new XmlAdaptedTag(tag));
@@ -69,7 +72,8 @@ public class XmlAdaptedPerson {
         final Deadline phone = new Deadline(this.phone);
         final Remarks email = new Remarks(this.email);
         final StartTime address = new StartTime(this.address);
+        final Recurring recurring = new Recurring(this.recurring);
         final UniqueLabelList tags = new UniqueLabelList(personTags);
-        return new Task(name, phone, email, address, tags, false);
+        return new Task(name, phone, email, address, recurring, tags, false);
     }
 }

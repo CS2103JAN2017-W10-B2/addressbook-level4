@@ -12,6 +12,7 @@ public interface ReadOnlyTask {
     Deadline getDeadline();
     Remarks getRemarks();
     StartTime getNot_in_use();
+    Recurring getRecurring();
 	boolean getIsCompleted();
 
     /**
@@ -29,7 +30,8 @@ public interface ReadOnlyTask {
                 && other.getTitle().equals(this.getTitle()) // state checks here onwards
                 && other.getDeadline().equals(this.getDeadline())
                 && other.getRemarks().equals(this.getRemarks())
-                && other.getNot_in_use().equals(this.getNot_in_use()));
+                && other.getNot_in_use().equals(this.getNot_in_use())
+                && other.getRecurring().equals(this.getRecurring()));
     }
 
     /**

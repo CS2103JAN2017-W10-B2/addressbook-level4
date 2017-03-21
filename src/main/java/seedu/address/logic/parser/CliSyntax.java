@@ -15,6 +15,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_NOT_IN_USE = new Prefix("n/");
     public static final Prefix PREFIX_LABELS = new Prefix("l/");
     public static final Prefix PREFIX_ISCOMPLETED = new Prefix("c/");
+    public static final Prefix PREFIX_PERIOD = new Prefix("p/");
 
     /* Patterns definitions */
     public static final Pattern KEYWORDS_ARGS_FORMAT =

@@ -14,6 +14,7 @@ import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.StartTime;
 import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.Recurring;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -83,8 +84,8 @@ public class EditCommand extends Command {
         StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
         UniqueLabelList updatedTags = editPersonDescriptor.getLabels().orElseGet(personToEdit::getLabels);
         boolean updatedIsCompleted = editPersonDescriptor.getIsCompleted();
-        
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedIsCompleted);
+        Recurring updatedRecurring = editPersonDescriptor.getRecurring().orElseGet(personToEdit::getRecurring);
+        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRecurring, updatedTags, updatedIsCompleted);
     }
 
     /**
@@ -97,6 +98,7 @@ public class EditCommand extends Command {
         private Optional<Remarks> remark = Optional.empty();
         private Optional<StartTime> address = Optional.empty();
         private Optional<UniqueLabelList> labels = Optional.empty();
+        private Optional<Recurring> recurring = Optional.empty();
         private boolean isCompleted = false;
         private boolean isCompletededited = false;
 
@@ -108,6 +110,7 @@ public class EditCommand extends Command {
             this.remark = toCopy.getRemark();
             this.address = toCopy.getAddress();
             this.labels = toCopy.getLabels();
+            this.recurring = toCopy.getRecurring();
             this.isCompleted = toCopy.getIsCompleted();
         }
 
@@ -151,6 +154,15 @@ public class EditCommand extends Command {
         
         public boolean getIsCompleted() {
             return isCompleted;
+        }
+        
+        public void setRecurring(Optional<Recurring> recurring) {
+            assert recurring != null;
+            this.recurring = recurring;
+        }
+        
+        public Optional<Recurring> getRecurring() {
+            return recurring;
         }
         
         public void setIsCompletededited(boolean isCompletededited) {

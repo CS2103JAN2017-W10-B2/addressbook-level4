@@ -15,6 +15,7 @@ public class Task implements ReadOnlyTask {
     private Deadline deadline;
     private Remarks remarks;
     private StartTime not_in_use;
+    private Recurring recurring;
 	private Boolean isCompleted;
 
     private UniqueLabelList labels;
@@ -23,12 +24,13 @@ public class Task implements ReadOnlyTask {
      * Every field must be present and not null.
      * @param isCompleted TODO
      */
-    public Task(Title title, Deadline deadline, Remarks remarks, StartTime not_in_use, UniqueLabelList labels, Boolean isCompleted) {
+    public Task(Title title, Deadline deadline, Remarks remarks, StartTime not_in_use, Recurring recurring, UniqueLabelList labels, Boolean isCompleted) {
         assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
         this.title = title;
         this.deadline = deadline;
         this.remarks = remarks;
         this.not_in_use = not_in_use;
+        this.recurring = recurring;
         this.isCompleted = isCompleted;
         this.labels = new UniqueLabelList(labels); // protect internal tags from changes in the arg list
     }
@@ -37,7 +39,7 @@ public class Task implements ReadOnlyTask {
      * Creates a copy of the given ReadOnlyTask.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels(),
+        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getRecurring(), source.getLabels(),
         	source.getIsCompleted());
     }
 
@@ -89,6 +91,15 @@ public class Task implements ReadOnlyTask {
     public boolean getIsCompleted() {
         return isCompleted;
     }
+    
+    @Override
+    public Recurring getRecurring() {
+        return recurring;
+    }
+    
+    public void setRecurring(Recurring recurring) {
+        this.recurring = recurring;
+    }
 
     @Override
     public UniqueLabelList getLabels() {
@@ -113,6 +124,7 @@ public class Task implements ReadOnlyTask {
         this.setRemarks(replacement.getRemarks());
         this.setNot_in_use(replacement.getNot_in_use());
         this.setLabels(replacement.getLabels());
+        this.setRecurring(replacement.getRecurring());
         this.setIsCompleted(replacement.getIsCompleted());
     }
 

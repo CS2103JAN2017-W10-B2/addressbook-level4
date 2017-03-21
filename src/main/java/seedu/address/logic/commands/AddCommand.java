@@ -12,6 +12,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Recurring;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
@@ -37,7 +38,7 @@ public class AddCommand extends Command {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String title, String deadline, String remarks, String not_in_use, String isCompleted, Set<String> labels)
+    public AddCommand(String title, String deadline, String remarks, String not_in_use, String recurring, String isCompleted, Set<String> labels)
             throws IllegalValueException {
         final Set<Label> labelSet = new HashSet<>();
         for (String labelName : labels) {
@@ -48,7 +49,8 @@ public class AddCommand extends Command {
                 new Deadline(deadline),
                 new Remarks(remarks),
                 new StartTime(not_in_use),
-                new UniqueLabelList(labelSet), 
+                new Recurring(recurring),
+                new UniqueLabelList(labelSet),
                 (isCompleted.trim().equals("yes"))
         );
     }

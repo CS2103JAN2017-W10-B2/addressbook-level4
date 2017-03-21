@@ -9,6 +9,7 @@ import seedu.address.model.task.Remarks;
 import seedu.address.model.task.Title;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Recurring;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 public class SampleDataUtil {
@@ -16,22 +17,22 @@ public class SampleDataUtil {
         try {
             return new Task[] {
                 new Task(new Title("CS2103"), new Deadline("250317"), new Remarks("asap"),
-                    new StartTime("250317"),
+                    new StartTime("250317"), new Recurring("monthly 3"),
                     new UniqueLabelList("important"), false),
                 new Task(new Title("EE4212 CA1"), new Deadline("260317"), new Remarks("quality needed"),
-                    new StartTime("260317"),
+                    new StartTime("260317"), new Recurring("monthly 3"),
                     new UniqueLabelList("urgent"), false),
                 new Task(new Title("EG2401 Tutorial4"), new Deadline("270317"), new Remarks("asap"),
-                    new StartTime("270317"),
+                    new StartTime("270317"), new Recurring("monthly 3"),
                     new UniqueLabelList("important"), false),
                 new Task(new Title("CS2010 MidTerm"), new Deadline("280317"), new Remarks("optional"),
-                    new StartTime("280317"),
+                    new StartTime("280317"), new Recurring("monthly 3"),
                     new UniqueLabelList("optional"), false),
                 new Task(new Title("CS2103"), new Deadline("290317"), new Remarks("asap"),
-                    new StartTime("290317"),
+                    new StartTime("290317"), new Recurring("monthly 3"),
                     new UniqueLabelList("important"), false),
                 new Task(new Title("CS2010 Assignment2"), new Deadline("300317"), new Remarks("asap"),
-                    new StartTime("300317"),
+                    new StartTime("300317"), new Recurring("monthly 3"),
                     new UniqueLabelList("urgent"), false)
             };
         } catch (IllegalValueException e) {

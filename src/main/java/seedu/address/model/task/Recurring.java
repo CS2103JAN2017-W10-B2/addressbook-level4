@@ -3,12 +3,13 @@ package seedu.address.model.task;
 import seedu.address.commons.exceptions.IllegalValueException;
 
 public class Recurring {
-    public static final String MESSAGE_RECURRING_CONSTRAINTS = "Task recurring should specify frequency(daily/weekly/monthly/yearly) and times to repeat(1-2000000000).";
+    public static final String MESSAGE_RECURRING_CONSTRAINTS = "Task recurring should specify frequency(daily/weekly/monthly/yearly) and times to repeat(1-366).";
     //public static final String RECURRING_VALIDATION_REGEX = "([dwmy])";
     private static final String RECURRING_SPLITTER = " ";
     private static final int RECURRING_PARAMETERS = 2;
     private static final int PERIOD_INDEX = 0;
     private static final int PERIOD_LIMIT = 1;
+    private static final int PERIOD_MAX = 366;
     public final String period;
     public final String limit;
     public final String value;
@@ -28,7 +29,7 @@ public class Recurring {
         }
         this.period = splitRecurring[PERIOD_INDEX];
         this.limit = splitRecurring[PERIOD_LIMIT];
-        this.value = this.period + this.limit;
+        this.value = this.period + " " + this.limit;
     }
 
     /**
@@ -41,6 +42,9 @@ public class Recurring {
         try{
             int testLimit = Integer.valueOf(test[PERIOD_LIMIT]);
             if (testLimit<=0){
+                return false;
+            }
+            if (testLimit>PERIOD_MAX){
                 return false;
             }
         } catch(NumberFormatException e){
