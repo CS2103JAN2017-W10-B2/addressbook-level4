@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.util.Set;
+import java.util.Stack;
 import java.util.logging.Logger;
 
 import javafx.collections.transformation.FilteredList;
@@ -24,6 +25,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final ToDoList toDoList;
     private final FilteredList<ReadOnlyTask> filteredTasks;
+    public Stack<LastSuccessfulAction> undoStack;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -36,6 +38,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.toDoList = new ToDoList(addressBook);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
+        undoStack = new Stack<LastSuccessfulAction>();
     }
 
     public ModelManager() {
