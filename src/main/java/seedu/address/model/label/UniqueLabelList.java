@@ -145,6 +145,11 @@ public class UniqueLabelList implements Iterable<Label> {
     public UnmodifiableObservableList<Label> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
+    
+    public boolean isEmpty() {
+        return this.internalList.isEmpty();
+    }
+
 
     @Override
     public boolean equals(Object other) {

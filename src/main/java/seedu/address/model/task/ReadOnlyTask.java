@@ -72,8 +72,10 @@ public interface ReadOnlyTask {
             builder.append(" Completion: ")
                    .append(getIsCompleted());
         }
-        builder.append(" Labels: ");
-        getLabels().forEach(builder::append);
+        if (!getLabels().isEmpty()){
+            builder.append(" Labels: ");
+            getLabels().forEach(builder::append);
+        }
         return builder.toString();
     }
 
