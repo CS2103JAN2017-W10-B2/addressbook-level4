@@ -9,6 +9,7 @@ import seedu.address.commons.util.TimeUtil;
  */
 public class StartTime {
 
+	//@@author A0135795R
     public static final String MESSAGE_START_TIME_CONSTRAINTS = "Task start time is not accepted, try a more formal "
     		+ "definition.";
 
@@ -34,6 +35,7 @@ public class StartTime {
     public static boolean isValidStartTime(String test) {
     	return TimeUtil.isValidDateTimeExist(test);
     }
+  //@@author
 
     @Override
     public String toString() {
