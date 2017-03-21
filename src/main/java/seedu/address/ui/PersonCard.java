@@ -1,10 +1,13 @@
 package seedu.address.ui;
 
+import java.time.LocalDateTime;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.commons.util.TimeUtil;
 import seedu.address.model.task.ReadOnlyTask;
 
 public class PersonCard extends UiPart<Region> {
@@ -28,10 +31,12 @@ public class PersonCard extends UiPart<Region> {
 
     public PersonCard(ReadOnlyTask person, int displayedIndex) {
         super(FXML);
+        LocalDateTime startTime = TimeUtil.getDateTime(person.getNot_in_use().value);
+        LocalDateTime deadline = TimeUtil.getDateTime(person.getDeadline().value);
         name.setText(person.getTitle().fullTitle);
         id.setText(displayedIndex + ". ");
-        phone.setText(person.getDeadline().value);
-        address.setText(person.getNot_in_use().value);
+        phone.setText(deadline.toLocalDate().toString());
+        address.setText(startTime.toLocalDate().toString());
         email.setText(person.getRemarks().value);
         initTags(person);
     }
