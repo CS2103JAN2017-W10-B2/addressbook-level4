@@ -63,12 +63,14 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
+    	undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
         toDoList.removeTask(target);
         indicateToDoListChanged();
     }
 
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
+    	undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
         toDoList.addTask(task);
         updateFilteredListToShowAll();
         indicateToDoListChanged();
