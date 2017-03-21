@@ -15,23 +15,23 @@ public class SampleDataUtil {
     public static Task[] getSampleTasks() {
         try {
             return new Task[] {
-                new Task(new Title("CS2103"), new Deadline("25032017"), new Remarks("asap"),
-                    new StartTime("N/A"),
+                new Task(new Title("CS2103"), new Deadline("250317"), new Remarks("asap"),
+                    new StartTime("250417"),
                     new UniqueLabelList("important"), false),
-                new Task(new Title("EE4212 CA1"), new Deadline("26032017"), new Remarks("quality needed"),
-                    new StartTime("N/A"),
+                new Task(new Title("EE4212 CA1"), new Deadline("260317"), new Remarks("quality needed"),
+                    new StartTime("250417"),
                     new UniqueLabelList("urgent"), false),
-                new Task(new Title("EG2401 Tutorial4"), new Deadline("27032017"), new Remarks("asap"),
-                    new StartTime("N/A"),
+                new Task(new Title("EG2401 Tutorial4"), new Deadline("270317"), new Remarks("asap"),
+                    new StartTime("250417"),
                     new UniqueLabelList("important"), false),
-                new Task(new Title("CS2010 MidTerm"), new Deadline("28032017"), new Remarks("optional"),
-                    new StartTime("N/A"),
+                new Task(new Title("CS2010 MidTerm"), new Deadline("280317"), new Remarks("optional"),
+                    new StartTime("250417"),
                     new UniqueLabelList("optional"), false),
-                new Task(new Title("CS2103"), new Deadline("29032017"), new Remarks("asap"),
-                    new StartTime("N/A"),
+                new Task(new Title("CS2103"), new Deadline("290317"), new Remarks("asap"),
+                    new StartTime("250417"),
                     new UniqueLabelList("important"), false),
-                new Task(new Title("CS2010 Assignment2"), new Deadline("30032017"), new Remarks("asap"),
-                    new StartTime("N/A"),
+                new Task(new Title("CS2010 Assignment2"), new Deadline("300317"), new Remarks("asap"),
+                    new StartTime("250417"),
                     new UniqueLabelList("urgent"), false)
             };
         } catch (IllegalValueException e) {
