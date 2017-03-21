@@ -30,9 +30,9 @@ public class AddCommandParser {
         try {
             return new AddCommand(
                     argsTokenizer.getPreamble().get(),
-                    argsTokenizer.getValue(PREFIX_DEADLINE).orElse(""),
-                    argsTokenizer.getValue(PREFIX_REMARKS).orElse(""),
-                    argsTokenizer.getValue(PREFIX_NOT_IN_USE).orElse(""),
+                    argsTokenizer.getValue(PREFIX_DEADLINE).orElse(null),
+                    argsTokenizer.getValue(PREFIX_REMARKS).orElse(null),
+                    argsTokenizer.getValue(PREFIX_NOT_IN_USE).orElse(null),
                     argsTokenizer.getValue(PREFIX_ISCOMPLETED).orElse("no"),
                     ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))
             );
