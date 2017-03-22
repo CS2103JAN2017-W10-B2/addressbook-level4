@@ -29,7 +29,7 @@ public class Remarks {
     }
 
     /**
-     * Returns if a given string is a valid person remarks.
+     * Returns if a given string is a valid task remarks.
      */
     public static boolean isValidRemarks(String test) {
         return true; //test.matches(REMARKS_VALIDATION_REGEX);

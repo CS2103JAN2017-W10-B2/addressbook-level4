@@ -6,8 +6,8 @@ import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.label.UniqueLabelList;
 
 /**
- * Represents a Task in the address book.
- * Guarantees: details are present and not null, field values are validated.
+ * Represents a Task in the doitdoit!!.
+ * Guarantees: title is present and not null, field values are validated.
  */
 public class Task implements ReadOnlyTask {
 
@@ -71,9 +71,9 @@ public class Task implements ReadOnlyTask {
         return remarks;
     }
 
-    public void setNot_in_use(StartTime not_in_use) {
-        assert not_in_use != null;
-        this.startTime = not_in_use;
+    public void setStartTime(StartTime startTime) {
+        assert startTime != null;
+        this.startTime = startTime;
     }
 
     @Override
@@ -111,7 +111,7 @@ public class Task implements ReadOnlyTask {
         this.setTitle(replacement.getTitle());
         this.setDeadline(replacement.getDeadline());
         this.setRemarks(replacement.getRemarks());
-        this.setNot_in_use(replacement.getStartTime());
+        this.setStartTime(replacement.getStartTime());
         this.setLabels(replacement.getLabels());
         this.setIsCompleted(replacement.getIsCompleted());
     }
