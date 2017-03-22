@@ -3,7 +3,7 @@ package seedu.address.commons.events.model;
 import seedu.address.commons.events.BaseEvent;
 import seedu.address.model.ReadOnlyToDoList;
 
-/** Indicates the AddressBook in the model has changed*/
+/** Indicates the ToDoList in the model has changed*/
 public class ToDoListChangedEvent extends BaseEvent {
 
     public final ReadOnlyToDoList data;
