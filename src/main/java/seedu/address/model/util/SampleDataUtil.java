@@ -43,11 +43,11 @@ public class SampleDataUtil {
     
     public static ReadOnlyToDoList getSampleToDoList() {
         try {
-            ToDoList sampleAB = new ToDoList();
-            for (Task samplePerson : getSampleTasks()) {
-                sampleAB.addTask(samplePerson);
+            ToDoList sampleTDL = new ToDoList();
+            for (Task sampleTask : getSampleTasks()) {
+                sampleTDL.addTask(sampleTask);
             }
-            return sampleAB;
+            return sampleTDL;
         } catch (DuplicateTaskException e) {
             throw new AssertionError("sample data cannot contain duplicate tasks", e);
         }

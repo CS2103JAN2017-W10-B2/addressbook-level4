@@ -1,3 +1,4 @@
+//@@author A0143132X
 package seedu.address.storage;
 
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.StartTime;
 
 /**
- * JAXB-friendly version of the Person.
+ * JAXB-friendly version of the Task.
  */
-public class XmlAdaptedPerson {
+public class XmlAdaptedTask {
 
     @XmlElement(required = true)
     private String title;
@@ -30,21 +31,21 @@ public class XmlAdaptedPerson {
     private String startTime;
 
     @XmlElement
-    private List<XmlAdaptedTag> tagged = new ArrayList<>();
+    private List<XmlAdaptedLabel> labeled = new ArrayList<>();
 
     /**
-     * Constructs an XmlAdaptedPerson.
+     * Constructs an XmlAdaptedTask.
      * This is the no-arg constructor that is required by JAXB.
      */
-    public XmlAdaptedPerson() {}
+    public XmlAdaptedTask() {}
 
 
     /**
-     * Converts a given Person into this class for JAXB use.
+     * Converts a given Task into this class for JAXB use.
      *
-     * @param source future changes to this will not affect the created XmlAdaptedPerson
+     * @param source future changes to this will not affect the created XmlAdaptedTask
      */
-    public XmlAdaptedPerson(ReadOnlyTask source) {
+    public XmlAdaptedTask(ReadOnlyTask source) {
         title = source.getTitle().fullTitle;
         if (source.hasDeadline()){
             deadline = source.getDeadline().value;
@@ -55,21 +56,21 @@ public class XmlAdaptedPerson {
         if (source.hasStartTime()){
             startTime = source.getStartTime().value;
         }
-        tagged = new ArrayList<>();
+        labeled = new ArrayList<>();
         for (Label tag : source.getLabels()) {
-            tagged.add(new XmlAdaptedTag(tag));
+            labeled.add(new XmlAdaptedLabel(tag));
         }
     }
 
     /**
-     * Converts this jaxb-friendly adapted person object into the model's Person object.
+     * Converts this jaxb-friendly adapted task object into the model's Task object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person
+     * @throws IllegalValueException if there were any data constraints violated in the adapted task
      */
     public Task toModelType() throws IllegalValueException {
-        final List<Label> personTags = new ArrayList<>();
-        for (XmlAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+        final List<Label> taskLabels = new ArrayList<>();
+        for (XmlAdaptedLabel label : labeled) {
+            taskLabels.add(label.toModelType());
         }
         final Title title = new Title(this.title);
         Deadline deadline = null;
@@ -84,7 +85,7 @@ public class XmlAdaptedPerson {
         if (this.startTime != null){
             startTime = new StartTime(this.startTime);
         }
-        final UniqueLabelList tags = new UniqueLabelList(personTags);
+        final UniqueLabelList tags = new UniqueLabelList(taskLabels);
         return new Task(title, deadline, remarks, startTime, tags, false);
     }
 }

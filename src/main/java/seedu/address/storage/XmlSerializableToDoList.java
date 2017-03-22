@@ -17,37 +17,37 @@ import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 
 /**
- * An Immutable AddressBook that is serializable to XML format
+ * An Immutable ToDoList that is serializable to XML format
  */
-@XmlRootElement(name = "addressbook")
-public class XmlSerializableAddressBook implements ReadOnlyToDoList {
+@XmlRootElement(name = "todolist")
+public class XmlSerializableToDoList implements ReadOnlyToDoList {
 
     @XmlElement
-    private List<XmlAdaptedPerson> persons;
+    private List<XmlAdaptedTask> tasks;
     @XmlElement
-    private List<XmlAdaptedTag> tags;
+    private List<XmlAdaptedLabel> labels;
 
     /**
-     * Creates an empty XmlSerializableAddressBook.
+     * Creates an empty XmlSerializableToDoList.
      * This empty constructor is required for marshalling.
      */
-    public XmlSerializableAddressBook() {
-        persons = new ArrayList<>();
-        tags = new ArrayList<>();
+    public XmlSerializableToDoList() {
+        tasks = new ArrayList<>();
+        labels = new ArrayList<>();
     }
 
     /**
      * Conversion
      */
-    public XmlSerializableAddressBook(ReadOnlyToDoList src) {
+    public XmlSerializableToDoList(ReadOnlyToDoList src) {
         this();
-        persons.addAll(src.getTaskList().stream().map(XmlAdaptedPerson::new).collect(Collectors.toList()));
-        tags.addAll(src.getLabelList().stream().map(XmlAdaptedTag::new).collect(Collectors.toList()));
+        tasks.addAll(src.getTaskList().stream().map(XmlAdaptedTask::new).collect(Collectors.toList()));
+        labels.addAll(src.getLabelList().stream().map(XmlAdaptedLabel::new).collect(Collectors.toList()));
     }
 
     @Override
     public ObservableList<ReadOnlyTask> getTaskList() {
-        final ObservableList<Task> persons = this.persons.stream().map(p -> {
+        final ObservableList<Task> persons = this.tasks.stream().map(p -> {
             try {
                 return p.toModelType();
             } catch (IllegalValueException e) {
@@ -61,7 +61,7 @@ public class XmlSerializableAddressBook implements ReadOnlyToDoList {
 
     @Override
     public ObservableList<Label> getLabelList() {
-        final ObservableList<Label> tags = this.tags.stream().map(t -> {
+        final ObservableList<Label> tags = this.labels.stream().map(t -> {
             try {
                 return t.toModelType();
             } catch (IllegalValueException e) {
