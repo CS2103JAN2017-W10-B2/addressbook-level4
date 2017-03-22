@@ -15,10 +15,11 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncorrectCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListAllCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.commands.ShowCompletedCommand;
-import seedu.address.logic.commands.ShowOngoingCommand;
+import seedu.address.logic.commands.ListCompletedCommand;
+import seedu.address.logic.commands.ListOngoingCommand;
+import seedu.address.logic.commands.SetPathCommand;
 
 /**
  * Parses user input.
@@ -64,20 +65,25 @@ public class Parser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+        case ListAllCommand.COMMAND_WORD:
+            return new ListAllCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
+
+          //@@author A0115333U
+        case ListCompletedCommand.COMMAND_WORD:
+            return new ListCompletedCommand();
             
-        case ShowCompletedCommand.COMMAND_WORD:
-            return new ShowCompletedCommand();
+        case ListOngoingCommand.COMMAND_WORD:
+            return new ListOngoingCommand(); 
             
-        case ShowOngoingCommand.COMMAND_WORD:
-            return new ShowOngoingCommand(); 
+        case SetPathCommand.COMMAND_WORD:
+            return new SetPathCommandParser().parse(arguments);
+          //@@author
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);

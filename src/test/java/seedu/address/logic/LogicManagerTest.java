@@ -32,7 +32,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListAllCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.ToDoList;
@@ -249,7 +249,7 @@ public class LogicManagerTest {
         helper.addToModel(model, 2);
 
         assertCommandSuccess("list",
-                ListCommand.MESSAGE_SUCCESS,
+                ListAllCommand.MESSAGE_SUCCESS,
                 expectedAB,
                 expectedList);
     }

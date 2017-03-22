@@ -11,11 +11,11 @@ public class Config {
     public static final String DEFAULT_CONFIG_FILE = "config.tim";
 
     // Config values customizable through config file
-    private String appTitle = "doitdoit!!";
+    private String appTitle = "ToDoList";
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.tim";
-    private String addressBookFilePath = "data/doitdoit!!.xml";
-    private String addressBookName = "MyAddressBook";
+    private String addressBookFilePath = "data/ToDoList.xml";
+    private String addressBookName = "MyToDoList";
 
 
     public String getAppTitle() {
