@@ -20,6 +20,7 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.ListCompletedCommand;
 import seedu.address.logic.commands.ListOngoingCommand;
 import seedu.address.logic.commands.SetPathCommand;
+import seedu.address.logic.commands.UndoCommand;
 
 /**
  * Parses user input.
@@ -84,6 +85,9 @@ public class Parser {
         case SetPathCommand.COMMAND_WORD:
             return new SetPathCommandParser().parse(arguments);
           //@@author
+            
+        case UndoCommand.COMMAND_WORD:
+        	return new UndoCommand();
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);

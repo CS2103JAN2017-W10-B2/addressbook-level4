@@ -49,4 +49,6 @@ public interface Model {
     /** Updates the filter of the filtered task list to show all Completed tasks */
     void updateFilteredListToShowOngoing();
 
+	void undoTask();
+
 }

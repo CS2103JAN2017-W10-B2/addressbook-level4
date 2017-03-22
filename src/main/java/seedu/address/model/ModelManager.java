@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.util.Set;
+import java.util.Stack;
 import java.util.logging.Logger;
 
 import javafx.collections.transformation.FilteredList;
@@ -13,6 +14,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
+import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
@@ -24,6 +26,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final ToDoList toDoList;
     private final FilteredList<ReadOnlyTask> filteredTasks;
+    public Stack<LastSuccessfulAction> undoStack;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -36,6 +39,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.toDoList = new ToDoList(addressBook);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
+        undoStack = new Stack<LastSuccessfulAction>();
     }
 
     public ModelManager() {
@@ -60,12 +64,14 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
+    	undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
         toDoList.removeTask(target);
         indicateToDoListChanged();
     }
 
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
+    	undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
         toDoList.addTask(task);
         updateFilteredListToShowAll();
         indicateToDoListChanged();
@@ -163,5 +169,28 @@ public class ModelManager extends ComponentManager implements Model {
             return "title=" + String.join(", ", titleKeyWords);
         }
     }
+
+	@Override
+	public void undoTask() {
+		LastSuccessfulAction lsa = undoStack.pop();
+		if(lsa.isAdd){
+			try {
+				deleteTask(lsa.task);
+			} catch (TaskNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(lsa.isDelete){
+			try {
+				addTask((Task) lsa.task);
+			} catch (DuplicateTaskException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
 }
