@@ -38,7 +38,7 @@ public class AddCommand extends Command {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String title, String deadline, String remarks, String not_in_use, String isCompleted, Set<String> labels)
+    public AddCommand(String title, String deadline, String remarks, String startTime, String isCompleted, Set<String> labels)
             throws IllegalValueException {
         final Set<Label> labelSet = new HashSet<>();
         for (String labelName : labels) {
@@ -46,9 +46,9 @@ public class AddCommand extends Command {
         }
         this.toAdd = new Task(
                 new Title(title),
-                new Deadline(deadline),
-                new Remarks(remarks),
-                new StartTime(not_in_use),
+                deadline == null ? null : new Deadline(deadline),
+                remarks == null ? null : new Remarks(remarks),
+                startTime == null ? null : new StartTime(startTime),
                 new UniqueLabelList(labelSet), 
                 (isCompleted.trim().equals("yes"))
         );

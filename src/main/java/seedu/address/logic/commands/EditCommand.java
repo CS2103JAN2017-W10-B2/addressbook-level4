@@ -80,7 +80,7 @@ public class EditCommand extends Command {
         Title updatedName = editPersonDescriptor.getTitle().orElseGet(personToEdit::getTitle);
         Deadline updatedPhone = editPersonDescriptor.getDeadline().orElseGet(personToEdit::getDeadline);
         Remarks updatedEmail = editPersonDescriptor.getRemark().orElseGet(personToEdit::getRemarks);
-        StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getNot_in_use);
+        StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getStartTime);
         UniqueLabelList updatedTags = editPersonDescriptor.getLabels().orElseGet(personToEdit::getLabels);
         boolean updatedIsCompleted = editPersonDescriptor.getIsCompleted();
         
@@ -95,7 +95,7 @@ public class EditCommand extends Command {
         private Optional<Title> title = Optional.empty();
         private Optional<Deadline> deadline = Optional.empty();
         private Optional<Remarks> remark = Optional.empty();
-        private Optional<StartTime> address = Optional.empty();
+        private Optional<StartTime> startTime = Optional.empty();
         private Optional<UniqueLabelList> labels = Optional.empty();
         private boolean isCompleted = false;
         private boolean isCompletededited = false;
@@ -106,7 +106,7 @@ public class EditCommand extends Command {
             this.title = toCopy.getTitle();
             this.deadline = toCopy.getDeadline();
             this.remark = toCopy.getRemark();
-            this.address = toCopy.getAddress();
+            this.startTime = toCopy.getAddress();
             this.labels = toCopy.getLabels();
             this.isCompleted = toCopy.getIsCompleted();
         }
@@ -115,30 +115,30 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.address, this.labels)||this.isCompletededited;
+            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.startTime, this.labels)||this.isCompletededited;
         }
 
-        public void setName(Optional<Title> name) {
-            assert name != null;
-            this.title = name;
+        public void setTitle(Optional<Title> title) {
+            assert title != null;
+            this.title = title;
         }
 
         public Optional<Title> getTitle() {
             return title;
         }
 
-        public void setPhone(Optional<Deadline> phone) {
-            assert phone != null;
-            this.deadline = phone;
+        public void setDeadline(Optional<Deadline> deadline) {
+            assert deadline != null;
+            this.deadline = deadline;
         }
 
         public Optional<Deadline> getDeadline() {
             return deadline;
         }
 
-        public void setEmail(Optional<Remarks> email) {
-            assert email != null;
-            this.remark = email;
+        public void setRemarks(Optional<Remarks> remark) {
+            assert remark != null;
+            this.remark = remark;
         }
 
         public Optional<Remarks> getRemark() {
@@ -157,13 +157,13 @@ public class EditCommand extends Command {
             this.isCompletededited = isCompletededited;
         }
 
-        public void setAddress(Optional<StartTime> address) {
-            assert address != null;
-            this.address = address;
+        public void setStartTime(Optional<StartTime> startTime) {
+            assert startTime != null;
+            this.startTime = startTime;
         }
 
         public Optional<StartTime> getAddress() {
-            return address;
+            return startTime;
         }
 
         public void setTags(Optional<UniqueLabelList> tags) {

@@ -76,7 +76,7 @@ public class TaskCardHandle extends GuiHandle {
         return getFullName().equals(person.getTitle().fullTitle)
                 && getPhone().equals(person.getDeadline().value)
                 && getEmail().equals(person.getRemarks().value)
-                && getAddress().equals(person.getNot_in_use().value)
+                && getAddress().equals(person.getStartTime().value)
                 && getTags().equals(getTags(person.getLabels()));
     }
 

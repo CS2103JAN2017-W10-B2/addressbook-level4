@@ -31,13 +31,22 @@ public class PersonCard extends UiPart<Region> {
 
     public PersonCard(ReadOnlyTask person, int displayedIndex) {
         super(FXML);
-        LocalDateTime startTime = TimeUtil.getDateTime(person.getNot_in_use().value);
-        LocalDateTime deadline = TimeUtil.getDateTime(person.getDeadline().value);
         name.setText(person.getTitle().fullTitle);
         id.setText(displayedIndex + ". ");
-        phone.setText(deadline.toLocalDate().toString());
-        address.setText(startTime.toLocalDate().toString());
-        email.setText(person.getRemarks().value);
+        phone.setText("");
+        address.setText("");
+        email.setText("");
+        if (person.hasDeadline()){
+        	LocalDateTime deadline = TimeUtil.getDateTime(person.getDeadline().value);
+            phone.setText(deadline.toLocalDate().toString());
+        }
+        if (person.hasStartTime()){
+        	LocalDateTime startTime = TimeUtil.getDateTime(person.getStartTime().value);
+            address.setText(startTime.toLocalDate().toString());
+        }
+        if (person.hasRemarks()){
+             email.setText(person.getRemarks().value);
+        }
         initTags(person);
     }
 

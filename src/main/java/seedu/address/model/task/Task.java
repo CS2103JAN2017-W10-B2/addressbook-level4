@@ -14,7 +14,7 @@ public class Task implements ReadOnlyTask {
     private Title title;
     private Deadline deadline;
     private Remarks remarks;
-    private StartTime not_in_use;
+    private StartTime startTime;
 	private Boolean isCompleted;
 
     private UniqueLabelList labels;
@@ -23,12 +23,12 @@ public class Task implements ReadOnlyTask {
      * Every field must be present and not null.
      * @param isCompleted TODO
      */
-    public Task(Title title, Deadline deadline, Remarks remarks, StartTime not_in_use, UniqueLabelList labels, Boolean isCompleted) {
-        assert !CollectionUtil.isAnyNull(title, deadline, remarks, not_in_use, labels);
+    public Task(Title title, Deadline deadline, Remarks remarks, StartTime startTime, UniqueLabelList labels, Boolean isCompleted) {
+        assert title != null;
         this.title = title;
         this.deadline = deadline;
         this.remarks = remarks;
-        this.not_in_use = not_in_use;
+        this.startTime = startTime;
         this.isCompleted = isCompleted;
         this.labels = new UniqueLabelList(labels); // protect internal tags from changes in the arg list
     }
@@ -37,7 +37,7 @@ public class Task implements ReadOnlyTask {
      * Creates a copy of the given ReadOnlyTask.
      */
     public Task(ReadOnlyTask source) {
-        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getNot_in_use(), source.getLabels(),
+        this(source.getTitle(), source.getDeadline(), source.getRemarks(), source.getStartTime(), source.getLabels(),
         	source.getIsCompleted());
     }
 
@@ -73,12 +73,12 @@ public class Task implements ReadOnlyTask {
 
     public void setNot_in_use(StartTime not_in_use) {
         assert not_in_use != null;
-        this.not_in_use = not_in_use;
+        this.startTime = not_in_use;
     }
 
     @Override
-    public StartTime getNot_in_use() {
-        return not_in_use;
+    public StartTime getStartTime() {
+        return startTime;
     }
     
     public void setIsCompleted(Boolean isCompleted) {
@@ -111,7 +111,7 @@ public class Task implements ReadOnlyTask {
         this.setTitle(replacement.getTitle());
         this.setDeadline(replacement.getDeadline());
         this.setRemarks(replacement.getRemarks());
-        this.setNot_in_use(replacement.getNot_in_use());
+        this.setNot_in_use(replacement.getStartTime());
         this.setLabels(replacement.getLabels());
         this.setIsCompleted(replacement.getIsCompleted());
     }
@@ -126,7 +126,7 @@ public class Task implements ReadOnlyTask {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, deadline, remarks, not_in_use, labels);
+        return Objects.hash(title, deadline, remarks, startTime, labels);
     }
 
     @Override

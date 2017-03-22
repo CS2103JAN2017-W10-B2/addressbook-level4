@@ -30,7 +30,7 @@ public class TestTask implements ReadOnlyTask {
         this.title = taskToCopy.getTitle();
         this.deadline = taskToCopy.getDeadline();
         this.remarks = taskToCopy.getRemarks();
-        this.attribute_not_in_use = taskToCopy.getNot_in_use();
+        this.attribute_not_in_use = taskToCopy.getStartTime();
         this.labels = taskToCopy.getLabels();
         this.isCompleted = taskToCopy.getIsCompleted();
     }
@@ -75,7 +75,7 @@ public class TestTask implements ReadOnlyTask {
     }
 
     @Override
-    public StartTime getNot_in_use() {
+    public StartTime getStartTime() {
         return attribute_not_in_use;
     }
 
@@ -97,7 +97,7 @@ public class TestTask implements ReadOnlyTask {
     public String getAddCommand() {
         StringBuilder sb = new StringBuilder();
         sb.append("add " + this.getTitle().fullTitle + " ");
-        sb.append("n/" + this.getNot_in_use().value + " ");
+        sb.append("n/" + this.getStartTime().value + " ");
         sb.append("d/" + this.getDeadline().value + " ");
         sb.append("r/" + this.getRemarks().value + " ");
         this.getLabels().asObservableList().stream().forEach(s -> sb.append("l/" + s.labelName + " "));

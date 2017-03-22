@@ -42,10 +42,10 @@ public class EditCommandParser {
 
         EditTaskDescriptor editPersonDescriptor = new EditTaskDescriptor();
         try {
-            editPersonDescriptor.setName(ParserUtil.parseName(preambleFields.get(1)));
-            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
-            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
-            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_START_TIME)));
+            editPersonDescriptor.setTitle(ParserUtil.parseName(preambleFields.get(1)));
+            editPersonDescriptor.setDeadline(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
+            editPersonDescriptor.setRemarks(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
+            editPersonDescriptor.setStartTime(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_START_TIME)));
             editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
             editPersonDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
             editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));

@@ -44,9 +44,18 @@ public class BrowserPanel extends UiPart<Region> {
 
     public void loadPersonPage(ReadOnlyTask person) {
         name.setText(person.getTitle().fullTitle);
-        phone.setText(person.getDeadline().value);
-        address.setText(person.getNot_in_use().value);
-        email.setText(person.getRemarks().value);
+        phone.setText("");
+        address.setText("");
+        email.setText("");
+        if (person.hasDeadline()){
+            phone.setText(person.getDeadline().value);
+        }
+        if (person.hasStartTime()){
+            address.setText(person.getStartTime().value);
+        }
+        if (person.hasRemarks()){
+             email.setText(person.getRemarks().value);
+        }
         initTags(person);
     }
     

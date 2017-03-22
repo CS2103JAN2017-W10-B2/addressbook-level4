@@ -451,7 +451,7 @@ public class LogicManagerTest {
             cmd.append(p.getTitle().toString());
             cmd.append(" e/").append(p.getRemarks());
             cmd.append(" p/").append(p.getDeadline());
-            cmd.append(" a/").append(p.getNot_in_use());
+            cmd.append(" a/").append(p.getStartTime());
 
             UniqueLabelList tags = p.getLabels();
             for (Label t: tags) {
