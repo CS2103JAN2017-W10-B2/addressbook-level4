@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 
 
 /**
- * Lists all persons in the address book to the user.
+ * Lists on-going tasks in doitdoit!! to the user.
  */
 public class ListOngoingCommand extends Command {
 

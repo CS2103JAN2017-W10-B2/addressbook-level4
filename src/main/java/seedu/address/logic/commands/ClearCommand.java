@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import seedu.address.model.ToDoList;
 
 /**
- * Clears the address book.
+ * Clears doitdoit!!.
  */
 public class ClearCommand extends Command {
 

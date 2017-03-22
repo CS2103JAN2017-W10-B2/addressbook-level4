@@ -11,7 +11,7 @@ import seedu.address.commons.core.Config;
 
 
 /**
- * Adds a person to the address book.
+ * Set storage path for doitdoit!!.
  */
 public class SetPathCommand extends Command {
 

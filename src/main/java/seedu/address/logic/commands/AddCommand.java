@@ -1,3 +1,4 @@
+//@@author A0143132X
 package seedu.address.logic.commands;
 
 import java.util.HashSet;
@@ -15,7 +16,7 @@ import seedu.address.model.task.StartTime;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
- * Adds a person to the address book.
+ * Adds a task to doitdoit!!.
  */
 public class AddCommand extends Command {
 
@@ -25,7 +26,7 @@ public class AddCommand extends Command {
     		+ "Parameters: TITLE (from START TIME) (till DEADLINE) (remarks: REMAKRS) (label: LABELS...) "
     		+ "(c/ COMPLETIONSTATUS)\n"
             + "Example: " + COMMAND_WORD
-            + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Uni Assignment c/yes";
+            + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Assignment c/yes";
 
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in doitdoit!!";

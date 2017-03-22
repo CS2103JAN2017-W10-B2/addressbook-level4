@@ -16,7 +16,7 @@ import seedu.address.model.task.StartTime;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing task in doitdoit!!.
  */
 public class EditCommand extends Command {
 
@@ -28,9 +28,9 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) (TITLE) (from STARTTIME) (till DEADLINE) "
             + "(remark: REMARKS) (label: LABELS...)\n";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Task: %1$s";
+    public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This task already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the doitdoit!!";
 
     private final int filteredTaskListIndex;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -43,7 +43,7 @@ public class EditCommand extends Command {
         assert filteredTaskListIndex > 0;
         assert editTaskDescriptor != null;
 
-        // converts filteredPersonListIndex from one-based to zero-based.
+        // converts filteredTaskListIndex from one-based to zero-based.
         this.filteredTaskListIndex = filteredTaskListIndex - 1;
 
         this.editTaskDescriptor = new EditTaskDescriptor(editTaskDescriptor);
@@ -57,39 +57,39 @@ public class EditCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
-        ReadOnlyTask personToEdit = lastShownList.get(filteredTaskListIndex);
-        Task editedPerson = createEditedPerson(personToEdit, editTaskDescriptor);
+        ReadOnlyTask taskToEdit = lastShownList.get(filteredTaskListIndex);
+        Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
         try {
-            model.updateTask(filteredTaskListIndex, editedPerson);
+            model.updateTask(filteredTaskListIndex, editedTask);
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
         model.updateFilteredListToShowAll();
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, personToEdit));
+        return new CommandResult(String.format(MESSAGE_EDIT_TASK_SUCCESS, taskToEdit));
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code Task} with the details of {@code taskToEdit}
+     * edited with {@code editTaskDescriptor}.
      */
-    private static Task createEditedPerson(ReadOnlyTask personToEdit,
-                                             EditTaskDescriptor editPersonDescriptor) {
-        assert personToEdit != null;
+    private static Task createEditedTask(ReadOnlyTask taskToEdit,
+                                             EditTaskDescriptor editTaskDescriptor) {
+        assert taskToEdit != null;
 
-        Title updatedName = editPersonDescriptor.getTitle().orElseGet(personToEdit::getTitle);
-        Deadline updatedPhone = editPersonDescriptor.getDeadline().orElseGet(personToEdit::getDeadline);
-        Remarks updatedEmail = editPersonDescriptor.getRemark().orElseGet(personToEdit::getRemarks);
-        StartTime updatedAddress = editPersonDescriptor.getAddress().orElseGet(personToEdit::getStartTime);
-        UniqueLabelList updatedTags = editPersonDescriptor.getLabels().orElseGet(personToEdit::getLabels);
-        boolean updatedIsCompleted = editPersonDescriptor.getIsCompleted();
+        Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
+        Deadline updatedDeadline = editTaskDescriptor.getDeadline().orElseGet(taskToEdit::getDeadline);
+        Remarks updatedRemarks = editTaskDescriptor.getRemark().orElseGet(taskToEdit::getRemarks);
+        StartTime updatedStartTime = editTaskDescriptor.getStartTime().orElseGet(taskToEdit::getStartTime);
+        UniqueLabelList updatedLabels = editTaskDescriptor.getLabels().orElseGet(taskToEdit::getLabels);
+        boolean updatedIsCompleted = editTaskDescriptor.getIsCompleted();
         
-        return new Task(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, updatedIsCompleted);
+        return new Task(updatedTitle, updatedDeadline, updatedRemarks, updatedStartTime, updatedLabels, updatedIsCompleted);
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the task with. Each non-empty field value will replace the
+     * corresponding field value of the task.
      */
     public static class EditTaskDescriptor {
         private Optional<Title> title = Optional.empty();
@@ -106,7 +106,7 @@ public class EditCommand extends Command {
             this.title = toCopy.getTitle();
             this.deadline = toCopy.getDeadline();
             this.remark = toCopy.getRemark();
-            this.startTime = toCopy.getAddress();
+            this.startTime = toCopy.getStartTime();
             this.labels = toCopy.getLabels();
             this.isCompleted = toCopy.getIsCompleted();
         }
@@ -162,7 +162,7 @@ public class EditCommand extends Command {
             this.startTime = startTime;
         }
 
-        public Optional<StartTime> getAddress() {
+        public Optional<StartTime> getStartTime() {
             return startTime;
         }
 

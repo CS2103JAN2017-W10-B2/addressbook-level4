@@ -8,7 +8,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.task.ReadOnlyTask;
 
 /**
- * Selects a person identified using it's last displayed index from the address book.
+ * Selects a task identified using it's last displayed index from doitdoit!!.
  */
 public class SelectCommand extends Command {
 

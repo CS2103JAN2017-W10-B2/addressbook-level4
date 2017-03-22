@@ -110,7 +110,7 @@ public class EditCommandTest extends ToDoListGuiTest {
     public void edit_duplicatePerson_failure() {
         commandBox.runCommand("edit 3 Alice Pauline p/85355255 e/alice@gmail.com "
                                 + "a/123, Jurong West Ave 6, #08-111 t/friends");
-        assertResultMessage(EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertResultMessage(EditCommand.MESSAGE_DUPLICATE_TASK);
     }
 
     /**
@@ -133,6 +133,6 @@ public class EditCommandTest extends ToDoListGuiTest {
         // confirm the list now contains all previous persons plus the person with updated details
         expectedTasksList[addressBookIndex - 1] = editedPerson;
         assertTrue(taskListPanel.isListMatching(expectedTasksList));
-        assertResultMessage(String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
+        assertResultMessage(String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, editedPerson));
     }
 }
