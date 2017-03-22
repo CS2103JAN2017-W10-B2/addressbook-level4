@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.web.WebView?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
     <VBox id="browser" fx:id="browser" minWidth="100.0">
     <children>
+         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: 000000;">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+         </VBox>
     <VBox>
     <Label fx:id="name" text="\$first" />
     </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0" />
     <VBox>
     <FlowPane fx:id="tags" />
     </VBox>
     <VBox>
     <Label fx:id="phone" text="\$first" />
     </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0" />
     <VBox>
     <Label fx:id="address" text="\$first" />
     </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0" />
     <VBox>
     <Label fx:id="email" text="\$first" />
     </VBox>
