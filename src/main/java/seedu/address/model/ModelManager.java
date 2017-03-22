@@ -174,22 +174,39 @@ public class ModelManager extends ComponentManager implements Model {
 	public void undoTask() {
 		LastSuccessfulAction lsa = undoStack.pop();
 		if(lsa.isAdd){
-			try {
-				deleteTask(lsa.task);
-			} catch (TaskNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+				undoAdd(lsa.task);
+			
 		}
 		
 		if(lsa.isDelete){
-			try {
-				addTask((Task) lsa.task);
-			} catch (DuplicateTaskException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+				undoDelete((Task) lsa.task);
+			
 		}
+		
+	}
+
+	private void undoDelete(Task task) {
+		try {
+			toDoList.addTask(task);
+		} catch (DuplicateTaskException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        updateFilteredListToShowAll();
+        indicateToDoListChanged();
+		
+	}
+
+	private void undoAdd(ReadOnlyTask task) {
+		try {
+			toDoList.removeTask(task);
+		} catch (TaskNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        indicateToDoListChanged();
 		
 	}
 
