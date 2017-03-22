@@ -8,13 +8,13 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.IncorrectCommand;
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new SetPathCommand object
  */
 public class SetPathCommandParser {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the AddCommand
-     * and returns an AddCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the SetPathCommand
+     * and returns an SetPathCommand object for execution.
      */
     public Command parse(String StoragePath) {
         if (StoragePath.trim().isEmpty()) {

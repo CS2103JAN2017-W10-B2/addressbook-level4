@@ -18,7 +18,7 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the doitdoit!! data.
  * All changes to any model should be synchronized.
  */
 public class ModelManager extends ComponentManager implements Model {
@@ -29,15 +29,15 @@ public class ModelManager extends ComponentManager implements Model {
     public Stack<LastSuccessfulAction> undoStack;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given doitdoit!! and userPrefs.
      */
-    public ModelManager(ReadOnlyToDoList addressBook, UserPrefs userPrefs) {
+    public ModelManager(ReadOnlyToDoList toDoList, UserPrefs userPrefs) {
         super();
-        assert !CollectionUtil.isAnyNull(addressBook, userPrefs);
+        assert !CollectionUtil.isAnyNull(toDoList, userPrefs);
 
-        logger.fine("Initializing with to do list: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with to do list: " + toDoList + " and user prefs " + userPrefs);
 
-        this.toDoList = new ToDoList(addressBook);
+        this.toDoList = new ToDoList(toDoList);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
         undoStack = new Stack<LastSuccessfulAction>();
     }
@@ -82,8 +82,8 @@ public class ModelManager extends ComponentManager implements Model {
             throws UniqueTaskList.DuplicateTaskException {
         assert editedTask != null;
 
-        int addressBookIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
-        toDoList.updateTask(addressBookIndex, editedTask);
+        int toDoListIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
+        toDoList.updateTask(toDoListIndex, editedTask);
         indicateToDoListChanged();
     }
 

@@ -18,7 +18,7 @@ import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the to-do-list level
  * Duplicates are not allowed (by .equals comparison)
  */
 public class ToDoList implements ReadOnlyToDoList {
@@ -41,7 +41,7 @@ public class ToDoList implements ReadOnlyToDoList {
     public ToDoList() {}
 
     /**
-     * Creates an AddressBook using the Tasks and Labels in the {@code toBeCopied}
+     * Creates a doitdoit!! using the Tasks and Labels in the {@code toBeCopied}
      */
     public ToDoList(ReadOnlyToDoList toBeCopied) {
         this();
@@ -64,12 +64,12 @@ public class ToDoList implements ReadOnlyToDoList {
         try {
             setTasks(newData.getTaskList());
         } catch (UniqueTaskList.DuplicateTaskException e) {
-            assert false : "AddressBooks should not have duplicate tasks";
+            assert false : "doitdoit!! should not have duplicate tasks";
         }
         try {
             setLabels(newData.getLabelList());
         } catch (UniqueLabelList.DuplicateLabelException e) {
-            assert false : "AddressBooks should not have duplicate labels";
+            assert false : "doitdoit!! should not have duplicate labels";
         }
         syncMasterLabelListWith(tasks);
     }
@@ -77,7 +77,7 @@ public class ToDoList implements ReadOnlyToDoList {
 //// task-level operations
 
     /**
-     * Adds a task to the address book.
+     * Adds a task to the doitdoit!!.
      * Also checks the new task's labels and updates {@link #labels} with any new labels found,
      * and updates the Label objects in the task to point to those in {@link #labels}.
      *
@@ -90,7 +90,7 @@ public class ToDoList implements ReadOnlyToDoList {
 
     /**
      * Updates the task in the list at position {@code index} with {@code editedReadOnlyTask}.
-     * {@code AddressBook}'s label list will be updated with the labels of {@code editedReadOnlyTask}.
+     * {@code ToDoList}'s label list will be updated with the labels of {@code editedReadOnlyTask}.
      * @see #syncMasterLabelListWith(Task)
      *
      * @throws DuplicateTaskException if updating the task's details causes the task to be equivalent to

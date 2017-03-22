@@ -6,19 +6,19 @@ import seedu.address.model.label.Label;
 import seedu.address.model.task.ReadOnlyTask;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of doitdoit!!
  */
 public interface ReadOnlyToDoList {
 
     /**
      * Returns an unmodifiable view of the tasks list.
-     * This list will not contain any duplicate persons.
+     * This list will not contain any duplicate tasks.
      */
     ObservableList<ReadOnlyTask> getTaskList();
 
     /**
      * Returns an unmodifiable view of the labels list.
-     * This list will not contain any duplicate tags.
+     * This list will not contain any duplicate labels.
      */
     ObservableList<Label> getLabelList();
 

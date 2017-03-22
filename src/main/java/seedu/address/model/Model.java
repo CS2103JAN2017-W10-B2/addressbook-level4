@@ -15,7 +15,7 @@ public interface Model {
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyToDoList newData);
 
-    /** Returns the AddressBook */
+    /** Returns the ToDoList */
     ReadOnlyToDoList getToDoList();
 
     /** Deletes the given task. */
