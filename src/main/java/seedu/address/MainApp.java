@@ -49,7 +49,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing doitdoit!! ]===========================");
         super.init();
 
         config = initConfig(getApplicationParameter("config"));
@@ -74,19 +74,19 @@ public class MainApp extends Application {
     }
 
     private Model initModelManager(Storage storage, UserPrefs userPrefs) {
-        Optional<ReadOnlyToDoList> addressBookOptional;
+        Optional<ReadOnlyToDoList> toDoListOptional;
         ReadOnlyToDoList initialData;
         try {
-            addressBookOptional = storage.readToDoList();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample AddressBook");
+            toDoListOptional = storage.readToDoList();
+            if (!toDoListOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample doitdoit!!");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = toDoListOptional.orElseGet(SampleDataUtil::getSampleToDoList);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
+            logger.warning("Data file not in the correct format. Will be starting with an empty doitdoit!!");
             initialData = new ToDoList();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the file. Will be starting with an empty doitdoit!!");
             initialData = new ToDoList();
         }
 
@@ -143,7 +143,7 @@ public class MainApp extends Application {
                     "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the file. Will be starting with an empty doitdoit!!");
             initializedPrefs = new UserPrefs();
         }
 
@@ -163,13 +163,13 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting doitdoit!! " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping doitdoit!! ] =============================");
         ui.stop();
         try {
             storage.saveUserPrefs(userPrefs);
