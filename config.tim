@@ -2,6 +2,6 @@
   "appTitle" : "ToDoList",
   "logLevel" : "INFO",
   "userPrefsFilePath" : "preferences.tim",
-  "addressBookFilePath" : "data/ToDoList.xml",
-  "addressBookName" : "MyToDoList"
+  "toDoListFilePath" : "data/ToDoList.xml",
+  "toDoListName" : "MyToDoList"
 }
