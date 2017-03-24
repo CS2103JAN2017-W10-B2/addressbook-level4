@@ -40,24 +40,24 @@ public class EditCommandParser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
 
-        EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
+        EditTaskDescriptor editPersonDescriptor = new EditTaskDescriptor();
         try {
-            editTaskDescriptor.setName(ParserUtil.parseName(preambleFields.get(1)));
-            editTaskDescriptor.setPhone(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
-            editTaskDescriptor.setEmail(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
-            editTaskDescriptor.setAddress(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_NOT_IN_USE)));
-            editTaskDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
-            editTaskDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
-            editTaskDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
+            editPersonDescriptor.setName(ParserUtil.parseName(preambleFields.get(1)));
+            editPersonDescriptor.setPhone(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
+            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
+            editPersonDescriptor.setAddress(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_NOT_IN_USE)));
+            editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
+            editPersonDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
+            editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
 
-        if (!editTaskDescriptor.isAnyFieldEdited()) {
+        if (!editPersonDescriptor.isAnyFieldEdited()) {
             return new IncorrectCommand(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditCommand(index.get(), editTaskDescriptor);
+        return new EditCommand(index.get(), editPersonDescriptor);
     }
 
     /**
