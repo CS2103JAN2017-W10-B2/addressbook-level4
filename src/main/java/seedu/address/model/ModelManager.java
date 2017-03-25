@@ -87,6 +87,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         int toDoListIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
         toDoList.updateTask(toDoListIndex, editedTask);
+        toDoList.sort_tasks();
         indicateToDoListChanged();
     }
 
