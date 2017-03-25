@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.util.Comparator;
 import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Logger;
@@ -74,6 +75,7 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
     	undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
         toDoList.addTask(task);
+        toDoList.sort_tasks();
         updateFilteredListToShowOngoing();
         indicateToDoListChanged();
     }

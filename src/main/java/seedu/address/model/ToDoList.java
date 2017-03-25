@@ -73,6 +73,10 @@ public class ToDoList implements ReadOnlyToDoList {
         }
         syncMasterLabelListWith(tasks);
     }
+    
+    public void sort_tasks(){
+    	this.tasks.sort();
+    }
 
 //// task-level operations
 
@@ -108,7 +112,7 @@ public class ToDoList implements ReadOnlyToDoList {
         // in the task list.
         tasks.updateTask(index, editedTask);
     }
-
+    
     /**
      * Ensures that every label in this task:
      *  - exists in the master list {@link #labels}
