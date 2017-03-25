@@ -25,7 +25,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
             + "by the index number used in the last doitdoit!! listing. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) (TITLE) (from STARTTIME) (till DEADLINE) "
+            + "Parameters: INDEX (must be a positive integer) (TITLE) (from: STARTTIME) (till: DEADLINE) "
             + "(remark: REMARKS) (label: LABELS...)\n";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
