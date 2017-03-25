@@ -25,6 +25,8 @@ public class AddCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to toDoList!!. "
     		+ "Parameters: TITLE (from: START TIME) (till:  DEADLINE) (remarks: REMAKRS) (label: LABELS...) "
     		+ "(c/ COMPLETIONSTATUS)\n"
+    		+ "OR: TITLE (due by:  DEADLINE) (remarks: REMAKRS) (label: LABELS...) "
+    		+ "(c/ COMPLETIONSTATUS)\n"
             + "Example: " + COMMAND_WORD
             + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Assignment c/yes";
 

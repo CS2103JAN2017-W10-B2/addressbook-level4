@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.KEYWORD_ONLY_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ONLY_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
@@ -24,13 +26,21 @@ public class AddCommandParser {
      * and returns an AddCommand object for execution.
      */
     public Command parse(String args) {
-        ArgumentTokenizer argsTokenizer =
-                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME, PREFIX_LABELS, PREFIX_ISCOMPLETED);
-        argsTokenizer.tokenize(args);
+    	ArgumentTokenizer argsTokenizer;
+    	if (args.contains(KEYWORD_ONLY_DEADLINE)) {
+    		argsTokenizer = new ArgumentTokenizer(PREFIX_ONLY_DEADLINE,
+    				PREFIX_REMARKS, PREFIX_LABELS, PREFIX_ISCOMPLETED);
+    		argsTokenizer.tokenize(args);
+    	} else {
+    		argsTokenizer = new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_DEADLINE, 
+    				PREFIX_REMARKS, PREFIX_LABELS, PREFIX_ISCOMPLETED);
+    		argsTokenizer.tokenize(args);
+    	}
         try {
             return new AddCommand(
                     argsTokenizer.getPreamble().get(),
-                    argsTokenizer.getValue(PREFIX_DEADLINE).orElse(null),
+                    argsTokenizer.getValue(PREFIX_ONLY_DEADLINE).orElse(
+                    		argsTokenizer.getValue(PREFIX_DEADLINE).orElse(null)),
                     argsTokenizer.getValue(PREFIX_REMARKS).orElse(null),
                     argsTokenizer.getValue(PREFIX_START_TIME).orElse(null),
                     argsTokenizer.getValue(PREFIX_ISCOMPLETED).orElse("no"),
