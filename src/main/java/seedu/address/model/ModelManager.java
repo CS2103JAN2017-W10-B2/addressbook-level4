@@ -39,6 +39,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.toDoList = new ToDoList(toDoList);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
+        filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
         undoStack = new Stack<LastSuccessfulAction>();
     }
 
@@ -73,7 +74,7 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
     	undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
         toDoList.addTask(task);
-        updateFilteredListToShowAll();
+        updateFilteredListToShowOngoing();
         indicateToDoListChanged();
     }
 
