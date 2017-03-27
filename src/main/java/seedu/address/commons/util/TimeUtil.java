@@ -15,6 +15,8 @@ import com.joestelmach.natty.*;
  */
 public class TimeUtil {
 	public static final String DATE_DOES_NOT_EXIST_WARNING = "DateTime does not exist";
+	public static final String MORE_THAN_ONE_DATE_DETECTED_WARNING_MESSAGE = "Date format is too difficult to "
+			+ "understand, please try again with an easier to understand sentence.";
 	
     private static Parser parser = new Parser();
     
@@ -25,6 +27,9 @@ public class TimeUtil {
     	List<DateGroup> groups = parser.parse(input);
     	
     	try {
+    		if (groups.get(0).getDates().size() > 1) {
+    			return false;
+    		}
     		groups.get(0).getDates().get(0);
     		return true;
     	} catch (Exception e) {
@@ -40,6 +45,9 @@ public class TimeUtil {
     	List<DateGroup> groups = parser.parse(input);
     	
     	try {
+    		if (groups.get(0).getDates().size() > 1) {
+    			return null;
+    		}
     		Date mostLikelyDate = groups.get(0).getDates().get(0);
     		return mostLikelyDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     	} catch (Exception e) {
