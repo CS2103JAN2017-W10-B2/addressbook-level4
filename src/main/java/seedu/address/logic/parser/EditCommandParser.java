@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
+import static seedu.address.logic.parser.CliSyntax.KEYWORD_ONLY_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ONLY_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISCOMPLETED;
@@ -30,7 +32,15 @@ public class EditCommandParser {
      */
     public Command parse(String args) {
         assert args != null;
-        ArgumentTokenizer argsTokenizer =
+        ArgumentTokenizer argsTokenizer;
+        if (args.contains(KEYWORD_ONLY_DEADLINE)) {
+        	argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_ONLY_DEADLINE, PREFIX_REMARKS, 
+        			PREFIX_LABELS, PREFIX_ISCOMPLETED);
+        } else {
+        	argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_DEADLINE, PREFIX_REMARKS, 
+        			PREFIX_LABELS, PREFIX_ISCOMPLETED);
+        }
+        argsTokenizer =
                 new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME, PREFIX_LABELS, PREFIX_ISCOMPLETED);
         argsTokenizer.tokenize(args);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);

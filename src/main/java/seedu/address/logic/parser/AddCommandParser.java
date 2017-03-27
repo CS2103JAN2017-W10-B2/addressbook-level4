@@ -28,7 +28,7 @@ public class AddCommandParser {
     public Command parse(String args) {
     	ArgumentTokenizer argsTokenizer;
     	if (args.contains(KEYWORD_ONLY_DEADLINE)) {
-    		argsTokenizer = new ArgumentTokenizer(PREFIX_ONLY_DEADLINE,
+    		argsTokenizer = new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_ONLY_DEADLINE,
     				PREFIX_REMARKS, PREFIX_LABELS, PREFIX_ISCOMPLETED);
     		argsTokenizer.tokenize(args);
     	} else {
