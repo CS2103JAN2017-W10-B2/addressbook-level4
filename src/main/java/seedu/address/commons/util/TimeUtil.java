@@ -26,7 +26,7 @@ public class TimeUtil {
     	List<DateGroup> groups = parser.parse(input);
     	
     	try {
-    		if (groups.get(0).getDates().size() > 1) {
+    		if ( (groups.get(0).getDates().size()) != 1 || (groups.size() != 1) ) {
     			return false;
     		}
     		groups.get(0).getDates().get(0);
@@ -44,7 +44,7 @@ public class TimeUtil {
     	List<DateGroup> groups = parser.parse(input);
     	
     	try {
-    		if (groups.get(0).getDates().size() > 1) {
+    		if ( (groups.get(0).getDates().size()) != 1 || (groups.size() != 1) ) {
     			return null;
     		}
     		Date mostLikelyDate = groups.get(0).getDates().get(0);

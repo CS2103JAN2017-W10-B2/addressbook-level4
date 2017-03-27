@@ -32,6 +32,7 @@ public class EditCommandParser {
      */
     public Command parse(String args) {
         assert args != null;
+        //@@author A0135795R
         ArgumentTokenizer argsTokenizer;
         if (args.contains(KEYWORD_ONLY_DEADLINE)) {
         	argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_ONLY_DEADLINE, PREFIX_REMARKS, 
@@ -40,8 +41,6 @@ public class EditCommandParser {
         	argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_DEADLINE, PREFIX_REMARKS, 
         			PREFIX_LABELS, PREFIX_ISCOMPLETED);
         }
-        argsTokenizer =
-                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME, PREFIX_LABELS, PREFIX_ISCOMPLETED);
         argsTokenizer.tokenize(args);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);
 
@@ -52,8 +51,14 @@ public class EditCommandParser {
 
         EditTaskDescriptor editPersonDescriptor = new EditTaskDescriptor();
         try {
+        	Optional<String> deadline;
+        	if (args.contains(KEYWORD_ONLY_DEADLINE)) {
+        		deadline = argsTokenizer.getValue(PREFIX_ONLY_DEADLINE);
+        	} else {
+        		deadline = argsTokenizer.getValue(PREFIX_DEADLINE);
+        	}
             editPersonDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
-            editPersonDescriptor.setDeadline(ParserUtil.parseDeadline(argsTokenizer.getValue(PREFIX_DEADLINE)));
+            editPersonDescriptor.setDeadline(ParserUtil.parseDeadline(deadline));
             editPersonDescriptor.setRemarks(ParserUtil.parseRemarks(argsTokenizer.getValue(PREFIX_REMARKS)));
             editPersonDescriptor.setStartTime(ParserUtil.parseStartTime(argsTokenizer.getValue(PREFIX_START_TIME)));
             editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
@@ -62,6 +67,7 @@ public class EditCommandParser {
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
+        //@@author
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
             return new IncorrectCommand(EditCommand.MESSAGE_NOT_EDITED);

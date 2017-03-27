@@ -11,7 +11,7 @@ public class CliSyntax {
 
 	//@@author A0135795R
     /* Prefix definitions */
-	public static final String KEYWORD_ONLY_DEADLINE = " due by:";
+	public static final String KEYWORD_ONLY_DEADLINE = " due:";
 	public static final Prefix PREFIX_ONLY_DEADLINE = new Prefix(KEYWORD_ONLY_DEADLINE);
     public static final Prefix PREFIX_DEADLINE = new Prefix(" till:");
     public static final Prefix PREFIX_REMARKS = new Prefix(" remarks:");
