@@ -9,6 +9,34 @@ import java.io.StringWriter;
 public class StringUtil {
 
     /**
+     * Returns true if the {@code sentence} contains the {@code substring}.
+     *   Ignores case, but substring match is required.
+     *   <br>examples:<pre>
+     *       containsSubstringIgnoreCase("ABc def", "abc") == true
+     *       containsSubstringIgnoreCase("ABc def", "DEF") == true
+     *       containsSubstringIgnoreCase("ABc def", "AB") == true //not a full word match
+     *       </pre>
+     * @param sentence cannot be null
+     * @param substring cannot be null, cannot be empty, must be a single word
+     */
+    public static boolean containsSubstringIgnoreCase(String sentence, String substring) {
+        assert substring != null : "Word parameter cannot be null";
+        assert sentence != null : "Sentence parameter cannot be null";
+
+        String preppedWord = substring.trim();
+        assert !preppedWord.isEmpty() : "Word parameter cannot be empty";
+        assert preppedWord.split("\\s+").length == 1 : "Word parameter should be a single word";
+
+        String preppedSentence = sentence;
+        String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
+
+        for (String wordInSentence: wordsInPreppedSentence) {
+            if (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase())) return true;
+        }
+        return false;
+    }
+    
+    /**
      * Returns true if the {@code sentence} contains the {@code word}.
      *   Ignores case, but a full word match is required.
      *   <br>examples:<pre>
@@ -31,7 +59,7 @@ public class StringUtil {
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
         for (String wordInSentence: wordsInPreppedSentence) {
-            if (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase())) return true;
+            if (wordInSentence.equalsIgnoreCase(preppedWord)) return true;
         }
         return false;
     }

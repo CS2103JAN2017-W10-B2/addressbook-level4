@@ -160,17 +160,17 @@ public class ModelManager extends ComponentManager implements Model {
         public boolean run(ReadOnlyTask task) {
             if (task.hasRemarks()){
                 return titleKeyWords.stream()
-                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
+                        .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
                         .findAny()
                         .isPresent() ||
                         titleKeyWords.stream()
-                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getRemarks().value, keyword))
+                        .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
                         .findAny()
                         .isPresent();
                 
             }
             return titleKeyWords.stream()
-                    .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
+                    .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
                     .findAny()
                     .isPresent();
         }
