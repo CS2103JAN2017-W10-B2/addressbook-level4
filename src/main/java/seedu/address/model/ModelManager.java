@@ -111,7 +111,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void updateFilteredTaskList(Set<String> keywords) {
-        updateFilteredTaskList(new PredicateExpression(new TitleQualifier(keywords)));
+        updateFilteredTaskList(new PredicateExpression(new TitleAndRemarksQualifier(keywords)));
     }
 
     private void updateFilteredTaskList(Expression expression) {
@@ -149,15 +149,26 @@ public class ModelManager extends ComponentManager implements Model {
         String toString();
     }
 
-    private class TitleQualifier implements Qualifier {
+    private class TitleAndRemarksQualifier implements Qualifier {
         private Set<String> titleKeyWords;
 
-        TitleQualifier(Set<String> nameKeyWords) {
+        TitleAndRemarksQualifier(Set<String> nameKeyWords) {
             this.titleKeyWords = nameKeyWords;
         }
 
         @Override
         public boolean run(ReadOnlyTask task) {
+            if (task.hasRemarks()){
+                return titleKeyWords.stream()
+                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
+                        .findAny()
+                        .isPresent() ||
+                        titleKeyWords.stream()
+                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getRemarks().value, keyword))
+                        .findAny()
+                        .isPresent();
+                
+            }
             return titleKeyWords.stream()
                     .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
                     .findAny()
