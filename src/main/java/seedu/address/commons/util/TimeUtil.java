@@ -14,8 +14,7 @@ import com.joestelmach.natty.*;
  * Thanks given to natty for their date time parser
  */
 public class TimeUtil {
-	public static final String DATE_DOES_NOT_EXIST_WARNING = "DateTime does not exist";
-	public static final String MORE_THAN_ONE_DATE_DETECTED_WARNING_MESSAGE = "Date format is too difficult to "
+	public static final String DATE_DOES_NOT_EXIST_WARNING = "DateTime does not exist or is too difficult to "
 			+ "understand, please try again with an easier to understand sentence.";
 	
     private static Parser parser = new Parser();
