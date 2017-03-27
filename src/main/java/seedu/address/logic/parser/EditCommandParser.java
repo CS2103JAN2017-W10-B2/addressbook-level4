@@ -52,10 +52,10 @@ public class EditCommandParser {
 
         EditTaskDescriptor editPersonDescriptor = new EditTaskDescriptor();
         try {
-            editPersonDescriptor.setTitle(ParserUtil.parseName(preambleFields.get(1)));
-            editPersonDescriptor.setDeadline(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
-            editPersonDescriptor.setRemarks(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
-            editPersonDescriptor.setStartTime(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_START_TIME)));
+            editPersonDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
+            editPersonDescriptor.setDeadline(ParserUtil.parseDeadline(argsTokenizer.getValue(PREFIX_DEADLINE)));
+            editPersonDescriptor.setRemarks(ParserUtil.parseRemarks(argsTokenizer.getValue(PREFIX_REMARKS)));
+            editPersonDescriptor.setStartTime(ParserUtil.parseStartTime(argsTokenizer.getValue(PREFIX_START_TIME)));
             editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
             editPersonDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
             editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
@@ -82,7 +82,7 @@ public class EditCommandParser {
             return Optional.empty();
         }
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
-        return Optional.of(ParserUtil.parseTags(tagSet));
+        return Optional.of(ParserUtil.parseLabels(tagSet));
     }
 
 }

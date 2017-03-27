@@ -67,54 +67,51 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code Optional<String> name} into an {@code Optional<Name>} if {@code name} is present.
+     * Parses a {@code Optional<String> title} into an {@code Optional<Title>} if {@code title} is present.
      */
-    public static Optional<Title> parseName(Optional<String> name) throws IllegalValueException {
-        assert name != null;
-        return name.isPresent() ? Optional.of(new Title(name.get())) : Optional.empty();
+    public static Optional<Title> parseTitle(Optional<String> title) throws IllegalValueException {
+        assert title != null;
+        return title.isPresent() ? Optional.of(new Title(title.get())) : Optional.empty();
     }
 
     /**
-     * Parses a {@code Optional<String> phone} into an {@code Optional<Phone>} if {@code phone} is present.
+     * Parses a {@code Optional<String> deadline} into an {@code Optional<Deadline>} if {@code deadline} is present.
      */
-    public static Optional<Deadline> parsePhone(Optional<String> phone) throws IllegalValueException {
-        assert phone != null;
-        return phone.isPresent() ? Optional.of(new Deadline(phone.get())) : Optional.empty();
+    public static Optional<Deadline> parseDeadline(Optional<String> deadline) throws IllegalValueException {
+        assert deadline != null;
+        return deadline.isPresent() ? Optional.of(new Deadline(deadline.get())) : Optional.empty();
     }
 
     /**
      * Parses a {@code Optional<String> address} into an {@code Optional<Address>} if {@code address} is present.
      */
-    public static Optional<StartTime> parseAddress(Optional<String> address) throws IllegalValueException {
-        assert address != null;
-        return address.isPresent() ? Optional.of(new StartTime(address.get())) : Optional.empty();
+    public static Optional<StartTime> parseStartTime(Optional<String> startTime) throws IllegalValueException {
+        assert startTime != null;
+        return startTime.isPresent() ? Optional.of(new StartTime(startTime.get())) : Optional.empty();
     }
 
     /**
-     * Parses a {@code Optional<String> email} into an {@code Optional<Email>} if {@code email} is present.
+     * Parses a {@code Optional<String> remark} into an {@code Optional<Remark>} if {@code remark} is present.
      */
-    public static Optional<Remarks> parseEmail(Optional<String> email) throws IllegalValueException {
-        assert email != null;
-        return email.isPresent() ? Optional.of(new Remarks(email.get())) : Optional.empty();
+    public static Optional<Remarks> parseRemarks(Optional<String> remark) throws IllegalValueException {
+        assert remark != null;
+        return remark.isPresent() ? Optional.of(new Remarks(remark.get())) : Optional.empty();
     }
     
-    /**
-     * Parses a {@code Optional<String> email} into an {@code Optional<Email>} if {@code email} is present.
-     */
     public static Optional<String> parseIsCompleted(Optional<String> inCompleted) throws IllegalValueException {
         assert inCompleted != null;
         return inCompleted;
     }
 
     /**
-     * Parses {@code Collection<String> tags} into an {@code UniqueTagList}.
+     * Parses {@code Collection<String> labels} into an {@code UniqueLabelList}.
      */
-    public static UniqueLabelList parseTags(Collection<String> tags) throws IllegalValueException {
-        assert tags != null;
-        final Set<Label> tagSet = new HashSet<>();
-        for (String tagName : tags) {
-            tagSet.add(new Label(tagName));
+    public static UniqueLabelList parseLabels(Collection<String> labels) throws IllegalValueException {
+        assert labels != null;
+        final Set<Label> labelSet = new HashSet<>();
+        for (String labelName : labels) {
+            labelSet.add(new Label(labelName));
         }
-        return new UniqueLabelList(tagSet);
+        return new UniqueLabelList(labelSet);
     }
 }
