@@ -211,7 +211,7 @@ public class LogicManagerTest {
     public void execute_add_successful() throws Exception {
         // setup expectations
         TestDataHelper helper = new TestDataHelper();
-        Task toBeAdded = helper.CS2103_ex1();
+        Task toBeAdded = helper.ex1CS2103();
         ToDoList expectedAB = new ToDoList();
         expectedAB.addTask(toBeAdded);
 
@@ -227,7 +227,7 @@ public class LogicManagerTest {
     public void execute_addDuplicate_notAllowed() throws Exception {
         // setup expectations
         TestDataHelper helper = new TestDataHelper();
-        Task toBeAdded = helper.CS2103_ex1();
+        Task toBeAdded = helper.ex1CS2103();
 
         // setup starting state
         model.addTask(toBeAdded); // person already in internal address book
@@ -414,7 +414,7 @@ public class LogicManagerTest {
      */
     class TestDataHelper {
 
-        Task CS2103_ex1() throws Exception {
+        Task ex1CS2103() throws Exception {
             Title name = new Title("CS2103 Exercise 1");
             Deadline deadline = new Deadline("111111");
             Remarks remark = new Remarks("adam@gmail.com");

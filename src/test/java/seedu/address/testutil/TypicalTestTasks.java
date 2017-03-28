@@ -10,8 +10,8 @@ import seedu.address.model.task.UniqueTaskList;
  */
 public class TypicalTestTasks {
 
-    public TestTask testExample1, testExample2, testExample3, testExample4, testExample5, testExample6,
-    testExample7, testExample8, testExample9;
+    public TestTask testExample1, testExample2, testExample3, testExample4, testExample5, testExample6;
+    public TestTask testExample7, testExample8, testExample9;
 
     public TypicalTestTasks() {
         try {

@@ -39,8 +39,8 @@ public class TestTask implements ReadOnlyTask {
         this.title = title;
     }
 
-    public void setNotInUse(StartTime attribute_not_in_use) {
-        this.startTime = attribute_not_in_use;
+    public void setNotInUse(StartTime startTime) {
+        this.startTime = startTime;
     }
 
     public void setRemarks(Remarks remarks) {
