@@ -31,7 +31,7 @@ We are a team based in the [School of Computing, National University of Singapor
  Responsibilities: Model, Deliverables
 
  -----
- 
+
 # Contributors
 
 We welcome contributions. See [Contact Us](ContactUs.md) page for more info.
