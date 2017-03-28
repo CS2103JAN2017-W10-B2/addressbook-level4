@@ -18,7 +18,6 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'java'
     apply plugin: 'jacoco'
-    apply plugin: 'checkstyle'
 
 
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -41,13 +40,8 @@ allprojects {
         junitVersion = '4.12'
         testFxVersion = '4.0.+'
         monocleVersion = '1.8.0_20'
-        checkstyleVersion = '7.1.2'
 
         libDir = 'lib'
-    }
-
-    checkstyle {
-        toolVersion = "$checkstyleVersion"
     }
 
     jacocoTestReport {
