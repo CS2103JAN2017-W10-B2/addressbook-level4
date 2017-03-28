@@ -109,9 +109,15 @@ public class Task implements ReadOnlyTask {
         assert replacement != null;
 
         this.setTitle(replacement.getTitle());
-        this.setDeadline(replacement.getDeadline());
-        this.setRemarks(replacement.getRemarks());
-        this.setStartTime(replacement.getStartTime());
+        if (replacement.hasDeadline()){
+            this.setDeadline(replacement.getDeadline());
+        }
+        if (replacement.hasRemarks()){
+            this.setRemarks(replacement.getRemarks());
+        }
+        if (replacement.hasStartTime()){
+            this.setStartTime(replacement.getStartTime());
+        }
         this.setLabels(replacement.getLabels());
         this.setIsCompleted(replacement.getIsCompleted());
     }
