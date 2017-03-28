@@ -15,6 +15,7 @@ public interface ReadOnlyTask {
     StartTime getStartTime();
 	boolean getIsCompleted();
 	
+	
 	default boolean hasDeadline() {
         return getDeadline() != null;
     }

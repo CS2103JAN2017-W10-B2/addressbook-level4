@@ -32,6 +32,8 @@ public class Task implements ReadOnlyTask {
         this.isCompleted = isCompleted;
         this.labels = new UniqueLabelList(labels); // protect internal tags from changes in the arg list
     }
+    
+    public Task(){}
 
     /**
      * Creates a copy of the given ReadOnlyTask.

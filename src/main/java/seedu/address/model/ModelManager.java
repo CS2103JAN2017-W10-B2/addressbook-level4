@@ -48,6 +48,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void resetData(ReadOnlyToDoList newData) {
+    	undoStack.push(new LastSuccessfulAction(new Task(), false, false, false, true));
         toDoList.resetData(newData);
         indicateToDoListChanged();
     }
@@ -86,6 +87,40 @@ public class ModelManager extends ComponentManager implements Model {
         toDoList.updateTask(toDoListIndex, editedTask);
         indicateToDoListChanged();
     }
+    
+    @Override
+	public void undoTask() {
+		LastSuccessfulAction lsa = undoStack.pop();
+		if(lsa.isAdd){
+			try {
+				deleteTask(lsa.task);
+			} catch (TaskNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(lsa.isDelete){
+			try {
+				addTask((Task) lsa.task);
+			} catch (DuplicateTaskException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(lsa.isClear){
+			
+			try {
+				toDoList.undoResetData();
+			} catch (DuplicateTaskException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+		}
+		
+	}
 
     //=========== Filtered Task List Accessors =============================================================
 
@@ -170,27 +205,6 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
-	@Override
-	public void undoTask() {
-		LastSuccessfulAction lsa = undoStack.pop();
-		if(lsa.isAdd){
-			try {
-				deleteTask(lsa.task);
-			} catch (TaskNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		if(lsa.isDelete){
-			try {
-				addTask((Task) lsa.task);
-			} catch (DuplicateTaskException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-	}
+	
 
 }
