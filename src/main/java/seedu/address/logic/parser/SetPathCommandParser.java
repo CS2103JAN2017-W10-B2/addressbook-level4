@@ -16,12 +16,12 @@ public class SetPathCommandParser {
      * Parses the given {@code String} of arguments in the context of the SetPathCommand
      * and returns an SetPathCommand object for execution.
      */
-    public Command parse(String StoragePath) {
-        if (StoragePath.trim().isEmpty()) {
+    public Command parse(String storagePath) {
+        if (storagePath.trim().isEmpty()) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     SetPathCommand.MESSAGE_USAGE));
         } else {
-            return new SetPathCommand(StoragePath);
+            return new SetPathCommand(storagePath);
         }
     }
 
