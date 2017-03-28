@@ -15,17 +15,17 @@ import seedu.address.commons.util.ConfigUtil;
  */
 public class SetPathCommand extends Command {
 
-	private String StoragePath;
+    private String StoragePath;
 
-	private Config initializedConfig;
+    private Config initializedConfig;
 
     public static final String COMMAND_WORD = "set_path";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": set a storage path for ToDoList. "
-    		+ "Parameters: Storage_Path\n"
-    		+ "Note that '.xml' is necessary. App needs to restart after this setting.\n"
+            + "Parameters: Storage_Path\n"
+            + "Note that '.xml' is necessary. App needs to restart after this setting.\n"
             + "Example: " + COMMAND_WORD
-            + " f:/ToDoList.xml"+ "\n"
+            + " f:/ToDoList.xml" + "\n"
             + "Example: " + COMMAND_WORD
             + " default";
 
@@ -34,15 +34,12 @@ public class SetPathCommand extends Command {
     /**
      * Set the storage path for ToDoList;
      */
-    public SetPathCommand(String StoragePath){
-        if (StoragePath.trim().equals("default")||StoragePath.trim()==null){
-        		this.StoragePath = "data/ToDoList.xml";
+    public SetPathCommand(String StoragePath) {
+        if (StoragePath.trim().equals("default") || StoragePath.trim() == null) {
+            this.StoragePath = "data/ToDoList.xml";
+        } else {
+            this.StoragePath = StoragePath.trim();
         }
-        else {
-        	this.StoragePath = StoragePath.trim();
-        }
-
-
     }
 
     @Override
@@ -61,7 +58,7 @@ public class SetPathCommand extends Command {
             ConfigUtil.saveConfig(initializedConfig, "config.tim");
         } catch (IOException e) {
         }
-    	 return new CommandResult(String.format(MESSAGE_SUCCESS, StoragePath));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, StoragePath));
     }
 
 }

@@ -1,11 +1,11 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISCOMPLETED;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.NoSuchElementException;
 
@@ -25,7 +25,8 @@ public class AddCommandParser {
      */
     public Command parse(String args) {
         ArgumentTokenizer argsTokenizer =
-                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME, PREFIX_LABELS, PREFIX_ISCOMPLETED);
+                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME,
+                        PREFIX_LABELS, PREFIX_ISCOMPLETED);
         argsTokenizer.tokenize(args);
         try {
             return new AddCommand(
@@ -35,7 +36,7 @@ public class AddCommandParser {
                     argsTokenizer.getValue(PREFIX_START_TIME).orElse(null),
                     argsTokenizer.getValue(PREFIX_ISCOMPLETED).orElse("no"),
                     ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))
-            );
+                    );
         } catch (NoSuchElementException nsee) {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         } catch (IllegalValueException ive) {

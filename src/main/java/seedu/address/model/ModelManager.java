@@ -64,14 +64,14 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-    	undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
+        undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
         toDoList.removeTask(target);
         indicateToDoListChanged();
     }
 
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-    	undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
+        undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
         toDoList.addTask(task);
         updateFilteredListToShowAll();
         indicateToDoListChanged();
@@ -101,12 +101,12 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void updateFilteredListToShowCompleted() {
-    	filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
+        filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
     }
 
     @Override
     public void updateFilteredListToShowOngoing() {
-    	filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
+        filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
     }
 
     @Override
@@ -128,7 +128,7 @@ public class ModelManager extends ComponentManager implements Model {
     interface Expression {
         boolean satisfies(ReadOnlyTask task);
         @Override
-		String toString();
+        String toString();
     }
 
     private class PredicateExpression implements Expression {
@@ -153,7 +153,7 @@ public class ModelManager extends ComponentManager implements Model {
     interface Qualifier {
         boolean run(ReadOnlyTask task);
         @Override
-		String toString();
+        String toString();
     }
 
     private class TitleAndRemarksQualifier implements Qualifier {
@@ -165,7 +165,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         @Override
         public boolean run(ReadOnlyTask task) {
-            if (task.hasRemarks()){
+            if (task.hasRemarks()) {
                 return keyWords.stream()
                         .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
                         .findAny()
@@ -197,9 +197,10 @@ public class ModelManager extends ComponentManager implements Model {
 
         @Override
         public boolean run(ReadOnlyTask task) {
-            if (!task.getLabels().isEmpty()){
+            if (!task.getLabels().isEmpty()) {
                 return keyWords.stream()
-                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getLabels().getStringRepresentation(), keyword))
+                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getLabels()
+                                .getStringRepresentation(), keyword))
                         .findAny()
                         .isPresent();
             }
@@ -212,27 +213,26 @@ public class ModelManager extends ComponentManager implements Model {
         }
     }
 
-	@Override
-	public void undoTask() {
-		LastSuccessfulAction lsa = undoStack.pop();
-		if(lsa.isAdd){
-			try {
-				deleteTask(lsa.task);
-			} catch (TaskNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+    @Override
+    public void undoTask() {
+        LastSuccessfulAction lsa = undoStack.pop();
+        if (lsa.isAdd) {
+            try {
+                deleteTask(lsa.task);
+            } catch (TaskNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        if (lsa.isDelete) {
+            try {
+                addTask((Task) lsa.task);
+            } catch (DuplicateTaskException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
 
-		if(lsa.isDelete){
-			try {
-				addTask((Task) lsa.task);
-			} catch (DuplicateTaskException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-	}
+    }
 
 }

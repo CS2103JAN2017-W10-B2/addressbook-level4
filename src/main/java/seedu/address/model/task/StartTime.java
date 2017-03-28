@@ -9,9 +9,9 @@ import seedu.address.commons.util.TimeUtil;
  */
 public class StartTime {
 
-	//@@author A0135795R
+    //@@author A0135795R
     public static final String MESSAGE_START_TIME_CONSTRAINTS = "Task start time is not accepted, try a more formal "
-    		+ "definition.";
+            + "definition.";
 
     public final String value;
 
@@ -33,9 +33,9 @@ public class StartTime {
      * Returns true if a given string is a valid task start time.
      */
     public static boolean isValidStartTime(String test) {
-    	return TimeUtil.isValidDateTimeExist(test);
+        return TimeUtil.isValidDateTimeExist(test);
     }
-  //@@author
+    //@@author
 
     @Override
     public String toString() {
@@ -46,7 +46,7 @@ public class StartTime {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof StartTime // instanceof handles nulls
-                && this.value.equals(((StartTime) other).value)); // state check
+                        && this.value.equals(((StartTime) other).value)); // state check
     }
 
     @Override

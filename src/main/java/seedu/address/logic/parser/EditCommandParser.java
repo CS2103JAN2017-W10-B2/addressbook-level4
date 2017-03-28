@@ -1,11 +1,11 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISCOMPLETED;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -16,8 +16,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.logic.commands.IncorrectCommand;
+import seedu.address.model.label.UniqueLabelList;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -31,7 +31,8 @@ public class EditCommandParser {
     public Command parse(String args) {
         assert args != null;
         ArgumentTokenizer argsTokenizer =
-                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME, PREFIX_LABELS, PREFIX_ISCOMPLETED);
+                new ArgumentTokenizer(PREFIX_DEADLINE, PREFIX_REMARKS, PREFIX_START_TIME,
+                        PREFIX_LABELS, PREFIX_ISCOMPLETED);
         argsTokenizer.tokenize(args);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);
 
@@ -46,7 +47,8 @@ public class EditCommandParser {
             editPersonDescriptor.setDeadline(ParserUtil.parsePhone(argsTokenizer.getValue(PREFIX_DEADLINE)));
             editPersonDescriptor.setRemarks(ParserUtil.parseEmail(argsTokenizer.getValue(PREFIX_REMARKS)));
             editPersonDescriptor.setStartTime(ParserUtil.parseAddress(argsTokenizer.getValue(PREFIX_START_TIME)));
-            editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
+            editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer
+                    .getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
             editPersonDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
             editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
         } catch (IllegalValueException ive) {

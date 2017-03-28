@@ -117,7 +117,7 @@ public class EditCommand extends Command {
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.startTime,
-                    this.labels)||this.isCompletededited;
+                    this.labels) || this.isCompletededited;
         }
 
         public void setTitle(Optional<Title> title) {

@@ -31,8 +31,8 @@ public class FindCommandParser {
         // keywords delimited by whitespace
         boolean isLabel = false;
         final String[] keywords = matcher.group("keywords").split("\\s+");
-        for (int i=0; i<keywords.length; i++){
-            if (keywords[i].charAt(0) == '#'){
+        for (int i = 0; i < keywords.length; i++) {
+            if (keywords[i].charAt(0) == '#') {
                 isLabel = true;
                 keywords[i] = keywords[i].substring(1);
             }

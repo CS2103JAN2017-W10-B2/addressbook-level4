@@ -75,7 +75,7 @@ public class Parser {
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
-          //@@author A0115333U
+            //@@author A0115333U
         case ListCompletedCommand.COMMAND_WORD:
             return new ListCompletedCommand();
 
@@ -84,10 +84,10 @@ public class Parser {
 
         case SetPathCommand.COMMAND_WORD:
             return new SetPathCommandParser().parse(arguments);
-          //@@author
+            //@@author
 
         case UndoCommand.COMMAND_WORD:
-        	return new UndoCommand();
+            return new UndoCommand();
 
         default:
             return new IncorrectCommand(MESSAGE_UNKNOWN_COMMAND);

@@ -10,8 +10,8 @@ import java.util.Set;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.UnmodifiableObservableList;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
@@ -48,7 +48,7 @@ public class ToDoList implements ReadOnlyToDoList {
         resetData(toBeCopied);
     }
 
-//// list overwrite operations
+    //// list overwrite operations
 
     public void setTasks(List<? extends ReadOnlyTask> tasks)
             throws UniqueTaskList.DuplicateTaskException {
@@ -74,7 +74,7 @@ public class ToDoList implements ReadOnlyToDoList {
         syncMasterLabelListWith(tasks);
     }
 
-//// task-level operations
+    //// task-level operations
 
     /**
      * Adds a task to the doitdoit!!.
@@ -147,13 +147,13 @@ public class ToDoList implements ReadOnlyToDoList {
         }
     }
 
-//// label-level operations
+    //// label-level operations
 
     public void addLabel(Label t) throws UniqueLabelList.DuplicateLabelException {
         labels.add(t);
     }
 
-//// util methods
+    //// util methods
 
     @Override
     public String toString() {
@@ -175,8 +175,8 @@ public class ToDoList implements ReadOnlyToDoList {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof ToDoList // instanceof handles nulls
-                && this.tasks.equals(((ToDoList) other).tasks)
-                && this.labels.equalsOrderInsensitive(((ToDoList) other).labels));
+                        && this.tasks.equals(((ToDoList) other).tasks)
+                        && this.labels.equalsOrderInsensitive(((ToDoList) other).labels));
     }
 
     @Override

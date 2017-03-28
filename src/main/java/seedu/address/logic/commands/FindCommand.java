@@ -25,11 +25,10 @@ public class FindCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        if (isLabel){
+        if (isLabel) {
             model.updateFilteredTaskListByLabel(keywords);
             return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
-        }
-        else{
+        } else {
             model.updateFilteredTaskList(keywords);
             return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
         }

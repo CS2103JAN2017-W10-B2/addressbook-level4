@@ -9,9 +9,9 @@ import seedu.address.commons.util.TimeUtil;
  */
 public class Deadline {
 
-	//@@author A0135795R
+    //@@author A0135795R
     public static final String MESSAGE_DEADLINE_CONSTRAINTS = "Task deadline is not accepted, try a more formal "
-    		+ "definition.";
+            + "definition.";
 
     public final String value;
 
@@ -35,7 +35,7 @@ public class Deadline {
     public static boolean isValidDeadline(String test) {
         return TimeUtil.isValidDateTimeExist(test);
     }
-  //@@author
+    //@@author
 
     @Override
     public String toString() {
@@ -46,7 +46,7 @@ public class Deadline {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Deadline // instance of handles nulls
-                && this.value.equals(((Deadline) other).value)); // state check
+                        && this.value.equals(((Deadline) other).value)); // state check
     }
 
     @Override

@@ -46,14 +46,14 @@ public class BrowserPanel extends UiPart<Region> {
         phone.setText("");
         address.setText("");
         email.setText("");
-        if (person.hasDeadline()){
+        if (person.hasDeadline()) {
             phone.setText(person.getDeadline().value);
         }
-        if (person.hasStartTime()){
+        if (person.hasStartTime()) {
             address.setText(person.getStartTime().value);
         }
-        if (person.hasRemarks()){
-             email.setText(person.getRemarks().value);
+        if (person.hasRemarks()) {
+            email.setText(person.getRemarks().value);
         }
         initTags(person);
     }

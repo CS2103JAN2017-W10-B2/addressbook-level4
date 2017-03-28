@@ -13,17 +13,17 @@ public interface ReadOnlyTask {
     Deadline getDeadline();
     Remarks getRemarks();
     StartTime getStartTime();
-	boolean getIsCompleted();
+    boolean getIsCompleted();
 
-	default boolean hasDeadline() {
+    default boolean hasDeadline() {
         return getDeadline() != null;
     }
 
-	default boolean hasRemarks() {
+    default boolean hasRemarks() {
         return getRemarks() != null;
     }
 
-	default boolean hasStartTime() {
+    default boolean hasStartTime() {
         return getStartTime() != null;
     }
 
@@ -57,23 +57,23 @@ public interface ReadOnlyTask {
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle());
-        if (hasStartTime()){
+        if (hasStartTime()) {
             builder.append(" Start Time: ")
-                   .append(getStartTime());
+            .append(getStartTime());
         }
-        if (hasDeadline()){
+        if (hasDeadline()) {
             builder.append(" Deadline: ")
-                   .append(getDeadline());
+            .append(getDeadline());
         }
-        if (hasRemarks()){
+        if (hasRemarks()) {
             builder.append(" Remarks: ")
-                   .append(getRemarks());
+            .append(getRemarks());
         }
-        if (getIsCompleted()){
+        if (getIsCompleted()) {
             builder.append(" Completion: ")
-                   .append(getIsCompleted());
+            .append(getIsCompleted());
         }
-        if (!getLabels().isEmpty()){
+        if (!getLabels().isEmpty()) {
             builder.append(" Labels: ");
             getLabels().forEach(builder::append);
         }
