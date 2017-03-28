@@ -15,7 +15,7 @@ import seedu.address.commons.util.ConfigUtil;
  */
 public class SetPathCommand extends Command {
 
-    private String StoragePath;
+    private String storagePath;
 
     private Config initializedConfig;
 
@@ -36,9 +36,9 @@ public class SetPathCommand extends Command {
      */
     public SetPathCommand(String StoragePath) {
         if (StoragePath.trim().equals("default") || StoragePath.trim() == null) {
-            this.StoragePath = "data/ToDoList.xml";
+            this.storagePath = "data/ToDoList.xml";
         } else {
-            this.StoragePath = StoragePath.trim();
+            this.storagePath = StoragePath.trim();
         }
     }
 
@@ -51,14 +51,14 @@ public class SetPathCommand extends Command {
             initializedConfig = new Config();
         }
 
-        initializedConfig.setAddressBookFilePath(StoragePath);
+        initializedConfig.setAddressBookFilePath(storagePath);
 
         //Update config file in case it was missing to begin with or there are new/unused fields
         try {
             ConfigUtil.saveConfig(initializedConfig, "config.tim");
         } catch (IOException e) {
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, StoragePath));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, storagePath));
     }
 
 }

@@ -114,14 +114,16 @@ public class ModelManager extends ComponentManager implements Model {
         updateFilteredTaskList(new PredicateExpression(new TitleAndRemarksQualifier(keywords)));
     }
 
+    private void updateFilteredTaskList(Expression expression) {
+        filteredTasks.setPredicate(expression::satisfies);
+    }
+
     @Override
     public void updateFilteredTaskListByLabel(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new LabelsQualifier(keywords)));
     }
 
-    private void updateFilteredTaskList(Expression expression) {
-        filteredTasks.setPredicate(expression::satisfies);
-    }
+
 
     //========== Inner classes/interfaces used for filtering =================================================
 
