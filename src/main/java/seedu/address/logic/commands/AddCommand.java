@@ -23,8 +23,8 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to toDoList!!. "
-    		+ "Parameters: TITLE (from START TIME) (till DEADLINE) (remarks: REMAKRS) (label: LABELS...) "
-    		+ "(c/ COMPLETIONSTATUS)\n"
+            + "Parameters: TITLE (from START TIME) (till DEADLINE) (remarks: REMAKRS) (label: LABELS...) "
+            + "(c/ COMPLETIONSTATUS)\n"
             + "Example: " + COMMAND_WORD
             + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Assignment c/yes";
 
@@ -39,8 +39,9 @@ public class AddCommand extends Command {
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public AddCommand(String title, String deadline, String remarks, String startTime, String isCompleted, Set<String> labels)
-            throws IllegalValueException {
+    public AddCommand(String title, String deadline, String remarks, String startTime, String isCompleted,
+            Set<String> labels)
+                    throws IllegalValueException {
         final Set<Label> labelSet = new HashSet<>();
         for (String labelName : labels) {
             labelSet.add(new Label(labelName));
@@ -48,11 +49,11 @@ public class AddCommand extends Command {
         this.toAdd = new Task(
                 new Title(title),
                 deadline == null ? null : new Deadline(deadline),
-                remarks == null ? null : new Remarks(remarks),
-                startTime == null ? null : new StartTime(startTime),
-                new UniqueLabelList(labelSet),
-                (isCompleted.trim().equals("yes"))
-        );
+                        remarks == null ? null : new Remarks(remarks),
+                                startTime == null ? null : new StartTime(startTime),
+                                        new UniqueLabelList(labelSet),
+                                        (isCompleted.trim().equals("yes"))
+                );
     }
 
     @Override

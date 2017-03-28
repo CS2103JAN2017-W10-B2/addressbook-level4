@@ -15,7 +15,7 @@ import com.joestelmach.natty.Parser;
  * Thanks given to natty for their date time parser
  */
 public class TimeUtil {
-	public static final String DATE_DOES_NOT_EXIST_WARNING = "DateTime does not exist";
+    public static final String DATE_DOES_NOT_EXIST_WARNING = "DateTime does not exist";
 
     private static Parser parser = new Parser();
 
@@ -23,14 +23,14 @@ public class TimeUtil {
      * Test to see if input string is a valid DateTime
      */
     public static Boolean isValidDateTimeExist(String input) {
-    	List<DateGroup> groups = parser.parse(input);
+        List<DateGroup> groups = parser.parse(input);
 
-    	try {
-    		groups.get(0).getDates().get(0);
-    		return true;
-    	} catch (Exception e) {
-    		return false;
-    	}
+        try {
+            groups.get(0).getDates().get(0);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     /**
@@ -38,14 +38,14 @@ public class TimeUtil {
      * Else returns null if unable to detect DateTime from input string.
      */
     public static LocalDateTime getDateTime(String input) {
-    	List<DateGroup> groups = parser.parse(input);
+        List<DateGroup> groups = parser.parse(input);
 
-    	try {
-    		Date mostLikelyDate = groups.get(0).getDates().get(0);
-    		return mostLikelyDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-    	} catch (Exception e) {
-    		return null;
-    	}
+        try {
+            Date mostLikelyDate = groups.get(0).getDates().get(0);
+            return mostLikelyDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 

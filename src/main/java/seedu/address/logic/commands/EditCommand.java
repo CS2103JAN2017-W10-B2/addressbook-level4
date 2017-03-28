@@ -74,7 +74,7 @@ public class EditCommand extends Command {
      * edited with {@code editTaskDescriptor}.
      */
     private static Task createEditedTask(ReadOnlyTask taskToEdit,
-                                             EditTaskDescriptor editTaskDescriptor) {
+            EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
 
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
@@ -84,7 +84,8 @@ public class EditCommand extends Command {
         UniqueLabelList updatedLabels = editTaskDescriptor.getLabels().orElseGet(taskToEdit::getLabels);
         boolean updatedIsCompleted = editTaskDescriptor.getIsCompleted();
 
-        return new Task(updatedTitle, updatedDeadline, updatedRemarks, updatedStartTime, updatedLabels, updatedIsCompleted);
+        return new Task(updatedTitle, updatedDeadline, updatedRemarks, updatedStartTime, updatedLabels,
+                updatedIsCompleted);
     }
 
     /**
@@ -115,7 +116,8 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.startTime, this.labels)||this.isCompletededited;
+            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.startTime,
+                    this.labels)||this.isCompletededited;
         }
 
         public void setTitle(Optional<Title> title) {
