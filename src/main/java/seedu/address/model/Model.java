@@ -26,7 +26,6 @@ public interface Model {
 
     /**
      * Updates the task located at {@code filteredTaskListIndex} with {@code editedTask}.
-     *
      * @throws DuplicateTaskException if updating the task's details causes the task to be equivalent to
      *      another existing task in the list.
      * @throws IndexOutOfBoundsException if {@code filteredTaskListIndex} < 0 or >= the size of the filtered list.
@@ -50,5 +49,7 @@ public interface Model {
     void updateFilteredListToShowOngoing();
 
 	void undoTask();
+
+	void updateEditStack(ReadOnlyTask taskToEdit);
 
 }

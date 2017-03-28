@@ -27,6 +27,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final ToDoList toDoList;
     private final FilteredList<ReadOnlyTask> filteredTasks;
     public Stack<LastSuccessfulAction> undoStack;
+    public Stack<ReadOnlyTask> editStack;
 
     /**
      * Initializes a ModelManager with the given doitdoit!! and userPrefs.
@@ -40,6 +41,7 @@ public class ModelManager extends ComponentManager implements Model {
         this.toDoList = new ToDoList(toDoList);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
         undoStack = new Stack<LastSuccessfulAction>();
+        editStack = new Stack<ReadOnlyTask>();
     }
 
     public ModelManager() {
@@ -81,6 +83,9 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException {
+    	undoStack.push(new LastSuccessfulAction(editedTask, false, false, true, false));
+    	
+    	
         assert editedTask != null;
 
         int toDoListIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
@@ -88,41 +93,91 @@ public class ModelManager extends ComponentManager implements Model {
         indicateToDoListChanged();
     }
     
+    public void updateEditStack(ReadOnlyTask taskToEdit){
+    	editStack.push(taskToEdit);
+    	
+    }
+    
     @Override
 	public void undoTask() {
-		LastSuccessfulAction lsa = undoStack.pop();
-		if(lsa.isAdd){
-			try {
-				deleteTask(lsa.task);
-			} catch (TaskNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+    	
+    	if(!undoStack.empty()){
+    		
+    		
+    		LastSuccessfulAction lsa = undoStack.pop();
+    		if(lsa.isAdd){
+    			try {
+    				undoAddTask(lsa.task);
+    			} catch (TaskNotFoundException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+    		}
+    		
+    		if(lsa.isDelete){
+    			try {
+    				undoDeleteTask((Task) lsa.task);
+    			} catch (DuplicateTaskException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+    		}
+    		
+    		if(lsa.isClear){
+    			
+    			try {
+    				toDoList.undoResetData();
+    			} catch (DuplicateTaskException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+    	
+    		}
+    		
+    		Task edited = (Task) editStack.pop();
+    		
+    		if(lsa.isEdit){
+    			try {
+    				removeEditedTask(lsa.task); // to remove the add of edited task
+    				reAdd(edited); //add original task before edit
+    			} catch (TaskNotFoundException | DuplicateTaskException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+    		}
+    	
+    	}
 		
-		if(lsa.isDelete){
-			try {
-				addTask((Task) lsa.task);
-			} catch (DuplicateTaskException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		if(lsa.isClear){
-			
-			try {
-				toDoList.undoResetData();
-			} catch (DuplicateTaskException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	
-		}
 		
 	}
 
-    //=========== Filtered Task List Accessors =============================================================
+    private void reAdd(Task task) throws UniqueTaskList.DuplicateTaskException  {
+    	toDoList.addTask((Task)task);
+        updateFilteredListToShowAll();
+        indicateToDoListChanged();
+		
+		
+	}
+
+	private void removeEditedTask(ReadOnlyTask task) throws TaskNotFoundException  {
+		toDoList.removeTask(task);
+        indicateToDoListChanged();
+	}
+
+	private void undoDeleteTask(Task task) throws UniqueTaskList.DuplicateTaskException {
+    	toDoList.addTask(task);
+        updateFilteredListToShowAll();
+        indicateToDoListChanged();
+		
+	}
+
+	private void undoAddTask(ReadOnlyTask task)  throws TaskNotFoundException {
+    	toDoList.removeTask(task);
+        indicateToDoListChanged();
+		
+	}
+
+	//=========== Filtered Task List Accessors =============================================================
 
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
