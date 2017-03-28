@@ -73,19 +73,19 @@ public class TestUtil {
 
     private static Task[] getSampleTaskData() {
         try {
-            //CHECKSTYLE.OFF: length, indentation
+            //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                    new Task(new Title("Finish report"), new Deadline("111217"), new Remarks("at most 10 pages!!"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("Do linear algebra homework"), new Deadline("111117"), new Remarks("check answers with friends:)"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("Discuss project"), new Deadline("011017"), new Remarks("schedule meetup on Wednesday afternoon"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("Finish up coding homework for CS2010"), new Deadline("040917"), new Remarks("must be O(NlogN) runtime"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("Make cheatsheet for physics"), new Deadline("181217"), new Remarks("Double sided A4 paper"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("Do module mapping"), new Deadline("221117"), new Remarks("asks seniors"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("Arrange consultation with prof"), new Deadline("101117"), new Remarks("email: yapvb@gmail.com"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("eat apples"), new Deadline("141017"), new Remarks("buy apple 60c"), new StartTime("temp"), new UniqueLabelList(), false),
-                    new Task(new Title("Make appointment with tutor"), new Deadline("131117"), new Remarks("bring graphing calculator"), new StartTime("temp"), new UniqueLabelList(), false)
+                new Task(new Title("Finish report"), new Deadline("111217"), new Remarks("at most 10 pages!!"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("Do linear algebra homework"), new Deadline("111117"), new Remarks("check answers with friends:)"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("Discuss project"), new Deadline("011017"), new Remarks("schedule meetup on Wednesday afternoon"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("Finish up coding homework for CS2010"), new Deadline("040917"), new Remarks("must be O(NlogN) runtime"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("Make cheatsheet for physics"), new Deadline("181217"), new Remarks("Double sided A4 paper"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("Do module mapping"), new Deadline("221117"), new Remarks("asks seniors"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("Arrange consultation with prof"), new Deadline("101117"), new Remarks("email: yapvb@gmail.com"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("eat apples"), new Deadline("141017"), new Remarks("buy apple 60c"), new StartTime("temp"), new UniqueLabelList(), false),
+                new Task(new Title("Make appointment with tutor"), new Deadline("131117"), new Remarks("bring graphing calculator"), new StartTime("temp"), new UniqueLabelList(), false)
             };
-            //CHECKSTYLE.ON: length, indentation
+            //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {
             assert false;
             // not possible

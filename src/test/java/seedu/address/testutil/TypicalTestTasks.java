@@ -69,9 +69,9 @@ public class TypicalTestTasks {
     }
 
     public TestTask[] getTypicalTasks() {
-        //CHECKSTYLE.OFF: length
+        //CHECKSTYLE.OFF: LineLength
         return new TestTask[]{testExample1, testExample2, testExample3, testExample4, testExample5, testExample6, testExample7};
-        //CHECKSTYLE.ON: length
+        //CHECKSTYLE.ON: LineLength
     }
 
     public ToDoList getTypicalToDoList() {
