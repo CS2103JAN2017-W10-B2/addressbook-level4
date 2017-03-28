@@ -14,8 +14,8 @@ import org.junit.rules.TemporaryFolder;
 
 import seedu.address.commons.events.model.ToDoListChangedEvent;
 import seedu.address.commons.events.storage.DataSavingExceptionEvent;
-import seedu.address.model.ToDoList;
 import seedu.address.model.ReadOnlyToDoList;
+import seedu.address.model.ToDoList;
 import seedu.address.model.UserPrefs;
 import seedu.address.testutil.EventsCollector;
 import seedu.address.testutil.TypicalTestTasks;
@@ -75,7 +75,7 @@ public class StorageManagerTest {
     public void handleAddressBookChangedEvent_exceptionThrown_eventRaised() throws IOException {
         // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
         Storage storage = new StorageManager(new XmlAddressBookStorageExceptionThrowingStub("dummy"),
-                                             new TimUserPrefsStorage("dummy"));
+                new TimUserPrefsStorage("dummy"));
         EventsCollector eventCollector = new EventsCollector();
         storage.handleToDoListChangedEvent(new ToDoListChangedEvent(new ToDoList()));
         assertTrue(eventCollector.get(0) instanceof DataSavingExceptionEvent);

@@ -11,8 +11,8 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.model.label.Label;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.Title;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Title;
 import seedu.address.testutil.TaskBuilder;
 import seedu.address.testutil.TestTask;
 // TODO edit this
@@ -29,7 +29,8 @@ public class EditCommandTest extends ToDoListGuiTest {
         int addressBookIndex = 1;
 
         TestTask editedPerson = new TaskBuilder().withTitle("Bobby").withDeadline("91234567")
-                .withRemarks("bobby@gmail.com").with_attribute_not_in_use("Block 123, Bobby Street 3").withLabels("husband").build();
+                .withRemarks("bobby@gmail.com").withStartTime("Block 123, Bobby Street 3")
+                .withLabels("husband").build();
 
         assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedPerson);
     }
@@ -109,7 +110,7 @@ public class EditCommandTest extends ToDoListGuiTest {
     @Test
     public void edit_duplicatePerson_failure() {
         commandBox.runCommand("edit 3 Alice Pauline p/85355255 e/alice@gmail.com "
-                                + "a/123, Jurong West Ave 6, #08-111 t/friends");
+                + "a/123, Jurong West Ave 6, #08-111 t/friends");
         assertResultMessage(EditCommand.MESSAGE_DUPLICATE_TASK);
     }
 
@@ -123,7 +124,7 @@ public class EditCommandTest extends ToDoListGuiTest {
      * @param editedPerson the expected person after editing the person's details
      */
     private void assertEditSuccess(int filteredPersonListIndex, int addressBookIndex,
-                                    String detailsToEdit, TestTask editedPerson) {
+            String detailsToEdit, TestTask editedPerson) {
         commandBox.runCommand("edit " + filteredPersonListIndex + " " + detailsToEdit);
 
         // confirm the new card contains the right data

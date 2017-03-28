@@ -1,12 +1,12 @@
 package seedu.address.testutil;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.Title;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Title;
 
 /**
  *
@@ -39,8 +39,8 @@ public class TaskBuilder {
         return this;
     }
 
-    public TaskBuilder with_attribute_not_in_use(String attribute_not_in_use) throws IllegalValueException {
-        this.task.setNotInUse(new StartTime(attribute_not_in_use));
+    public TaskBuilder withStartTime(String startTime) throws IllegalValueException {
+        this.task.setNotInUse(new StartTime(startTime));
         return this;
     }
 

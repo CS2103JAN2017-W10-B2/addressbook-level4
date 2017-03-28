@@ -23,7 +23,7 @@ public class RemarksTest {
         assertTrue(Remarks.isValidRemarks("P@$$w0rd"));  // numeric local part and domain name
         assertTrue(Remarks.isValidRemarks("a1@sg50.org"));  // mixture of alphanumeric and dot characters
         assertTrue(Remarks.isValidRemarks("_user_@_do_main_.com_"));    // underscores
-        assertTrue(Remarks.isValidRemarks("peter & jack wiil take a_very_long time to go to the market"));   // long sentences
+        assertTrue(Remarks.isValidRemarks("peter & jack wiil take a_very_long time to go to the market"));   // long
 
     }
 }

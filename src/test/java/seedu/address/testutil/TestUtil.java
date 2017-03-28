@@ -30,14 +30,14 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.ToDoList;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Title;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.Title;
 import seedu.address.storage.XmlSerializableToDoList;
 
 /**
@@ -75,15 +75,15 @@ public class TestUtil {
         try {
             //CHECKSTYLE.OFF: LineLength
             return new Task[]{
-                new Task(new Title("Finish report"), new Deadline("111217"), new Remarks("at most 10 pages!!"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("Do linear algebra homework"), new Deadline("111117"), new Remarks("check answers with friends:)"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("Discuss project"), new Deadline("011017"), new Remarks("schedule meetup on Wednesday afternoon"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("Finish up coding homework for CS2010"), new Deadline("040917"), new Remarks("must be O(NlogN) runtime"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("Make cheatsheet for physics"), new Deadline("181217"), new Remarks("Double sided A4 paper"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("Do module mapping"), new Deadline("221117"), new Remarks("asks seniors"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("Arrange consultation with prof"), new Deadline("101117"), new Remarks("email: yapvb@gmail.com"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("eat apples"), new Deadline("141017"), new Remarks("buy apple 60c"), new StartTime("temp"), new UniqueLabelList(), false),
-                new Task(new Title("Make appointment with tutor"), new Deadline("131117"), new Remarks("bring graphing calculator"), new StartTime("temp"), new UniqueLabelList(), false)
+                    new Task(new Title("Finish report"), new Deadline("111217"), new Remarks("at most 10 pages!!"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("Do linear algebra homework"), new Deadline("111117"), new Remarks("check answers with friends:)"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("Discuss project"), new Deadline("011017"), new Remarks("schedule meetup on Wednesday afternoon"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("Finish up coding homework for CS2010"), new Deadline("040917"), new Remarks("must be O(NlogN) runtime"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("Make cheatsheet for physics"), new Deadline("181217"), new Remarks("Double sided A4 paper"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("Do module mapping"), new Deadline("221117"), new Remarks("asks seniors"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("Arrange consultation with prof"), new Deadline("101117"), new Remarks("email: yapvb@gmail.com"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("eat apples"), new Deadline("141017"), new Remarks("buy apple 60c"), new StartTime("temp"), new UniqueLabelList(), false),
+                    new Task(new Title("Make appointment with tutor"), new Deadline("131117"), new Remarks("bring graphing calculator"), new StartTime("temp"), new UniqueLabelList(), false)
             };
             //CHECKSTYLE.ON: LineLength
         } catch (IllegalValueException e) {
@@ -97,8 +97,8 @@ public class TestUtil {
     private static Label[] getSampleLabelData() {
         try {
             return new Label[]{
-                new Label("assignments"),
-                new Label("tests")
+                    new Label("assignments"),
+                    new Label("tests")
             };
         } catch (IllegalValueException e) {
             assert false;
@@ -192,7 +192,7 @@ public class TestUtil {
     }
 
     public static void setFinalStatic(Field field, Object newValue) throws NoSuchFieldException,
-                                                                           IllegalAccessException {
+    IllegalAccessException {
         field.setAccessible(true);
         // remove final modifier from field
         Field modifiersField = Field.class.getDeclaredField("modifiers");
