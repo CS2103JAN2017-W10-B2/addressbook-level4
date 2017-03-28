@@ -97,8 +97,8 @@ public class TestUtil {
     private static Label[] getSampleLabelData() {
         try {
             return new Label[]{
-                    new Label("assignments"),
-                    new Label("tests")
+                new Label("assignments"),
+                new Label("tests")
             };
         } catch (IllegalValueException e) {
             assert false;
@@ -192,7 +192,7 @@ public class TestUtil {
     }
 
     public static void setFinalStatic(Field field, Object newValue) throws NoSuchFieldException,
-    IllegalAccessException {
+        IllegalAccessException {
         field.setAccessible(true);
         // remove final modifier from field
         Field modifiersField = Field.class.getDeclaredField("modifiers");
