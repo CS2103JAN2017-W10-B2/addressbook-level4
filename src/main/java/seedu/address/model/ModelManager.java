@@ -98,12 +98,12 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredListToShowAll() {
         filteredTasks.setPredicate(null);
     }
-    
+
     @Override
     public void updateFilteredListToShowCompleted() {
     	filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
     }
-    
+
     @Override
     public void updateFilteredListToShowOngoing() {
     	filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
@@ -113,7 +113,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskList(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new TitleAndRemarksQualifier(keywords)));
     }
-    
+
     @Override
     public void updateFilteredTaskListByLabel(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new LabelsQualifier(keywords)));
@@ -127,7 +127,8 @@ public class ModelManager extends ComponentManager implements Model {
 
     interface Expression {
         boolean satisfies(ReadOnlyTask task);
-        String toString();
+        @Override
+		String toString();
     }
 
     private class PredicateExpression implements Expression {
@@ -151,7 +152,8 @@ public class ModelManager extends ComponentManager implements Model {
 
     interface Qualifier {
         boolean run(ReadOnlyTask task);
-        String toString();
+        @Override
+		String toString();
     }
 
     private class TitleAndRemarksQualifier implements Qualifier {
@@ -172,7 +174,7 @@ public class ModelManager extends ComponentManager implements Model {
                         .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
                         .findAny()
                         .isPresent();
-                
+
             }
             return keyWords.stream()
                     .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
@@ -185,7 +187,7 @@ public class ModelManager extends ComponentManager implements Model {
             return "title and remarks=" + String.join(", ", keyWords);
         }
     }
-    
+
     private class LabelsQualifier implements Qualifier {
         private Set<String> keyWords;
 
@@ -221,7 +223,7 @@ public class ModelManager extends ComponentManager implements Model {
 				e.printStackTrace();
 			}
 		}
-		
+
 		if(lsa.isDelete){
 			try {
 				addTask((Task) lsa.task);
@@ -230,7 +232,7 @@ public class ModelManager extends ComponentManager implements Model {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 }

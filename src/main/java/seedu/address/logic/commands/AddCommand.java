@@ -6,13 +6,13 @@ import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.Title;
-import seedu.address.model.task.Task;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
@@ -50,7 +50,7 @@ public class AddCommand extends Command {
                 deadline == null ? null : new Deadline(deadline),
                 remarks == null ? null : new Remarks(remarks),
                 startTime == null ? null : new StartTime(startTime),
-                new UniqueLabelList(labelSet), 
+                new UniqueLabelList(labelSet),
                 (isCompleted.trim().equals("yes"))
         );
     }

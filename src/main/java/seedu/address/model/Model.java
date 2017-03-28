@@ -45,10 +45,10 @@ public interface Model {
 
     /** Updates the filter of the filtered task list to filter by the given label keywords*/
     void updateFilteredTaskListByLabel(Set<String> keywords);
-    
+
     /** Updates the filter of the filtered task list to show all Completed tasks */
     void updateFilteredListToShowCompleted();
-    
+
     /** Updates the filter of the filtered task list to show all Completed tasks */
     void updateFilteredListToShowOngoing();
 

@@ -36,7 +36,7 @@ public class Deadline {
         return TimeUtil.isValidDateTimeExist(test);
     }
   //@@author
-    
+
     @Override
     public String toString() {
         return value;

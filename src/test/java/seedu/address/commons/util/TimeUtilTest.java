@@ -1,7 +1,8 @@
 //@@author A0135795R
 package seedu.address.commons.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -11,7 +12,7 @@ public class TimeUtilTest {
 
 	@Rule
     public ExpectedException thrown = ExpectedException.none();
-	
+
 	@Test
 	public void isInvalidDateTime() {
 		//invalid date
@@ -21,7 +22,7 @@ public class TimeUtilTest {
 		assertNull(TimeUtil.getDateTime("christmas"));
 		assertNull(TimeUtil.getDateTime("that day"));
 	}
-	
+
 	@Test
 	public void isValidDateTime(){
 		assertNotNull(TimeUtil.getDateTime("Wednesday"));
@@ -30,5 +31,5 @@ public class TimeUtilTest {
 		assertNotNull(TimeUtil.getDateTime("day before next thursday"));
 		assertNotNull(TimeUtil.getDateTime("4 o'clock"));
 	}
-	
+
 }

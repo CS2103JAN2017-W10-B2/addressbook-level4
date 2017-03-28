@@ -2,14 +2,13 @@ package seedu.address.ui;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Region;
-import javafx.scene.web.WebView;
+import javafx.scene.layout.VBox;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.model.task.ReadOnlyTask;
-import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.VBox;
 
 /**
  * The Browser Panel of the App.
@@ -58,12 +57,12 @@ public class BrowserPanel extends UiPart<Region> {
         }
         initTags(person);
     }
-    
+
     private void initTags(ReadOnlyTask person) {
         tags.getChildren().clear();
         person.getLabels().forEach(tag -> tags.getChildren().add(new Label(tag.labelName)));
     }
-    
+
     /**
      * Frees resources allocated to the browser.
      */

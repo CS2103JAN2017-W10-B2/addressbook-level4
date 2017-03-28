@@ -35,7 +35,7 @@ public class StringUtil {
         }
         return false;
     }
-    
+
     /**
      * Returns true if the {@code sentence} contains the {@code word}.
      *   Ignores case, but a full word match is required.

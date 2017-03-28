@@ -2,10 +2,10 @@ package seedu.address.testutil;
 
 import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Title;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Title;
 
 /**
  * A mutable person object. For testing only.
@@ -13,7 +13,7 @@ import seedu.address.model.task.StartTime;
 public class TestTask implements ReadOnlyTask {
 
     private Title title;
-    private StartTime attribute_not_in_use;
+    private StartTime startTime;
     private Remarks remarks;
     private Deadline deadline;
     private UniqueLabelList labels;
@@ -30,7 +30,7 @@ public class TestTask implements ReadOnlyTask {
         this.title = taskToCopy.getTitle();
         this.deadline = taskToCopy.getDeadline();
         this.remarks = taskToCopy.getRemarks();
-        this.attribute_not_in_use = taskToCopy.getStartTime();
+        this.startTime = taskToCopy.getStartTime();
         this.labels = taskToCopy.getLabels();
         this.isCompleted = taskToCopy.getIsCompleted();
     }
@@ -40,7 +40,7 @@ public class TestTask implements ReadOnlyTask {
     }
 
     public void setNotInUse(StartTime attribute_not_in_use) {
-        this.attribute_not_in_use = attribute_not_in_use;
+        this.startTime = attribute_not_in_use;
     }
 
     public void setRemarks(Remarks remarks) {
@@ -54,7 +54,7 @@ public class TestTask implements ReadOnlyTask {
     public void setLabels(UniqueLabelList labels) {
         this.labels = labels;
     }
-    
+
     public void setIsCompleted(Boolean isCompleted) {
         this.isCompleted = isCompleted;
     }
@@ -76,14 +76,14 @@ public class TestTask implements ReadOnlyTask {
 
     @Override
     public StartTime getStartTime() {
-        return attribute_not_in_use;
+        return startTime;
     }
 
     @Override
     public UniqueLabelList getLabels() {
         return labels;
     }
-    
+
     @Override
     public boolean getIsCompleted() {
         return isCompleted;

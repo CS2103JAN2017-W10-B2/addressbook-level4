@@ -6,8 +6,8 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-import com.joestelmach.natty.Parser;
 import com.joestelmach.natty.DateGroup;
+import com.joestelmach.natty.Parser;
 
 /**
  * Helper function for handling String Date and Time.
@@ -16,15 +16,15 @@ import com.joestelmach.natty.DateGroup;
  */
 public class TimeUtil {
 	public static final String DATE_DOES_NOT_EXIST_WARNING = "DateTime does not exist";
-	
+
     private static Parser parser = new Parser();
-    
+
     /**
      * Test to see if input string is a valid DateTime
      */
     public static Boolean isValidDateTimeExist(String input) {
     	List<DateGroup> groups = parser.parse(input);
-    	
+
     	try {
     		groups.get(0).getDates().get(0);
     		return true;
@@ -32,14 +32,14 @@ public class TimeUtil {
     		return false;
     	}
     }
-    
+
     /**
      * Returns the most likely DateTime from input string.
      * Else returns null if unable to detect DateTime from input string.
      */
     public static LocalDateTime getDateTime(String input) {
     	List<DateGroup> groups = parser.parse(input);
-    	
+
     	try {
     		Date mostLikelyDate = groups.get(0).getDates().get(0);
     		return mostLikelyDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();

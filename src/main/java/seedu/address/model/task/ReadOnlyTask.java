@@ -14,15 +14,15 @@ public interface ReadOnlyTask {
     Remarks getRemarks();
     StartTime getStartTime();
 	boolean getIsCompleted();
-	
+
 	default boolean hasDeadline() {
         return getDeadline() != null;
     }
-	
+
 	default boolean hasRemarks() {
         return getRemarks() != null;
     }
-	
+
 	default boolean hasStartTime() {
         return getStartTime() != null;
     }
@@ -40,14 +40,14 @@ public interface ReadOnlyTask {
         return other == this // short circuit if same object
                 || (other != null // this is first to avoid NPE below
                 && other.getTitle().equals(this.getTitle()) // state checks here onwards
-                && ((!other.hasDeadline() && !this.hasDeadline()) 
-                        || (other.hasDeadline() && this.hasDeadline() 
+                && ((!other.hasDeadline() && !this.hasDeadline())
+                        || (other.hasDeadline() && this.hasDeadline()
                                 && other.getDeadline().equals(this.getDeadline())))
-                && ((!other.hasRemarks() && !this.hasRemarks()) 
-                        || (other.hasRemarks() && this.hasRemarks() 
+                && ((!other.hasRemarks() && !this.hasRemarks())
+                        || (other.hasRemarks() && this.hasRemarks()
                                 && other.getRemarks().equals(this.getRemarks())))
-                && ((!other.hasStartTime() && !this.hasStartTime()) 
-                        || (other.hasStartTime() && this.hasStartTime() 
+                && ((!other.hasStartTime() && !this.hasStartTime())
+                        || (other.hasStartTime() && this.hasStartTime()
                                 && other.getStartTime().equals(this.getStartTime()))));
     }
 

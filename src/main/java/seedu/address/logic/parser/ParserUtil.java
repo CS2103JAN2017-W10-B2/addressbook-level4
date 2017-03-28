@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.Title;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Title;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes
@@ -97,7 +97,7 @@ public class ParserUtil {
         assert email != null;
         return email.isPresent() ? Optional.of(new Remarks(email.get())) : Optional.empty();
     }
-    
+
     /**
      * Parses a {@code Optional<String> email} into an {@code Optional<Email>} if {@code email} is present.
      */

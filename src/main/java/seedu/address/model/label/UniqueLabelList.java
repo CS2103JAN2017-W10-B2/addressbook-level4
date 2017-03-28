@@ -145,7 +145,7 @@ public class UniqueLabelList implements Iterable<Label> {
     public UnmodifiableObservableList<Label> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
-    
+
     public boolean isEmpty() {
         return this.internalList.isEmpty();
     }
@@ -167,7 +167,7 @@ public class UniqueLabelList implements Iterable<Label> {
     public int hashCode() {
         return internalList.hashCode();
     }
-    
+
     public String getStringRepresentation() {
         String labelString = "";
         for (Label label : internalList){

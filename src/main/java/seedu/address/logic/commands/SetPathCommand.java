@@ -4,9 +4,9 @@ package seedu.address.logic.commands;
 import java.io.IOException;
 import java.util.Optional;
 
+import seedu.address.commons.core.Config;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.util.ConfigUtil;
-import seedu.address.commons.core.Config;
 
 
 
@@ -16,17 +16,17 @@ import seedu.address.commons.core.Config;
 public class SetPathCommand extends Command {
 
 	private String StoragePath;
-	
+
 	private Config initializedConfig;
-	
+
     public static final String COMMAND_WORD = "set_path";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": set a storage path for ToDoList. "
     		+ "Parameters: Storage_Path\n"
     		+ "Note that '.xml' is necessary. App needs to restart after this setting.\n"
-            + "Example: " + COMMAND_WORD 
+            + "Example: " + COMMAND_WORD
             + " f:/ToDoList.xml"+ "\n"
-            + "Example: " + COMMAND_WORD 
+            + "Example: " + COMMAND_WORD
             + " default";
 
     public static final String MESSAGE_SUCCESS = "New storage path set: %1$s. Please restart the App.";
@@ -41,8 +41,8 @@ public class SetPathCommand extends Command {
         else {
         	this.StoragePath = StoragePath.trim();
         }
-        	
-        	
+
+
     }
 
     @Override
@@ -53,9 +53,9 @@ public class SetPathCommand extends Command {
         } catch (DataConversionException e) {
             initializedConfig = new Config();
         }
-        
+
         initializedConfig.setAddressBookFilePath(StoragePath);
-        
+
         //Update config file in case it was missing to begin with or there are new/unused fields
         try {
             ConfigUtil.saveConfig(initializedConfig, "config.tim");

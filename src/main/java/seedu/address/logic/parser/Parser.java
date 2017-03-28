@@ -16,9 +16,9 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.IncorrectCommand;
 import seedu.address.logic.commands.ListAllCommand;
-import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.ListCompletedCommand;
 import seedu.address.logic.commands.ListOngoingCommand;
+import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SetPathCommand;
 import seedu.address.logic.commands.UndoCommand;
 
@@ -78,14 +78,14 @@ public class Parser {
           //@@author A0115333U
         case ListCompletedCommand.COMMAND_WORD:
             return new ListCompletedCommand();
-            
+
         case ListOngoingCommand.COMMAND_WORD:
-            return new ListOngoingCommand(); 
-            
+            return new ListOngoingCommand();
+
         case SetPathCommand.COMMAND_WORD:
             return new SetPathCommandParser().parse(arguments);
           //@@author
-            
+
         case UndoCommand.COMMAND_WORD:
         	return new UndoCommand();
 
