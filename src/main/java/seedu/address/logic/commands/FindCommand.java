@@ -16,15 +16,23 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " assignment math test";
 
     private final Set<String> keywords;
+    private final boolean isLabel;
 
-    public FindCommand(Set<String> keywords) {
+    public FindCommand(Set<String> keywords, boolean isLabel) {
         this.keywords = keywords;
+        this.isLabel = isLabel;
     }
 
     @Override
     public CommandResult execute() {
-        model.updateFilteredTaskList(keywords);
-        return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
+        if (isLabel){
+            model.updateFilteredTaskListByLabel(keywords);
+            return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
+        }
+        else{
+            model.updateFilteredTaskList(keywords);
+            return new CommandResult(getMessageForTaskListShownSummary(model.getFilteredTaskList().size()));
+        }
     }
 
 }
