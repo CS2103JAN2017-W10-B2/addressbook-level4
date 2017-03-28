@@ -58,20 +58,16 @@ public interface ReadOnlyTask {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle());
         if (hasStartTime()) {
-            builder.append(" Start Time: ")
-            .append(getStartTime());
+            builder.append(" Start Time: ").append(getStartTime());
         }
         if (hasDeadline()) {
-            builder.append(" Deadline: ")
-            .append(getDeadline());
+            builder.append(" Deadline: ").append(getDeadline());
         }
         if (hasRemarks()) {
-            builder.append(" Remarks: ")
-            .append(getRemarks());
+            builder.append(" Remarks: ").append(getRemarks());
         }
         if (getIsCompleted()) {
-            builder.append(" Completion: ")
-            .append(getIsCompleted());
+            builder.append(" Completion: ").append(getIsCompleted());
         }
         if (!getLabels().isEmpty()) {
             builder.append(" Labels: ");

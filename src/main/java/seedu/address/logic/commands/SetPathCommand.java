@@ -34,11 +34,11 @@ public class SetPathCommand extends Command {
     /**
      * Set the storage path for ToDoList;
      */
-    public SetPathCommand(String StoragePath) {
-        if (StoragePath.trim().equals("default") || StoragePath.trim() == null) {
+    public SetPathCommand(String storagePath) {
+        if (storagePath.trim().equals("default") || storagePath.trim() == null) {
             this.storagePath = "data/ToDoList.xml";
         } else {
-            this.storagePath = StoragePath.trim();
+            this.storagePath = storagePath.trim();
         }
     }
 
