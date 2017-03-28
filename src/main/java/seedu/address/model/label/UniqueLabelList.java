@@ -167,6 +167,15 @@ public class UniqueLabelList implements Iterable<Label> {
     public int hashCode() {
         return internalList.hashCode();
     }
+    
+    public String getStringRepresentation() {
+        String labelString = "";
+        for (Label label : internalList){
+            labelString = labelString + label.labelName + " ";
+        }
+        labelString.trim();
+        return labelString;
+    }
 
     /**
      * Signals that an operation would have violated the 'no duplicates' property of the list.

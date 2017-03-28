@@ -42,6 +42,9 @@ public interface Model {
 
     /** Updates the filter of the filtered task list to filter by the given keywords*/
     void updateFilteredTaskList(Set<String> keywords);
+
+    /** Updates the filter of the filtered task list to filter by the given label keywords*/
+    void updateFilteredTaskListByLabel(Set<String> keywords);
     
     /** Updates the filter of the filtered task list to show all Completed tasks */
     void updateFilteredListToShowCompleted();

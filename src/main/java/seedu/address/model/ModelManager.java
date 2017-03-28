@@ -113,6 +113,11 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskList(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new TitleAndRemarksQualifier(keywords)));
     }
+    
+    @Override
+    public void updateFilteredTaskListByLabel(Set<String> keywords) {
+        updateFilteredTaskList(new PredicateExpression(new LabelsQualifier(keywords)));
+    }
 
     private void updateFilteredTaskList(Expression expression) {
         filteredTasks.setPredicate(expression::satisfies);
@@ -150,26 +155,26 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     private class TitleAndRemarksQualifier implements Qualifier {
-        private Set<String> titleKeyWords;
+        private Set<String> keyWords;
 
-        TitleAndRemarksQualifier(Set<String> nameKeyWords) {
-            this.titleKeyWords = nameKeyWords;
+        TitleAndRemarksQualifier(Set<String> keyWords) {
+            this.keyWords = keyWords;
         }
 
         @Override
         public boolean run(ReadOnlyTask task) {
             if (task.hasRemarks()){
-                return titleKeyWords.stream()
+                return keyWords.stream()
                         .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
                         .findAny()
                         .isPresent() ||
-                        titleKeyWords.stream()
+                        keyWords.stream()
                         .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
                         .findAny()
                         .isPresent();
                 
             }
-            return titleKeyWords.stream()
+            return keyWords.stream()
                     .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
                     .findAny()
                     .isPresent();
@@ -177,7 +182,31 @@ public class ModelManager extends ComponentManager implements Model {
 
         @Override
         public String toString() {
-            return "title=" + String.join(", ", titleKeyWords);
+            return "title and remarks=" + String.join(", ", keyWords);
+        }
+    }
+    
+    private class LabelsQualifier implements Qualifier {
+        private Set<String> keyWords;
+
+        LabelsQualifier(Set<String> keyWords) {
+            this.keyWords = keyWords;
+        }
+
+        @Override
+        public boolean run(ReadOnlyTask task) {
+            if (!task.getLabels().isEmpty()){
+                return keyWords.stream()
+                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getLabels().getStringRepresentation(), keyword))
+                        .findAny()
+                        .isPresent();
+            }
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return "labels=" + String.join(", ", keyWords);
         }
     }
 
