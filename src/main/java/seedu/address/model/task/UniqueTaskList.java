@@ -1,5 +1,6 @@
 package seedu.address.model.task;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.exceptions.DuplicateDataException;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.commons.util.TimeUtil;
 
 /**
  * A list of tasks that enforces uniqueness between its elements and does not allow nulls in task titles.
@@ -76,6 +78,30 @@ public class UniqueTaskList implements Iterable<Task> {
             throw new TaskNotFoundException();
         }
         return taskFoundAndDeleted;
+    }
+    
+    /**
+     * Sort the list.
+     *
+     */
+    public void sort() {
+    	internalList.sort(new Comparator<Task>(){
+    		public int compare(Task x, Task y) {
+    			return compare(x.getDeadline(), y.getDeadline());
+    		}
+
+    		private int compare(Deadline a, Deadline b) {
+    			if (a!=null && b!=null){
+    				return TimeUtil.getDateTime(a.toString()).isBefore(TimeUtil.getDateTime(b.toString()))  ? -1
+    						: TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString()))  ? 1
+    								: 0;
+    			}
+    			else{
+    				return 0;
+    			}
+    		}
+    	});
+
     }
 
     public void setTasks(UniqueTaskList replacement) {
