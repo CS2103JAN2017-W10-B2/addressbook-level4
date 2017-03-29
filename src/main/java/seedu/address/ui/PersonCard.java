@@ -38,11 +38,11 @@ public class PersonCard extends UiPart<Region> {
         email.setText("");
         if (person.hasDeadline()) {
             LocalDateTime deadline = TimeUtil.getDateTime(person.getDeadline().value);
-            phone.setText(deadline.toLocalDate().toString());
+            phone.setText("Deadline: " + deadline.toLocalDate().toString());
         }
         if (person.hasStartTime()) {
             LocalDateTime startTime = TimeUtil.getDateTime(person.getStartTime().value);
-            address.setText(startTime.toLocalDate().toString());
+            address.setText("Start Time: " + startTime.toLocalDate().toString());
         }
         if (person.hasRemarks()) {
             email.setText(person.getRemarks().value);
