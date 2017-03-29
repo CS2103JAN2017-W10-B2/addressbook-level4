@@ -79,11 +79,11 @@ public class ToDoList implements ReadOnlyToDoList {
         syncMasterLabelListWith(tasks);
     }
 
-    public void sort_tasks(){
+    public void sort_tasks() {
         this.tasks.sort();
     }
 
-    public void undoResetData() throws DuplicateTaskException{
+    public void undoResetData() throws DuplicateTaskException {
         this.tasks.setTasks(tempTasks);
     }
 

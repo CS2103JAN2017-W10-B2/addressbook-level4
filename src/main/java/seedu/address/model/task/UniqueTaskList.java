@@ -86,19 +86,18 @@ public class UniqueTaskList implements Iterable<Task> {
      *
      */
     public void sort() {
-    	internalList.sort(new Comparator<Task>(){
+    	internalList.sort(new Comparator<Task>() {
     		@Override
             public int compare(Task x, Task y) {
     			return compare(x.getDeadline(), y.getDeadline());
     		}
 
     		private int compare(Deadline a, Deadline b) {
-    			if (a!=null && b!=null){
+    			if (a != null && b != null) {
     				return TimeUtil.getDateTime(a.toString()).isBefore(TimeUtil.getDateTime(b.toString()))  ? -1
     						: TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString()))  ? 1
     								: 0;
-    			}
-    			else{
+    			} else {
     				return 0;
     			}
     		}

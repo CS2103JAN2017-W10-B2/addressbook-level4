@@ -97,7 +97,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void updateEditStack(ReadOnlyTask taskToEdit){
+    public void updateEditStack(ReadOnlyTask taskToEdit) {
         editStack.push(taskToEdit);
 
     }
@@ -105,11 +105,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void undoTask() {
 
-        if(!undoStack.empty()){
+        if (!undoStack.empty()) {
 
 
             LastSuccessfulAction lsa = undoStack.pop();
-            if(lsa.isAdd){
+            if (lsa.isAdd) {
                 try {
                     undoAddTask(lsa.task);
                 } catch (TaskNotFoundException e) {
@@ -118,7 +118,7 @@ public class ModelManager extends ComponentManager implements Model {
                 }
             }
 
-            if(lsa.isDelete){
+            if (lsa.isDelete) {
                 try {
                     undoDeleteTask((Task) lsa.task);
                 } catch (DuplicateTaskException e) {
@@ -127,7 +127,7 @@ public class ModelManager extends ComponentManager implements Model {
                 }
             }
 
-            if(lsa.isClear){
+            if (lsa.isClear) {
 
                 try {
                     toDoList.undoResetData();
@@ -140,7 +140,7 @@ public class ModelManager extends ComponentManager implements Model {
 
             Task edited = (Task) editStack.pop();
 
-            if(lsa.isEdit){
+            if (lsa.isEdit) {
                 try {
                     removeEditedTask(lsa.task); // to remove the add of edited task
                     reAdd(edited); //add original task before edit

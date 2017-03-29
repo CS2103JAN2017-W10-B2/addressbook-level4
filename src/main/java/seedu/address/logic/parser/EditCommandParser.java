@@ -35,10 +35,10 @@ public class EditCommandParser {
         //@@author A0135795R
         ArgumentTokenizer argsTokenizer;
         if (args.contains(KEYWORD_ONLY_DEADLINE)) {
-            argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_ONLY_DEADLINE, PREFIX_REMARKS,
+            argsTokenizer = new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_ONLY_DEADLINE, PREFIX_REMARKS,
                     PREFIX_LABELS, PREFIX_ISCOMPLETED);
         } else {
-            argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_DEADLINE, PREFIX_REMARKS,
+            argsTokenizer = new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_DEADLINE, PREFIX_REMARKS,
                     PREFIX_LABELS, PREFIX_ISCOMPLETED);
         }
         argsTokenizer.tokenize(args);
