@@ -112,8 +112,7 @@ public class UniqueLabelList implements Iterable<Label> {
     public void mergeFrom(UniqueLabelList from) {
         final Set<Label> alreadyInside = this.toSet();
         from.internalList.stream()
-                .filter(label -> !alreadyInside.contains(label))
-                .forEach(internalList::add);
+        .filter(label -> !alreadyInside.contains(label)).forEach(internalList::add);
     }
 
     /**
@@ -145,7 +144,7 @@ public class UniqueLabelList implements Iterable<Label> {
     public UnmodifiableObservableList<Label> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
-    
+
     public boolean isEmpty() {
         return this.internalList.isEmpty();
     }
@@ -155,8 +154,8 @@ public class UniqueLabelList implements Iterable<Label> {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UniqueLabelList // instanceof handles nulls
-                && this.internalList.equals(
-                ((UniqueLabelList) other).internalList));
+                        && this.internalList.equals(
+                                ((UniqueLabelList) other).internalList));
     }
 
     public boolean equalsOrderInsensitive(UniqueLabelList other) {
@@ -166,6 +165,15 @@ public class UniqueLabelList implements Iterable<Label> {
     @Override
     public int hashCode() {
         return internalList.hashCode();
+    }
+
+    public String getStringRepresentation() {
+        String labelString = "";
+        for (Label label : internalList) {
+            labelString = labelString + label.labelName + " ";
+        }
+        labelString.trim();
+        return labelString;
     }
 
     /**

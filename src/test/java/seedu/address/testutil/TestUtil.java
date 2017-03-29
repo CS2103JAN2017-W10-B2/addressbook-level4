@@ -30,14 +30,14 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.XmlUtil;
 import seedu.address.model.ToDoList;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Title;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.Title;
 import seedu.address.storage.XmlSerializableToDoList;
 
 /**
@@ -192,7 +192,7 @@ public class TestUtil {
     }
 
     public static void setFinalStatic(Field field, Object newValue) throws NoSuchFieldException,
-                                                                           IllegalAccessException {
+        IllegalAccessException {
         field.setAccessible(true);
         // remove final modifier from field
         Field modifiersField = Field.class.getDeclaredField("modifiers");

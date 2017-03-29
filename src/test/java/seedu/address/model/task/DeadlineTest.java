@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import seedu.address.model.task.Deadline;
-
 public class DeadlineTest {
 
     @Test
@@ -20,7 +18,7 @@ public class DeadlineTest {
 
         // valid deadlines
         assertTrue(Deadline.isValidDeadline("090917"));
-       
-        
+
+
     }
 }

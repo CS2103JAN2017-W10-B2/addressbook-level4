@@ -66,14 +66,14 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-    	undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
+        undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
         toDoList.removeTask(target);
         indicateToDoListChanged();
     }
 
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-    	undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
+        undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
         toDoList.addTask(task);
         toDoList.sort_tasks();
         updateFilteredListToShowOngoing();
@@ -102,30 +102,38 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredListToShowAll() {
         filteredTasks.setPredicate(null);
     }
-    
+
     @Override
     public void updateFilteredListToShowCompleted() {
-    	filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
+        filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
     }
-    
+
     @Override
     public void updateFilteredListToShowOngoing() {
-    	filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
+        filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
     }
 
     @Override
     public void updateFilteredTaskList(Set<String> keywords) {
-        updateFilteredTaskList(new PredicateExpression(new TitleQualifier(keywords)));
+        updateFilteredTaskList(new PredicateExpression(new TitleAndRemarksQualifier(keywords)));
     }
 
     private void updateFilteredTaskList(Expression expression) {
         filteredTasks.setPredicate(expression::satisfies);
     }
 
+    @Override
+    public void updateFilteredTaskListByLabel(Set<String> keywords) {
+        updateFilteredTaskList(new PredicateExpression(new LabelsQualifier(keywords)));
+    }
+
+
+
     //========== Inner classes/interfaces used for filtering =================================================
 
     interface Expression {
         boolean satisfies(ReadOnlyTask task);
+        @Override
         String toString();
     }
 
@@ -150,51 +158,87 @@ public class ModelManager extends ComponentManager implements Model {
 
     interface Qualifier {
         boolean run(ReadOnlyTask task);
+        @Override
         String toString();
     }
 
-    private class TitleQualifier implements Qualifier {
-        private Set<String> titleKeyWords;
+    private class TitleAndRemarksQualifier implements Qualifier {
+        private Set<String> keyWords;
 
-        TitleQualifier(Set<String> nameKeyWords) {
-            this.titleKeyWords = nameKeyWords;
+        TitleAndRemarksQualifier(Set<String> keyWords) {
+            this.keyWords = keyWords;
         }
 
         @Override
         public boolean run(ReadOnlyTask task) {
-            return titleKeyWords.stream()
-                    .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getTitle().fullTitle, keyword))
+            if (task.hasRemarks()) {
+                return keyWords.stream()
+                        .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
+                        .findAny()
+                        .isPresent() ||
+                        keyWords.stream()
+                        .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
+                        .findAny()
+                        .isPresent();
+
+            }
+            return keyWords.stream()
+                    .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
                     .findAny()
                     .isPresent();
         }
 
         @Override
         public String toString() {
-            return "title=" + String.join(", ", titleKeyWords);
+            return "title and remarks=" + String.join(", ", keyWords);
         }
     }
 
-	@Override
-	public void undoTask() {
-		LastSuccessfulAction lsa = undoStack.pop();
-		if(lsa.isAdd){
-			try {
-				deleteTask(lsa.task);
-			} catch (TaskNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		if(lsa.isDelete){
-			try {
-				addTask((Task) lsa.task);
-			} catch (DuplicateTaskException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-	}
+    private class LabelsQualifier implements Qualifier {
+        private Set<String> keyWords;
+
+        LabelsQualifier(Set<String> keyWords) {
+            this.keyWords = keyWords;
+        }
+
+        @Override
+        public boolean run(ReadOnlyTask task) {
+            if (!task.getLabels().isEmpty()) {
+                return keyWords.stream()
+                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getLabels()
+                                .getStringRepresentation(), keyword))
+                        .findAny()
+                        .isPresent();
+            }
+            return false;
+        }
+
+        @Override
+        public String toString() {
+            return "labels=" + String.join(", ", keyWords);
+        }
+    }
+
+    @Override
+    public void undoTask() {
+        LastSuccessfulAction lsa = undoStack.pop();
+        if (lsa.isAdd) {
+            try {
+                deleteTask(lsa.task);
+            } catch (TaskNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        if (lsa.isDelete) {
+            try {
+                addTask((Task) lsa.task);
+            } catch (DuplicateTaskException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+    }
 
 }

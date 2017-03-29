@@ -1,13 +1,13 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
 import static seedu.address.logic.parser.CliSyntax.KEYWORD_ONLY_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ONLY_DEADLINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DEADLINE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ISCOMPLETED;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LABELS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ONLY_DEADLINE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARKS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_TIME;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -18,8 +18,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditTaskDescriptor;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.logic.commands.IncorrectCommand;
+import seedu.address.model.label.UniqueLabelList;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -35,11 +35,11 @@ public class EditCommandParser {
         //@@author A0135795R
         ArgumentTokenizer argsTokenizer;
         if (args.contains(KEYWORD_ONLY_DEADLINE)) {
-        	argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_ONLY_DEADLINE, PREFIX_REMARKS, 
-        			PREFIX_LABELS, PREFIX_ISCOMPLETED);
+            argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_ONLY_DEADLINE, PREFIX_REMARKS,
+                    PREFIX_LABELS, PREFIX_ISCOMPLETED);
         } else {
-        	argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_DEADLINE, PREFIX_REMARKS, 
-        			PREFIX_LABELS, PREFIX_ISCOMPLETED);
+            argsTokenizer =new ArgumentTokenizer(PREFIX_START_TIME, PREFIX_DEADLINE, PREFIX_REMARKS,
+                    PREFIX_LABELS, PREFIX_ISCOMPLETED);
         }
         argsTokenizer.tokenize(args);
         List<Optional<String>> preambleFields = ParserUtil.splitPreamble(argsTokenizer.getPreamble().orElse(""), 2);
@@ -51,17 +51,18 @@ public class EditCommandParser {
 
         EditTaskDescriptor editPersonDescriptor = new EditTaskDescriptor();
         try {
-        	Optional<String> deadline;
-        	if (args.contains(KEYWORD_ONLY_DEADLINE)) {
-        		deadline = argsTokenizer.getValue(PREFIX_ONLY_DEADLINE);
-        	} else {
-        		deadline = argsTokenizer.getValue(PREFIX_DEADLINE);
-        	}
+            Optional<String> deadline;
+            if (args.contains(KEYWORD_ONLY_DEADLINE)) {
+                deadline = argsTokenizer.getValue(PREFIX_ONLY_DEADLINE);
+            } else {
+                deadline = argsTokenizer.getValue(PREFIX_DEADLINE);
+            }
             editPersonDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
             editPersonDescriptor.setDeadline(ParserUtil.parseDeadline(deadline));
             editPersonDescriptor.setRemarks(ParserUtil.parseRemarks(argsTokenizer.getValue(PREFIX_REMARKS)));
             editPersonDescriptor.setStartTime(ParserUtil.parseStartTime(argsTokenizer.getValue(PREFIX_START_TIME)));
-            editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer.getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
+            editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer
+                    .getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
             editPersonDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
             editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
         } catch (IllegalValueException ive) {

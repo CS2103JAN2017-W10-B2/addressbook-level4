@@ -35,18 +35,18 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListAllCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.ToDoList;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyToDoList;
-import seedu.address.model.label.UniqueLabelList;
+import seedu.address.model.ToDoList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Title;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.Title;
 import seedu.address.storage.StorageManager;
 
 
@@ -111,8 +111,8 @@ public class LogicManagerTest {
      * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList, List)
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage,
-                                      ReadOnlyToDoList expectedToDoList,
-                                      List<? extends ReadOnlyTask> expectedShownList) {
+            ReadOnlyToDoList expectedToDoList,
+            List<? extends ReadOnlyTask> expectedShownList) {
         assertCommandBehavior(false, inputCommand, expectedMessage, expectedToDoList, expectedShownList);
     }
 
@@ -136,8 +136,8 @@ public class LogicManagerTest {
      *      - {@code expectedAddressBook} was saved to the storage file. <br>
      */
     private void assertCommandBehavior(boolean isCommandExceptionExpected, String inputCommand, String expectedMessage,
-                                       ReadOnlyToDoList expectedToDoList,
-                                       List<? extends ReadOnlyTask> expectedShownList) {
+            ReadOnlyToDoList expectedToDoList,
+            List<? extends ReadOnlyTask> expectedShownList) {
 
         try {
             CommandResult result = logic.execute(inputCommand);
@@ -211,7 +211,7 @@ public class LogicManagerTest {
     public void execute_add_successful() throws Exception {
         // setup expectations
         TestDataHelper helper = new TestDataHelper();
-        Task toBeAdded = helper.CS2103_ex1();
+        Task toBeAdded = helper.ex1CS2103();
         ToDoList expectedAB = new ToDoList();
         expectedAB.addTask(toBeAdded);
 
@@ -227,7 +227,7 @@ public class LogicManagerTest {
     public void execute_addDuplicate_notAllowed() throws Exception {
         // setup expectations
         TestDataHelper helper = new TestDataHelper();
-        Task toBeAdded = helper.CS2103_ex1();
+        Task toBeAdded = helper.ex1CS2103();
 
         // setup starting state
         model.addTask(toBeAdded); // person already in internal address book
@@ -414,7 +414,7 @@ public class LogicManagerTest {
      */
     class TestDataHelper {
 
-        Task CS2103_ex1() throws Exception {
+        Task ex1CS2103() throws Exception {
             Title name = new Title("CS2103 Exercise 1");
             Deadline deadline = new Deadline("111111");
             Remarks remark = new Remarks("adam@gmail.com");
@@ -439,7 +439,7 @@ public class LogicManagerTest {
                     new Remarks(seed + "@email"),
                     new StartTime("House of " + seed),
                     new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1))), false
-            );
+                    );
         }
 
         /** Generates the correct add command based on the person given */
@@ -538,7 +538,7 @@ public class LogicManagerTest {
                     new Remarks("1@email"),
                     new StartTime("House of 1"),
                     new UniqueLabelList(new Label("tag")), false
-            );
+                    );
         }
     }
 }

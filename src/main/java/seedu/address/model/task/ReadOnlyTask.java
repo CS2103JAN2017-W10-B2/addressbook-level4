@@ -13,17 +13,17 @@ public interface ReadOnlyTask {
     Deadline getDeadline();
     Remarks getRemarks();
     StartTime getStartTime();
-	boolean getIsCompleted();
-	
-	default boolean hasDeadline() {
+    boolean getIsCompleted();
+
+    default boolean hasDeadline() {
         return getDeadline() != null;
     }
-	
-	default boolean hasRemarks() {
+
+    default boolean hasRemarks() {
         return getRemarks() != null;
     }
-	
-	default boolean hasStartTime() {
+
+    default boolean hasStartTime() {
         return getStartTime() != null;
     }
 
@@ -40,14 +40,14 @@ public interface ReadOnlyTask {
         return other == this // short circuit if same object
                 || (other != null // this is first to avoid NPE below
                 && other.getTitle().equals(this.getTitle()) // state checks here onwards
-                && ((!other.hasDeadline() && !this.hasDeadline()) 
-                        || (other.hasDeadline() && this.hasDeadline() 
+                && ((!other.hasDeadline() && !this.hasDeadline())
+                        || (other.hasDeadline() && this.hasDeadline()
                                 && other.getDeadline().equals(this.getDeadline())))
-                && ((!other.hasRemarks() && !this.hasRemarks()) 
-                        || (other.hasRemarks() && this.hasRemarks() 
+                && ((!other.hasRemarks() && !this.hasRemarks())
+                        || (other.hasRemarks() && this.hasRemarks()
                                 && other.getRemarks().equals(this.getRemarks())))
-                && ((!other.hasStartTime() && !this.hasStartTime()) 
-                        || (other.hasStartTime() && this.hasStartTime() 
+                && ((!other.hasStartTime() && !this.hasStartTime())
+                        || (other.hasStartTime() && this.hasStartTime()
                                 && other.getStartTime().equals(this.getStartTime()))));
     }
 
@@ -57,23 +57,19 @@ public interface ReadOnlyTask {
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle());
-        if (hasStartTime()){
-            builder.append(" Start Time: ")
-                   .append(getStartTime());
+        if (hasStartTime()) {
+            builder.append(" Start Time: ").append(getStartTime());
         }
-        if (hasDeadline()){
-            builder.append(" Deadline: ")
-                   .append(getDeadline());
+        if (hasDeadline()) {
+            builder.append(" Deadline: ").append(getDeadline());
         }
-        if (hasRemarks()){
-            builder.append(" Remarks: ")
-                   .append(getRemarks());
+        if (hasRemarks()) {
+            builder.append(" Remarks: ").append(getRemarks());
         }
-        if (getIsCompleted()){
-            builder.append(" Completion: ")
-                   .append(getIsCompleted());
+        if (getIsCompleted()) {
+            builder.append(" Completion: ").append(getIsCompleted());
         }
-        if (!getLabels().isEmpty()){
+        if (!getLabels().isEmpty()) {
             builder.append(" Labels: ");
             getLabels().forEach(builder::append);
         }

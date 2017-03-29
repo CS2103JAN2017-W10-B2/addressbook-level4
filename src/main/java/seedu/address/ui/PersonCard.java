@@ -36,16 +36,16 @@ public class PersonCard extends UiPart<Region> {
         phone.setText("");
         address.setText("");
         email.setText("");
-        if (person.hasDeadline()){
-        	LocalDateTime deadline = TimeUtil.getDateTime(person.getDeadline().value);
+        if (person.hasDeadline()) {
+            LocalDateTime deadline = TimeUtil.getDateTime(person.getDeadline().value);
             phone.setText(deadline.toLocalDate().toString());
         }
-        if (person.hasStartTime()){
-        	LocalDateTime startTime = TimeUtil.getDateTime(person.getStartTime().value);
+        if (person.hasStartTime()) {
+            LocalDateTime startTime = TimeUtil.getDateTime(person.getStartTime().value);
             address.setText(startTime.toLocalDate().toString());
         }
-        if (person.hasRemarks()){
-             email.setText(person.getRemarks().value);
+        if (person.hasRemarks()) {
+            email.setText(person.getRemarks().value);
         }
         initTags(person);
     }

@@ -7,14 +7,14 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.label.Label;
+import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
-import seedu.address.model.task.Remarks;
 import seedu.address.model.task.ReadOnlyTask;
-import seedu.address.model.task.Title;
-import seedu.address.model.task.Task;
+import seedu.address.model.task.Remarks;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.Title;
 
 /**
  * JAXB-friendly version of the Task.
@@ -29,6 +29,8 @@ public class XmlAdaptedTask {
     private String remarks;
     @XmlElement(required = false)
     private String startTime;
+    @XmlElement(required = true)
+    private boolean isCompleted;
 
     @XmlElement
     private List<XmlAdaptedLabel> labeled = new ArrayList<>();
@@ -47,15 +49,16 @@ public class XmlAdaptedTask {
      */
     public XmlAdaptedTask(ReadOnlyTask source) {
         title = source.getTitle().fullTitle;
-        if (source.hasDeadline()){
+        if (source.hasDeadline()) {
             deadline = source.getDeadline().value;
         }
-        if (source.hasRemarks()){
+        if (source.hasRemarks()) {
             remarks = source.getRemarks().value;
         }
-        if (source.hasStartTime()){
+        if (source.hasStartTime()) {
             startTime = source.getStartTime().value;
         }
+        isCompleted = source.getIsCompleted();
         labeled = new ArrayList<>();
         for (Label tag : source.getLabels()) {
             labeled.add(new XmlAdaptedLabel(tag));
@@ -76,16 +79,17 @@ public class XmlAdaptedTask {
         Deadline deadline = null;
         StartTime startTime = null;
         Remarks remarks = null;
-        if (this.deadline != null){
+        boolean isCompleted = this.isCompleted;
+        if (this.deadline != null) {
             deadline = new Deadline(this.deadline);
         }
-        if (this.remarks != null){
+        if (this.remarks != null) {
             remarks = new Remarks(this.remarks);
         }
-        if (this.startTime != null){
+        if (this.startTime != null) {
             startTime = new StartTime(this.startTime);
         }
         final UniqueLabelList tags = new UniqueLabelList(taskLabels);
-        return new Task(title, deadline, remarks, startTime, tags, false);
+        return new Task(title, deadline, remarks, startTime, tags, isCompleted);
     }
 }

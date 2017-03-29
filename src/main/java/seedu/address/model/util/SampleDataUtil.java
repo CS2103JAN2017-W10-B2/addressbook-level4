@@ -2,14 +2,14 @@
 package seedu.address.model.util;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.ToDoList;
 import seedu.address.model.ReadOnlyToDoList;
+import seedu.address.model.ToDoList;
 import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
 import seedu.address.model.task.Remarks;
-import seedu.address.model.task.Title;
-import seedu.address.model.task.Task;
 import seedu.address.model.task.StartTime;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.Title;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 public class SampleDataUtil {
@@ -40,7 +40,7 @@ public class SampleDataUtil {
         }
     }
   //@@author
-    
+
     public static ReadOnlyToDoList getSampleToDoList() {
         try {
             ToDoList sampleTDL = new ToDoList();
