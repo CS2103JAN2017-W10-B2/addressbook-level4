@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import java.util.EmptyStackException;
 import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Logger;
@@ -103,7 +104,7 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void undoTask() {
+    public void undoTask() throws EmptyStackException  {
 
         if (!undoStack.empty()) {
 
