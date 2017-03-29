@@ -1,5 +1,6 @@
 package seedu.address.model.task;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -79,14 +80,15 @@ public class UniqueTaskList implements Iterable<Task> {
         }
         return taskFoundAndDeleted;
     }
-    
+
     /**
      * Sort the list.
      *
      */
     public void sort() {
     	internalList.sort(new Comparator<Task>(){
-    		public int compare(Task x, Task y) {
+    		@Override
+			public int compare(Task x, Task y) {
     			return compare(x.getDeadline(), y.getDeadline());
     		}
 
