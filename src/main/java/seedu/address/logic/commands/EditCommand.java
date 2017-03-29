@@ -60,9 +60,9 @@ public class EditCommand extends Command {
         }
 
         ReadOnlyTask taskToEdit = lastShownList.get(filteredTaskListIndex);
-        
+
         	model.updateEditStack(taskToEdit);
-        
+
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
         try {
