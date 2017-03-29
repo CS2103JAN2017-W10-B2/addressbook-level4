@@ -51,7 +51,8 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a Task to the task list<br>
-Format: `add TITLE (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS...)`
+Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remark: REMARKS) (label: LABELS...)`
+OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remark: REMARKS) (label: LABELS...)`
 
 > Other than TITLE, all other information is purely optional
 > STARTTIME and DEADLINE inputs are very flexible!
@@ -76,7 +77,8 @@ Format: `list`
 ### 2.4. Editing a task : `edit`
 
 Edits an existing task in the ToDoList.<br>
-Format: `edit INDEX (TITLE) (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS)`
+Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remark: REMARKS) (label: LABELS)`
+OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remark: REMARKS) (label: LABELS)`
 
 > * Edits the task at the specified `INDEX`.
     The index refers to the index number shown in the last task listing.<br>
