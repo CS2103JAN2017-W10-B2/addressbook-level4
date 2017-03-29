@@ -24,6 +24,7 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 public class ToDoList implements ReadOnlyToDoList {
 
     private final UniqueTaskList tasks;
+    private UniqueTaskList tempTasks;
     private final UniqueLabelList labels;
 
     /*
@@ -36,6 +37,7 @@ public class ToDoList implements ReadOnlyToDoList {
     {
         tasks = new UniqueTaskList();
         labels = new UniqueLabelList();
+        tempTasks = new UniqueTaskList();
     }
 
     public ToDoList() {}
@@ -61,6 +63,9 @@ public class ToDoList implements ReadOnlyToDoList {
 
     public void resetData(ReadOnlyToDoList newData) {
         assert newData != null;
+
+        this.tempTasks.setTasks(this.tasks);
+
         try {
             setTasks(newData.getTaskList());
         } catch (UniqueTaskList.DuplicateTaskException e) {
@@ -73,9 +78,13 @@ public class ToDoList implements ReadOnlyToDoList {
         }
         syncMasterLabelListWith(tasks);
     }
-    
+
     public void sort_tasks(){
-    	this.tasks.sort();
+        this.tasks.sort();
+    }
+
+    public void undoResetData() throws DuplicateTaskException{
+        this.tasks.setTasks(tempTasks);
     }
 
     //// task-level operations
@@ -112,7 +121,7 @@ public class ToDoList implements ReadOnlyToDoList {
         // in the task list.
         tasks.updateTask(index, editedTask);
     }
-    
+
     /**
      * Ensures that every label in this task:
      *  - exists in the master list {@link #labels}

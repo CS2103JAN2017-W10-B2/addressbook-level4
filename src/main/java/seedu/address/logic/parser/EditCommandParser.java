@@ -49,7 +49,7 @@ public class EditCommandParser {
             return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
 
-        EditTaskDescriptor editPersonDescriptor = new EditTaskDescriptor();
+        EditTaskDescriptor editTaskDescriptor = new EditTaskDescriptor();
         try {
             Optional<String> deadline;
             if (args.contains(KEYWORD_ONLY_DEADLINE)) {
@@ -57,24 +57,24 @@ public class EditCommandParser {
             } else {
                 deadline = argsTokenizer.getValue(PREFIX_DEADLINE);
             }
-            editPersonDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
-            editPersonDescriptor.setDeadline(ParserUtil.parseDeadline(deadline));
-            editPersonDescriptor.setRemarks(ParserUtil.parseRemarks(argsTokenizer.getValue(PREFIX_REMARKS)));
-            editPersonDescriptor.setStartTime(ParserUtil.parseStartTime(argsTokenizer.getValue(PREFIX_START_TIME)));
-            editPersonDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer
+            editTaskDescriptor.setTitle(ParserUtil.parseTitle(preambleFields.get(1)));
+            editTaskDescriptor.setDeadline(ParserUtil.parseDeadline(deadline));
+            editTaskDescriptor.setRemarks(ParserUtil.parseRemarks(argsTokenizer.getValue(PREFIX_REMARKS)));
+            editTaskDescriptor.setStartTime(ParserUtil.parseStartTime(argsTokenizer.getValue(PREFIX_START_TIME)));
+            editTaskDescriptor.setIsCompleted(ParserUtil.parseIsCompleted(argsTokenizer
                     .getValue(PREFIX_ISCOMPLETED)).toString().trim().equals("Optional[yes]"));
-            editPersonDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
-            editPersonDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
+            editTaskDescriptor.setIsCompletededited(argsTokenizer.getValue(PREFIX_ISCOMPLETED).isPresent());
+            editTaskDescriptor.setTags(parseTagsForEdit(ParserUtil.toSet(argsTokenizer.getAllValues(PREFIX_LABELS))));
         } catch (IllegalValueException ive) {
             return new IncorrectCommand(ive.getMessage());
         }
         //@@author
 
-        if (!editPersonDescriptor.isAnyFieldEdited()) {
+        if (!editTaskDescriptor.isAnyFieldEdited()) {
             return new IncorrectCommand(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditCommand(index.get(), editPersonDescriptor);
+        return new EditCommand(index.get(), editTaskDescriptor);
     }
 
     /**
