@@ -81,6 +81,7 @@ public class UniqueTaskList implements Iterable<Task> {
         return taskFoundAndDeleted;
     }
 
+    //@@author A0115333U
     /**
      * Sort the list.
      *
@@ -97,13 +98,15 @@ public class UniqueTaskList implements Iterable<Task> {
     				return TimeUtil.getDateTime(a.toString()).isBefore(TimeUtil.getDateTime(b.toString()))  ? -1
     						: TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString()))  ? 1
     								: 0;
-    			} else {
+    			}
+    			else {
     				return 0;
     			}
     		}
     	});
 
     }
+    //@@author
 
     public void setTasks(UniqueTaskList replacement) {
         this.internalList.setAll(replacement.internalList);
