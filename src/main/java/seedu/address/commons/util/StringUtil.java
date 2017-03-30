@@ -8,6 +8,7 @@ import java.io.StringWriter;
  */
 public class StringUtil {
 
+    //@@author A0143132X
     /**
      * Returns true if the {@code sentence} contains the {@code substring}.
      *   Ignores case, but substring match is required.
@@ -35,6 +36,7 @@ public class StringUtil {
         }
         return false;
     }
+    //@@author
 
     /**
      * Returns true if the {@code sentence} contains the {@code word}.

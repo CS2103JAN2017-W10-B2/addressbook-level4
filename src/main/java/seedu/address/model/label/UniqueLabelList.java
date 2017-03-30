@@ -167,6 +167,7 @@ public class UniqueLabelList implements Iterable<Label> {
         return internalList.hashCode();
     }
 
+    //@@author A0143132X
     public String getStringRepresentation() {
         String labelString = "";
         for (Label label : internalList) {
@@ -175,6 +176,7 @@ public class UniqueLabelList implements Iterable<Label> {
         labelString.trim();
         return labelString;
     }
+    //@@author
 
     /**
      * Signals that an operation would have violated the 'no duplicates' property of the list.

@@ -107,6 +107,7 @@ public class Task implements ReadOnlyTask {
     /**
      * Updates this task with the details of {@code replacement}.
      */
+    //@@author A0143132X
     public void resetData(ReadOnlyTask replacement) {
         assert replacement != null;
 
@@ -123,6 +124,7 @@ public class Task implements ReadOnlyTask {
         this.setLabels(replacement.getLabels());
         this.setIsCompleted(replacement.getIsCompleted());
     }
+    //@@author
 
     @Override
     public boolean equals(Object other) {
