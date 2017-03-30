@@ -96,13 +96,13 @@ public class ModelManager extends ComponentManager implements Model {
         toDoList.sort_tasks();
         indicateToDoListChanged();
     }
-
+  //@@author A0138831A
     @Override
     public void updateEditStack(ReadOnlyTask taskToEdit) {
         editStack.push(taskToEdit);
 
     }
-
+  //@@author A0138831A
     @Override
     public void undoTask() throws EmptyStackException  {
 
@@ -155,7 +155,7 @@ public class ModelManager extends ComponentManager implements Model {
 
 
     }
-
+  //@@author A0138831A
     private void reAdd(Task task) throws UniqueTaskList.DuplicateTaskException  {
         toDoList.addTask(task);
         updateFilteredListToShowAll();
@@ -163,19 +163,19 @@ public class ModelManager extends ComponentManager implements Model {
 
 
     }
-
+  //@@author A0138831A
     private void removeEditedTask(ReadOnlyTask task) throws TaskNotFoundException  {
         toDoList.removeTask(task);
         indicateToDoListChanged();
     }
-
+  //@@author A0138831A
     private void undoDeleteTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         toDoList.addTask(task);
         updateFilteredListToShowAll();
         indicateToDoListChanged();
 
     }
-
+  //@@author A0138831A
     private void undoAddTask(ReadOnlyTask task)  throws TaskNotFoundException {
         toDoList.removeTask(task);
         indicateToDoListChanged();

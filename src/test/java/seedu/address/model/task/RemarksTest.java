@@ -1,3 +1,4 @@
+//@@author A0138831A
 package seedu.address.model.task;
 
 import static org.junit.Assert.assertFalse;
@@ -12,10 +13,6 @@ public class RemarksTest {
         // blank email
         //assertFalse(Remarks.isValidRemarks("")); // empty string
         assertFalse(Remarks.isValidRemarks(" ")); // spaces only
-
-
-
-
         // valid remarks
         assertTrue(Remarks.isValidRemarks("refer to textbook"));
         assertTrue(Remarks.isValidRemarks("9"));  // minimal
