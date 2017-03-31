@@ -14,12 +14,12 @@ public class UndoCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException {
-    	assert model != null;
-    	try {
-    		model.undoTask();
-    		return new CommandResult(String.format(MESSAGE_SUCCESS));
-    	} catch (EmptyStackException e) {
-    		throw new CommandException(MESSAGE_EMPTY_STACK);
-    	}
+        assert model != null;
+        try {
+            model.undoTask();
+            return new CommandResult(String.format(MESSAGE_SUCCESS));
+        } catch (EmptyStackException e) {
+            throw new CommandException(MESSAGE_EMPTY_STACK);
+        }
     }
 }
