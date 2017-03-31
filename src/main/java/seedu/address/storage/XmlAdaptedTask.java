@@ -1,4 +1,3 @@
-//@@author A0143132X
 package seedu.address.storage;
 
 import java.util.ArrayList;
@@ -36,17 +35,20 @@ public class XmlAdaptedTask {
     private List<XmlAdaptedLabel> labeled = new ArrayList<>();
 
     /**
-     * Constructs an XmlAdaptedTask.
-     * This is the no-arg constructor that is required by JAXB.
+     * Constructs an XmlAdaptedTask. This is the no-arg constructor that is
+     * required by JAXB.
      */
-    public XmlAdaptedTask() {}
-
+    public XmlAdaptedTask() {
+    }
 
     /**
      * Converts a given Task into this class for JAXB use.
      *
-     * @param source future changes to this will not affect the created XmlAdaptedTask
+     * @param source
+     *            future changes to this will not affect the created
+     *            XmlAdaptedTask
      */
+    // @@author A0143132X
     public XmlAdaptedTask(ReadOnlyTask source) {
         title = source.getTitle().fullTitle;
         if (source.hasDeadline()) {
@@ -66,9 +68,12 @@ public class XmlAdaptedTask {
     }
 
     /**
-     * Converts this jaxb-friendly adapted task object into the model's Task object.
+     * Converts this jaxb-friendly adapted task object into the model's Task
+     * object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted task
+     * @throws IllegalValueException
+     *             if there were any data constraints violated in the adapted
+     *             task
      */
     public Task toModelType() throws IllegalValueException {
         final List<Label> taskLabels = new ArrayList<>();

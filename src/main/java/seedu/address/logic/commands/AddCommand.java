@@ -1,4 +1,3 @@
-//@@author A0143132X
 package seedu.address.logic.commands;
 
 import java.util.HashSet;
@@ -19,17 +18,16 @@ import seedu.address.model.task.UniqueTaskList;
  * Adds a task to doitdoit!!.
  */
 public class AddCommand extends Command {
-//@@author A0135795R
+    // @@author A0135795R
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to toDoList!!. "
             + "Parameters: TITLE (from: START TIME) (till:  DEADLINE) (remarks: REMAKRS) (label: LABELS...) "
             + "(c/ COMPLETIONSTATUS)\n"
             + "OR: TITLE (from: START TIME) (due by:  DEADLINE) (remarks: REMAKRS) (label: LABELS...) "
-            + "(c/ COMPLETIONSTATUS)\n"
-            + "Example: " + COMMAND_WORD
+            + "(c/ COMPLETIONSTATUS)\n" + "Example: " + COMMAND_WORD
             + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Assignment c/yes";
-//@@author
+    // @@author
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in doitdoit!!";
 
@@ -38,24 +36,21 @@ public class AddCommand extends Command {
     /**
      * Creates an AddCommand using raw values.
      *
-     * @throws IllegalValueException if any of the raw values are invalid
+     * @throws IllegalValueException
+     *             if any of the raw values are invalid
      */
+    // @@author A0143132X
     public AddCommand(String title, String deadline, String remarks, String startTime, String isCompleted,
-            Set<String> labels)
-                    throws IllegalValueException {
+            Set<String> labels) throws IllegalValueException {
         final Set<Label> labelSet = new HashSet<>();
         for (String labelName : labels) {
             labelSet.add(new Label(labelName));
         }
-        this.toAdd = new Task(
-                new Title(title),
-                deadline == null ? null : new Deadline(deadline),
-                        remarks == null ? null : new Remarks(remarks),
-                                startTime == null ? null : new StartTime(startTime),
-                                        new UniqueLabelList(labelSet),
-                                        (isCompleted.trim().equals("yes"))
-                );
+        this.toAdd = new Task(new Title(title), deadline == null ? null : new Deadline(deadline),
+                remarks == null ? null : new Remarks(remarks), startTime == null ? null : new StartTime(startTime),
+                new UniqueLabelList(labelSet), (isCompleted.trim().equals("yes")));
     }
+    // @@author
 
     @Override
     public CommandResult execute() throws CommandException {

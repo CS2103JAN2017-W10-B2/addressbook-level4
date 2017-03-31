@@ -8,17 +8,21 @@ import java.io.StringWriter;
  */
 public class StringUtil {
 
-    //@@author A0143132X
     /**
      * Returns true if the {@code sentence} contains the {@code substring}.
-     *   Ignores case, but substring match is required.
-     *   <br>examples:<pre>
+     * Ignores case, but substring match is required. <br>
+     * examples:
+     * 
+     * <pre>
      *       containsSubstringIgnoreCase("ABc def", "abc") == true
      *       containsSubstringIgnoreCase("ABc def", "DEF") == true
      *       containsSubstringIgnoreCase("ABc def", "AB") == true //not a full word match
-     *       </pre>
-     * @param sentence cannot be null
-     * @param substring cannot be null, cannot be empty, must be a single word
+     * </pre>
+     * 
+     * @param sentence
+     *            cannot be null
+     * @param substring
+     *            cannot be null, cannot be empty, must be a single word
      */
     public static boolean containsSubstringIgnoreCase(String sentence, String substring) {
         assert substring != null : "Word parameter cannot be null";
@@ -31,23 +35,28 @@ public class StringUtil {
         String preppedSentence = sentence;
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
-        for (String wordInSentence: wordsInPreppedSentence) {
-            if (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase())) return true;
+        for (String wordInSentence : wordsInPreppedSentence) {
+            if (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase()))
+                return true;
         }
         return false;
     }
-    //@@author
 
     /**
-     * Returns true if the {@code sentence} contains the {@code word}.
-     *   Ignores case, but a full word match is required.
-     *   <br>examples:<pre>
+     * Returns true if the {@code sentence} contains the {@code word}. Ignores
+     * case, but a full word match is required. <br>
+     * examples:
+     * 
+     * <pre>
      *       containsWordIgnoreCase("ABc def", "abc") == true
      *       containsWordIgnoreCase("ABc def", "DEF") == true
      *       containsWordIgnoreCase("ABc def", "AB") == false //not a full word match
-     *       </pre>
-     * @param sentence cannot be null
-     * @param word cannot be null, cannot be empty, must be a single word
+     * </pre>
+     * 
+     * @param sentence
+     *            cannot be null
+     * @param word
+     *            cannot be null, cannot be empty, must be a single word
      */
     public static boolean containsWordIgnoreCase(String sentence, String word) {
         assert word != null : "Word parameter cannot be null";
@@ -60,8 +69,9 @@ public class StringUtil {
         String preppedSentence = sentence;
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
-        for (String wordInSentence: wordsInPreppedSentence) {
-            if (wordInSentence.equalsIgnoreCase(preppedWord)) return true;
+        for (String wordInSentence : wordsInPreppedSentence) {
+            if (wordInSentence.equalsIgnoreCase(preppedWord))
+                return true;
         }
         return false;
     }
@@ -78,9 +88,11 @@ public class StringUtil {
 
     /**
      * Returns true if s represents an unsigned integer e.g. 1, 2, 3, ... <br>
-     * Will return false if the string is:
-     * null, empty string, "-1", "0", "+1", and " 2 " (untrimmed) "3 0" (contains whitespace).
-     * @param s Should be trimmed.
+     * Will return false if the string is: null, empty string, "-1", "0", "+1",
+     * and " 2 " (untrimmed) "3 0" (contains whitespace).
+     * 
+     * @param s
+     *            Should be trimmed.
      */
     public static boolean isUnsignedInteger(String s) {
         return s != null && s.matches("^0*[1-9]\\d*$");
