@@ -31,9 +31,9 @@ public class TaskBuilder {
         return this;
     }
 
-    public TaskBuilder withLabels(String ... labels) throws IllegalValueException {
+    public TaskBuilder withLabels(String... labels) throws IllegalValueException {
         task.setLabels(new UniqueLabelList());
-        for (String label: labels) {
+        for (String label : labels) {
             task.getLabels().add(new Label(label));
         }
         return this;
@@ -51,6 +51,11 @@ public class TaskBuilder {
 
     public TaskBuilder withRemarks(String remarks) throws IllegalValueException {
         this.task.setRemarks(new Remarks(remarks));
+        return this;
+    }
+
+    public TaskBuilder withCompleted(boolean completed) throws IllegalValueException {
+        this.task.setIsCompleted(completed);
         return this;
     }
 

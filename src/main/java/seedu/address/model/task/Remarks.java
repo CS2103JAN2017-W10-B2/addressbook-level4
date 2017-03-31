@@ -1,23 +1,23 @@
 package seedu.address.model.task;
 
-
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
- * Represents remarks for a task in doitdoit!!.
- * Guarantees: immutable; is valid as declared in {@link #isValidRemarks(String)}
+ * Represents remarks for a task in doitdoit!!. Guarantees: immutable; is valid
+ * as declared in {@link #isValidRemarks(String)}
  */
 public class Remarks {
-//@@author A0135795R
+    // @@author A0135795R
     public static final String MESSAGE_REMARKS_CONSTRAINTS = "N/A";
     public static final String REMARKS_VALIDATION_REGEX = "([\\w\\.]+@[\\w\\.]+)|";
-//@@author
+    // @@author
     public final String value;
 
     /**
      * Validates given remarks.
      *
-     * @throws IllegalValueException if given remarks string is invalid.
+     * @throws IllegalValueException
+     *             if given remarks string is invalid.
      */
     public Remarks(String remarks) throws IllegalValueException {
         assert remarks != null;
@@ -32,7 +32,7 @@ public class Remarks {
      * Returns if a given string is a valid task remarks.
      */
     public static boolean isValidRemarks(String test) {
-        return true; //test.matches(REMARKS_VALIDATION_REGEX);
+        return true; // test.matches(REMARKS_VALIDATION_REGEX);
     }
 
     @Override
@@ -44,7 +44,8 @@ public class Remarks {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Remarks // instanceof handles nulls
-                && this.value.equals(((Remarks) other).value)); // state check
+                        && this.value.equals(((Remarks) other).value)); // state
+                                                                        // check
     }
 
     @Override

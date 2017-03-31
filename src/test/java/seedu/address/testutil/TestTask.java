@@ -17,7 +17,7 @@ public class TestTask implements ReadOnlyTask {
     private Remarks remarks;
     private Deadline deadline;
     private UniqueLabelList labels;
-    private Boolean isCompleted;
+    private boolean isCompleted;
 
     public TestTask() {
         labels = new UniqueLabelList();
@@ -55,7 +55,7 @@ public class TestTask implements ReadOnlyTask {
         this.labels = labels;
     }
 
-    public void setIsCompleted(Boolean isCompleted) {
+    public void setIsCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
     }
 
