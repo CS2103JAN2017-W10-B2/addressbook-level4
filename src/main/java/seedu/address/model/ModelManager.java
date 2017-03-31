@@ -204,6 +204,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
     }
 
+    //@@author A0143132X
     @Override
     public void updateFilteredTaskList(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new TitleAndRemarksQualifier(keywords)));
@@ -217,7 +218,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskListByLabel(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new LabelsQualifier(keywords)));
     }
-
+    //@@author
 
 
     //========== Inner classes/interfaces used for filtering =================================================
@@ -253,6 +254,7 @@ public class ModelManager extends ComponentManager implements Model {
         String toString();
     }
 
+    //@@author A0143132X
     private class TitleAndRemarksQualifier implements Qualifier {
         private Set<String> keyWords;
 
