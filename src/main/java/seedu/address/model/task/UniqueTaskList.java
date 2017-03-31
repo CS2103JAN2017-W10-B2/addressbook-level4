@@ -1,6 +1,5 @@
 package seedu.address.model.task;
 
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -9,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.UnmodifiableObservableList;
 import seedu.address.commons.exceptions.DuplicateDataException;
-import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.TimeUtil;
 
 /**
@@ -19,7 +17,6 @@ import seedu.address.commons.util.TimeUtil;
  * Supports a minimal set of list operations.
  *
  * @see Task#equals(Object)
- * @see CollectionUtil#elementsAreUnique(Collection)
  */
 public class UniqueTaskList implements Iterable<Task> {
 
