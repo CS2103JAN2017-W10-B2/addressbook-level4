@@ -95,11 +95,12 @@ public class UniqueTaskList implements Iterable<Task> {
 
     		private int compare(Deadline a, Deadline b) {
     			if (a != null && b != null) {
-    				return TimeUtil.getDateTime(a.toString()).isBefore(TimeUtil.getDateTime(b.toString()))  ? -1
-    						: TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString()))  ? 1
+    			//CHECKSTYLE.OFF: LineLength
+    				return TimeUtil.getDateTime(a.toString()).isBefore(TimeUtil.getDateTime(b.toString())) ? -1
+    						: TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString())) ? 1
     								: 0;
-    			}
-    			else {
+    			//CHECKSTYLE.ON: LineLength
+    			} else {
     				return 0;
     			}
     		}
