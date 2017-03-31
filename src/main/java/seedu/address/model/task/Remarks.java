@@ -8,10 +8,10 @@ import seedu.address.commons.exceptions.IllegalValueException;
  * Guarantees: immutable; is valid as declared in {@link #isValidRemarks(String)}
  */
 public class Remarks {
-
+//@@author A0135795R
     public static final String MESSAGE_REMARKS_CONSTRAINTS = "N/A";
     public static final String REMARKS_VALIDATION_REGEX = "([\\w\\.]+@[\\w\\.]+)|";
-
+//@@author
     public final String value;
 
     /**
