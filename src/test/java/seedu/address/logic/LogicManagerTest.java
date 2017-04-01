@@ -190,27 +190,28 @@ public class LogicManagerTest {
 
         assertCommandSuccess("clear", ClearCommand.MESSAGE_SUCCESS, new ToDoList(), Collections.emptyList());
     }
-    
-    /* Irrelavant test case
-    @Test
-    public void execute_add_invalidArgsFormat() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
-        assertCommandFailure("add wrong args wrong args", expectedMessage);
-        assertCommandFailure("add Valid Name 12345 e/valid@email.butNoPhonePrefix a/valid,address", expectedMessage);
-        assertCommandFailure("add Valid Name p/12345 valid@email.butNoPrefix a/valid, address", expectedMessage);
-        assertCommandFailure("add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address", expectedMessage);
-    }
-    */
+
+    /*
+     * Irrelavant test case
+     * 
+     * @Test public void execute_add_invalidArgsFormat() { String
+     * expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+     * AddCommand.MESSAGE_USAGE);
+     * assertCommandFailure("add wrong args wrong args", expectedMessage);
+     * assertCommandFailure("add Valid Name 12345 e/valid@email.butNoPhonePrefix a/valid,address"
+     * , expectedMessage);
+     * assertCommandFailure("add Valid Name p/12345 valid@email.butNoPrefix a/valid, address"
+     * , expectedMessage);
+     * assertCommandFailure("add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address"
+     * , expectedMessage); }
+     */
 
     @Test
     public void execute_add_invalidPersonData() {
         assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address", Title.MESSAGE_TITLE_CONSTRAINTS);
-        assertCommandFailure("add Valid Name till:goat stimulator",
-                Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
-        assertCommandFailure("add Valid Title remarks:invalid#remarks",
-                Remarks.MESSAGE_REMARKS_CONSTRAINTS);
-        assertCommandFailure("add Valid Name #invalid_-[.tag",
-                Label.MESSAGE_LABEL_CONSTRAINTS);
+        assertCommandFailure("add Valid Name till:goat stimulator", Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
+        assertCommandFailure("add Valid Title remarks:invalid#remarks", Remarks.MESSAGE_REMARKS_CONSTRAINTS);
+        assertCommandFailure("add Valid Name #invalid_-[.tag", Label.MESSAGE_LABEL_CONSTRAINTS);
 
     }
 

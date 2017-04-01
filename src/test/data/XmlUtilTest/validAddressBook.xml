@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addressbook>
-    <persons>
-        <name>Hans Muster</name>
-        <phone isPrivate="false">9482424</phone>
-        <email isPrivate="false">hans@google.com</email>
-        <address isPrivate="false">4th street</address>
-    </persons>
-    <persons>
-        <name>Ruth Mueller</name>
-        <phone isPrivate="false">87249245</phone>
-        <email isPrivate="false">ruth@google.com</email>
-        <address isPrivate="false">81th street</address>
-    </persons>
-    <persons>
-        <name>Heinz Kurz</name>
-        <phone isPrivate="false">95352563</phone>
-        <email isPrivate="false">heinz@yahoo.com</email>
-        <address isPrivate="false">wall street</address>
-    </persons>
-    <persons>
-        <name>Cornelia Meier</name>
-        <phone isPrivate="false">87652533</phone>
-        <email isPrivate="false">cornelia@google.com</email>
-        <address isPrivate="false">10th street</address>
-    </persons>
-    <persons>
-        <name>Werner Meyer</name>
-        <phone isPrivate="false">9482224</phone>
-        <email isPrivate="false">werner@gmail.com</email>
-        <address isPrivate="false">michegan ave</address>
-    </persons>
-    <persons>
-        <name>Lydia Kunz</name>
-        <phone isPrivate="false">9482427</phone>
-        <email isPrivate="false">lydia@gmail.com</email>
-        <address isPrivate="false">little tokyo</address>
-    </persons>
-    <persons>
-        <name>Anna Best</name>
-        <phone isPrivate="false">9482442</phone>
-        <email isPrivate="false">anna@google.com</email>
-        <address isPrivate="false">4th street</address>
-    </persons>
-    <persons>
-        <name>Stefan Meier</name>
-        <phone isPrivate="false">8482424</phone>
-        <email isPrivate="false">stefan@mail.com</email>
-        <address isPrivate="false">little india</address>
-    </persons>
-    <persons>
-        <name>Martin Mueller</name>
-        <phone isPrivate="false">8482131</phone>
-        <email isPrivate="false">hans@google.com</email>
-        <address isPrivate="false">chicago ave</address>
-    </persons>
-</addressbook>
+<todolist>
+    <tasks>
+        <title>deadline1</title>
+        <deadline>tomorrow</deadline>
+        <remarks>pokemons are the best</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>pop</labeled>
+    </tasks>
+    <tasks>
+        <title>event</title>
+        <deadline>tomorrow</deadline>
+        <startTime>today</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>ayeayeyae</labeled>
+    </tasks>
+    <tasks>
+        <title>yoyo</title>
+        <remarks>hello</remarks>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>deadlineremark</title>
+        <deadline>tomorrow</deadline>
+        <remarks>sdclsd</remarks>
+        <startTime>today</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>floating apapru</title>
+        <deadline>sunday</deadline>
+        <remarks>sdcds</remarks>
+        <startTime>now</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>yoyoyoyoyoy</labeled>
+    </tasks>
+    <tasks>
+        <title>hello</title>
+        <deadline>friday</deadline>
+        <remarks>pokemons are the best. Slyveon is the best</remarks>
+        <startTime>today</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>SLYVEON</labeled>
+    </tasks>
+    <tasks>
+        <title>pokemon</title>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>pokmon</title>
+        <isCompleted>false</isCompleted>
+        <labeled>pokemons</labeled>
+    </tasks>
+    <tasks>
+        <title>pikachu</title>
+        <remarks>pokemons pokemons sylveon is a pokemons</remarks>
+        <isCompleted>false</isCompleted>
+    </tasks>
+</todolist>
