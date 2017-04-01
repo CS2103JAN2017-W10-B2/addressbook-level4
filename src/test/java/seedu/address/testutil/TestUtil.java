@@ -124,7 +124,7 @@ public class TestUtil {
     /**
      * Appends the file name to the sandbox folder path. Creates the sandbox
      * folder if it doesn't exist.
-     * 
+     *
      * @param fileName
      * @return
      */
@@ -245,7 +245,7 @@ public class TestUtil {
 
     /**
      * Gets mid point of a node relative to the screen.
-     * 
+     *
      * @param node
      * @return
      */
@@ -257,7 +257,7 @@ public class TestUtil {
 
     /**
      * Gets mid point of a node relative to its scene.
-     * 
+     *
      * @param node
      * @return
      */
@@ -269,7 +269,7 @@ public class TestUtil {
 
     /**
      * Gets the bound of the node relative to the parent scene.
-     * 
+     *
      * @param node
      * @return
      */
@@ -295,7 +295,7 @@ public class TestUtil {
 
     /**
      * Removes a subset from the list of persons.
-     * 
+     *
      * @param tasks
      *            The list of persons
      * @param tasksToRemove
@@ -310,7 +310,7 @@ public class TestUtil {
 
     /**
      * Returns a copy of the list with the person at specified index removed.
-     * 
+     *
      * @param list
      *            original list to copy from
      * @param targetIndexInOneIndexedFormat
@@ -322,7 +322,7 @@ public class TestUtil {
 
     /**
      * Replaces persons[i] with a person.
-     * 
+     *
      * @param tasks
      *            The array of persons.
      * @param task
@@ -338,7 +338,7 @@ public class TestUtil {
 
     /**
      * Appends persons to the array of persons.
-     * 
+     *
      * @param tasks
      *            A array of persons.
      * @param taskToAdd
