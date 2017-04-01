@@ -20,7 +20,7 @@ public class DeadlineTest {
         // digits
 
         // valid deadlines
-        assertTrue(Deadline.isValidDeadline("090917"));
+        assertTrue(Deadline.isValidDeadline("09/09/17"));
 
     }
 }

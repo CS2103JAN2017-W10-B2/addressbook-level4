@@ -8,8 +8,8 @@ import seedu.address.commons.exceptions.IllegalValueException;
  */
 public class Remarks {
     // @@author A0135795R
-    public static final String MESSAGE_REMARKS_CONSTRAINTS = "N/A";
-    public static final String REMARKS_VALIDATION_REGEX = "([\\w\\.]+@[\\w\\.]+)|";
+    public static final String MESSAGE_REMARKS_CONSTRAINTS = "Remarks cannot contain #.";
+    public static final String REMARKS_VALIDATION_REGEX = "[^#]+";
     // @@author
     public final String value;
 
@@ -32,7 +32,8 @@ public class Remarks {
      * Returns if a given string is a valid task remarks.
      */
     public static boolean isValidRemarks(String test) {
-        return true; // test.matches(REMARKS_VALIDATION_REGEX);
+        test = test.trim();
+        return test.matches(REMARKS_VALIDATION_REGEX);
     }
 
     @Override

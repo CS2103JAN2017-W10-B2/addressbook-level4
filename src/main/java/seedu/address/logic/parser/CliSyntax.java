@@ -17,7 +17,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_DEADLINE = new Prefix(" till:");
     public static final Prefix PREFIX_REMARKS = new Prefix(" remarks:");
     public static final Prefix PREFIX_START_TIME = new Prefix(" from:");
-    public static final Prefix PREFIX_LABELS = new Prefix("#");
+    public static final Prefix PREFIX_LABELS = new Prefix(" #");
     public static final Prefix PREFIX_ISCOMPLETED = new Prefix("c/");
     //@@author
 

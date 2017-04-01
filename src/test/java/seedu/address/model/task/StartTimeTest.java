@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class AddressTest {
+public class StartTimeTest {
 
     @Test
     public void isValidAddress() {
@@ -14,8 +14,8 @@ public class AddressTest {
         assertFalse(StartTime.isValidStartTime(" ")); // spaces only
 
         // valid addresses
-        assertTrue(StartTime.isValidStartTime("Blk 456, Den Road, #01-355"));
-        assertTrue(StartTime.isValidStartTime("-")); // one character
-        assertTrue(StartTime.isValidStartTime("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA"));
+        assertTrue(StartTime.isValidStartTime("today 4 o'clock"));
+        assertTrue(StartTime.isValidStartTime("12/12/17")); // date
+        assertTrue(StartTime.isValidStartTime("2pm")); //just time
     }
 }

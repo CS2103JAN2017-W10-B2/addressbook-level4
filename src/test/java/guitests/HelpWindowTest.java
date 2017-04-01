@@ -20,10 +20,12 @@ public class HelpWindowTest extends ToDoListGuiTest {
 
         taskListPanel.clickOnListView();
         assertHelpWindowOpen(mainMenu.openHelpWindowUsingAccelerator());
-
+        
+        /* Irrelavant test case
         browserPanel.clickOnWebView();
         assertHelpWindowNotOpen(mainMenu.openHelpWindowUsingAccelerator());
-
+        */
+        
         //use menu button
         assertHelpWindowOpen(mainMenu.openHelpWindowUsingMenu());
 
