@@ -27,7 +27,7 @@ public class EditCommandTest extends ToDoListGuiTest {
 
     @Test
     public void edit_allFieldsSpecified_success() throws Exception {
-        String detailsToEdit = "Buy choclates from:11/15/17 till:11/15/17 remarks: dark chocolate is the best chocolate #luvluv";
+        String detailsToEdit = "Buy chocolates from:11/15/17 till:11/15/17 remarks: dark chocolate the best #luvluv";
         int addressBookIndex = 1;
 
         TestTask editedPerson = new TaskBuilder().withTitle("Buy choclates").withDeadline("11/15/17")
