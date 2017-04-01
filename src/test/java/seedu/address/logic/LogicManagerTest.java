@@ -32,7 +32,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListAllCommand;
+import seedu.address.logic.commands.ListOngoingCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -49,7 +49,6 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.Title;
 import seedu.address.storage.StorageManager;
 
-
 public class LogicManagerTest {
 
     /**
@@ -61,7 +60,7 @@ public class LogicManagerTest {
     private Model model;
     private Logic logic;
 
-    //These are for checking the correctness of the events raised
+    // These are for checking the correctness of the events raised
     private ReadOnlyToDoList latestSavedToDoList;
     private boolean helpShown;
     private int targetedJumpIndex;
@@ -89,7 +88,10 @@ public class LogicManagerTest {
         logic = new LogicManager(model, new StorageManager(tempAddressBookFile, tempPreferencesFile));
         EventsCenter.getInstance().registerHandler(this);
 
-        latestSavedToDoList = new ToDoList(model.getToDoList()); // last saved assumed to be up to date
+        latestSavedToDoList = new ToDoList(model.getToDoList()); // last saved
+                                                                 // assumed to
+                                                                 // be up to
+                                                                 // date
         helpShown = false;
         targetedJumpIndex = -1; // non yet
     }
@@ -106,20 +108,25 @@ public class LogicManagerTest {
     }
 
     /**
-     * Executes the command, confirms that a CommandException is not thrown and that the result message is correct.
-     * Also confirms that both the 'address book' and the 'last shown list' are as specified.
-     * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList, List)
+     * Executes the command, confirms that a CommandException is not thrown and
+     * that the result message is correct. Also confirms that both the 'address
+     * book' and the 'last shown list' are as specified.
+     *
+     * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList,
+     *      List)
      */
-    private void assertCommandSuccess(String inputCommand, String expectedMessage,
-            ReadOnlyToDoList expectedToDoList,
+    private void assertCommandSuccess(String inputCommand, String expectedMessage, ReadOnlyToDoList expectedToDoList,
             List<? extends ReadOnlyTask> expectedShownList) {
         assertCommandBehavior(false, inputCommand, expectedMessage, expectedToDoList, expectedShownList);
     }
 
     /**
-     * Executes the command, confirms that a CommandException is thrown and that the result message is correct.
-     * Both the 'address book' and the 'last shown list' are verified to be unchanged.
-     * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList, List)
+     * Executes the command, confirms that a CommandException is thrown and that
+     * the result message is correct. Both the 'address book' and the 'last
+     * shown list' are verified to be unchanged.
+     *
+     * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList,
+     *      List)
      */
     private void assertCommandFailure(String inputCommand, String expectedMessage) {
         ToDoList expectedToDoList = new ToDoList(model.getToDoList());
@@ -128,16 +135,17 @@ public class LogicManagerTest {
     }
 
     /**
-     * Executes the command, confirms that the result message is correct
-     * and that a CommandException is thrown if expected
-     * and also confirms that the following three parts of the LogicManager object's state are as expected:<br>
-     *      - the internal address book data are same as those in the {@code expectedAddressBook} <br>
-     *      - the backing list shown by UI matches the {@code shownList} <br>
-     *      - {@code expectedAddressBook} was saved to the storage file. <br>
+     * Executes the command, confirms that the result message is correct and
+     * that a CommandException is thrown if expected and also confirms that the
+     * following three parts of the LogicManager object's state are as
+     * expected:<br>
+     * - the internal address book data are same as those in the
+     * {@code expectedAddressBook} <br>
+     * - the backing list shown by UI matches the {@code shownList} <br>
+     * - {@code expectedAddressBook} was saved to the storage file. <br>
      */
     private void assertCommandBehavior(boolean isCommandExceptionExpected, String inputCommand, String expectedMessage,
-            ReadOnlyToDoList expectedToDoList,
-            List<? extends ReadOnlyTask> expectedShownList) {
+            ReadOnlyToDoList expectedToDoList, List<? extends ReadOnlyTask> expectedShownList) {
 
         try {
             CommandResult result = logic.execute(inputCommand);
@@ -148,10 +156,10 @@ public class LogicManagerTest {
             assertEquals(expectedMessage, e.getMessage());
         }
 
-        //Confirm the ui display elements should contain the right data
+        // Confirm the ui display elements should contain the right data
         assertEquals(expectedShownList, model.getFilteredTaskList());
 
-        //Confirm the state of data (saved and in-memory) is as expected
+        // Confirm the state of data (saved and in-memory) is as expected
         assertEquals(expectedToDoList, model.getToDoList());
         assertEquals(expectedToDoList, latestSavedToDoList);
     }
@@ -170,8 +178,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_exit() {
-        assertCommandSuccess("exit", ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT,
-                new ToDoList(), Collections.emptyList());
+        assertCommandSuccess("exit", ExitCommand.MESSAGE_EXIT_ACKNOWLEDGEMENT, new ToDoList(), Collections.emptyList());
     }
 
     @Test
@@ -184,11 +191,10 @@ public class LogicManagerTest {
         assertCommandSuccess("clear", ClearCommand.MESSAGE_SUCCESS, new ToDoList(), Collections.emptyList());
     }
 
-
     @Test
     public void execute_add_invalidArgsFormat() {
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE);
-        assertCommandFailure("add wrong args wrong args", expectedMessage);
+        assertCommandFailure("adds wrong args wrong args", expectedMessage);
         assertCommandFailure("add Valid Name 12345 e/valid@email.butNoPhonePrefix a/valid,address", expectedMessage);
         assertCommandFailure("add Valid Name p/12345 valid@email.butNoPrefix a/valid, address", expectedMessage);
         assertCommandFailure("add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address", expectedMessage);
@@ -196,8 +202,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_add_invalidPersonData() {
-        assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address",
-                Title.MESSAGE_TITLE_CONSTRAINTS);
+        assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address", Title.MESSAGE_TITLE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/not_numbers e/valid@e.mail a/valid, address",
                 Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
         assertCommandFailure("add Valid Name p/12345 e/notAnEmail a/valid, address",
@@ -216,10 +221,8 @@ public class LogicManagerTest {
         expectedAB.addTask(toBeAdded);
 
         // execute command and verify result
-        assertCommandSuccess(helper.generateAddCommand(toBeAdded),
-                String.format(AddCommand.MESSAGE_SUCCESS, toBeAdded),
-                expectedAB,
-                expectedAB.getTaskList());
+        assertCommandSuccess(helper.generateAddCommand(toBeAdded), String.format(AddCommand.MESSAGE_SUCCESS, toBeAdded),
+                expectedAB, expectedAB.getTaskList());
 
     }
 
@@ -233,10 +236,9 @@ public class LogicManagerTest {
         model.addTask(toBeAdded); // person already in internal address book
 
         // execute command and verify result
-        assertCommandFailure(helper.generateAddCommand(toBeAdded),  AddCommand.MESSAGE_DUPLICATE_TASK);
+        assertCommandFailure(helper.generateAddCommand(toBeAdded), AddCommand.MESSAGE_DUPLICATE_TASK);
 
     }
-
 
     @Test
     public void execute_list_showsAllPersons() throws Exception {
@@ -248,33 +250,39 @@ public class LogicManagerTest {
         // prepare address book state
         helper.addToModel(model, 2);
 
-        assertCommandSuccess("list",
-                ListAllCommand.MESSAGE_SUCCESS,
-                expectedAB,
-                expectedList);
+        assertCommandSuccess("list", ListOngoingCommand.MESSAGE_SUCCESS, expectedAB, expectedList);
     }
 
-
     /**
-     * Confirms the 'invalid argument index number behaviour' for the given command
-     * targeting a single person in the shown list, using visible index.
-     * @param commandWord to test assuming it targets a single person in the last shown list
-     *                    based on visible index.
+     * Confirms the 'invalid argument index number behaviour' for the given
+     * command targeting a single person in the shown list, using visible index.
+     *
+     * @param commandWord
+     *            to test assuming it targets a single person in the last shown
+     *            list based on visible index.
      */
     private void assertIncorrectIndexFormatBehaviorForCommand(String commandWord, String expectedMessage)
             throws Exception {
-        assertCommandFailure(commandWord , expectedMessage); //index missing
-        assertCommandFailure(commandWord + " +1", expectedMessage); //index should be unsigned
-        assertCommandFailure(commandWord + " -1", expectedMessage); //index should be unsigned
-        assertCommandFailure(commandWord + " 0", expectedMessage); //index cannot be 0
+        assertCommandFailure(commandWord, expectedMessage); // index missing
+        assertCommandFailure(commandWord + " +1", expectedMessage); // index
+                                                                    // should be
+                                                                    // unsigned
+        assertCommandFailure(commandWord + " -1", expectedMessage); // index
+                                                                    // should be
+                                                                    // unsigned
+        assertCommandFailure(commandWord + " 0", expectedMessage); // index
+                                                                   // cannot be
+                                                                   // 0
         assertCommandFailure(commandWord + " not_a_number", expectedMessage);
     }
 
     /**
-     * Confirms the 'invalid argument index number behaviour' for the given command
-     * targeting a single person in the shown list, using visible index.
-     * @param commandWord to test assuming it targets a single person in the last shown list
-     *                    based on visible index.
+     * Confirms the 'invalid argument index number behaviour' for the given
+     * command targeting a single person in the shown list, using visible index.
+     *
+     * @param commandWord
+     *            to test assuming it targets a single person in the last shown
+     *            list based on visible index.
      */
     private void assertIndexNotFoundBehaviorForCommand(String commandWord) throws Exception {
         String expectedMessage = MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
@@ -309,14 +317,11 @@ public class LogicManagerTest {
         ToDoList expectedAB = helper.generateToDoList(threePersons);
         helper.addToModel(model, threePersons);
 
-        assertCommandSuccess("select 2",
-                String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, 2),
-                expectedAB,
+        assertCommandSuccess("select 2", String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, 2), expectedAB,
                 expectedAB.getTaskList());
         assertEquals(1, targetedJumpIndex);
         assertEquals(model.getFilteredTaskList().get(1), threePersons.get(1));
     }
-
 
     @Test
     public void execute_deleteInvalidArgsFormat_errorMessageShown() throws Exception {
@@ -338,12 +343,9 @@ public class LogicManagerTest {
         expectedAB.removeTask(threePersons.get(1));
         helper.addToModel(model, threePersons);
 
-        assertCommandSuccess("delete 2",
-                String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, threePersons.get(1)),
-                expectedAB,
-                expectedAB.getTaskList());
+        assertCommandSuccess("delete 2", String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, threePersons.get(1)),
+                expectedAB, expectedAB.getTaskList());
     }
-
 
     @Test
     public void execute_find_invalidArgsFormat() {
@@ -352,7 +354,7 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void execute_find_onlyMatchesFullWordsInNames() throws Exception {
+    public void execute_find_matchesSubstringInTitles() throws Exception {
         TestDataHelper helper = new TestDataHelper();
         Task pTarget1 = helper.generateTaskWithTitle("bla bla KEY bla");
         Task pTarget2 = helper.generateTaskWithTitle("bla KEY bla bceofeia");
@@ -361,12 +363,10 @@ public class LogicManagerTest {
 
         List<Task> fourPersons = helper.generateTaskList(p1, pTarget1, p2, pTarget2);
         ToDoList expectedAB = helper.generateToDoList(fourPersons);
-        List<Task> expectedList = helper.generateTaskList(pTarget1, pTarget2);
+        List<Task> expectedList = helper.generateTaskList(pTarget1, p2, pTarget2);
         helper.addToModel(model, fourPersons);
 
-        assertCommandSuccess("find KEY",
-                Command.getMessageForTaskListShownSummary(expectedList.size()),
-                expectedAB,
+        assertCommandSuccess("find KEY", Command.getMessageForTaskListShownSummary(expectedList.size()), expectedAB,
                 expectedList);
     }
 
@@ -383,9 +383,7 @@ public class LogicManagerTest {
         List<Task> expectedList = fourPersons;
         helper.addToModel(model, fourPersons);
 
-        assertCommandSuccess("find KEY",
-                Command.getMessageForTaskListShownSummary(expectedList.size()),
-                expectedAB,
+        assertCommandSuccess("find KEY", Command.getMessageForTaskListShownSummary(expectedList.size()), expectedAB,
                 expectedList);
     }
 
@@ -402,12 +400,9 @@ public class LogicManagerTest {
         List<Task> expectedList = helper.generateTaskList(pTarget1, pTarget2, pTarget3);
         helper.addToModel(model, fourPersons);
 
-        assertCommandSuccess("find key rAnDoM",
-                Command.getMessageForTaskListShownSummary(expectedList.size()),
-                expectedAB,
-                expectedList);
+        assertCommandSuccess("find key rAnDoM", Command.getMessageForTaskListShownSummary(expectedList.size()),
+                expectedAB, expectedList);
     }
-
 
     /**
      * A utility class to generate test data.
@@ -416,9 +411,9 @@ public class LogicManagerTest {
 
         Task ex1CS2103() throws Exception {
             Title name = new Title("CS2103 Exercise 1");
-            Deadline deadline = new Deadline("111111");
+            Deadline deadline = new Deadline("11/11/17");
             Remarks remark = new Remarks("adam@gmail.com");
-            StartTime privateAddress = new StartTime("111, alpha street");
+            StartTime privateAddress = new StartTime("11/11/17");
             Label tag1 = new Label("tag1");
             Label tag2 = new Label("longertag2");
             UniqueLabelList tags = new UniqueLabelList(tag1, tag2);
@@ -426,20 +421,19 @@ public class LogicManagerTest {
         }
 
         /**
-         * Generates a valid person using the given seed.
-         * Running this function with the same parameter values guarantees the returned person will have the same state.
-         * Each unique seed will generate a unique Person object.
+         * Generates a valid person using the given seed. Running this function
+         * with the same parameter values guarantees the returned person will
+         * have the same state. Each unique seed will generate a unique Person
+         * object.
          *
-         * @param seed used to generate the person data field values
+         * @param seed
+         *            used to generate the person data field values
          */
         Task generateTask(int seed) throws Exception {
-            return new Task(
-                    new Title("Person " + seed),
-                    new Deadline("" + Math.abs(seed)),
-                    new Remarks(seed + "@email"),
-                    new StartTime("House of " + seed),
-                    new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1))), false
-                    );
+            return new Task(new Title("Title " + seed), new Deadline("12/12/17"), new Remarks(seed + "@email"),
+                    new StartTime("12/12/17"),
+                    new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1))),
+                    false);
         }
 
         /** Generates the correct add command based on the person given */
@@ -454,7 +448,7 @@ public class LogicManagerTest {
             cmd.append(" a/").append(p.getStartTime());
 
             UniqueLabelList tags = p.getLabels();
-            for (Label t: tags) {
+            for (Label t : tags) {
                 cmd.append(" t/").append(t.labelName);
             }
 
@@ -481,7 +475,9 @@ public class LogicManagerTest {
 
         /**
          * Adds auto-generated Person objects to the given AddressBook
-         * @param todoList The AddressBook to which the Persons will be added
+         *
+         * @param todoList
+         *            The AddressBook to which the Persons will be added
          */
         void addToToDoList(ToDoList todoList, int numGenerated) throws Exception {
             addToToDoList(todoList, generateTaskList(numGenerated));
@@ -491,14 +487,16 @@ public class LogicManagerTest {
          * Adds the given list of Persons to the given AddressBook
          */
         void addToToDoList(ToDoList todoList, List<Task> tasksToAdd) throws Exception {
-            for (Task p: tasksToAdd) {
+            for (Task p : tasksToAdd) {
                 todoList.addTask(p);
             }
         }
 
         /**
          * Adds auto-generated Person objects to the given model
-         * @param model The model to which the Persons will be added
+         *
+         * @param model
+         *            The model to which the Persons will be added
          */
         void addToModel(Model model, int numGenerated) throws Exception {
             addToModel(model, generateTaskList(numGenerated));
@@ -508,7 +506,7 @@ public class LogicManagerTest {
          * Adds the given list of Persons to the given model
          */
         void addToModel(Model model, List<Task> tasksToAdd) throws Exception {
-            for (Task p: tasksToAdd) {
+            for (Task p : tasksToAdd) {
                 model.addTask(p);
             }
         }
@@ -529,16 +527,12 @@ public class LogicManagerTest {
         }
 
         /**
-         * Generates a Person object with given name. Other fields will have some dummy values.
+         * Generates a Person object with given name. Other fields will have
+         * some dummy values.
          */
         Task generateTaskWithTitle(String name) throws Exception {
-            return new Task(
-                    new Title(name),
-                    new Deadline("1"),
-                    new Remarks("1@email"),
-                    new StartTime("House of 1"),
-                    new UniqueLabelList(new Label("tag")), false
-                    );
+            return new Task(new Title(name), new Deadline("1"), new Remarks("1@email"), new StartTime("House of 1"),
+                    new UniqueLabelList(new Label("tag")), false);
         }
     }
 }
