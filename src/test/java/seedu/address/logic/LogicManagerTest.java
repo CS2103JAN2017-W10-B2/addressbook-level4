@@ -193,7 +193,7 @@ public class LogicManagerTest {
 
     /*
      * Irrelavant test case
-     * 
+     *
      * @Test public void execute_add_invalidArgsFormat() { String
      * expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
      * AddCommand.MESSAGE_USAGE);
