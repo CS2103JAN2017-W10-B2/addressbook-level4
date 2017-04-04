@@ -131,21 +131,7 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task in the results of the `search` command.
 
-### 2.7. Select a Task : `select`
-
-Selects the task identified by the index used in the task listing.<br>
-Format: `select INDEX`
-
-> Selects the task and loads the task detail according to the 'TITLE`.<br>
-> The Title is ina string format
-
-Examples:
-
-* `list`<br>
-  `select Assignment 1`<br>
-  Selects Assignment 1 in the task list.
-
-### 2.8. Completing a task : `complete`
+### 2.7. Completing a task : `complete`
 
 Marks the specified task from the todolist as complete. Can be undone.<br>
 Format: `complete INDEX`
@@ -163,17 +149,17 @@ Examples:
   `delete 2`<br>
   Deletes the 2nd task in the results of the `search` command.
 
-### 2.9. Clearing all entries : `clear`
+### 2.8. Clearing all entries : `clear`
 
 Clears all entries from the todolist.<br>
 Format: `clear`
 
-### 2.10. Exiting the program : `exit`
+### 2.9. Exiting the program : `exit`
 
 Exits the program.<br>
 Format: `exit`
 
-### 2.11. Saving the data
+### 2.10. Saving the data
 
 Todolist data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
@@ -192,7 +178,6 @@ Command | User input format
 **Help** | `help`
 **Add** | `add TITLE (from: STARTTIME) (till/due: DEADLINE) (remark: REMARKS) (label: LABELS...)`
 **List** | `list`
-**List Completed** | `list_completed`
 **Edit** | `edit INDEX (TITLE) (from: STARTTIME) (till/due: DEADLINE) (remark: REMARKS) (label: LABELS)`
 **Find** | `find KEYWORD (MORE_KEYWORDS)`
 **Delete** | `delete INDEX`
