@@ -186,8 +186,9 @@ There is no need to save manually.
 
 ## 4. Command Summary
 
+
 Command | User input format
--------- | :-------- | :--------- | :-----------
+-------- | :--------
 **Help** | `help`
 **Add** | `add TITLE (from: STARTTIME) (till/due: DEADLINE) (remark: REMARKS) (label: LABELS...)`
 **List** | `list`
