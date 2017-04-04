@@ -186,33 +186,15 @@ There is no need to save manually.
 
 ## 4. Command Summary
 
-* **Help** : `help` <br>
-  e.g.
-
-* **Add**  `add TITLE (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS...)` <br>
-  e.g. `add Do CS2103 T7 from today till last day of month remark: Remember to do properly`
-
-* **List** : `list` <br>
-  e.g.
-
-* **Edit** : `edit INDEX (TITLE) (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS)` <br>
-  e.g. `edit 2 CS2103 homework label: `<br>
-
-* **Find** : `find KEYWORD (MORE_KEYWORDS)` <br>
-  e.g. `find homework`
-
-* **Delete** : `delete INDEX` <br>
-   e.g. `delete 3`
-
-* **Select** : `select INDEX` <br>
-  e.g.`select 2`
-
-* **Complete** : `complete INDEX` <br>
-  e.g.`complete 3`<br>
-
-* **Clear** : `clear`
-
-* **Exit** : `exit` <br>
-  e.g.
-
-
+Command | User input format
+-------- | :-------- | :--------- | :-----------
+**Help** | `help`
+**Add** | `add TITLE (from: STARTTIME) (till/due: DEADLINE) (remark: REMARKS) (label: LABELS...)`
+**List** | `list`
+**List Completed** | `list_completed`
+**Edit** | `edit INDEX (TITLE) (from: STARTTIME) (till/due: DEADLINE) (remark: REMARKS) (label: LABELS)`
+**Find** | `find KEYWORD (MORE_KEYWORDS)`
+**Delete** | `delete INDEX`
+**Undo** | `undo`
+**Clear** | `clear`
+**Exit** | `exit`
