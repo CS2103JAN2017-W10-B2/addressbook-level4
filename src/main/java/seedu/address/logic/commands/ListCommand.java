@@ -2,7 +2,7 @@
 package seedu.address.logic.commands;
 
 /**
- * Lists on-going tasks in doitdoit!! to the user.
+ * Lists tasks of specified types in ToDoList to the user.
  */
 public class ListCommand extends Command {
 
