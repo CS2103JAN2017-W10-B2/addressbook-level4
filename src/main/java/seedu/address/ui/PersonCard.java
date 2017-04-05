@@ -74,11 +74,11 @@ public class PersonCard extends UiPart<Region> {
         address.setText(SEPARATOR);
         email.setText(SEPARATOR);
         if (person.hasDeadline()) {
-            LocalDateTime deadline = getDateTime(person);
+            LocalDateTime deadline = getDateTime(person.getStartTime().value);
             phone.setText(DEADLINE_STARTING_MESSAGE + getFormattedDateTime(deadline));
         }
         if (person.hasStartTime()) {
-            LocalDateTime startTime = getDateTime(person);
+            LocalDateTime startTime = getDateTime(person.getDeadline().value);
             address.setText(START_TIME_STARTING_MESSAGE + getFormattedDateTime(startTime));
         }
         if (person.hasRemarks()) {
@@ -87,8 +87,8 @@ public class PersonCard extends UiPart<Region> {
         initTags(person);
     }
 
-    private LocalDateTime getDateTime(ReadOnlyTask person) {
-        return TimeUtil.getDateTime(person.getDeadline().value);
+    private LocalDateTime getDateTime(String dateTime) {
+        return TimeUtil.getDateTime(dateTime);
     }
 
     private String getFormattedDateTime(LocalDateTime dateTime) {

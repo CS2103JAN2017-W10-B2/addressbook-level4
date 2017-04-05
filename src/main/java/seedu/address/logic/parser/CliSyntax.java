@@ -15,7 +15,7 @@ public class CliSyntax {
     public static final String KEYWORD_ONLY_DEADLINE = " due:";
     public static final Prefix PREFIX_ONLY_DEADLINE = new Prefix(KEYWORD_ONLY_DEADLINE);
     public static final Prefix PREFIX_DEADLINE = new Prefix(" till:");
-    public static final Prefix PREFIX_REMARKS = new Prefix(" remarks:");
+    public static final Prefix PREFIX_REMARKS = new Prefix(" remark:");
     public static final Prefix PREFIX_START_TIME = new Prefix(" from:");
     public static final Prefix PREFIX_LABELS = new Prefix(" #");
     public static final Prefix PREFIX_ISCOMPLETED = new Prefix("c/");
