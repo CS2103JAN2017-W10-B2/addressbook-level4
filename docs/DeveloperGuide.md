@@ -1,6 +1,6 @@
-# AddressBook Level 4 - Developer Guide
+# doitdoit!! - Developer Guide
 
-By : `Team SE-EDU`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `Jun 2016`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
+By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbsp;&nbsp;&nbsp; Licence: `MIT`
 
 ---
 
@@ -123,7 +123,7 @@ command `delete 1`.
 <img src="images\SDforDeletePerson.png" width="800"><br>
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
->Note how the `Model` simply raises a `AddressBookChangedEvent` when the Address Book data are changed,
+>Note how the `Model` simply raises a `AddressBookChangedEvent` when the To Do List data are changed,
  instead of asking the `Storage` to save the updates to the hard disk.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
@@ -146,7 +146,7 @@ _Figure 2.2.1 : Structure of the UI Component_
 
 **API** : [`Ui.java`](../src/main/java/seedu/address/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`,
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `TaskListPanel`,
 `StatusBarFooter`, `BrowserPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files
@@ -171,7 +171,7 @@ _Figure 2.3.1 : Structure of the Logic Component_
 
 1. `Logic` uses the `Parser` class to parse the user command.
 2. This results in a `Command` object which is executed by the `LogicManager`.
-3. The command execution can affect the `Model` (e.g. adding a person) and/or raise events.
+3. The command execution can affect the `Model` (e.g. adding a task) and/or raise events.
 4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")`
@@ -191,7 +191,7 @@ _Figure 2.4.1 : Structure of the Model Component_
 The `Model`,
 
 * stores a `UserPref` object that represents the user's preferences.
-* stores the Address Book data.
+* stores the To Do List data.
 * exposes a `UnmodifiableObservableList<ReadOnlyPerson>` that can be 'observed' e.g. the UI can be bound to this list
   so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
@@ -208,7 +208,7 @@ _Figure 2.5.1 : Structure of the Storage Component_
 The `Storage` component,
 
 * can save `UserPref` objects in json format and read it back.
-* can save the Address Book data in xml format and read it back.
+* can save the To Do List data in xml format and read it back.
 
 ### 2.6. Common classes
 
@@ -429,12 +429,12 @@ Use case ends.
 
 **MSS**
 
-1. User request to list tasks
-2. doitdoit!! lists tasks by deadline (by default)
+1. User request to list tasks. (ongoing task shown only)
+2. doitdoit!! lists ongoing tasks by deadline.
 
 **Extensions**
 
-1a. Able to list task by options of completed or not completed task.
+1a. Able to list task by options of on-going or completed task.
 
 #### Use case: Edit a Task
 
@@ -452,6 +452,47 @@ Use case ends.
 > Use case ends
 
 3a. The given index is invalid
+
+> 3a1. ToDoList shows an error message <br>
+  Use case resumes at step 2
+
+3b. User did not specify any field to be changed.
+
+> 3a1. ToDoList shows an error message <br>
+  Use case resumes at step 2
+
+#### Use case: Find a Task by description
+
+**MSS**
+
+1. User requests find a task by inputting keywords.
+2. doitdoit!! shows a list of tasks that has title and/or remarks containing a substring of any of the keywords.
+
+**Extensions**
+
+2a. The list is empty
+
+> Use case ends
+
+#### Use case: Find a Task by label
+
+**MSS**
+
+1. User requests find a task by inputting label keywords.
+2. doitdoit!! shows a list of tasks that has label matchingany of the keywords.
+
+**Extensions**
+
+2a. The list is empty
+
+> Use case ends
+
+3a. The given index is invalid
+
+> 3a1. ToDoList shows an error message <br>
+  Use case resumes at step 2
+
+3b. User did not specify any field to be changed.
 
 > 3a1. ToDoList shows an error message <br>
   Use case resumes at step 2
@@ -487,10 +528,6 @@ Use case ends.
 ##### Floating task
 
 > A task that does not have a deadline.
-
-##### Recurring task
-
-> A task that is recreated automatically after a specified designated time interval.
 
 ##### Completed task
 

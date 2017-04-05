@@ -17,14 +17,14 @@ By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbs
    > This app will not work with earlier versions of Java 8.
 
 1. Download the latest `todolist.jar` from the [releases](../../../releases) tab.
-2. Copy the file to the folder you want to use as the home folder for your Address Book.
+2. Copy the file to the folder you want to use as the home folder for your To Do List.
 3. Double-click the file to start the app. The GUI should appear in a few seconds.
    > <img src="images/Ui.png" width="600">
 
 4. Type the command in the command box and press <kbd>Enter</kbd> to execute it. <br>
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
 5. Some example commands you can try:
-   * **`list`** : lists all contacts
+   * **`list`** : lists all tasks
    * **`add`**` study for the finals from today till next thursday` :
      adds a new task to study for the finals until next thursday.
    * **`delete`**` 1` : deletes the first task shown in the current list
@@ -51,10 +51,10 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a Task to the task list<br>
-Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remark: REMARKS) (label: LABELS...)`
-OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remark: REMARKS) (label: LABELS...)`
+Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remark: REMARKS) (#LABELS...)`
+OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remark: REMARKS) (#LABELS...)`
 
-> Other than TITLE, all other information is purely optional
+> Other than TITLE, all other information is purely optional.
 > STARTTIME and DEADLINE inputs are very flexible!
 > Try something like `day after like next thursday`, or `4 o'clock`.
 > The program however takes in the date and time in American format.
@@ -63,55 +63,61 @@ OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remark: REMARKS) (label: LABEL
 
 Examples:
 
-* `add Complete Assignment 1 from now till friday remark: 20% of final grade label: Uni Assignment`<br>
-* `add Revise tutorial 1 label: Uni Assignment`<br>
-* `add Do CS2103 T7 till thursday 8pm remark: Remember to make pull request on github label: School`<br>
-* `add Buy gift for mom till 7th September label: Birthday Family`<br>
-* `add Finish studing for mid term from now till tomorrow label: School Exam`<br>
+* `add Complete Assignment 1 from: now till: friday remarks: 20% of final grade #Assignment`<br>
+* `add Revise tutorial 1 #Assignment`<br>
+* `add Do CS2103 T7 till: thursday 8pm remarks: Remember to make pull request on github #School`<br>
+* `add Buy gift for mom till:7th September #Birthday #Family`<br>
+* `add Finish studing for mid term from: now till: tomorrow #School #Exam`<br>
 
 ### 2.3. Listing all tasks : `list`
 
-Shows a list of all tasks in the to do list.<br>
+Shows a list of all ongoing tasks in the to do list.<br>
 Format: `list`
 
 ### 2.4. Editing a task : `edit`
 
 Edits an existing task in the ToDoList.<br>
-Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remark: REMARKS) (label: LABELS)`
-OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remark: REMARKS) (label: LABELS)`
+Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS)`
+OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS)`
 
 > * Edits the task at the specified `INDEX`.
     The index refers to the index number shown in the last task listing.<br>
     The index **must be a positive integer** 1, 2, 3, ...
 > * At least one of the optional fields must be provided.
 > * Existing values will be updated to the input values.
-> * Clear all LABELS by entering `label: `, similarly for REMARKS, type `remark:`
+> * Clear all LABELS by entering ` #`, similarly for REMARKS, type `remarks:`
 
 Examples:
 
-* `edit 1 till next thursday`<br>
-  Edits the due date of the 1st task to be next thursday.
-* `edit 2 CS2103 homework label:`<br>
+* `edit 1 till: next Thursday`<br>
+  Edits the due date of the 1st task to be next Thursday.
+* `edit 2 CS2103 homework #`<br>
   Edits the TITLE of the 2nd task to be `CS2103 homework` and clears all existing LABELS.
 
 ### 2.5. Finding all tasks containing any keyword in their task summary: `find`
 
-Finds tasks whose task summarys contain any of the given keywords.<br>
-Format: `find KEYWORD (MORE_KEYWORDS)`
+Finds tasks based on any of the given keywords.<br>
+Format: `find (KEYWORDS...) (#LABEL_KEYWORDS...)`
 
-> * The search is case sensitive. e.g `hans` will not match `Hans`
+> * The search is not case sensitive. e.g `hans` will match `Hans`
 > * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-> * Only the task summary is searched.
-> * Only full words will be matched e.g. `Han` will not match `Hans`
 > * Tasks matching at least one keyword will be returned (i.e. `OR` search).
     e.g. `Hans` will match `Hans Bo`
+> * Only the task title and remarks are searched for keywords (substring match).
+> * Only labels are searched for label keywords (full word match).
+> * At least one of the optional fields must be present.
+> * Only one the search will occur. (keyword search or label search).
+> * Task summary search: substrings will be matched e.g. `Hanss` will match keyword `Hans`
+> * Label search: full word is matched. e.g. `Hanss` will not match keyword `Hans`
 
 Examples:
 
 * `find homework`<br>
-  Returns `CS2103 homework` but not `EE4212 Homework`
+  Returns `CS2103 homework` and `EE4212 Homework`
 * `find homework CS2103 EG2401`<br>
-  Returns Any task having following words in task summary `homework`, `CS2103`, or `EG2401`
+  Returns Any task having following words containing the substring in task summary `homework`, `CS2103`, or `EG2401`
+  * `find #Assignment`<br>
+  Returns `MA1100 #Assignment` and `MA3252 #assignment`
 
 ### 2.6. Deleting a task : `delete`
 
@@ -182,23 +188,23 @@ There is no need to save manually.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
-       the file that contains the data of your previous Address Book folder.
+       the file that contains the data of your previous To Do List folder.
 
 ## 4. Command Summary
 
 * **Help** : `help` <br>
   e.g.
 
-* **Add**  `add TITLE (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS...)` <br>
-  e.g. `add Do CS2103 T7 from today till last day of month remark: Remember to do properly`
+* **Add**  `add TITLE (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS...)` <br>
+  e.g. `add Do CS2103 T7 from: today till: last day of month remarks: Remember to do properly`
 
 * **List** : `list` <br>
   e.g.
 
-* **Edit** : `edit INDEX (TITLE) (from STARTTIME) (till DEADLINE) (remark: REMARKS) (label: LABELS)` <br>
-  e.g. `edit 2 CS2103 homework label: `<br>
+* **Edit** : `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS)` <br>
+  e.g. `edit 2 CS2103 homework #`<br>
 
-* **Find** : `find KEYWORD (MORE_KEYWORDS)` <br>
+* **Find** : `find (KEYWORD...) (#LABEL_KEYWORD...)` <br>
   e.g. `find homework`
 
 * **Delete** : `delete INDEX` <br>
@@ -213,6 +219,5 @@ There is no need to save manually.
 * **Clear** : `clear`
 
 * **Exit** : `exit` <br>
-  e.g.
 
 
