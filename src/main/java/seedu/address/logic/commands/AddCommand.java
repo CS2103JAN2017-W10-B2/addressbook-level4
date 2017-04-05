@@ -15,7 +15,7 @@ import seedu.address.model.task.Title;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
- * Adds a task to doitdoit!!.
+ * Adds a task to ToDoList.
  */
 public class AddCommand extends Command {
     // @@author A0135795R
