@@ -11,12 +11,11 @@ public class Config {
     public static final String DEFAULT_CONFIG_FILE = "config.tim";
 
     // Config values customizable through config file
-    private String appTitle = "ToDoList";
+    private String appTitle = "doitdoit!!";
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.tim";
     private String toDoListFilePath = "data/ToDoList.xml";
     private String toDoListName = "MyToDoList";
-
 
     public String getAppTitle() {
         return appTitle;
@@ -58,23 +57,20 @@ public class Config {
         this.toDoListName = addressBookName;
     }
 
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
         }
-        if (!(other instanceof Config)) { //this handles null as well.
+        if (!(other instanceof Config)) { // this handles null as well.
             return false;
         }
 
         Config o = (Config) other;
 
-        return Objects.equals(appTitle, o.appTitle)
-                && Objects.equals(logLevel, o.logLevel)
+        return Objects.equals(appTitle, o.appTitle) && Objects.equals(logLevel, o.logLevel)
                 && Objects.equals(userPrefsFilePath, o.userPrefsFilePath)
-                && Objects.equals(toDoListFilePath, o.toDoListFilePath)
-                && Objects.equals(toDoListName, o.toDoListName);
+                && Objects.equals(toDoListFilePath, o.toDoListFilePath) && Objects.equals(toDoListName, o.toDoListName);
     }
 
     @Override

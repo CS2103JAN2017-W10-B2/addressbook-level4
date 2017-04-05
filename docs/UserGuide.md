@@ -25,7 +25,7 @@ By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbs
    e.g. typing **`help`** and pressing <kbd>Enter</kbd> will open the help window.
 5. Some example commands you can try:
    * **`list`** : lists all tasks
-   * **`add`**` study for the finals from today till next thursday` :
+   * **`add`**` study for the finals from: today till: next thursday` :
      adds a new task to study for the finals until next thursday.
    * **`delete`**` 1` : deletes the first task shown in the current list
    * **`exit`** : exits the app
@@ -51,8 +51,8 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a Task to the task list<br>
-Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remark: REMARKS) (#LABELS...)`
-OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remark: REMARKS) (#LABELS...)`
+Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS...)`
+OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS...)`
 
 > Other than TITLE, all other information is purely optional.
 > STARTTIME and DEADLINE inputs are very flexible!
@@ -133,9 +133,9 @@ Examples:
 * `list`<br>
   `delete 2`<br>
   Deletes the 2nd task in the todolist.
-* `search homework`<br>
+* `find homework`<br>
   `delete 1`<br>
-  Deletes the 1st task in the results of the `search` command.
+  Deletes the 1st task in the results of the `find` command.
 
 ### 2.7. Completing a task : `complete`
 
@@ -181,10 +181,10 @@ There is no need to save manually.
 Command | User input format
 -------- | :--------
 **Help** | `help`
-**Add** | `add TITLE (from: STARTTIME) (till/due: DEADLINE) (remark: REMARKS) (label: LABELS...)`
+**Add** | `add TITLE (from: STARTTIME) (till/due: DEADLINE) (remarks: REMARKS) (#LABELS...)`
 **List** | `list`
-**Edit** | `edit INDEX (TITLE) (from: STARTTIME) (till/due: DEADLINE) (remark: REMARKS) (label: LABELS)`
-**Find** | `find KEYWORD (MORE_KEYWORDS)`
+**Edit** | `edit INDEX (TITLE) (from: STARTTIME) (till/due: DEADLINE) (remarks: REMARKS) (#LABELS)`
+**Find** | `find (KEYWORDS) (LABEL_KEYWORDS)`
 **Delete** | `delete INDEX`
 **Undo** | `undo`
 **Clear** | `clear`

@@ -1,5 +1,5 @@
 {
-  "appTitle" : "ToDoList",
+  "appTitle" : "doitdoit!!",
   "logLevel" : "INFO",
   "userPrefsFilePath" : "preferences.tim",
   "toDoListFilePath" : "data/ToDoList.xml",
