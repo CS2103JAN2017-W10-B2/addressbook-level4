@@ -1,25 +1,19 @@
 //@@author A0138831A
 package seedu.address.model;
 
-
 import seedu.address.model.task.ReadOnlyTask;
+
+
 
 public class LastSuccessfulAction {
 
     public ReadOnlyTask task;
-    public boolean isAdd;
-    public boolean isDelete;
-    public boolean isEdit;
-    public boolean isClear;
+    public TaskType tasktype;
 
-    public LastSuccessfulAction(ReadOnlyTask task, boolean isAdd, boolean isDelete,
-            boolean isEdit, boolean isClear) {
+    public LastSuccessfulAction(ReadOnlyTask task, TaskType tasktype) {
 
         this.task = task;
-        this.isAdd = isAdd;
-        this.isDelete = isDelete;
-        this.isEdit = isEdit;
-        this.isClear = isClear;
+        this.tasktype = tasktype;
 
     }
 
