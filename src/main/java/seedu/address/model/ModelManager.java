@@ -52,7 +52,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void resetData(ReadOnlyToDoList newData) {
-        undoStack.push(new LastSuccessfulAction(new Task(), false, false, false, true));
+        undoStack.push(new LastSuccessfulAction(new Task(), TaskType.Clear));
         toDoList.resetData(newData);
         indicateToDoListChanged();
     }
@@ -69,14 +69,14 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-        undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
+        undoStack.push(new LastSuccessfulAction(target, TaskType.Delete));
         toDoList.removeTask(target);
         indicateToDoListChanged();
     }
 
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-        undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
+        undoStack.push(new LastSuccessfulAction(task, TaskType.Add));
         toDoList.addTask(task);
         toDoList.sort_tasks();
         updateFilteredListToShowOngoing();
@@ -86,7 +86,7 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException {
-        undoStack.push(new LastSuccessfulAction(editedTask, false, false, true, false));
+        undoStack.push(new LastSuccessfulAction(editedTask, TaskType.Edit));
 
 
         assert editedTask != null;
@@ -107,50 +107,47 @@ public class ModelManager extends ComponentManager implements Model {
     public void undoTask() throws EmptyStackException  {
 
         if (!undoStack.empty()) {
-
-
             LastSuccessfulAction lastAction = undoStack.pop();
-            if (lastAction.isAdd) {
-                try {
-                    undoAddTask(lastAction.task);
-                } catch (TaskNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            if (lastAction.isDelete) {
-                try {
-                    undoDeleteTask((Task) lastAction.task);
-                } catch (DuplicateTaskException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            if (lastAction.isClear) {
-
-                try {
-                    toDoList.undoResetData();
-                } catch (DuplicateTaskException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-            }
-
+            TaskType tasktype = lastAction.tasktype;
             Task edited = (Task) editStack.pop();
 
-            if (lastAction.isEdit) {
-                try {
-                    removeEditedTask(lastAction.task); // to remove the add of edited task
-                    reAdd(edited); //add original task before edit
-                } catch (TaskNotFoundException | DuplicateTaskException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
+            switch(tasktype){
 
+                case Add:
+                	try {
+                        undoAddTask(lastAction.task);
+                    } catch (TaskNotFoundException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                	break;
+
+                case Delete:
+                	try {
+                        undoDeleteTask((Task) lastAction.task);
+                    } catch (DuplicateTaskException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                	break;
+
+                case Clear:
+                	try {
+                        toDoList.undoResetData();
+                    } catch (DuplicateTaskException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+
+                case Edit:
+                	try {
+                        removeEditedTask(lastAction.task); // to remove the add of edited task
+                        reAdd(edited); //add original task before edit
+                    } catch (TaskNotFoundException | DuplicateTaskException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+            }
         }
 
 
