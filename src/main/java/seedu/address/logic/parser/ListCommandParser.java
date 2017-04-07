@@ -18,17 +18,17 @@ public class ListCommandParser {
      */
     public Command parse(String args) {
         switch (args.trim()) {
-            case "all":
-                return new ListCommand("all");
+        case "all":
+            return new ListCommand("all");
 
-            case "ongoing":
-                return new ListCommand("ongoing");
+        case "ongoing":
+            return new ListCommand("ongoing");
 
-            case "completed":
-                return new ListCommand("completed");
+        case "completed":
+            return new ListCommand("completed");
 
-            default:
-                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+        default:
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
         }
     }
 }
