@@ -13,22 +13,22 @@ import seedu.address.logic.commands.ListCommand;
 public class ListCommandParser {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the ListCommand
-     * and returns an ListCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the
+     * ListCommand and returns an ListCommand object for execution.
      */
     public Command parse(String args) {
-    	switch (args.trim()){
-    	case "all":
-    		return new ListCommand("all");
+        switch (args.trim()) {
+            case "all":
+                return new ListCommand("all");
 
-    	case "ongoing":
-    		return new ListCommand("ongoing");
+            case "ongoing":
+                return new ListCommand("ongoing");
 
-    	case "completed":
-    		return new ListCommand("completed");
+            case "completed":
+                return new ListCommand("completed");
 
-    	default:
-    		return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
-    	}
+            default:
+                return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
+        }
     }
 }
