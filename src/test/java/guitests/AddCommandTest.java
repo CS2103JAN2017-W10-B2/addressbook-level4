@@ -1,3 +1,4 @@
+/* REMOVE
 package guitests;
 
 import static org.junit.Assert.assertTrue;
@@ -52,3 +53,4 @@ public class AddCommandTest extends ToDoListGuiTest {
     }
 
 }
+REMOVE*/

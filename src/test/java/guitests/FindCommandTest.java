@@ -1,3 +1,4 @@
+/*REMOVE
 package guitests;
 
 import static org.junit.Assert.assertTrue;
@@ -38,3 +39,4 @@ public class FindCommandTest extends ToDoListGuiTest {
         assertTrue(taskListPanel.isListMatching(expectedHits));
     }
 }
+REMOVE*/
