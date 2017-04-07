@@ -1,4 +1,3 @@
-/* REMOVE
 package seedu.address.logic;
 
 import static org.junit.Assert.assertEquals;
@@ -55,7 +54,6 @@ public class LogicManagerTest {
     /**
      * See https://github.com/junit-team/junit4/wiki/rules#temporaryfolder-rule
      */
-/* REMOVE
     @Rule
     public TemporaryFolder saveFolder = new TemporaryFolder();
 
@@ -117,7 +115,6 @@ public class LogicManagerTest {
      * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList,
      *      List)
      */
-/* REMOVE
     private void assertCommandSuccess(String inputCommand, String expectedMessage, ReadOnlyToDoList expectedToDoList,
             List<? extends ReadOnlyTask> expectedShownList) {
         assertCommandBehavior(false, inputCommand, expectedMessage, expectedToDoList, expectedShownList);
@@ -131,7 +128,6 @@ public class LogicManagerTest {
      * @see #assertCommandBehavior(boolean, String, String, ReadOnlyToDoList,
      *      List)
      */
-/* REMOVE
     private void assertCommandFailure(String inputCommand, String expectedMessage) {
         ToDoList expectedToDoList = new ToDoList(model.getToDoList());
         List<ReadOnlyTask> expectedShownList = new ArrayList<>(model.getFilteredTaskList());
@@ -148,7 +144,6 @@ public class LogicManagerTest {
      * - the backing list shown by UI matches the {@code shownList} <br>
      * - {@code expectedAddressBook} was saved to the storage file. <br>
      */
-/* REMOVE
     private void assertCommandBehavior(boolean isCommandExceptionExpected, String inputCommand, String expectedMessage,
             ReadOnlyToDoList expectedToDoList, List<? extends ReadOnlyTask> expectedShownList) {
 
@@ -210,7 +205,7 @@ public class LogicManagerTest {
      * assertCommandFailure("add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address"
      * , expectedMessage); }
      */
-/*REMOVE
+
     @Test
     public void execute_add_invalidPersonData() {
         assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address", Title.MESSAGE_TITLE_CONSTRAINTS);
@@ -269,7 +264,6 @@ public class LogicManagerTest {
      *            to test assuming it targets a single person in the last shown
      *            list based on visible index.
      */
-/* REMOVE
     private void assertIncorrectIndexFormatBehaviorForCommand(String commandWord, String expectedMessage)
             throws Exception {
         assertCommandFailure(commandWord, expectedMessage); // index missing
@@ -293,7 +287,6 @@ public class LogicManagerTest {
      *            to test assuming it targets a single person in the last shown
      *            list based on visible index.
      */
-/* REMOVE
     private void assertIndexNotFoundBehaviorForCommand(String commandWord) throws Exception {
         String expectedMessage = MESSAGE_INVALID_TASK_DISPLAYED_INDEX;
         TestDataHelper helper = new TestDataHelper();
@@ -417,7 +410,6 @@ public class LogicManagerTest {
     /**
      * A utility class to generate test data.
      */
-/* REMOVE
     class TestDataHelper {
 
         Task ex1CS2103() throws Exception {
@@ -440,7 +432,6 @@ public class LogicManagerTest {
          * @param seed
          *            used to generate the person data field values
          */
-/* REMOVE
         Task generateTask(int seed) throws Exception {
             return new Task(new Title("Title " + seed), new Deadline("12/12/17"), new Remarks(seed + "@email"),
                     new StartTime("12/12/17"),
@@ -449,7 +440,6 @@ public class LogicManagerTest {
         }
 
         /** Generates the correct add command based on the person given */
-/* REMOVE
         String generateAddCommand(Task p) {
             StringBuffer cmd = new StringBuffer();
 
@@ -471,7 +461,6 @@ public class LogicManagerTest {
         /**
          * Generates an AddressBook with auto-generated persons.
          */
-/* REMOVE
         ToDoList generateToDoList(int numGenerated) throws Exception {
             ToDoList todoList = new ToDoList();
             addToToDoList(todoList, numGenerated);
@@ -481,7 +470,6 @@ public class LogicManagerTest {
         /**
          * Generates an AddressBook based on the list of Persons given.
          */
-/* REMOVE
         ToDoList generateToDoList(List<Task> tasks) throws Exception {
             ToDoList todoList = new ToDoList();
             addToToDoList(todoList, tasks);
@@ -494,7 +482,6 @@ public class LogicManagerTest {
          * @param todoList
          *            The AddressBook to which the Persons will be added
          */
-/* REMOVE
         void addToToDoList(ToDoList todoList, int numGenerated) throws Exception {
             addToToDoList(todoList, generateTaskList(numGenerated));
         }
@@ -502,7 +489,6 @@ public class LogicManagerTest {
         /**
          * Adds the given list of Persons to the given AddressBook
          */
-/* REMOVE
         void addToToDoList(ToDoList todoList, List<Task> tasksToAdd) throws Exception {
             for (Task p : tasksToAdd) {
                 todoList.addTask(p);
@@ -515,7 +501,6 @@ public class LogicManagerTest {
          * @param model
          *            The model to which the Persons will be added
          */
-/* REMOVE
         void addToModel(Model model, int numGenerated) throws Exception {
             addToModel(model, generateTaskList(numGenerated));
         }
@@ -523,7 +508,6 @@ public class LogicManagerTest {
         /**
          * Adds the given list of Persons to the given model
          */
-/* REMOVE
         void addToModel(Model model, List<Task> tasksToAdd) throws Exception {
             for (Task p : tasksToAdd) {
                 model.addTask(p);
@@ -533,7 +517,6 @@ public class LogicManagerTest {
         /**
          * Generates a list of Persons based on the flags.
          */
-/* REMOVE
         List<Task> generateTaskList(int numGenerated) throws Exception {
             List<Task> tasks = new ArrayList<>();
             for (int i = 1; i <= numGenerated; i++) {
@@ -550,11 +533,9 @@ public class LogicManagerTest {
          * Generates a Person object with given name. Other fields will have
          * some dummy values.
          */
-/* REMOVE
         Task generateTaskWithTitle(String name) throws Exception {
             return new Task(new Title(name), new Deadline("1"), new Remarks("1@email"), new StartTime("House of 1"),
                     new UniqueLabelList(new Label("tag")), false);
         }
     }
 }
-REMOVE*/

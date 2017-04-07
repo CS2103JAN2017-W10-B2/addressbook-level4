@@ -1,4 +1,3 @@
-/*REMOVE
 package seedu.address.commons.core;
 
 import static org.junit.Assert.assertEquals;
@@ -30,4 +29,3 @@ public class ConfigTest {
     }
 
 }
-REMOVE*/

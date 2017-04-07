@@ -1,4 +1,3 @@
-/* REMOVE
 package guitests;
 
 import static org.junit.Assert.assertTrue;
@@ -29,4 +28,3 @@ public class SampleDataTest extends ToDoListGuiTest {
         assertTrue(taskListPanel.isListMatching(expectedList));
     }
 }
-REMOVE*/

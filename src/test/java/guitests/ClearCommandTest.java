@@ -1,4 +1,3 @@
-/* REMOVE
 package guitests;
 
 import static org.junit.Assert.assertTrue;
@@ -30,4 +29,3 @@ public class ClearCommandTest extends ToDoListGuiTest {
         assertResultMessage("doitdoit!! has been cleared!");
     }
 }
-REMOVE*/

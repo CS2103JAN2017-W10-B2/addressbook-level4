@@ -1,4 +1,3 @@
-/*REMOVE
 package guitests;
 
 import static org.junit.Assert.assertTrue;
@@ -130,7 +129,6 @@ public class EditCommandTest extends ToDoListGuiTest {
      * @param editedPerson
      *            the expected person after editing the person's details
      */
-/*REMOVE
     private void assertEditSuccess(int filteredPersonListIndex, int addressBookIndex, String detailsToEdit,
             TestTask editedPerson) {
         commandBox.runCommand("edit " + filteredPersonListIndex + " " + detailsToEdit);
@@ -146,4 +144,3 @@ public class EditCommandTest extends ToDoListGuiTest {
         assertResultMessage(String.format(EditCommand.MESSAGE_EDIT_TASK_SUCCESS, editedPerson));
     }
 }
-REMOVE*/

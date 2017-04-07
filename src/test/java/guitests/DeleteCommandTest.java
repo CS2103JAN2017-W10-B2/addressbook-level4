@@ -1,4 +1,3 @@
-/* REMOVE
 package guitests;
 
 import static org.junit.Assert.assertTrue;
@@ -40,7 +39,6 @@ public class DeleteCommandTest extends ToDoListGuiTest {
      * @param targetIndexOneIndexed e.g. index 1 to delete the first person in the list,
      * @param currentList A copy of the current list of persons (before deletion).
      */
-/*REMOVE
     private void assertDeleteSuccess(int targetIndexOneIndexed, final TestTask[] currentList) {
         TestTask taskToDelete = currentList[targetIndexOneIndexed - 1]; // -1 as array uses zero indexing
         TestTask[] expectedRemainder = TestUtil.removeTaskFromList(currentList, targetIndexOneIndexed);
@@ -55,4 +53,3 @@ public class DeleteCommandTest extends ToDoListGuiTest {
     }
 
 }
-REMOVE*/
