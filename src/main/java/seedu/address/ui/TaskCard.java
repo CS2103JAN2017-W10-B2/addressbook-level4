@@ -1,8 +1,5 @@
 package seedu.address.ui;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -74,99 +71,17 @@ public class TaskCard extends UiPart<Region> {
         startTime.setText(SEPARATOR);
         remarks.setText(SEPARATOR);
         if (task.hasDeadline()) {
-            LocalDateTime deadline_ = getDateTime(task.getStartTime().value);
-            deadline.setText(DEADLINE_STARTING_MESSAGE + getFormattedDateTime(deadline_));
-        } else {
-            deadline.setText(SEPARATOR);
+            String deadlineValue = task.getDeadline().value;
+            deadline.setText(DEADLINE_STARTING_MESSAGE + TimeUtil.getFormattedDateTime(deadlineValue));
         }
         if (task.hasStartTime()) {
-            LocalDateTime startTime_ = getDateTime(task.getDeadline().value);
-            startTime.setText(START_TIME_STARTING_MESSAGE + getFormattedDateTime(startTime_));
+            String startTimeValue = task.getStartTime().value;
+            startTime.setText(START_TIME_STARTING_MESSAGE + TimeUtil.getFormattedDateTime(startTimeValue));
         }
         if (task.hasRemarks()) {
             remarks.setText(task.getRemarks().value);
         }
         initTags(task);
-    }
-
-    private LocalDateTime getDateTime(String dateTime) {
-        return TimeUtil.getDateTime(dateTime);
-    }
-
-    private String getFormattedDateTime(LocalDateTime dateTime) {
-        return getStringTime(dateTime) + SEPARATOR + getStringDate(dateTime);
-    }
-
-    private String getStringTime(LocalDateTime dateTime) {
-        String time;
-        if (isBeforeNoon(dateTime)) {
-            time = Integer.toString(dateTime.getHour());
-            time = time.concat(TIME_SEPARATOR);
-            time = time.concat(Integer.toString(dateTime.getMinute()));
-            time = time.concat(AM);
-        } else {
-            int hour = dateTime.getHour();
-            if (hour != NOON) {
-                hour = hour - NOON;
-            }
-            time = Integer.toString(hour);
-            time = time.concat(TIME_SEPARATOR);
-            time = time.concat(Integer.toString(dateTime.getMinute()));
-            time = time.concat(PM);
-        }
-        return time;
-    }
-
-    private String getStringDate(LocalDateTime dateTime) {
-        String date;
-        String month = INVALID_MONTH;
-        switch (dateTime.getMonthValue()) {
-        case JAN_NUM:
-            month = JAN;
-            break;
-        case FEB_NUM:
-            month = FEB;
-            break;
-        case MAR_NUM:
-            month = MAR;
-            break;
-        case APR_NUM:
-            month = APR;
-            break;
-        case MAY_NUM:
-            month = MAY;
-            break;
-        case JUN_NUM:
-            month = JUN;
-            break;
-        case JUL_NUM:
-            month = JUL;
-            break;
-        case AUG_NUM:
-            month = AUG;
-            break;
-        case SEP_NUM:
-            month = SEP;
-            break;
-        case OCT_NUM:
-            month = OCT;
-            break;
-        case NOV_NUM:
-            month = NOV;
-            break;
-        case DEC_NUM:
-            month = DEC;
-            break;
-        }
-        date = Integer.toString(dateTime.getDayOfMonth());
-        date = date.concat(SEPARATOR + month);
-        String year = Integer.toString(dateTime.getYear() % YEAR_DIVISOR);
-        date = date.concat(SEPARATOR + year);
-        return date;
-    }
-
-    private boolean isBeforeNoon(LocalDateTime dateTime) {
-        return dateTime.toLocalTime().compareTo(LocalTime.NOON) < BEFORE_NOON_CUTOFF;
     }
 //@@author
 
