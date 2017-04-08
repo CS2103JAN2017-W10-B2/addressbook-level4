@@ -211,7 +211,7 @@ public class LogicManagerTest {
     public void execute_add_invalidPersonData() {
         assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address", Title.MESSAGE_TITLE_CONSTRAINTS);
         assertCommandFailure("add Valid Name till:goat stimulator", Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
-        assertCommandFailure("add Valid Title remarks:invalid#remarks", Remarks.MESSAGE_REMARKS_CONSTRAINTS);
+        assertCommandFailure("add Valid Title remark:invalid#remarks", Remarks.MESSAGE_REMARKS_CONSTRAINTS);
         assertCommandFailure("add Valid Name #invalid_-[.tag", Label.MESSAGE_LABEL_CONSTRAINTS);
 
     }
@@ -348,19 +348,33 @@ public class LogicManagerTest {
         assertIndexNotFoundBehaviorForCommand("select");
     }
 
+    //@@author A0115333U
     @Test
     public void execute_select_jumpsToCorrectPerson() throws Exception {
         TestDataHelper helper = new TestDataHelper();
         List<Task> threePersons = helper.generateTaskList(3);
 
         ToDoList expectedAB = helper.generateToDoList(threePersons);
+        FilteredList<? extends ReadOnlyTask> expectedfilteredTasks;
+        expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
+        expectedfilteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
+
+        ToDoList expectedAB_display = new ToDoList();
+        for (ReadOnlyTask p : expectedfilteredTasks) {
+            	Task p1 = new Task(p);
+            	expectedAB_display.addTask(p1);
+            	expectedAB_display.sort_tasks();
+            }
+
+
         helper.addToModel(model, threePersons);
 
         assertCommandSuccess("select 2", String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, 2), expectedAB,
-                expectedAB.getTaskList());
+        		expectedAB_display.getTaskList());
         assertEquals(1, targetedJumpIndex);
-        assertEquals(model.getFilteredTaskList().get(1), threePersons.get(1));
+        assertEquals(model.getFilteredTaskList().get(1), expectedfilteredTasks.get(1));
     }
+    //@@author
 
     @Test
     public void execute_deleteInvalidArgsFormat_errorMessageShown() throws Exception {
