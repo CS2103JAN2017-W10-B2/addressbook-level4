@@ -2,7 +2,6 @@ package seedu.address.model;
 
 import java.util.EmptyStackException;
 import java.util.Set;
-import java.util.Stack;
 import java.util.logging.Logger;
 
 import javafx.collections.transformation.FilteredList;
@@ -15,7 +14,6 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.model.task.ReadOnlyTask;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
-import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
@@ -27,8 +25,6 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final ToDoList toDoList;
     private final FilteredList<ReadOnlyTask> filteredTasks;
-    public Stack<LastSuccessfulAction> undoStack;
-    public Stack<ReadOnlyTask> editStack;
 
     /**
      * Initializes a ModelManager with the given doitdoit!! and userPrefs.
@@ -42,8 +38,7 @@ public class ModelManager extends ComponentManager implements Model {
         this.toDoList = new ToDoList(toDoList);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
         filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
-        undoStack = new Stack<LastSuccessfulAction>();
-        editStack = new Stack<ReadOnlyTask>();
+
     }
 
     public ModelManager() {
@@ -52,7 +47,6 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public void resetData(ReadOnlyToDoList newData) {
-        undoStack.push(new LastSuccessfulAction(new Task(), false, false, false, true));
         toDoList.resetData(newData);
         indicateToDoListChanged();
     }
@@ -69,14 +63,12 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public synchronized void deleteTask(ReadOnlyTask target) throws TaskNotFoundException {
-        undoStack.push(new LastSuccessfulAction(target, false, true, false, false));
         toDoList.removeTask(target);
         indicateToDoListChanged();
     }
 
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-        undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
         toDoList.addTask(task);
         toDoList.sort_tasks();
         updateFilteredListToShowOngoing();
@@ -86,101 +78,20 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException {
-        undoStack.push(new LastSuccessfulAction(editedTask, false, false, true, false));
-
-
         assert editedTask != null;
-
         int toDoListIndex = filteredTasks.getSourceIndex(filteredTaskListIndex);
         toDoList.updateTask(toDoListIndex, editedTask);
         toDoList.sort_tasks();
         indicateToDoListChanged();
     }
-  //@@author A0138831A
-    @Override
-    public void updateEditStack(ReadOnlyTask taskToEdit) {
-        editStack.push(taskToEdit);
 
-    }
   //@@author A0138831A
     @Override
     public void undoTask() throws EmptyStackException  {
-
-        if (!undoStack.empty()) {
-
-
-            LastSuccessfulAction lastAction = undoStack.pop();
-            if (lastAction.isAdd) {
-                try {
-                    undoAddTask(lastAction.task);
-                } catch (TaskNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            if (lastAction.isDelete) {
-                try {
-                    undoDeleteTask((Task) lastAction.task);
-                } catch (DuplicateTaskException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            if (lastAction.isClear) {
-
-                try {
-                    toDoList.undoResetData();
-                } catch (DuplicateTaskException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-            }
-
-            Task edited = (Task) editStack.pop();
-
-            if (lastAction.isEdit) {
-                try {
-                    removeEditedTask(lastAction.task); // to remove the add of edited task
-                    reAdd(edited); //add original task before edit
-                } catch (TaskNotFoundException | DuplicateTaskException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-        }
-
+    	toDoList.undoTask();
 
     }
-  //@@author A0138831A
-    private void reAdd(Task task) throws UniqueTaskList.DuplicateTaskException  {
-        toDoList.addTask(task);
-        updateFilteredListToShowAll();
-        indicateToDoListChanged();
 
-
-    }
-  //@@author A0138831A
-    private void removeEditedTask(ReadOnlyTask task) throws TaskNotFoundException  {
-        toDoList.removeTask(task);
-        indicateToDoListChanged();
-    }
-  //@@author A0138831A
-    private void undoDeleteTask(Task task) throws UniqueTaskList.DuplicateTaskException {
-        toDoList.addTask(task);
-        updateFilteredListToShowAll();
-        indicateToDoListChanged();
-
-    }
-  //@@author A0138831A
-    private void undoAddTask(ReadOnlyTask task)  throws TaskNotFoundException {
-        toDoList.removeTask(task);
-        indicateToDoListChanged();
-
-    }
     //@@author
 
     //=========== Filtered Task List Accessors =============================================================

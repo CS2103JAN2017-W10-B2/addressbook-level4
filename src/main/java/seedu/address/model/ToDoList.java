@@ -160,6 +160,15 @@ public class ToDoList implements ReadOnlyToDoList {
         }
     }
 
+    /**
+     * undo recent command
+     * implementations in uniquetasklist.java
+     */
+    public void undoTask() {
+		tasks.undoTask();
+
+	}
+
     //// label-level operations
 
     public void addLabel(Label t) throws UniqueLabelList.DuplicateLabelException {
@@ -197,4 +206,6 @@ public class ToDoList implements ReadOnlyToDoList {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(tasks, labels);
     }
+
+
 }

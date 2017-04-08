@@ -128,6 +128,11 @@ public class UniqueTaskList implements Iterable<Task> {
         setTasks(replacement);
     }
 
+    public void undoTask() {
+		// TODO Auto-generated method stub
+
+	}
+
     public UnmodifiableObservableList<Task> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
@@ -165,5 +170,7 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public static class TaskNotFoundException extends Exception {
     }
+
+
 
 }

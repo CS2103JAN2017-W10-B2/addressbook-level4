@@ -40,6 +40,11 @@ public interface Model {
     void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask) throws UniqueTaskList.DuplicateTaskException;
 
     /**
+     * undo recent command
+     */
+    void undoTask();
+
+    /**
      * Returns the filtered task list as an
      * {@code UnmodifiableObservableList<ReadOnlyTask>}
      */
@@ -69,9 +74,5 @@ public interface Model {
      * Updates the filter of the filtered task list to show all Completed tasks
      */
     void updateFilteredListToShowOngoing();
-
-    void undoTask();
-
-    void updateEditStack(ReadOnlyTask taskToEdit);
 
 }
