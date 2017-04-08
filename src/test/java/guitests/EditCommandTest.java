@@ -27,11 +27,11 @@ public class EditCommandTest extends ToDoListGuiTest {
 
     @Test
     public void edit_allFieldsSpecified_success() throws Exception {
-        String detailsToEdit = "Buy chocolates from:11/15/17 till:11/15/17 remarks: dark chocolate the best #luvluv";
+        String detailsToEdit = "Buy chocolates from:04/15/17 till:04/15/17 remark:dark chocolate the best #luvluv";
         int addressBookIndex = 1;
 
-        TestTask editedPerson = new TaskBuilder().withTitle("Buy choclates").withDeadline("11/15/17")
-                .withRemarks("dark chocolate is the best chocolate").withStartTime("11/15/17").withLabels("luvluv")
+        TestTask editedPerson = new TaskBuilder().withTitle("Buy chocolates").withDeadline("04/15/17")
+                .withRemarks("dark chocolate the best").withStartTime("04/15/17").withLabels("luvluv")
                 .build();
 
         assertEditSuccess(addressBookIndex, addressBookIndex, detailsToEdit, editedPerson);
@@ -39,7 +39,7 @@ public class EditCommandTest extends ToDoListGuiTest {
 
     @Test
     public void edit_notAllFieldsSpecified_success() throws Exception {
-        String detailsToEdit = "t/sweetie t/bestie";
+        String detailsToEdit = "#sweetie #bestie";
         int addressBookIndex = 2;
 
         TestTask personToEdit = expectedTasksList[addressBookIndex - 1];
@@ -61,14 +61,14 @@ public class EditCommandTest extends ToDoListGuiTest {
 
     @Test
     public void edit_findThenEdit_success() throws Exception {
-        commandBox.runCommand("find Elle");
+        commandBox.runCommand("find recess");
 
-        String detailsToEdit = "Belle";
+        String detailsToEdit = "Additional Lecture during recess week";
         int filteredPersonListIndex = 1;
         int addressBookIndex = 5;
 
         TestTask personToEdit = expectedTasksList[addressBookIndex - 1];
-        TestTask editedPerson = new TaskBuilder(personToEdit).withTitle("Belle").build();
+        TestTask editedPerson = new TaskBuilder(personToEdit).withTitle("Additional Lecture during recess week").build();
 
         assertEditSuccess(filteredPersonListIndex, addressBookIndex, detailsToEdit, editedPerson);
     }
@@ -96,23 +96,23 @@ public class EditCommandTest extends ToDoListGuiTest {
         commandBox.runCommand("edit 1 *&");
         assertResultMessage(Title.MESSAGE_TITLE_CONSTRAINTS);
 
-        commandBox.runCommand("edit 1 p/abcd");
+        commandBox.runCommand("edit 1 till:abcd");
         assertResultMessage(Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
 
-        commandBox.runCommand("edit 1 e/yahoo!!!");
+        commandBox.runCommand("edit 1 remark:yahoo#!!!");
         assertResultMessage(Remarks.MESSAGE_REMARKS_CONSTRAINTS);
 
-        commandBox.runCommand("edit 1 a/");
+        commandBox.runCommand("edit 1 from:");
         assertResultMessage(StartTime.MESSAGE_START_TIME_CONSTRAINTS);
 
-        commandBox.runCommand("edit 1 t/*&");
+        commandBox.runCommand("edit 1 #*&");
         assertResultMessage(Label.MESSAGE_LABEL_CONSTRAINTS);
     }
 
     @Test
     public void edit_duplicatePerson_failure() {
         commandBox.runCommand(
-                "edit 3 Alice Pauline p/85355255 e/alice@gmail.com " + "a/123, Jurong West Ave 6, #08-111 t/friends");
+                "edit 3 assignment due from:10/12/17 till:10/12/17 remark: hand in assignment at LT27 #science #event");
         assertResultMessage(EditCommand.MESSAGE_DUPLICATE_TASK);
     }
 

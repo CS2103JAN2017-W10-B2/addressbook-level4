@@ -15,10 +15,10 @@ import seedu.address.model.task.ReadOnlyTask;
  * Provides a handle to a person card in the person list panel.
  */
 public class TaskCardHandle extends GuiHandle {
-    private static final String NAME_FIELD_ID = "#name";
-    private static final String ADDRESS_FIELD_ID = "#address";
-    private static final String PHONE_FIELD_ID = "#phone";
-    private static final String EMAIL_FIELD_ID = "#email";
+    private static final String NAME_FIELD_ID = "#title";
+    private static final String ADDRESS_FIELD_ID = "#startTime";
+    private static final String PHONE_FIELD_ID = "#deadline";
+    private static final String EMAIL_FIELD_ID = "#remarks";
     private static final String TAGS_FIELD_ID = "#tags";
 
     private Node node;
@@ -74,9 +74,9 @@ public class TaskCardHandle extends GuiHandle {
 
     public boolean isSameTask(ReadOnlyTask person) {
         return getFullName().equals(person.getTitle().fullTitle)
-                && getPhone().equals(person.getDeadline().value)
+                && getPhone().equals("Deadline  : " + person.getDeadline().value)
                 && getEmail().equals(person.getRemarks().value)
-                && getAddress().equals(person.getStartTime().value)
+                && getAddress().equals("Start Time: " + person.getStartTime().value)
                 && getTags().equals(getTags(person.getLabels()));
     }
 
