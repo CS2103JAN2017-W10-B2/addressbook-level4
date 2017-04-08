@@ -26,7 +26,7 @@ public class Deadline {
         if (!isValidDeadline(trimmedDeadline)) {
             throw new IllegalValueException(MESSAGE_DEADLINE_CONSTRAINTS);
         }
-        this.value = trimmedDeadline;
+        this.value = TimeUtil.getFormattedDateTime(trimmedDeadline);
     }
 
     /**
