@@ -25,7 +25,6 @@ public class TimeUtil {
     private static final String AM = "am";
     private static final String PM = "pm";
     private static final String INVALID_MONTH = "You should not be seeing this.";
-    private static final int YEAR_DIVISOR = 100;
     private static final int DOUBLE_DIGIT = 10;
     private static final String DIGIT_FILLER = "0";
 
@@ -165,7 +164,7 @@ public class TimeUtil {
         }
         date = Integer.toString(dateTime.getDayOfMonth());
         date = date.concat(SEPARATOR + month);
-        String year = Integer.toString(dateTime.getYear() % YEAR_DIVISOR);
+        String year = Integer.toString(dateTime.getYear());
         date = date.concat(SEPARATOR + year);
         return date;
     }
