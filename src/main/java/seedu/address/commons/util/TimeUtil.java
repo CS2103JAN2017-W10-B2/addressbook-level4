@@ -25,7 +25,6 @@ public class TimeUtil {
     private static final String AM = "am";
     private static final String PM = "pm";
     private static final String INVALID_MONTH = "You should not be seeing this.";
-    private static final int YEAR_DIVISOR = 100;
     private static final int DOUBLE_DIGIT = 10;
     private static final String DIGIT_FILLER = "0";
 
@@ -97,9 +96,13 @@ public class TimeUtil {
 
     private static String getStringTime(LocalDateTime dateTime) {
         String time;
+        int minute = dateTime.getMinute();
         if (isBeforeNoon(dateTime)) {
             time = Integer.toString(dateTime.getHour());
             time = time.concat(TIME_SEPARATOR);
+            if (minute < DOUBLE_DIGIT) {
+                time = time.concat(DIGIT_FILLER);
+            }
             time = time.concat(Integer.toString(dateTime.getMinute()));
             time = time.concat(AM);
         } else {
@@ -109,7 +112,6 @@ public class TimeUtil {
             }
             time = Integer.toString(hour);
             time = time.concat(TIME_SEPARATOR);
-            int minute = dateTime.getMinute();
             if (minute < DOUBLE_DIGIT) {
                 time = time.concat(DIGIT_FILLER);
             }
@@ -162,7 +164,7 @@ public class TimeUtil {
         }
         date = Integer.toString(dateTime.getDayOfMonth());
         date = date.concat(SEPARATOR + month);
-        String year = Integer.toString(dateTime.getYear() % YEAR_DIVISOR);
+        String year = Integer.toString(dateTime.getYear());
         date = date.concat(SEPARATOR + year);
         return date;
     }
