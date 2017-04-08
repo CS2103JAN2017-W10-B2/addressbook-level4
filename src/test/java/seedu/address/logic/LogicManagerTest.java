@@ -20,6 +20,7 @@ import org.junit.rules.TemporaryFolder;
 
 import com.google.common.eventbus.Subscribe;
 
+import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.model.ToDoListChangedEvent;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
@@ -243,18 +244,53 @@ public class LogicManagerTest {
 
     }
 
+
+    //@@author A0115333U
     @Test
-    public void execute_list_showsAllPersons() throws Exception {
+    public void execute_list_showsAllTasks() throws Exception {
         // prepare expectations
         TestDataHelper helper = new TestDataHelper();
         ToDoList expectedAB = helper.generateToDoList(2);
         List<? extends ReadOnlyTask> expectedList = expectedAB.getTaskList();
 
-        // prepare address book state
+        // prepare ToDoList state
         helper.addToModel(model, 2);
 
-        assertCommandSuccess("list", ListCommand.MESSAGE_SUCCESS, expectedAB, expectedList);
+        assertCommandSuccess("list all", String.format(ListCommand.MESSAGE_SUCCESS, "all"), expectedAB, expectedList);
     }
+
+    //@@author A0115333U
+    @Test
+    public void execute_list_showsOngoingTasks() throws Exception {
+        // prepare expectations
+        TestDataHelper helper = new TestDataHelper();
+        ToDoList expectedAB = helper.generateToDoList(2);
+        FilteredList<? extends ReadOnlyTask> expectedfilteredTasks;
+        expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
+        expectedfilteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
+
+        // prepare ToDoList state
+        helper.addToModel(model, 2);
+
+        assertCommandSuccess("list ongoing", String.format(ListCommand.MESSAGE_SUCCESS, "ongoing"), expectedAB, expectedfilteredTasks);
+    }
+
+    //@@author A0115333U
+    @Test
+    public void execute_list_showsCompletedTasks() throws Exception {
+        // prepare expectations
+        TestDataHelper helper = new TestDataHelper();
+        ToDoList expectedAB = helper.generateToDoList(2);
+        FilteredList<? extends ReadOnlyTask> expectedfilteredTasks;
+        expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
+        expectedfilteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
+
+        // prepare ToDoList state
+        helper.addToModel(model, 2);
+
+        assertCommandSuccess("list completed", String.format(ListCommand.MESSAGE_SUCCESS, "completed"), expectedAB, expectedfilteredTasks);
+    }
+    //@@author
 
     /**
      * Confirms the 'invalid argument index number behaviour' for the given
@@ -337,18 +373,36 @@ public class LogicManagerTest {
         assertIndexNotFoundBehaviorForCommand("delete");
     }
 
+    //@@author A0115333U
     @Test
     public void execute_delete_removesCorrectPerson() throws Exception {
-        TestDataHelper helper = new TestDataHelper();
-        List<Task> threePersons = helper.generateTaskList(3);
+    	// prepare Expectations
+    	TestDataHelper helper = new TestDataHelper();
+        List<Task> fivePersons = helper.generateTaskList(5);
 
-        ToDoList expectedAB = helper.generateToDoList(threePersons);
-        expectedAB.removeTask(threePersons.get(1));
-        helper.addToModel(model, threePersons);
+        ToDoList expectedAB = helper.generateToDoList(fivePersons);
+        FilteredList<? extends ReadOnlyTask> expectedfilteredTasks;
+        expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
+        expectedfilteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
 
-        assertCommandSuccess("delete 2", String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, threePersons.get(1)),
-                expectedAB, expectedAB.getTaskList());
+        ToDoList expectedAB_display = new ToDoList();
+        for (ReadOnlyTask p : expectedfilteredTasks) {
+            	Task p1 = new Task(p);
+            	expectedAB_display.addTask(p1);
+            	expectedAB_display.sort_tasks();
+            }
+
+        ReadOnlyTask todelete = expectedfilteredTasks.get(1);
+        expectedAB_display.removeTask(todelete);
+        expectedAB.removeTask(todelete);
+
+        // prepare ToDoList state
+        helper.addToModel(model, fivePersons);
+
+        assertCommandSuccess("delete 2", String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, todelete),
+                expectedAB, expectedAB_display.getTaskList());
     }
+    //@@author
 
     @Test
     public void execute_find_invalidArgsFormat() {
@@ -432,12 +486,14 @@ public class LogicManagerTest {
          * @param seed
          *            used to generate the person data field values
          */
+        //@@author A0115333U
         Task generateTask(int seed) throws Exception {
             return new Task(new Title("Title " + seed), new Deadline("12/12/17"), new Remarks(seed + "@email"),
                     new StartTime("12/12/17"),
                     new UniqueLabelList(new Label("tag" + Math.abs(seed)), new Label("tag" + Math.abs(seed + 1))),
-                    false);
+                    seed % 2 == 0);
         }
+      //@@author
 
         /** Generates the correct add command based on the person given */
         String generateAddCommand(Task p) {
@@ -446,7 +502,7 @@ public class LogicManagerTest {
             cmd.append("add ");
 
             cmd.append(p.getTitle().toString());
-            cmd.append(" remarks:").append(p.getRemarks());
+            cmd.append(" remark:").append(p.getRemarks());
             cmd.append(" till:").append(p.getDeadline());
             cmd.append(" from:").append(p.getStartTime());
 
@@ -489,11 +545,15 @@ public class LogicManagerTest {
         /**
          * Adds the given list of Persons to the given AddressBook
          */
+
+        //@@author A0115333U
         void addToToDoList(ToDoList todoList, List<Task> tasksToAdd) throws Exception {
             for (Task p : tasksToAdd) {
                 todoList.addTask(p);
+                todoList.sort_tasks();
             }
         }
+        //@@author
 
         /**
          * Adds auto-generated Person objects to the given model
@@ -509,8 +569,9 @@ public class LogicManagerTest {
          * Adds the given list of Persons to the given model
          */
         void addToModel(Model model, List<Task> tasksToAdd) throws Exception {
-            for (Task p : tasksToAdd) {
-                model.addTask(p);
+            for (ReadOnlyTask p : tasksToAdd) {
+            	Task p1 = new Task(p);
+                model.addTask(p1);
             }
         }
 
