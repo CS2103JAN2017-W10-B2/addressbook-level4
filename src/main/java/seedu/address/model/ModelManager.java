@@ -109,26 +109,26 @@ public class ModelManager extends ComponentManager implements Model {
         if (!undoStack.empty()) {
 
 
-            LastSuccessfulAction lsa = undoStack.pop();
-            if (lsa.isAdd) {
+            LastSuccessfulAction lastAction = undoStack.pop();
+            if (lastAction.isAdd) {
                 try {
-                    undoAddTask(lsa.task);
+                    undoAddTask(lastAction.task);
                 } catch (TaskNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
 
-            if (lsa.isDelete) {
+            if (lastAction.isDelete) {
                 try {
-                    undoDeleteTask((Task) lsa.task);
+                    undoDeleteTask((Task) lastAction.task);
                 } catch (DuplicateTaskException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
 
-            if (lsa.isClear) {
+            if (lastAction.isClear) {
 
                 try {
                     toDoList.undoResetData();
@@ -141,9 +141,9 @@ public class ModelManager extends ComponentManager implements Model {
 
             Task edited = (Task) editStack.pop();
 
-            if (lsa.isEdit) {
+            if (lastAction.isEdit) {
                 try {
-                    removeEditedTask(lsa.task); // to remove the add of edited task
+                    removeEditedTask(lastAction.task); // to remove the add of edited task
                     reAdd(edited); //add original task before edit
                 } catch (TaskNotFoundException | DuplicateTaskException e) {
                     // TODO Auto-generated catch block
