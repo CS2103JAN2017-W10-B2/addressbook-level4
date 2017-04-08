@@ -108,7 +108,7 @@ public class ToDoList implements ReadOnlyToDoList {
      * Updates the task in the list at position {@code index} with
      * {@code editedReadOnlyTask}. {@code ToDoList}'s label list will be updated
      * with the labels of {@code editedReadOnlyTask}.
-     * 
+     *
      * @see #syncMasterLabelListWith(Task)
      *
      * @throws DuplicateTaskException
@@ -153,7 +153,7 @@ public class ToDoList implements ReadOnlyToDoList {
     /**
      * Ensures that every label in these tasks: - exists in the master list
      * {@link #labels} - points to a Label object in the master list
-     * 
+     *
      * @see #syncMasterLabelListWith(Task)
      */
     private void syncMasterLabelListWith(UniqueTaskList tasks) {
