@@ -146,23 +146,25 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task in the results of the `find` command.
 
-### 2.7. Completing a task : `complete`
+### 2.7. Completing a task : `edit INDEX c/`
 
 Marks the specified task from the todolist as complete. Can be undone.<br>
-Format: `complete INDEX`
+Format: `edit INDEX c/completion_status`
 
-> Marks the task at the specified `INDEX` complete. <br>
+> Marks the task at the specified `INDEX` ad completed or not completed. <br>
 > The index refers to the index number shown in the most recent listing.<br>
 > The index **must be a positive integer** 1, 2, 3, ...
 
 Examples:
 
 * `list`<br>
-  `complete 3`<br>
-  Deletes the 3rd task in the todolist.
-* `search reports`<br>
-  `delete 2`<br>
-  Deletes the 2nd task in the results of the `search` command.
+  `edit 3 c/yes`<br>
+  Marks the 3rd task in the todolist as complted. 
+  Hence the task is no longer displayed as by default ongoing tasks are shown after each edit .
+* `list completed `<br>
+  `edit 2 c/no`<br>
+  Marks the 2nd task in the completed task list as incompleted.
+  After this, the list of ongoing tasks will be shown.
 
 ### 2.8. Clearing all entries : `clear`
 
