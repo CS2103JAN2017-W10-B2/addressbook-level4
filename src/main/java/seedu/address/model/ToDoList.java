@@ -19,8 +19,8 @@ import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 
 /**
- * Wraps all data at the to-do-list level
- * Duplicates are not allowed (by .equals comparison)
+ * Wraps all data at the to-do-list level Duplicates are not allowed (by .equals
+ * comparison)
  */
 public class ToDoList implements ReadOnlyToDoList {
 
@@ -29,11 +29,12 @@ public class ToDoList implements ReadOnlyToDoList {
     private final UniqueLabelList labels;
 
     /*
-     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
-     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
+     * The 'unusual' code block below is an non-static initialization block,
+     * sometimes used to avoid duplication between constructors. See
+     * https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
      *
-     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
+     * Note that non-static init blocks are not recommended to use. There are
+     * other ways to avoid duplication among constructors.
      */
     {
         tasks = new UniqueTaskList();
@@ -41,7 +42,8 @@ public class ToDoList implements ReadOnlyToDoList {
         tempTasks = new UniqueTaskList();
     }
 
-    public ToDoList() {}
+    public ToDoList() {
+    }
 
     /**
      * Creates a ToDoList!! using the Tasks and Labels in the {@code toBeCopied}
@@ -53,8 +55,7 @@ public class ToDoList implements ReadOnlyToDoList {
 
     //// list overwrite operations
 
-    public void setTasks(List<? extends ReadOnlyTask> tasks)
-            throws UniqueTaskList.DuplicateTaskException {
+    public void setTasks(List<? extends ReadOnlyTask> tasks) throws UniqueTaskList.DuplicateTaskException {
         this.tasks.setTasks(tasks);
     }
 
@@ -88,16 +89,15 @@ public class ToDoList implements ReadOnlyToDoList {
     }
     // @@author
 
-
-
     //// task-level operations
 
     /**
-     * Adds a task to the TodoList!!.
-     * Also checks the new task's labels and updates {@link #labels} with any new labels found,
-     * and updates the Label objects in the task to point to those in {@link #labels}.
+     * Adds a task to the TodoList!!. Also checks the new task's labels and
+     * updates {@link #labels} with any new labels found, and updates the Label
+     * objects in the task to point to those in {@link #labels}.
      *
-     * @throws UniqueTaskList.DuplicateTaskException if an equivalent task already exists.
+     * @throws UniqueTaskList.DuplicateTaskException
+     *             if an equivalent task already exists.
      */
     public void addTask(Task p) throws UniqueTaskList.DuplicateTaskException {
         syncMasterLabelListWith(p);
@@ -105,30 +105,34 @@ public class ToDoList implements ReadOnlyToDoList {
     }
 
     /**
-     * Updates the task in the list at position {@code index} with {@code editedReadOnlyTask}.
-     * {@code ToDoList}'s label list will be updated with the labels of {@code editedReadOnlyTask}.
+     * Updates the task in the list at position {@code index} with
+     * {@code editedReadOnlyTask}. {@code ToDoList}'s label list will be updated
+     * with the labels of {@code editedReadOnlyTask}.
+     * 
      * @see #syncMasterLabelListWith(Task)
      *
-     * @throws DuplicateTaskException if updating the task's details causes the task to be equivalent to
-     *      another existing task in the list.
-     * @throws IndexOutOfBoundsException if {@code index} < 0 or >= the size of the list.
+     * @throws DuplicateTaskException
+     *             if updating the task's details causes the task to be
+     *             equivalent to another existing task in the list.
+     * @throws IndexOutOfBoundsException
+     *             if {@code index} < 0 or >= the size of the list.
      */
-    public void updateTask(int index, ReadOnlyTask editedReadOnlyTask)
-            throws UniqueTaskList.DuplicateTaskException {
+    public void updateTask(int index, ReadOnlyTask editedReadOnlyTask) throws UniqueTaskList.DuplicateTaskException {
         assert editedReadOnlyTask != null;
 
         Task editedTask = new Task(editedReadOnlyTask);
         syncMasterLabelListWith(editedTask);
-        // TODO: the labels master list will be updated even though the below line fails.
-        // This can cause the labels master list to have additional labels that are not labelged to any task
+        // TODO: the labels master list will be updated even though the below
+        // line fails.
+        // This can cause the labels master list to have additional labels that
+        // are not labelged to any task
         // in the task list.
         tasks.updateTask(index, editedTask);
     }
 
     /**
-     * Ensures that every label in this task:
-     *  - exists in the master list {@link #labels}
-     *  - points to a Label object in the master list
+     * Ensures that every label in this task: - exists in the master list
+     * {@link #labels} - points to a Label object in the master list
      */
     private void syncMasterLabelListWith(Task task) {
         final UniqueLabelList taskLabels = task.getLabels();
@@ -139,17 +143,18 @@ public class ToDoList implements ReadOnlyToDoList {
         final Map<Label, Label> masterLabelObjects = new HashMap<>();
         labels.forEach(label -> masterLabelObjects.put(label, label));
 
-        // Rebuild the list of task labels to point to the relevant labels in the master label list.
+        // Rebuild the list of task labels to point to the relevant labels in
+        // the master label list.
         final Set<Label> correctLabelReferences = new HashSet<>();
         taskLabels.forEach(label -> correctLabelReferences.add(masterLabelObjects.get(label)));
         task.setLabels(new UniqueLabelList(correctLabelReferences));
     }
 
     /**
-     * Ensures that every label in these tasks:
-     *  - exists in the master list {@link #labels}
-     *  - points to a Label object in the master list
-     *  @see #syncMasterLabelListWith(Task)
+     * Ensures that every label in these tasks: - exists in the master list
+     * {@link #labels} - points to a Label object in the master list
+     * 
+     * @see #syncMasterLabelListWith(Task)
      */
     private void syncMasterLabelListWith(UniqueTaskList tasks) {
         tasks.forEach(this::syncMasterLabelListWith);
@@ -164,13 +169,12 @@ public class ToDoList implements ReadOnlyToDoList {
     }
 
     /**
-     * undo recent command
-     * implementations in uniquetasklist.java
+     * undo recent command implementations in uniquetasklist.java
      */
-    public void undoTask() throws EmptyStackException{
-   		tasks.undoTask();
+    public void undoTask() throws EmptyStackException {
+        tasks.undoTask();
 
-	}
+    }
 
     //// label-level operations
 
@@ -182,7 +186,7 @@ public class ToDoList implements ReadOnlyToDoList {
 
     @Override
     public String toString() {
-        return tasks.asObservableList().size() + " tasks, " + labels.asObservableList().size() +  " labels";
+        return tasks.asObservableList().size() + " tasks, " + labels.asObservableList().size() + " labels";
         // TODO: refine later
     }
 
@@ -206,13 +210,13 @@ public class ToDoList implements ReadOnlyToDoList {
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
+        // use this method for custom fields hashing instead of implementing
+        // your own
         return Objects.hash(tasks, labels);
     }
 
-	/*public void backup() {
-		tasks.backupIntoUndoStack();
-	}*/
-
+    /*
+     * public void backup() { tasks.backupIntoUndoStack(); }
+     */
 
 }

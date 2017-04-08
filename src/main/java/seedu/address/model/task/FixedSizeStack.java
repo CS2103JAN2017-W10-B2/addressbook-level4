@@ -5,32 +5,29 @@ import java.util.Stack;
 
 /**
  *
- * @author A0138831A
- * A fixed size stack to prevent overflowing
- * default size is 11
- * however you may self defined in declaration
+ * @author A0138831A A fixed size stack to prevent overflowing default size is
+ *         11 however you may self defined in declaration
  * @param <T>
  */
 public class FixedSizeStack<T> extends Stack<T> {
 
-	private int maximumSize = 11;
+    private int maximumSize = 11;
 
-	public FixedSizeStack(){
-		super();
-	}
+    public FixedSizeStack() {
+        super();
+    }
 
-	public FixedSizeStack(int size){
-		super();
-		this.maximumSize = size;
-	}
+    public FixedSizeStack(int size) {
+        super();
+        this.maximumSize = size;
+    }
 
-	@Override
-	public T push(T object) {
+    @Override
+    public T push(T object) {
         while (this.size() >= maximumSize) {
             this.remove(0);
         }
         return super.push(object);
     }
-
 
 }

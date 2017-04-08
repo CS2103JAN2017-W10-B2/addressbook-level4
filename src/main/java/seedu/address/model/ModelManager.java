@@ -17,8 +17,8 @@ import seedu.address.model.task.UniqueTaskList;
 import seedu.address.model.task.UniqueTaskList.TaskNotFoundException;
 
 /**
- * Represents the in-memory model of the doitdoit!! data.
- * All changes to any model should be synchronized.
+ * Represents the in-memory model of the doitdoit!! data. All changes to any
+ * model should be synchronized.
  */
 public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -37,7 +37,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.toDoList = new ToDoList(toDoList);
         filteredTasks = new FilteredList<>(this.toDoList.getTaskList());
-        filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
+        filteredTasks.setPredicate(ReadOnlyTask -> !ReadOnlyTask.getIsCompleted());
 
     }
 
@@ -67,7 +67,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateToDoListChanged();
     }
 
-    //@@author A0115333U
+    // @@author A0115333U
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         toDoList.addTask(task);
@@ -76,7 +76,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateToDoListChanged();
     }
 
-    //@@author A0115333U
+    // @@author A0115333U
     @Override
     public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException {
@@ -87,46 +87,47 @@ public class ModelManager extends ComponentManager implements Model {
         indicateToDoListChanged();
     }
 
-  //@@author A0138831A
+    // @@author A0138831A
 
     /**
      * undo the previous task
      */
     @Override
-    public void undoTask() throws EmptyStackException  {
-    	toDoList.undoTask();
+    public void undoTask() throws EmptyStackException {
+        toDoList.undoTask();
 
     }
 
-    //@@author
+    // @@author
 
-    //=========== Filtered Task List Accessors =============================================================
+    // =========== Filtered Task List Accessors
+    // =============================================================
 
     @Override
     public UnmodifiableObservableList<ReadOnlyTask> getFilteredTaskList() {
         return new UnmodifiableObservableList<>(filteredTasks);
     }
 
-    //@@author A0115333U
+    // @@author A0115333U
     @Override
     public void updateFilteredListToShowAll() {
         filteredTasks.setPredicate(null);
     }
 
-    //@@author A0115333U
+    // @@author A0115333U
     @Override
     public void updateFilteredListToShowCompleted() {
-        filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
+        filteredTasks.setPredicate(ReadOnlyTask -> ReadOnlyTask.getIsCompleted());
     }
 
-    //@@author A0115333U
+    // @@author A0115333U
     @Override
     public void updateFilteredListToShowOngoing() {
-        filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
+        filteredTasks.setPredicate(ReadOnlyTask -> !ReadOnlyTask.getIsCompleted());
     }
-    //@@author
+    // @@author
 
-    //@@author A0143132X
+    // @@author A0143132X
     @Override
     public void updateFilteredTaskList(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new TitleAndRemarksQualifier(keywords)));
@@ -140,13 +141,14 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredTaskListByLabel(Set<String> keywords) {
         updateFilteredTaskList(new PredicateExpression(new LabelsQualifier(keywords)));
     }
-    //@@author
+    // @@author
 
-
-    //========== Inner classes/interfaces used for filtering =================================================
+    // ========== Inner classes/interfaces used for filtering
+    // =================================================
 
     interface Expression {
         boolean satisfies(ReadOnlyTask task);
+
         @Override
         String toString();
     }
@@ -172,11 +174,12 @@ public class ModelManager extends ComponentManager implements Model {
 
     interface Qualifier {
         boolean run(ReadOnlyTask task);
+
         @Override
         String toString();
     }
 
-    //@@author A0143132X
+    // @@author A0143132X
     private class TitleAndRemarksQualifier implements Qualifier {
         private Set<String> keyWords;
 
@@ -189,18 +192,15 @@ public class ModelManager extends ComponentManager implements Model {
             if (task.hasRemarks()) {
                 return keyWords.stream()
                         .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
-                        .findAny()
-                        .isPresent() ||
-                        keyWords.stream()
-                        .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
-                        .findAny()
-                        .isPresent();
+                        .findAny().isPresent()
+                        || keyWords.stream().filter(
+                                keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
+                                .findAny().isPresent();
 
             }
             return keyWords.stream()
                     .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
-                    .findAny()
-                    .isPresent();
+                    .findAny().isPresent();
         }
 
         @Override
@@ -219,11 +219,10 @@ public class ModelManager extends ComponentManager implements Model {
         @Override
         public boolean run(ReadOnlyTask task) {
             if (!task.getLabels().isEmpty()) {
-                return keyWords.stream()
-                        .filter(keyword -> StringUtil.containsWordIgnoreCase(task.getLabels()
-                                .getStringRepresentation(), keyword))
-                        .findAny()
-                        .isPresent();
+                return keyWords
+                        .stream().filter(keyword -> StringUtil
+                                .containsWordIgnoreCase(task.getLabels().getStringRepresentation(), keyword))
+                        .findAny().isPresent();
             }
             return false;
         }
