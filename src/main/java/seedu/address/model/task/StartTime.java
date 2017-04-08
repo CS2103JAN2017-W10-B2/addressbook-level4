@@ -26,7 +26,7 @@ public class StartTime {
         if (!isValidStartTime(trimmedStartTime)) {
             throw new IllegalValueException(MESSAGE_START_TIME_CONSTRAINTS);
         }
-        this.value = trimmedStartTime;
+        this.value = TimeUtil.getFormattedDateTime(trimmedStartTime);
     }
 
     /**
