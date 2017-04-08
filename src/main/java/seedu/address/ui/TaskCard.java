@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.commons.util.TimeUtil;
 import seedu.address.model.task.ReadOnlyTask;
-public class PersonCard extends UiPart<Region> {
+public class TaskCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
     private static final String STOPPER_SYMBOL = ".";
@@ -53,38 +53,40 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label name;
+    private Label title;
     @FXML
     private Label id;
     @FXML
-    private Label phone;
+    private Label deadline;
     @FXML
-    private Label address;
+    private Label startTime;
     @FXML
-    private Label email;
+    private Label remarks;
     @FXML
-    private FlowPane tags;
+    private FlowPane labels;
 
 //@@author A0135795R
-    public PersonCard(ReadOnlyTask person, int displayedIndex) {
+    public TaskCard(ReadOnlyTask task, int displayedIndex) {
         super(FXML);
-        name.setText(person.getTitle().fullTitle);
+        title.setText(task.getTitle().fullTitle);
         id.setText(displayedIndex + STOPPER_SYMBOL + SEPARATOR);
-        phone.setText(SEPARATOR);
-        address.setText(SEPARATOR);
-        email.setText(SEPARATOR);
-        if (person.hasDeadline()) {
-            LocalDateTime deadline = getDateTime(person.getStartTime().value);
-            phone.setText(DEADLINE_STARTING_MESSAGE + getFormattedDateTime(deadline));
+        deadline.setText(SEPARATOR);
+        startTime.setText(SEPARATOR);
+        remarks.setText(SEPARATOR);
+        if (task.hasDeadline()) {
+            LocalDateTime deadline_ = getDateTime(task.getStartTime().value);
+            deadline.setText(DEADLINE_STARTING_MESSAGE + getFormattedDateTime(deadline_));
+        } else {
+            deadline.setText(SEPARATOR);
         }
-        if (person.hasStartTime()) {
-            LocalDateTime startTime = getDateTime(person.getDeadline().value);
-            address.setText(START_TIME_STARTING_MESSAGE + getFormattedDateTime(startTime));
+        if (task.hasStartTime()) {
+            LocalDateTime startTime_ = getDateTime(task.getDeadline().value);
+            startTime.setText(START_TIME_STARTING_MESSAGE + getFormattedDateTime(startTime_));
         }
-        if (person.hasRemarks()) {
-            email.setText(person.getRemarks().value);
+        if (task.hasRemarks()) {
+            remarks.setText(task.getRemarks().value);
         }
-        initTags(person);
+        initTags(task);
     }
 
     private LocalDateTime getDateTime(String dateTime) {
@@ -168,7 +170,7 @@ public class PersonCard extends UiPart<Region> {
     }
 //@@author
 
-    private void initTags(ReadOnlyTask person) {
-        person.getLabels().forEach(tag -> tags.getChildren().add(new Label(tag.labelName)));
+    private void initTags(ReadOnlyTask task) {
+        task.getLabels().forEach(label -> labels.getChildren().add(new Label(label.labelName)));
     }
 }
