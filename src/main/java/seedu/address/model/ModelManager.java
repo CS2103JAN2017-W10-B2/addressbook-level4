@@ -86,6 +86,10 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
   //@@author A0138831A
+
+    /**
+     * undo the previous task
+     */
     @Override
     public void undoTask() throws EmptyStackException  {
     	toDoList.undoTask();
