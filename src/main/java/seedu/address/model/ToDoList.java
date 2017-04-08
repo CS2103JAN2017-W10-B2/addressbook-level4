@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.util.Collection;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -164,8 +165,8 @@ public class ToDoList implements ReadOnlyToDoList {
      * undo recent command
      * implementations in uniquetasklist.java
      */
-    public void undoTask() {
-		tasks.undoTask();
+    public void undoTask() throws EmptyStackException{
+   		tasks.undoTask();
 
 	}
 

@@ -1,6 +1,7 @@
 package seedu.address.model.task;
 
 import java.util.Comparator;
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,9 +33,9 @@ public class UniqueTaskList implements Iterable<Task> {
         return internalList.contains(toCheck);
     }
 
-    public UniqueTaskList(){
-    	backupIntoUndoStack();
-    }
+    //public UniqueTaskList(){
+    	//backupIntoUndoStack();
+   // }
 
     /**
      * Adds a task to the list.
@@ -72,8 +73,6 @@ public class UniqueTaskList implements Iterable<Task> {
             currList.add(temp);
         }
         undoStack.push(currList);
-
-
 
         Task taskToUpdate = internalList.get(index);
         if (!taskToUpdate.equals(editedTask) && internalList.contains(editedTask)) {
@@ -155,19 +154,16 @@ public class UniqueTaskList implements Iterable<Task> {
         setTasks(replacement);
     }
 
-    public void undoTask() {
-    	if(undoStack.empty()){
+    public void undoTask() throws EmptyStackException {
 
-    		ObservableList<Task> currList = FXCollections.observableArrayList();
-            for (Task t : internalList) {
-                currList.add(t);
-            }
-        	this.internalList.setAll(currList);
+    	if(undoStack.size() == 1){
+    		throw new EmptyStackException();
 
-    	} else {
+    	} else{
+
     		ObservableList<Task> prevList = FXCollections.observableArrayList();
     		prevList = undoStack.pop();
-        	this.internalList.setAll(prevList);
+    		this.internalList.setAll(prevList);
     	}
 
 	}
