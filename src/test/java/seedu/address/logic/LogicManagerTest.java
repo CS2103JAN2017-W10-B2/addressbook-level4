@@ -210,7 +210,7 @@ public class LogicManagerTest {
     public void execute_add_invalidPersonData() {
         assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address", Title.MESSAGE_TITLE_CONSTRAINTS);
         assertCommandFailure("add Valid Name till:goat stimulator", Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
-        assertCommandFailure("add Valid Title remarks:invalid#remarks", Remarks.MESSAGE_REMARKS_CONSTRAINTS);
+        assertCommandFailure("add Valid Title remark:invalid#remarks", Remarks.MESSAGE_REMARKS_CONSTRAINTS);
         assertCommandFailure("add Valid Name #invalid_-[.tag", Label.MESSAGE_LABEL_CONSTRAINTS);
 
     }
@@ -446,7 +446,7 @@ public class LogicManagerTest {
             cmd.append("add ");
 
             cmd.append(p.getTitle().toString());
-            cmd.append(" remarks:").append(p.getRemarks());
+            cmd.append(" remark:").append(p.getRemarks());
             cmd.append(" till:").append(p.getDeadline());
             cmd.append(" from:").append(p.getStartTime());
 
