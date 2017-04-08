@@ -1,10 +1,12 @@
 package seedu.address.logic.commands;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.commons.util.TimeUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.label.UniqueLabelList;
 import seedu.address.model.task.Deadline;
@@ -32,6 +34,7 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_TIME_CONFLICT = "Start time will be after deadline. Please try again.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the doitdoit!!";
 
     private final int filteredTaskListIndex;
@@ -66,6 +69,13 @@ public class EditCommand extends Command {
         Task editedTask = createEditedTask(taskToEdit, editTaskDescriptor);
 
         try {
+            if (editedTask.hasDeadline() && editedTask.hasStartTime()) {
+                LocalDateTime deadline = TimeUtil.getDateTime(editedTask.getDeadline().value);
+                LocalDateTime startTime = TimeUtil.getDateTime(editedTask.getStartTime().value);
+                if (deadline.compareTo(startTime) < 0) {
+                    throw new CommandException(MESSAGE_TIME_CONFLICT);
+                }
+            }
             model.updateTask(filteredTaskListIndex, editedTask);
         } catch (UniqueTaskList.DuplicateTaskException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);

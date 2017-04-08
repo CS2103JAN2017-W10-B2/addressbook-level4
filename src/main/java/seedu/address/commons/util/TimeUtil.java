@@ -97,9 +97,13 @@ public class TimeUtil {
 
     private static String getStringTime(LocalDateTime dateTime) {
         String time;
+        int minute = dateTime.getMinute();
         if (isBeforeNoon(dateTime)) {
             time = Integer.toString(dateTime.getHour());
             time = time.concat(TIME_SEPARATOR);
+            if (minute < DOUBLE_DIGIT) {
+                time = time.concat(DIGIT_FILLER);
+            }
             time = time.concat(Integer.toString(dateTime.getMinute()));
             time = time.concat(AM);
         } else {
@@ -109,7 +113,6 @@ public class TimeUtil {
             }
             time = Integer.toString(hour);
             time = time.concat(TIME_SEPARATOR);
-            int minute = dateTime.getMinute();
             if (minute < DOUBLE_DIGIT) {
                 time = time.concat(DIGIT_FILLER);
             }

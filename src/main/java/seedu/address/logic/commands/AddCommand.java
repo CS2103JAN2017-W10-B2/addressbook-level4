@@ -1,9 +1,11 @@
 package seedu.address.logic.commands;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.TimeUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.label.Label;
 import seedu.address.model.label.UniqueLabelList;
@@ -29,6 +31,7 @@ public class AddCommand extends Command {
             + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Assignment c/yes";
     // @@author
     public static final String MESSAGE_SUCCESS = "New task added: %1$s";
+    public static final String MESSAGE_TIME_CONFLICT = "Start time should be before deadline. Please try again.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in doitdoit!!";
 
     private final Task toAdd;
@@ -56,6 +59,13 @@ public class AddCommand extends Command {
     public CommandResult execute() throws CommandException {
         assert model != null;
         try {
+            if (toAdd.hasDeadline() && toAdd.hasStartTime()) {
+                LocalDateTime deadline = TimeUtil.getDateTime(toAdd.getDeadline().value);
+                LocalDateTime startTime = TimeUtil.getDateTime(toAdd.getStartTime().value);
+                if (deadline.compareTo(startTime) < 0) {
+                    throw new CommandException(MESSAGE_TIME_CONFLICT);
+                }
+            }
             model.addTask(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
         } catch (UniqueTaskList.DuplicateTaskException e) {
