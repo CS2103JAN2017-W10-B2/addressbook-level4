@@ -8,8 +8,7 @@ import seedu.address.model.ToDoList;
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "ToDoList!! has been cleared!";
-
+    public static final String MESSAGE_SUCCESS = "doitdoit!! has been cleared!";
 
     @Override
     public CommandResult execute() {
