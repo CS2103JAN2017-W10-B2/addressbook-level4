@@ -64,6 +64,8 @@ public class ToDoList implements ReadOnlyToDoList {
     public void resetData(ReadOnlyToDoList newData) {
         assert newData != null;
 
+        tasks.backupIntoUndoStack();
+
         this.tempTasks.setTasks(this.tasks);
 
         try {
@@ -83,9 +85,7 @@ public class ToDoList implements ReadOnlyToDoList {
         this.tasks.sort();
     }
 
-    public void undoResetData() throws DuplicateTaskException {
-        this.tasks.setTasks(tempTasks);
-    }
+
 
     //// task-level operations
 
@@ -206,6 +206,10 @@ public class ToDoList implements ReadOnlyToDoList {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(tasks, labels);
     }
+
+	/*public void backup() {
+		tasks.backupIntoUndoStack();
+	}*/
 
 
 }

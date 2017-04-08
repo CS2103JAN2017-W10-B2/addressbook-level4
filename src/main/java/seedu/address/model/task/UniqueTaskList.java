@@ -21,6 +21,7 @@ import seedu.address.commons.util.TimeUtil;
 public class UniqueTaskList implements Iterable<Task> {
 
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
+    private final FixedSizeStack<ObservableList<Task>> undoStack = new FixedSizeStack();
 
     /**
      * Returns true if the list contains an equivalent task as the given
@@ -29,6 +30,10 @@ public class UniqueTaskList implements Iterable<Task> {
     public boolean contains(ReadOnlyTask toCheck) {
         assert toCheck != null;
         return internalList.contains(toCheck);
+    }
+
+    public UniqueTaskList(){
+    	backupIntoUndoStack();
     }
 
     /**
@@ -43,6 +48,7 @@ public class UniqueTaskList implements Iterable<Task> {
         if (contains(toAdd)) {
             throw new DuplicateTaskException();
         }
+        backupIntoUndoStack();
         internalList.add(toAdd);
     }
 
@@ -58,6 +64,16 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void updateTask(int index, ReadOnlyTask editedTask) throws DuplicateTaskException {
         assert editedTask != null;
+
+        ObservableList<Task> currList = FXCollections.observableArrayList();
+        Task temp;
+        for (Task t : internalList) {
+            temp = new Task(t);
+            currList.add(temp);
+        }
+        undoStack.push(currList);
+
+
 
         Task taskToUpdate = internalList.get(index);
         if (!taskToUpdate.equals(editedTask) && internalList.contains(editedTask)) {
@@ -82,12 +98,23 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public boolean remove(ReadOnlyTask toRemove) throws TaskNotFoundException {
         assert toRemove != null;
+
+        backupIntoUndoStack();
+
         final boolean taskFoundAndDeleted = internalList.remove(toRemove);
         if (!taskFoundAndDeleted) {
             throw new TaskNotFoundException();
         }
         return taskFoundAndDeleted;
     }
+
+    public void backupIntoUndoStack() {
+    	ObservableList<Task> currList = FXCollections.observableArrayList();
+        for (Task t : internalList) {
+            currList.add(t);
+        }
+        undoStack.push(currList);
+	}
 
     // @@author A0115333U
     /**
@@ -129,7 +156,19 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     public void undoTask() {
-		// TODO Auto-generated method stub
+    	if(undoStack.empty()){
+
+    		ObservableList<Task> currList = FXCollections.observableArrayList();
+            for (Task t : internalList) {
+                currList.add(t);
+            }
+        	this.internalList.setAll(currList);
+
+    	} else {
+    		ObservableList<Task> prevList = FXCollections.observableArrayList();
+    		prevList = undoStack.pop();
+        	this.internalList.setAll(prevList);
+    	}
 
 	}
 
@@ -170,6 +209,8 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public static class TaskNotFoundException extends Exception {
     }
+
+
 
 
 
