@@ -26,6 +26,8 @@ public class TimeUtil {
     private static final String PM = "pm";
     private static final String INVALID_MONTH = "You should not be seeing this.";
     private static final int YEAR_DIVISOR = 100;
+    private static final int DOUBLE_DIGIT = 10;
+    private static final String DIGIT_FILLER = "0";
 
     private static final int JAN_NUM = 1;
     private static final String JAN = "Jan";
@@ -107,6 +109,10 @@ public class TimeUtil {
             }
             time = Integer.toString(hour);
             time = time.concat(TIME_SEPARATOR);
+            int minute = dateTime.getMinute();
+            if (minute < DOUBLE_DIGIT) {
+                time = time.concat(DIGIT_FILLER);
+            }
             time = time.concat(Integer.toString(dateTime.getMinute()));
             time = time.concat(PM);
         }

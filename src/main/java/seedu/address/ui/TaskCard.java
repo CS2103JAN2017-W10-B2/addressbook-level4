@@ -14,38 +14,6 @@ public class TaskCard extends UiPart<Region> {
     private static final String SEPARATOR = " ";
     private static final String DEADLINE_STARTING_MESSAGE = "Deadline  : ";
     private static final String START_TIME_STARTING_MESSAGE = "Start Time: ";
-    private static final int NOON = 12;
-    private static final int BEFORE_NOON_CUTOFF = 0;
-    private static final String TIME_SEPARATOR = ":";
-    private static final String AM = "am";
-    private static final String PM = "pm";
-    private static final String INVALID_MONTH = "You should not be seeing this.";
-    private static final int YEAR_DIVISOR = 100;
-
-    private static final int JAN_NUM = 1;
-    private static final String JAN = "Jan";
-    private static final int FEB_NUM = 2;
-    private static final String FEB = "Feb";
-    private static final int MAR_NUM = 3;
-    private static final String MAR = "Mar";
-    private static final int APR_NUM = 4;
-    private static final String APR = "Apr";
-    private static final int MAY_NUM = 5;
-    private static final String MAY = "May";
-    private static final int JUN_NUM = 6;
-    private static final String JUN = "Jun";
-    private static final int JUL_NUM = 7;
-    private static final String JUL = "Jul";
-    private static final int AUG_NUM = 8;
-    private static final String AUG = "Aug";
-    private static final int SEP_NUM = 9;
-    private static final String SEP = "Sep";
-    private static final int OCT_NUM = 10;
-    private static final String OCT = "Oct";
-    private static final int NOV_NUM = 11;
-    private static final String NOV = "Nov";
-    private static final int DEC_NUM = 12;
-    private static final String DEC = "Dec";
 
     @FXML
     private HBox cardPane;
