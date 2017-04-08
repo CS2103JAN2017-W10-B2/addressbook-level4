@@ -95,24 +95,32 @@ public class UniqueTaskList implements Iterable<Task> {
      *
      */
     public void sort() {
-        internalList.sort(new Comparator<Task>() {
-            @Override
-            public int compare(Task x, Task y) {
-                return compare(x.getDeadline(), y.getDeadline());
-            }
+    	internalList.sort(new Comparator<Task>() {
+    		@Override
+    		public int compare(Task x, Task y) {
+    			return compare(x.getDeadline(), y.getDeadline());
+    		}
 
-            private int compare(Deadline a, Deadline b) {
-                if (a != null && b != null) {
-                    // CHECKSTYLE.OFF: LineLength
-                    return TimeUtil.getDateTime(a.toString()).isBefore(TimeUtil.getDateTime(b.toString())) ? -1
-                            : TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString())) ? 1 : 0;
-                    // CHECKSTYLE.ON: LineLength
-                } else {
-                    return 0;
-                }
-            }
-        });
-
+    		private int compare(Deadline a, Deadline b) {
+    			if (a != null && b != null) {
+    				// CHECKSTYLE.OFF: LineLength
+    				return TimeUtil.getDateTime(a.toString()).isBefore(TimeUtil.getDateTime(b.toString())) ? -1
+    						: TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString())) ? 1 : 0;
+    				// CHECKSTYLE.ON: LineLength
+    			}
+    			else {
+    				if (a == null){
+    					return -1;
+    				}
+    				else {
+    					if (b == null){
+        					return 1;
+    					}
+    				}
+    				return 0;
+    			}
+    		}
+    	});
     }
     // @@author
 

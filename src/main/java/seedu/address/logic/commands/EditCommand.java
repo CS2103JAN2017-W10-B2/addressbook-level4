@@ -20,19 +20,23 @@ import seedu.address.model.task.UniqueTaskList;
  */
 public class EditCommand extends Command {
 
+	// @@author A0135795R
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
-            + "by the index number used in the last doitdoit!! listing. "
-            + "Existing values will be overwritten by the input values.\n"
+            + "by the index number used in the last ToDoList!! listing. "
+            + "Existing values (if any) will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) (TITLE) (from: STARTTIME) (till: DEADLINE) "
+            + "(remark: REMARKS) (label: LABELS...) (c/ COMPLETIONSTATUS)\n"
+            + "OR: INDEX (must be a positive integer) (TITLE) (due by: DEADLINE) (c/ COMPLETIONSTATUS)"
             + "(remark: REMARKS) (label: LABELS...)\n"
-            + "OR: INDEX (must be a positive integer) (TITLE) (due by: DEADLINE) "
-            + "(remark: REMARKS) (label: LABELS...)\n";
+            + "Example 1: edit 1 c/yes"
+            + "Example 2: edit 2 Titlechanged";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the doitdoit!!";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the ToDoList!!";
+    // @@author
 
     private final int filteredTaskListIndex;
     private final EditTaskDescriptor editTaskDescriptor;
