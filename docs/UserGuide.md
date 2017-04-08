@@ -159,7 +159,7 @@ Examples:
 
 * `list`<br>
   `edit 3 c/yes`<br>
-  Marks the 3rd task in the todolist as complted. 
+  Marks the 3rd task in the todolist as complted.
   Hence the task is no longer displayed as by default ongoing tasks are shown after each edit .
 * `list completed `<br>
   `edit 2 c/no`<br>
