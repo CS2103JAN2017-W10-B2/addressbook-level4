@@ -69,10 +69,19 @@ Examples:
 * `add Buy gift for mom till:7th September #Birthday #Family`<br>
 * `add Finish studing for mid term from: now till: tomorrow #School #Exam`<br>
 
-### 2.3. Listing all tasks : `list`
+### 2.3. Listing tasks : `list`
 
-Shows a list of all ongoing tasks in the to do list.<br>
-Format: `list`
+Shows tasks of specified types in the to do list.<br>
+Format: `list type`
+
+> List tasks of the specified type.
+> Three types are available: 'all', 'ongoing', 'completed'.
+
+Examples:
+
+* `list ongoing
+  Lists the ongoing tasks.
+
 
 ### 2.4. Editing a task : `edit`
 

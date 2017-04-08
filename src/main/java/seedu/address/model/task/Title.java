@@ -9,7 +9,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Title {
 
     public static final String MESSAGE_TITLE_CONSTRAINTS =
-            "Task titles should no symbols, also it should not be blank";
+            "Task titles should have no symbols, also it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,
