@@ -68,7 +68,8 @@ public class EditCommandTest extends ToDoListGuiTest {
         int addressBookIndex = 5;
 
         TestTask personToEdit = expectedTasksList[addressBookIndex - 1];
-        TestTask editedPerson = new TaskBuilder(personToEdit).withTitle("Additional Lecture during recess week").build();
+        TestTask editedPerson = new TaskBuilder(personToEdit).withTitle("Additional Lecture "
+                + "during recess week").build();
 
         assertEditSuccess(filteredPersonListIndex, addressBookIndex, detailsToEdit, editedPerson);
     }
