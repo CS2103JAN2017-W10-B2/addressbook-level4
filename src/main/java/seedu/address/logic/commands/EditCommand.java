@@ -16,23 +16,27 @@ import seedu.address.model.task.Title;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
- * Edits the details of an existing task in doitdoit!!.
+ * Edits the details of an existing task in ToDoList!!.
  */
 public class EditCommand extends Command {
 
+	// @@author A0115333U
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
-            + "by the index number used in the last doitdoit!! listing. "
-            + "Existing values will be overwritten by the input values.\n"
+            + "by the index number used in the last ToDoList!! listing. "
+            + "Existing values (if any) will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) (TITLE) (from: STARTTIME) (till: DEADLINE) "
+            + "(remark: REMARKS) (label: LABELS...) (c/ COMPLETIONSTATUS)\n"
+            + "OR: INDEX (must be a positive integer) (TITLE) (due: DEADLINE) (c/ COMPLETIONSTATUS)"
             + "(remark: REMARKS) (label: LABELS...)\n"
-            + "OR: INDEX (must be a positive integer) (TITLE) (due by: DEADLINE) "
-            + "(remark: REMARKS) (label: LABELS...)\n";
+            + "Example 1: edit 1 c/yes"
+            + "Example 2: edit 2 Title Changed";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the doitdoit!!";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the ToDoList!!";
+    // @@author
 
     private final int filteredTaskListIndex;
     private final EditTaskDescriptor editTaskDescriptor;
@@ -78,6 +82,7 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Task} with the details of {@code taskToEdit}
      * edited with {@code editTaskDescriptor}.
      */
+    // @@author A0115333U
     private static Task createEditedTask(ReadOnlyTask taskToEdit,
             EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
@@ -92,6 +97,7 @@ public class EditCommand extends Command {
         return new Task(updatedTitle, updatedDeadline, updatedRemarks, updatedStartTime, updatedLabels,
                 updatedIsCompleted);
     }
+    // @@author
 
     /**
      * Stores the details to edit the task with. Each non-empty field value will replace the
@@ -103,6 +109,7 @@ public class EditCommand extends Command {
         private Optional<Remarks> remark = Optional.empty();
         private Optional<StartTime> startTime = Optional.empty();
         private Optional<UniqueLabelList> labels = Optional.empty();
+        // @@author A0115333U
         private boolean isCompleted = false;
         private boolean isCompletededited = false;
 
@@ -117,6 +124,7 @@ public class EditCommand extends Command {
             this.isCompleted = toCopy.getIsCompleted();
         }
 
+
         /**
          * Returns true if at least one field is edited.
          */
@@ -124,6 +132,7 @@ public class EditCommand extends Command {
             return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.startTime,
                     this.labels) || this.isCompletededited;
         }
+        // @@author
 
         public void setTitle(Optional<Title> title) {
             assert title != null;
@@ -152,6 +161,7 @@ public class EditCommand extends Command {
             return remark;
         }
 
+        // @@author A0115333U
         public void setIsCompleted(boolean isCompleted) {
             this.isCompleted = isCompleted;
         }
@@ -163,6 +173,7 @@ public class EditCommand extends Command {
         public void setIsCompletededited(boolean isCompletededited) {
             this.isCompletededited = isCompletededited;
         }
+        // @@author
 
         public void setStartTime(Optional<StartTime> startTime) {
             assert startTime != null;

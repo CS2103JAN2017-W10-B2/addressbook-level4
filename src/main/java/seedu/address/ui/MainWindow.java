@@ -23,7 +23,9 @@ import seedu.address.model.UserPrefs;
  */
 public class MainWindow extends UiPart<Region> {
 
+    // @@author A0115333U
     private static final String ICON = "/images/doitdoit.png";
+    // @@author
     private static final String FXML = "MainWindow.fxml";
     private static final int MIN_HEIGHT = 600;
     private static final int MIN_WIDTH = 450;

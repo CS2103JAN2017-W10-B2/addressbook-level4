@@ -9,9 +9,14 @@ public class StartTimeTest {
 
     @Test
     public void isValidAddress() {
+    	//@@author A0115333U
         // invalid addresses
         assertFalse(StartTime.isValidStartTime("")); // empty string
         assertFalse(StartTime.isValidStartTime(" ")); // spaces only
+        assertFalse(StartTime.isValidStartTime("Hello")); // non-numeric
+        assertFalse(StartTime.isValidStartTime("1212qwer12")); // alphabets within
+                                                           // digits
+        //@@author
 
         // valid addresses
         assertTrue(StartTime.isValidStartTime("today 4 o'clock"));

@@ -31,7 +31,7 @@ public class ModelManager extends ComponentManager implements Model {
     public Stack<ReadOnlyTask> editStack;
 
     /**
-     * Initializes a ModelManager with the given doitdoit!! and userPrefs.
+     * Initializes a ModelManager with the given ToDoList!! and userPrefs.
      */
     public ModelManager(ReadOnlyToDoList toDoList, UserPrefs userPrefs) {
         super();
@@ -74,6 +74,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateToDoListChanged();
     }
 
+    //@@author A0115333U
     @Override
     public synchronized void addTask(Task task) throws UniqueTaskList.DuplicateTaskException {
         undoStack.push(new LastSuccessfulAction(task, true, false, false, false));
@@ -83,6 +84,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateToDoListChanged();
     }
 
+    //@@author A0115333U
     @Override
     public void updateTask(int filteredTaskListIndex, ReadOnlyTask editedTask)
             throws UniqueTaskList.DuplicateTaskException {
@@ -190,20 +192,24 @@ public class ModelManager extends ComponentManager implements Model {
         return new UnmodifiableObservableList<>(filteredTasks);
     }
 
+    //@@author A0115333U
     @Override
     public void updateFilteredListToShowAll() {
         filteredTasks.setPredicate(null);
     }
 
+    //@@author A0115333U
     @Override
     public void updateFilteredListToShowCompleted() {
         filteredTasks.setPredicate(ReadOnlyTask->ReadOnlyTask.getIsCompleted());
     }
 
+    //@@author A0115333U
     @Override
     public void updateFilteredListToShowOngoing() {
         filteredTasks.setPredicate(ReadOnlyTask->!ReadOnlyTask.getIsCompleted());
     }
+    //@@author
 
     //@@author A0143132X
     @Override

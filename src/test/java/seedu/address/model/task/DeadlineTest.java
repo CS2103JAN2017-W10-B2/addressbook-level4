@@ -10,7 +10,7 @@ public class DeadlineTest {
 
     @Test
     public void isValidDeadline() {
-        // invalid deadines
+        // invalid deadlines
         assertFalse(Deadline.isValidDeadline("")); // empty string
         assertFalse(Deadline.isValidDeadline(" ")); // spaces only
         assertFalse(Deadline.isValidDeadline("phone")); // non-numeric

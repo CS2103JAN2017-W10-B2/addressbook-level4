@@ -43,7 +43,7 @@ public class ToDoList implements ReadOnlyToDoList {
     public ToDoList() {}
 
     /**
-     * Creates a doitdoit!! using the Tasks and Labels in the {@code toBeCopied}
+     * Creates a ToDoList!! using the Tasks and Labels in the {@code toBeCopied}
      */
     public ToDoList(ReadOnlyToDoList toBeCopied) {
         this();
@@ -79,9 +79,11 @@ public class ToDoList implements ReadOnlyToDoList {
         syncMasterLabelListWith(tasks);
     }
 
+    // @@author A0115333U
     public void sort_tasks() {
         this.tasks.sort();
     }
+    // @@author
 
     public void undoResetData() throws DuplicateTaskException {
         this.tasks.setTasks(tempTasks);
@@ -90,7 +92,7 @@ public class ToDoList implements ReadOnlyToDoList {
     //// task-level operations
 
     /**
-     * Adds a task to the doitdoit!!.
+     * Adds a task to the TodoList!!.
      * Also checks the new task's labels and updates {@link #labels} with any new labels found,
      * and updates the Label objects in the task to point to those in {@link #labels}.
      *
