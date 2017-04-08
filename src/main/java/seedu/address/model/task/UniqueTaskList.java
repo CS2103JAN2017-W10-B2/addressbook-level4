@@ -91,7 +91,7 @@ public class UniqueTaskList implements Iterable<Task> {
 
     // @@author A0115333U
     /**
-     * Sort the list.
+     * Sort the task list by deadline. Tasks with no deadline are displayed in front.
      *
      */
     public void sort() {
