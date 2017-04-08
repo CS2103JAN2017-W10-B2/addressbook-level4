@@ -17,7 +17,7 @@ public class UndoCommand extends Command {
         assert model != null;
         try {
             model.undoTask();
-            return new CommandResult(String.format(MESSAGE_SUCCESS));
+            return new CommandResult(MESSAGE_SUCCESS);
         } catch (EmptyStackException e) {
             throw new CommandException(MESSAGE_EMPTY_STACK);
         }

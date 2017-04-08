@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.util.Collection;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -64,6 +65,8 @@ public class ToDoList implements ReadOnlyToDoList {
     public void resetData(ReadOnlyToDoList newData) {
         assert newData != null;
 
+        tasks.backupIntoUndoStack();
+
         this.tempTasks.setTasks(this.tasks);
 
         try {
@@ -85,9 +88,7 @@ public class ToDoList implements ReadOnlyToDoList {
     }
     // @@author
 
-    public void undoResetData() throws DuplicateTaskException {
-        this.tasks.setTasks(tempTasks);
-    }
+
 
     //// task-level operations
 
@@ -162,6 +163,15 @@ public class ToDoList implements ReadOnlyToDoList {
         }
     }
 
+    /**
+     * undo recent command
+     * implementations in uniquetasklist.java
+     */
+    public void undoTask() throws EmptyStackException{
+   		tasks.undoTask();
+
+	}
+
     //// label-level operations
 
     public void addLabel(Label t) throws UniqueLabelList.DuplicateLabelException {
@@ -199,4 +209,10 @@ public class ToDoList implements ReadOnlyToDoList {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(tasks, labels);
     }
+
+	/*public void backup() {
+		tasks.backupIntoUndoStack();
+	}*/
+
+
 }

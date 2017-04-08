@@ -18,11 +18,7 @@ public class UndoCommandParser {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, UndoCommand.MESSAGE_USAGE));
         }
-
-        // keywords delimited by whitespace
-        //final String[] keywords = matcher.group("keywords").split("\\s+");
-        //final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
-        return new UndoCommand();
+       return new UndoCommand();
     }
 
 }
