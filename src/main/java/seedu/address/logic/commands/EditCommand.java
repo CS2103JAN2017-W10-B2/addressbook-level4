@@ -28,10 +28,10 @@ public class EditCommand extends Command {
             + "Existing values (if any) will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) (TITLE) (from: STARTTIME) (till: DEADLINE) "
             + "(remark: REMARKS) (label: LABELS...) (c/ COMPLETIONSTATUS)\n"
-            + "OR: INDEX (must be a positive integer) (TITLE) (due by: DEADLINE) (c/ COMPLETIONSTATUS)"
+            + "OR: INDEX (must be a positive integer) (TITLE) (due: DEADLINE) (c/ COMPLETIONSTATUS)"
             + "(remark: REMARKS) (label: LABELS...)\n"
             + "Example 1: edit 1 c/yes"
-            + "Example 2: edit 2 Titlechanged";
+            + "Example 2: edit 2 Title Changed";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
