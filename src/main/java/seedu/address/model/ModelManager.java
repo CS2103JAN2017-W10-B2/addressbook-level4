@@ -31,7 +31,7 @@ public class ModelManager extends ComponentManager implements Model {
     public Stack<ReadOnlyTask> editStack;
 
     /**
-     * Initializes a ModelManager with the given doitdoit!! and userPrefs.
+     * Initializes a ModelManager with the given ToDoList!! and userPrefs.
      */
     public ModelManager(ReadOnlyToDoList toDoList, UserPrefs userPrefs) {
         super();
