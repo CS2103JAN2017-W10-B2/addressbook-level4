@@ -20,7 +20,7 @@ import seedu.address.model.task.UniqueTaskList;
  */
 public class EditCommand extends Command {
 
-	// @@author A0115333U
+    // @@author A0115333U
     public static final String COMMAND_WORD = "edit";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the task identified "
@@ -29,9 +29,7 @@ public class EditCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) (TITLE) (from: STARTTIME) (till: DEADLINE) "
             + "(remark: REMARKS) (label: LABELS...) (c/ COMPLETIONSTATUS)\n"
             + "OR: INDEX (must be a positive integer) (TITLE) (due: DEADLINE) (c/ COMPLETIONSTATUS)"
-            + "(remark: REMARKS) (label: LABELS...)\n"
-            + "Example 1: edit 1 c/yes"
-            + "Example 2: edit 2 Title Changed";
+            + "(remark: REMARKS) (label: LABELS...)\n" + "Example 1: edit 1 c/yes" + "Example 2: edit 2 Title Changed";
 
     public static final String MESSAGE_EDIT_TASK_SUCCESS = "Edited Task: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -42,8 +40,10 @@ public class EditCommand extends Command {
     private final EditTaskDescriptor editTaskDescriptor;
 
     /**
-     * @param filteredTaskListIndex the index of the task in the filtered task list to edit
-     * @param editTaskDescriptor details to edit the task with
+     * @param filteredTaskListIndex
+     *            the index of the task in the filtered task list to edit
+     * @param editTaskDescriptor
+     *            details to edit the task with
      */
     public EditCommand(int filteredTaskListIndex, EditTaskDescriptor editTaskDescriptor) {
         assert filteredTaskListIndex > 0;
@@ -83,8 +83,7 @@ public class EditCommand extends Command {
      * edited with {@code editTaskDescriptor}.
      */
     // @@author A0115333U
-    private static Task createEditedTask(ReadOnlyTask taskToEdit,
-            EditTaskDescriptor editTaskDescriptor) {
+    private static Task createEditedTask(ReadOnlyTask taskToEdit, EditTaskDescriptor editTaskDescriptor) {
         assert taskToEdit != null;
 
         Title updatedTitle = editTaskDescriptor.getTitle().orElseGet(taskToEdit::getTitle);
@@ -100,8 +99,8 @@ public class EditCommand extends Command {
     // @@author
 
     /**
-     * Stores the details to edit the task with. Each non-empty field value will replace the
-     * corresponding field value of the task.
+     * Stores the details to edit the task with. Each non-empty field value will
+     * replace the corresponding field value of the task.
      */
     public static class EditTaskDescriptor {
         private Optional<Title> title = Optional.empty();
@@ -113,7 +112,8 @@ public class EditCommand extends Command {
         private boolean isCompleted = false;
         private boolean isCompletededited = false;
 
-        public EditTaskDescriptor() {}
+        public EditTaskDescriptor() {
+        }
 
         public EditTaskDescriptor(EditTaskDescriptor toCopy) {
             this.title = toCopy.getTitle();
@@ -124,13 +124,12 @@ public class EditCommand extends Command {
             this.isCompleted = toCopy.getIsCompleted();
         }
 
-
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.startTime,
-                    this.labels) || this.isCompletededited;
+            return CollectionUtil.isAnyPresent(this.title, this.deadline, this.remark, this.startTime, this.labels)
+                    || this.isCompletededited;
         }
         // @@author
 
