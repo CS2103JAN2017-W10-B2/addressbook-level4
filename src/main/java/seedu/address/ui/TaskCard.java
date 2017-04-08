@@ -28,7 +28,7 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label remarks;
     @FXML
-    private FlowPane labels;
+    private FlowPane tags;
 
 //@@author A0135795R
     public TaskCard(ReadOnlyTask task, int displayedIndex) {
@@ -54,6 +54,6 @@ public class TaskCard extends UiPart<Region> {
 //@@author
 
     private void initTags(ReadOnlyTask task) {
-        task.getLabels().forEach(label -> labels.getChildren().add(new Label(label.labelName)));
+        task.getLabels().forEach(label -> tags.getChildren().add(new Label(label.labelName)));
     }
 }
