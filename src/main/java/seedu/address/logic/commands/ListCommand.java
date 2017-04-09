@@ -14,8 +14,8 @@ public class ListCommand extends Command {
             + "Parameters: all/ongoing/completed\n" + "Example: list all";
     private final String listType;
 
-    public ListCommand(String list_type) {
-        this.listType = list_type;
+    public ListCommand(String listType) {
+        this.listType = listType;
     }
 
     @Override
