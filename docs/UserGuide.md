@@ -181,6 +181,21 @@ Format: `exit`
 Todolist data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
 
+### 2.11. Set storage location : `set_path LOCATION`
+
+Set the storage location as desired. This can be used to store data at a folder linked to the cloud.
+Note that after set a new storage location, the application need to restart.
+Note that a '.xml' file needs to be specified in the LOCATION paratmeter.<br>
+Format: `set_path LOCATION`
+
+Examples:
+
+* `set_path f:/ToDoList.xml`<br>
+Sets the stroage file to be 'ToDoList.xml' under disk f.
+
+* `set_path default`
+Sets the storage file to be deault name under defualt folder. 
+
 ## 3. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
