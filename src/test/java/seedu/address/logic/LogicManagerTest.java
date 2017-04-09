@@ -360,17 +360,17 @@ public class LogicManagerTest {
         expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
         expectedfilteredTasks.setPredicate(ReadOnlyTask -> !ReadOnlyTask.getIsCompleted());
 
-        ToDoList expectedAB_display = new ToDoList();
+        ToDoList expectedABdisplay = new ToDoList();
         for (ReadOnlyTask p : expectedfilteredTasks) {
             Task p1 = new Task(p);
-            expectedAB_display.addTask(p1);
-            expectedAB_display.sort_tasks();
+            expectedABdisplay.addTask(p1);
+            expectedABdisplay.sort_tasks();
         }
 
         helper.addToModel(model, threePersons);
 
         assertCommandSuccess("select 2", String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, 2), expectedAB,
-                expectedAB_display.getTaskList());
+                expectedABdisplay.getTaskList());
         assertEquals(1, targetedJumpIndex);
         assertEquals(model.getFilteredTaskList().get(1), expectedfilteredTasks.get(1));
     }
