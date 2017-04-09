@@ -52,8 +52,6 @@ public class SampleDataUtil {
                 new Task(new Title("Have dinner with Rei Yun"), new Deadline("this sunday 6:30pm"),
                         new Remarks("at Orchard"), null, new UniqueLabelList("Funnnnn"),
                         false),
-// @@author
-// @@author A0115333U
                 new Task(new Title("Go buy pizza"), new Deadline("last thursday"), new Remarks("can delay"),
                         null, new UniqueLabelList("asap"), false),
                 new Task(new Title("Have dinner with Zhong Qi"), new Deadline("next saturday 5:30pm"),
@@ -64,6 +62,8 @@ public class SampleDataUtil {
                 new Task(new Title("Have dinner with Irfan"), new Deadline("this sunday 6:30pm"),
                         new Remarks("at Orchard"), new StartTime("next friday 5pm"), new UniqueLabelList("heart"),
                         false),
+// @@author
+// @@author A0115333U
                 new Task(new Title("Have dinner with Ray"), new Deadline("this sunday 6:30pm"),
                         new Remarks("Clarke Quay"), new StartTime("this sunday 6:30pm"),
                         new UniqueLabelList("heart"), false),
