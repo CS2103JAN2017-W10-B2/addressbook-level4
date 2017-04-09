@@ -479,23 +479,13 @@ Use case ends.
 **MSS**
 
 1. User requests find a task by inputting label keywords.
-2. doitdoit!! shows a list of tasks that has label matchingany of the keywords.
+2. doitdoit!! shows a list of tasks that has label matching any of the keywords.
 
 **Extensions**
 
 2a. The list is empty
 
 > Use case ends
-
-3a. The given index is invalid
-
-> 3a1. ToDoList shows an error message <br>
-  Use case resumes at step 2
-
-3b. User did not specify any field to be changed.
-
-> 3a1. ToDoList shows an error message <br>
-  Use case resumes at step 2
 
 #### Use case: Set storage location
 
@@ -514,13 +504,13 @@ Use case ends.
 **Extensions**
 
 2a. Undo stack is empty (no action to undo)
-> 2a1. ToDoList shows an error message <br>
+> 2a1. doitdoit!! shows an error message <br>
   Use case ends
 
-3a. More than 11 undos are called consecutively
+2b. More than 11 undos are called consecutively
 
-> 3a1. ToDoList shows an error message <br>
-  Use case resumes at step 2
+> 2b1. doitdoit!! shows an error message <br>
+  Use case ends
 
 ## Appendix C : Non Functional Requirements
 
