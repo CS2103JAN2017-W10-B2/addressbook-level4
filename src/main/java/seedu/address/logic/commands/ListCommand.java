@@ -20,6 +20,7 @@ public class ListCommand extends Command {
 
     @Override
     public CommandResult execute() {
+        assert model != null;
         switch (listType.trim()) {
         case "all":
             model.updateFilteredListToShowAll();

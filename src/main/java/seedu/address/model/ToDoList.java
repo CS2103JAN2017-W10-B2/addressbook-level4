@@ -25,7 +25,6 @@ import seedu.address.model.task.UniqueTaskList.DuplicateTaskException;
 public class ToDoList implements ReadOnlyToDoList {
 
     private final UniqueTaskList tasks;
-    private UniqueTaskList tempTasks;
     private final UniqueLabelList labels;
 
     /*
@@ -39,7 +38,6 @@ public class ToDoList implements ReadOnlyToDoList {
     {
         tasks = new UniqueTaskList();
         labels = new UniqueLabelList();
-        tempTasks = new UniqueTaskList();
     }
 
     public ToDoList() {
@@ -67,8 +65,6 @@ public class ToDoList implements ReadOnlyToDoList {
         assert newData != null;
 
         tasks.backupIntoUndoStack();
-
-        this.tempTasks.setTasks(this.tasks);
 
         try {
             setTasks(newData.getTaskList());

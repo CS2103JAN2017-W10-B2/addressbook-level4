@@ -192,6 +192,65 @@ public class LogicManagerTest {
         assertCommandSuccess("clear", ClearCommand.MESSAGE_SUCCESS, new ToDoList(), Collections.emptyList());
     }
 
+    //@@author A0138831A
+    @Test
+    public void execute_undoAdd() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        Model currmodel = model;
+        model.addTask(helper.generateTask(1));
+        model.addTask(helper.generateTask(2));
+        model.undoTask();
+        model.undoTask();
+
+        assertEquals(currmodel, model);
+    }
+
+    //@@author A0138831A
+    @Test
+    public void execute_undoDelete() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        ReadOnlyTask target = helper.generateTask(2);
+        Model currmodel = model;
+        model.addTask((Task) target);
+        model.deleteTask(target);
+        model.undoTask();
+
+        assertEquals(currmodel, model);
+    }
+    //@@author A0138831A
+    @Test
+    public void execute_undoClear() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        model.addTask(helper.generateTask(1));
+        model.addTask(helper.generateTask(2));
+        Model currmodel = model;
+        model.resetData(new ToDoList());
+        model.undoTask();
+
+        assertEquals(currmodel, model);
+    }
+
+    //@@author A0138831A
+    @Test
+    public void execute_multipleUndo() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        ReadOnlyTask target = helper.generateTask(3);
+        Model currmodel = model;
+        model.addTask(helper.generateTask(1));
+        model.addTask(helper.generateTask(2));
+        model.addTask((Task) target);
+        model.deleteTask(target);
+        model.resetData(new ToDoList());
+        model.undoTask();
+        model.undoTask();
+        model.undoTask();
+        model.undoTask();
+        model.undoTask();
+
+        assertEquals(currmodel, model);
+    }
+
+
     /*
      * Irrelavant test case
      *
@@ -360,17 +419,17 @@ public class LogicManagerTest {
         expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
         expectedfilteredTasks.setPredicate(ReadOnlyTask -> !ReadOnlyTask.getIsCompleted());
 
-        ToDoList expectedAB_display = new ToDoList();
+        ToDoList expectedABdisplay = new ToDoList();
         for (ReadOnlyTask p : expectedfilteredTasks) {
             Task p1 = new Task(p);
-            expectedAB_display.addTask(p1);
-            expectedAB_display.sort_tasks();
+            expectedABdisplay.addTask(p1);
+            expectedABdisplay.sort_tasks();
         }
 
         helper.addToModel(model, threePersons);
 
         assertCommandSuccess("select 2", String.format(SelectCommand.MESSAGE_SELECT_PERSON_SUCCESS, 2), expectedAB,
-                expectedAB_display.getTaskList());
+                expectedABdisplay.getTaskList());
         assertEquals(1, targetedJumpIndex);
         assertEquals(model.getFilteredTaskList().get(1), expectedfilteredTasks.get(1));
     }
@@ -399,22 +458,22 @@ public class LogicManagerTest {
         expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
         expectedfilteredTasks.setPredicate(ReadOnlyTask -> !ReadOnlyTask.getIsCompleted());
 
-        ToDoList expectedAB_display = new ToDoList();
+        ToDoList expectedABdisplay = new ToDoList();
         for (ReadOnlyTask p : expectedfilteredTasks) {
             Task p1 = new Task(p);
-            expectedAB_display.addTask(p1);
-            expectedAB_display.sort_tasks();
+            expectedABdisplay.addTask(p1);
+            expectedABdisplay.sort_tasks();
         }
 
         ReadOnlyTask todelete = expectedfilteredTasks.get(1);
-        expectedAB_display.removeTask(todelete);
+        expectedABdisplay.removeTask(todelete);
         expectedAB.removeTask(todelete);
 
         // prepare ToDoList state
         helper.addToModel(model, fivePersons);
 
         assertCommandSuccess("delete 2", String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, todelete), expectedAB,
-                expectedAB_display.getTaskList());
+                expectedABdisplay.getTaskList());
     }
     // @@author
 

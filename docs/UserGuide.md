@@ -168,7 +168,7 @@ Examples:
 
 ### 2.8. Clearing all entries : `clear`
 
-Clears all entries from the todolist.<br>
+Clears all entries from the todolist. Can be undone<br>
 Format: `clear`
 
 ### 2.9. Exiting the program : `exit`
@@ -180,6 +180,26 @@ Format: `exit`
 
 Todolist data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.
+
+### 2.11. Undo last action : `undo`
+
+Undo last action from the todolist. Able to undo up to last 11 actions.<br>
+Format: `undo`
+
+### 2.12. Set storage location : `set_path LOCATION`
+
+Set the storage location as desired. This can be used to store data at a folder linked to the cloud.
+Note that after set a new storage location, the application need to restart.
+Note that a '.xml' file needs to be specified in the LOCATION paratmeter.<br>
+Format: `set_path LOCATION`
+
+Examples:
+
+* `set_path f:/ToDoList.xml`<br>
+Sets the stroage file to be 'ToDoList.xml' under disk f.
+
+* `set_path default`
+Sets the storage file to be default name under default folder.
 
 ## 3. FAQ
 

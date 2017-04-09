@@ -164,14 +164,11 @@ public class UniqueTaskList implements Iterable<Task> {
 
         if (undoStack.size() == 1) {
             throw new EmptyStackException();
-
         } else {
-
             ObservableList<Task> prevList = FXCollections.observableArrayList();
             prevList = undoStack.pop();
             this.internalList.setAll(prevList);
         }
-
     }
 
     public UnmodifiableObservableList<Task> asObservableList() {
