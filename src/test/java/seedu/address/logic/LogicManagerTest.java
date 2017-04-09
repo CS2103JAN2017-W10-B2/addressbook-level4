@@ -229,6 +229,26 @@ public class LogicManagerTest {
         assertEquals(currmodel,model);
     }
 
+    //@@author A0138831A
+    @Test
+    public void execute_multipleUndo() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        ReadOnlyTask target = helper.generateTask(3);
+        Model currmodel = model;
+        model.addTask(helper.generateTask(1));
+        model.addTask(helper.generateTask(2));
+        model.addTask((Task) target);
+        model.deleteTask(target);
+        model.resetData(new ToDoList());
+        model.undoTask();
+        model.undoTask();
+        model.undoTask();
+        model.undoTask();
+        model.undoTask();
+
+        assertEquals(currmodel,model);
+    }
+
 
     /*
      * Irrelavant test case
