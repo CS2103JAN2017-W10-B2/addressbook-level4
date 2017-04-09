@@ -19,7 +19,7 @@ public class Task implements ReadOnlyTask {
     private UniqueLabelList labels;
 
     /**
-     * Every field must be present and not null.
+     * Title and isCompleted must be present and cannot be null.
      * @param isCompleted TODO
      */
     public Task(Title title, Deadline deadline, Remarks remarks, StartTime startTime,

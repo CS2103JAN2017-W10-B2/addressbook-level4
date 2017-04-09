@@ -1,3 +1,4 @@
+// @@author A0143132X
 package seedu.address.storage;
 
 import java.util.ArrayList;
@@ -48,7 +49,6 @@ public class XmlAdaptedTask {
      *            future changes to this will not affect the created
      *            XmlAdaptedTask
      */
-    // @@author A0143132X
     public XmlAdaptedTask(ReadOnlyTask source) {
         title = source.getTitle().fullTitle;
         if (source.hasDeadline()) {

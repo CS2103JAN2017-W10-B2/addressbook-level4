@@ -72,6 +72,7 @@ public class TaskCardHandle extends GuiHandle {
         return guiRobot.from(node).lookup(TAGS_FIELD_ID).query();
     }
 
+    //@@author A0143132X
     public boolean isSameTask(ReadOnlyTask person) {
         return getFullName().equals(person.getTitle().fullTitle)
                 && getPhone().equals("Deadline  : " + person.getDeadline().value)
@@ -79,6 +80,7 @@ public class TaskCardHandle extends GuiHandle {
                 && getAddress().equals("Start Time: " + person.getStartTime().value)
                 && getTags().equals(getTags(person.getLabels()));
     }
+    //@@author
 
     @Override
     public boolean equals(Object obj) {

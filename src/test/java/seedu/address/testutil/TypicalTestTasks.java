@@ -13,6 +13,7 @@ public class TypicalTestTasks {
     public TestTask testExample1, testExample2, testExample3, testExample4, testExample5, testExample6;
     public TestTask testExample7, testExample8, testExample9;
 
+    //@@author A01432132X
     public TypicalTestTasks() {
         try {
             testExample1 = new TaskBuilder().withTitle("Project").withStartTime("10/11/17")
@@ -41,6 +42,7 @@ public class TypicalTestTasks {
             assert false : "not possible";
         }
     }
+    //@@author
 
     public static void loadToDoListWithSampleData(ToDoList tdl) {
         for (TestTask task : new TypicalTestTasks().getTypicalTasks()) {
