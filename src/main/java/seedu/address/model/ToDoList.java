@@ -163,10 +163,9 @@ public class ToDoList implements ReadOnlyToDoList {
      * undo recent command
      * implementations in uniquetasklist.java
      */
-    public void undoTask() throws EmptyStackException{
-   		tasks.undoTask();
-
-	}
+    public void undoTask() throws EmptyStackException {
+        tasks.undoTask();
+    }
 
     //// label-level operations
 
