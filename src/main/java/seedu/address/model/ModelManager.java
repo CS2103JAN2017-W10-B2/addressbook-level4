@@ -191,11 +191,11 @@ public class ModelManager extends ComponentManager implements Model {
         public boolean run(ReadOnlyTask task) {
             if (task.hasRemarks()) {
                 return keyWords.stream()
-                        .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
-                        .findAny().isPresent()
-                        || keyWords.stream().filter(
-                                keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
-                                .findAny().isPresent();
+                    .filter(keyword -> StringUtil.containsSubstringIgnoreCase(task.getTitle().fullTitle, keyword))
+                    .findAny().isPresent()
+                    || keyWords.stream().filter(
+                        keyword -> StringUtil.containsSubstringIgnoreCase(task.getRemarks().value, keyword))
+                        .findAny().isPresent();
 
             }
             return keyWords.stream()
