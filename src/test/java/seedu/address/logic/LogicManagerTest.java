@@ -399,22 +399,22 @@ public class LogicManagerTest {
         expectedfilteredTasks = new FilteredList<>(expectedAB.getTaskList());
         expectedfilteredTasks.setPredicate(ReadOnlyTask -> !ReadOnlyTask.getIsCompleted());
 
-        ToDoList expectedAB_display = new ToDoList();
+        ToDoList expectedABdisplay = new ToDoList();
         for (ReadOnlyTask p : expectedfilteredTasks) {
             Task p1 = new Task(p);
-            expectedAB_display.addTask(p1);
-            expectedAB_display.sort_tasks();
+            expectedABdisplay.addTask(p1);
+            expectedABdisplay.sort_tasks();
         }
 
         ReadOnlyTask todelete = expectedfilteredTasks.get(1);
-        expectedAB_display.removeTask(todelete);
+        expectedABdisplay.removeTask(todelete);
         expectedAB.removeTask(todelete);
 
         // prepare ToDoList state
         helper.addToModel(model, fivePersons);
 
         assertCommandSuccess("delete 2", String.format(DeleteCommand.MESSAGE_DELETE_TASK_SUCCESS, todelete), expectedAB,
-                expectedAB_display.getTaskList());
+                expectedABdisplay.getTaskList());
     }
     // @@author
 
