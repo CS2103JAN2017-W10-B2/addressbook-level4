@@ -16,12 +16,12 @@ public class FixedSizeStackTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private FixedSizeStack<Integer> fixedSizeStack = new FixedSizeStack<Integer>();
-
+    //test the default constructor
     @Test
     public void constructor() {
     	assertEquals(Collections.emptyList(),fixedSizeStack);
     }
-
+  //test the default fixed size of 11
     @Test
     public void testDefaultFixedSize() {
         fixedSizeStack.push(1);
@@ -38,7 +38,7 @@ public class FixedSizeStackTest {
         fixedSizeStack.push(12);
         assertEquals(fixedSizeStack.size(), 11);
     }
-
+    //test the user defined fixed size
     @Test
     public void testUserDefineSize() {
     	int size = 2;
