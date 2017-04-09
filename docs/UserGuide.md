@@ -36,6 +36,7 @@ By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbs
 
 > **Command Format**
 >
+> * All command words are in lower case.
 > * `PARAMETER NAME` all caps means to enter the parameters this must have a value!
 > * `(OPTIONAL PARAMETER)` this bracket means that parameter is optional.
 > * `...` which follows parameter mean that the parameter can have multiple inputs.

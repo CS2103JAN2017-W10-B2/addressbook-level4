@@ -24,9 +24,9 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to toDoList!!. "
-            + "Parameters: TITLE (from: START TIME) (till:  DEADLINE) (remark: REMAKRS) (label: LABELS...) "
+            + "Parameters: TITLE (from: START TIME) (till:  DEADLINE) (remark: REMARK) (label: LABELS...) "
             + "(c/ COMPLETIONSTATUS)\n"
-            + "OR: TITLE (from: START TIME) (due:  DEADLINE) (remark: REMAKRS) (label: LABELS...) "
+            + "OR: TITLE (from: START TIME) (due:  DEADLINE) (remark: REMARK) (label: LABELS...) "
             + "(c/ COMPLETIONSTATUS)\n" + "Example: " + COMMAND_WORD
             + " Complete Assignment 1 from now till next friday remark: 20% of final grade label: Assignment c/yes";
     // @@author
@@ -55,12 +55,14 @@ public class AddCommand extends Command {
     }
     // @@author
 
-//@@author A0135795R
+    // @@author A0135795R
     @Override
     /**
-     * Executes AddCommand and makes sure that deadline is never before start time.
+     * Executes AddCommand and makes sure that deadline is never before start
+     * time.
      *
-     * @throws DuplicateTaskException if task to be added already exists
+     * @throws DuplicateTaskException
+     *             if task to be added already exists
      */
     public CommandResult execute() throws CommandException {
         assert model != null;
@@ -79,6 +81,6 @@ public class AddCommand extends Command {
         }
 
     }
-//@@author
+    // @@author
 
 }
