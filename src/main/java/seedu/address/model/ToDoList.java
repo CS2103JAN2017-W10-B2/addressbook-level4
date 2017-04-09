@@ -204,10 +204,4 @@ public class ToDoList implements ReadOnlyToDoList {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(tasks, labels);
     }
-
-	/*public void backup() {
-		tasks.backupIntoUndoStack();
-	}*/
-
-
 }
