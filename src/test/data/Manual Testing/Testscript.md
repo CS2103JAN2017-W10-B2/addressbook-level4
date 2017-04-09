@@ -39,8 +39,8 @@ OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS...)
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
 ------------ | ------------- | -------------  | ------------- 
-Add a task with all fields | `add go on a diet from: 04/12/17 12am till: next Sunday 12am remark: avoid oily and fatty foods #health #greens` | Task entered at index 20 | New task added: go on a diet Start Time: 0:00am 10 Apr 2017 Deadline: 0:00am 16 Apr 2017 Remarks: avoid oily and fatty foods Labels: [health][greens]
-Add a task with deadline | `add finish math assignment due: 04/19/17 2pm remark: submit during lecture #graded #math` | Task entered at index 20 | New task added: finish math assignment Deadline: 2:00pm 19 Apr 2017 Remarks: submit during lecture Labels: [graded][math]
+Add a task with all fields | `add go on a diet from: 04/12/17 12am till: next Sunday 12am remark: avoid oily and fatty foods #health #greens` | Task entered at index 16 | New task added: go on a diet Start Time: 0:00am 10 Apr 2017 Deadline: 0:00am 16 Apr 2017 Remarks: avoid oily and fatty foods Labels: [health][greens]
+Add a task with deadline | `add finish math assignment due: 04/19/17 2pm remark: submit during lecture #graded #math` | Task entered at index 34 | New task added: finish math assignment Deadline: 2:00pm 19 Apr 2017 Remarks: submit during lecture Labels: [graded][math]
 Add a task with title only | `add send email to boss` | Task entered at index 1 | New task added: send email to boss
 
 ### List Command
@@ -51,8 +51,8 @@ List tasks of the specified type. Three types are available: 'all', 'ongoing', '
 Scenario | Input Command  | Expected task panel results | Expected command box results
 ------------ | ------------- | -------------  | ------------- 
 List all tasks. | `list all` | 54 tasks listed | Listed all tasks
-List completed tasks. | `list completed` | 0 tasks listed |Listed completed tasks
-List ongoing tasks. | `list ongoing` | 54 tasks listed | Listed ongoing tasks
+List completed tasks. | `list completed` | 4 tasks listed |Listed completed tasks
+List ongoing tasks. | `list ongoing` | 50 tasks listed | Listed ongoing tasks
 List incorrect syntax. | `List` | Command box turns red. |Unknown command. Type 'help' to get help!
 
 ## Edit Command
@@ -62,9 +62,9 @@ OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#L
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
 ------------ | ------------- | -------------  | ------------- 
-Edit title of a task. | `edit 7 Go buy stationeries` | Task updated at index 7 | Edited Task: Go buy stationeries Start Time: 1:31am 11 Apr 2017 Deadline: 1:31am 11 Apr 2017
-Edit deadline of a task. | `edit 9 due: 04/14/17 4pm` | Task updated at index 7 | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017
-Edit to remaove labels. | `dit 2 #` | Task updated at index 2 | Edited Task: Go buy pizza Deadline: 1:31am 6 Apr 2017
+Edit title of a task. | `edit 3 Go buy stationeries` | Task updated at index 3 | Edited Task: Go buy stationeries Start Time: 1:31am 11 Apr 2017 Deadline: 1:31am 11 Apr 2017
+Edit deadline of a task. | `edit 5 due: 04/14/17 4pm` | Task updated at index 16 | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017
+Edit to remaove labels. | `edit 2 #` | Task updated at index 2 | Edited Task: Go buy pizza Deadline: 1:31am 6 Apr 2017
 
 ## Find Command
 
@@ -92,9 +92,9 @@ completion_status available are: "yes", "no"
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
 ------------ | ------------- | -------------  | ------------- 
-Complete a task | `edit 3 c/yes` | 52 tasks listed. | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017 Completion: true
+Complete a task | `edit 3 c/yes` | 48 tasks listed. | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017 Completion: true
 Mark an incomplete task as incomplete | `edit 6 c/no` | no change | Edited Task: Stock up on pizza Start Time: 1:31am 6 Apr 2017 Deadline: 1:31am 11 Apr 2017 Labels: [urgent]
-Mark a complete task as incomplete | `list completed` `edit 1 c/no` | 53 tasks listed. Editted task found at index 29. | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017
+Mark a complete task as incomplete | `list completed` `edit 5 c/no` | 49 tasks listed. Editted task found at index 15. | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017
 
 ## Undo Command
 
@@ -102,7 +102,7 @@ Command Format: `undo`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
 ------------ | ------------- | -------------  | ------------- 
-Undo an action | `delete 1` | 52 tasks listed.  | Previous command undone!
+Undo an action | `undo` | 52 tasks listed.  | Previous command undone!
 
 ## Clear Command
 

@@ -3,26 +3,26 @@
     <tasks>
         <title>Go buy pizza</title>
         <deadline>1:31am 6 Apr 2017</deadline>
-        <isCompleted>false</isCompleted>
+        <isCompleted>true</isCompleted>
         <labeled>asap</labeled>
     </tasks>
     <tasks>
         <title>Stock up on sweets</title>
         <deadline>1:31am 6 Apr 2017</deadline>
         <remarks>impt</remarks>
-        <isCompleted>false</isCompleted>
+        <isCompleted>true</isCompleted>
     </tasks>
     <tasks>
         <title>new example</title>
         <deadline>1:35am 9 Apr 2017</deadline>
         <startTime>1:35am 9 Apr 2017</startTime>
-        <isCompleted>false</isCompleted>
+        <isCompleted>true</isCompleted>
     </tasks>
     <tasks>
         <title>Stock up on stationeries</title>
         <deadline>1:31am 10 Apr 2017</deadline>
         <remarks>soon</remarks>
-        <isCompleted>false</isCompleted>
+        <isCompleted>true</isCompleted>
     </tasks>
     <tasks>
         <title>Stock up on pizza</title>
@@ -107,7 +107,7 @@
         <labeled>urgent</labeled>
     </tasks>
     <tasks>
-        <title>CS2103 project</title>
+        <title>Read up on possible research projects</title>
         <deadline>4:00pm 11 Apr 2017</deadline>
         <startTime>1:31am 10 Apr 2017</startTime>
         <isCompleted>false</isCompleted>
@@ -305,7 +305,7 @@
         <isCompleted>false</isCompleted>
     </tasks>
     <tasks>
-        <title>ST3131 project</title>
+        <title>Deadline for application for research projects</title>
         <deadline>1:31am 1 May 2017</deadline>
         <isCompleted>false</isCompleted>
         <labeled>urgent</labeled>

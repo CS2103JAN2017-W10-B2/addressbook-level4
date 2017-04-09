@@ -16,8 +16,8 @@ By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbs
    > Having any Java 8 version is not enough. <br>
    > This app will not work with earlier versions of Java 8.
 
-1. Download the latest `todolist.jar` from the [releases](../../../releases) tab.
-2. Copy the file to the folder you want to use as the home folder for your To Do List.
+1. Download the latest `doitdoit!!.jar` from the [releases](../../../releases) tab.
+2. Copy the file to the folder you want to use as the home folder for your doitdoit!!.
 3. Double-click the file to start the app. The GUI should appear in a few seconds.
    > <img src="images/Ui.png" width="600">
 
@@ -51,8 +51,8 @@ Format: `help`
 ### 2.2. Adding a task: `add`
 
 Adds a Task to the task list<br>
-Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS...)`
-OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS...)`
+Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remark: REMARK) (#LABELS...)`
+OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remark: REMARK) (#LABELS...)`
 
 > Other than TITLE, all other information is purely optional.
 > STARTTIME and DEADLINE inputs are very flexible!
@@ -63,19 +63,19 @@ OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS...)
 
 Examples:
 
-* `add Complete Assignment 1 from: now till: friday remarks: 20% of final grade #Assignment`<br>
+* `add Complete Assignment 1 from: now till: friday remark: 20% of final grade #Assignment`<br>
 * `add Revise tutorial 1 #Assignment`<br>
 * `add Do CS2103 T7 till: thursday 8pm remarks: Remember to make pull request on github #School`<br>
-* `add Buy gift for mom till:7th September #Birthday #Family`<br>
+* `add Buy gift for mom due:7th September #Birthday #Family`<br>
 * `add Finish studing for mid term from: now till: tomorrow #School #Exam`<br>
 
 ### 2.3. Listing tasks : `list`
 
 Shows tasks of specified types in the to do list.<br>
-Format: `list type`
+Format: `list TYPE`
 
-> List tasks of the specified type.
-> Three types are available: 'all', 'ongoing', 'completed'.
+> List tasks of the specified TYPE.
+> Three TYPES are available: 'all', 'ongoing', 'completed'.
 
 Examples:
 
@@ -85,52 +85,58 @@ Examples:
 
 ### 2.4. Editing a task : `edit`
 
-Edits an existing task in the ToDoList.<br>
-Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS)`
-OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS)`
+Edits an existing task in the to do list.<br>
+Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remark: REMARK) (#LABELS...)`
+OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remarks: REMARK) (#LABELS...)`
 
 > * Edits the task at the specified `INDEX`.
     The index refers to the index number shown in the last task listing.<br>
     The index **must be a positive integer** 1, 2, 3, ...
 > * At least one of the optional fields must be provided.
 > * Existing values will be updated to the input values.
-> * Clear all LABELS by entering ` #`, similarly for REMARKS, type `remarks:`
+> * Clear all LABELS by entering ` #`. Other fields cannot be cleared.
 
 Examples:
 
-* `edit 1 till: next Thursday`<br>
+* `edit 1 due: next Thursday`<br>
   Edits the due date of the 1st task to be next Thursday.
 * `edit 2 CS2103 homework #`<br>
   Edits the TITLE of the 2nd task to be `CS2103 homework` and clears all existing LABELS.
 
-### 2.5. Finding all tasks containing any keyword in their task summary: `find`
+### 2.5. Finding all tasks containing any keyword in their task title or remark: `find`
 
 Finds tasks based on any of the given keywords.<br>
-Format: `find (KEYWORDS...) (#LABEL_KEYWORDS...)`
+Format: `find KEYWORDS (MORE_KEYWORDS...)`
 
-> * The search is not case sensitive. e.g `hans` will match `Hans`
-> * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+> * The search is not case sensitive. e.g `homework`(in task) will match `Homework` (keyword)
+> * The order of the keywords does not matter. e.g. `Math Homework` will match `Homework Math`
 > * Tasks matching at least one keyword will be returned (i.e. `OR` search).
-    e.g. `Hans` will match `Hans Bo`
+    e.g. `Homework` will match `Math Homework`
 > * Only the task title and remarks are searched for keywords (substring match).
-> * Only labels are searched for label keywords (full word match).
-> * At least one of the optional fields must be present.
-> * Only one the search will occur. (keyword search or label search).
-> * Task summary search: substrings will be matched e.g. `Hanss` will match keyword `Hans`
-> * Label search: full word is matched. e.g. `Hanss` will not match keyword `Hans`
+> * substrings will be matched e.g. `Homeworks` will match keyword `Homework`
 
 Examples:
 
 * `find homework`<br>
-  Returns `CS2103 homework` and `EE4212 Homework`
+  Returns `CS2103 homework` and `EE4212 Homeworks`
 * `find homework CS2103 EG2401`<br>
   Returns Any task having following words containing the substring in task summary `homework`, `CS2103`, or `EG2401`
+
+### 2.6. Finding all tasks containing any exact keyword match in their task label: `find`
+Finds tasks based on any of the given keywords.<br>
+Format: `find #LABEL_KEYWORDS (#MORE_LABEL_KEYWORDS...)`
+
+> * The search is not case sensitive. e.g `#important`(in task) will match `#IMPORTANT`(label keyword)
+> * Label search: full word is matched. (full word match). e.g `#graded`(in task) will not match `#grade`(label keyword)
+
+Examples:
+
   * `find #Assignment`<br>
   Returns `MA1100 #Assignment` and `MA3252 #assignment`
 
-### 2.6. Deleting a task : `delete`
+### 2.7. Deleting a task : `delete`
 
-Deletes the specified task from the todolist. Can be undone.<br>
+Deletes the specified task from the to do list. Can be undone.<br>
 Format: `delete INDEX`
 
 > Deletes the task at the specified `INDEX`. <br>
@@ -146,9 +152,9 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task in the results of the `find` command.
 
-### 2.7. Completing a task : `edit INDEX c/`
+### 2.8. Completing a task : `edit INDEX c/`
 
-Marks the specified task from the todolist as complete. Can be undone.<br>
+Marks the specified task from the doitdoit!! as complete. Can be undone.<br>
 Format: `edit INDEX c/completion_status`
 
 > Marks the task at the specified `INDEX` ad completed or not completed. <br>
@@ -159,34 +165,19 @@ Examples:
 
 * `list`<br>
   `edit 3 c/yes`<br>
-  Marks the 3rd task in the todolist as complted.
+  Marks the 3rd task in the doitdoit!! as complted.
   Hence the task is no longer displayed as by default ongoing tasks are shown after each edit .
 * `list completed `<br>
   `edit 2 c/no`<br>
   Marks the 2nd task in the completed task list as incompleted.
   After this, the list of ongoing tasks will be shown.
 
-### 2.8. Clearing all entries : `clear`
+### 2.9. Undo last action : `undo`
 
-Clears all entries from the todolist. Can be undone<br>
-Format: `clear`
-
-### 2.9. Exiting the program : `exit`
-
-Exits the program.<br>
-Format: `exit`
-
-### 2.10. Saving the data
-
-Todolist data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.
-
-### 2.11. Undo last action : `undo`
-
-Undo last action from the todolist. Able to undo up to last 11 actions.<br>
+Undo last action from the doitdoit!!. Able to undo up to last 11 actions.<br>
 Format: `undo`
 
-### 2.12. Set storage location : `set_path LOCATION`
+### 2.10. Set storage location : `set_path LOCATION`
 
 Set the storage location as desired. This can be used to store data at a folder linked to the cloud.
 Note that after set a new storage location, the application need to restart.
@@ -195,17 +186,31 @@ Format: `set_path LOCATION`
 
 Examples:
 
-* `set_path f:/ToDoList.xml`<br>
-Sets the stroage file to be 'ToDoList.xml' under disk f.
+* `set_path f:/doitdoit!!.xml`<br>
+Sets the stroage file to be 'doitdoit!!.xml' under disk f.
 
 * `set_path default`
 Sets the storage file to be default name under default folder.
+### 2.8. Clearing all entries : `clear`
+
+Clears all entries from the doitdoit!!. Can be undone<br>
+Format: `clear`
+
+### 2.11. Exiting the program : `exit`
+
+Exits the program.<br>
+Format: `exit`
+
+### 2.12. Saving the data
+
+doitdoit!! data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.
 
 ## 3. FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with
-       the file that contains the data of your previous To Do List folder.
+       the file that contains the data of your previous doitdoit!! folder.
 
 ## 4. Command Summary
 
