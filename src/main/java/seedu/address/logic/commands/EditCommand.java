@@ -37,6 +37,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_TIME_CONFLICT = "Start time will be after deadline. Please try again.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the doitdoit!!";
+    // @@author
 
     private final int filteredTaskListIndex;
     private final EditTaskDescriptor editTaskDescriptor;
