@@ -23,7 +23,7 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/Ray.jpg" width="150"><br>
  Role: Developer <br>
 * Components in charge of: UI, Model
-* Aspects/tools in charge of: Git, Input command configuration
+* Aspects/tools in charge of: Git, Input command configuration, Regex expert
 * Features implemented:
    * Add task using natural language processing
    * Edit task using natural language processing

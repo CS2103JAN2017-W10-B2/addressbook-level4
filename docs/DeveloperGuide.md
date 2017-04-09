@@ -80,16 +80,13 @@ By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbs
 <img src="images/Architecture.png" width="600"><br>
 _Figure 2.1.1 : Architecture Diagram_
 
-The **_Architecture Diagram_** given above explains the high-level design of the App.
+The **_Architecture Diagram_** given above explains the high-level design of doitdoit!!. 
 Given below is a quick overview of each component.
-
-> Tip: The `.pptx` files used to create diagrams in this document can be found in the [diagrams](diagrams/) folder.
-> To update a diagram, modify the diagram in the pptx file, select the objects of the diagram, and choose `Save as picture`.
 
 `Main` has only one class called [`MainApp`](../src/main/java/seedu/address/MainApp.java). It is responsible for,
 
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup method where necessary.
+* At app launch: Initializes the components in the correct sequence, and connects them with each other.
+* At shut down: Shuts down components and invokes cleanup method where necessary.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
 Two of those classes play important roles at the architecture level.
@@ -123,7 +120,7 @@ command `delete 1`.
 <img src="images\SDforDeleteTask.png" width="800"><br>
 _Figure 2.1.3a : Component interactions for `delete 1` command (part 1)_
 
->Note how the `Model` simply raises a `ToDoListChangedEvent` when the To Do List data are changed,
+>The `Model` simply raises a `ToDoListChangedEvent` when the doitdoit!! data are changed,
  instead of asking the `Storage` to save the updates to the hard disk.
 
 The diagram below shows how the `EventsCenter` reacts to that event, which eventually results in the updates
@@ -131,15 +128,13 @@ being saved to the hard disk and the status bar of the UI being updated to refle
 <img src="images\SDforDeleteTaskEventHandling.png" width="800"><br>
 _Figure 2.1.3b : Component interactions for `delete 1` command (part 2)_
 
-> Note how the event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
+> The event is propagated through the `EventsCenter` to the `Storage` and `UI` without `Model` having
   to be coupled to either of them. This is an example of how this Event Driven approach helps us reduce direct
   coupling between components.
 
 The sections below give more details of each component.
 
 ### 2.2. UI component
-
-Author: Alice Bee
 
 <img src="images/UiClassDiagram.png" width="800"><br>
 _Figure 2.2.1 : Structure of the UI Component_
@@ -162,8 +157,6 @@ The `UI` component,
 
 ### 2.3. Logic component
 
-Author: Bernard Choo
-
 <img src="images/LogicClassDiagram.png" width="800"><br>
 _Figure 2.3.1 : Structure of the Logic Component_
 
@@ -181,8 +174,6 @@ _Figure 2.3.1 : Interactions Inside the Logic Component for the `delete 1` Comma
 
 ### 2.4. Model component
 
-Author: Cynthia Dharman
-
 <img src="images/ModelClassDiagram.png" width="800"><br>
 _Figure 2.4.1 : Structure of the Model Component_
 
@@ -198,8 +189,6 @@ The `Model`,
 
 ### 2.5. Storage component
 
-Author: Darius Foong
-
 <img src="images/StorageClassDiagram.png" width="800"><br>
 _Figure 2.5.1 : Structure of the Storage Component_
 
@@ -207,8 +196,8 @@ _Figure 2.5.1 : Structure of the Storage Component_
 
 The `Storage` component,
 
-* can save `UserPref` objects in json format and read it back.
-* can save the To Do List data in xml format and read it back.
+* can save `UserPref` objects in tim format and read it back.
+* can save doitdoit!! data in xml format and read it back.
 
 ### 2.6. Common classes
 
@@ -238,8 +227,17 @@ and logging destinations.
 ### 3.2. Configuration
 
 Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file
-(default: `config.json`):
+(default: `config.tim`):
 
+### 3.3. Use of Design Patterns
+
+Design patterns are used frequently in implementation of doitdoit!!.
+
+* Singleton pattern: Only one undo command stack is needed in doitdoit!!
+* Facade Pattern: Creating a start and end time of task requires API of Natty Date Parser. However, as we do not want Deadline and StartTime class to fully access all functionalities of Natty Date Parser, TimeUtil class was created so Deadline and StartTime Class can only access essential functions through TimeUtil.
+* Observer Pattern: Storage observes changes in model and updates and saves accordingly.
+* Command Pattern: User input are processed, parsed and executed as commands.
+* Model-View-Controller (MVC) Pattern: UI acts as the view, Model as the model and Logic as the controller.
 
 ## 4. Testing
 
