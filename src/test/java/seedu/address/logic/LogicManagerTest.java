@@ -193,7 +193,7 @@ public class LogicManagerTest {
 
     //@@author A0138831A
     @Test
-    public void execute_undo() throws Exception {
+    public void execute_undoAdd() throws Exception {
         TestDataHelper helper = new TestDataHelper();
         Model currmodel = model;
         model.addTask(helper.generateTask(1));
@@ -203,6 +203,32 @@ public class LogicManagerTest {
 
         assertEquals(currmodel,model);
     }
+
+    //@@author A0138831A
+    @Test
+    public void execute_undoDelete() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        ReadOnlyTask target = helper.generateTask(2);
+        Model currmodel = model;
+        model.addTask((Task) target);
+        model.deleteTask(target);
+        model.undoTask();
+
+        assertEquals(currmodel,model);
+    }
+    //@@author A0138831A
+    @Test
+    public void execute_undoClear() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        model.addTask(helper.generateTask(1));
+        model.addTask(helper.generateTask(2));
+        Model currmodel = model;
+        model.resetData(new ToDoList());
+        model.undoTask();
+
+        assertEquals(currmodel,model);
+    }
+
 
     /*
      * Irrelavant test case
