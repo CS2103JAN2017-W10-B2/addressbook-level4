@@ -33,8 +33,6 @@ public class UniqueTaskList implements Iterable<Task> {
         return internalList.contains(toCheck);
     }
 
-
-
     /**
      * Adds a task to the list.
      *
@@ -47,7 +45,7 @@ public class UniqueTaskList implements Iterable<Task> {
         if (contains(toAdd)) {
             throw new DuplicateTaskException();
         }
-        //@@author A0138831A
+        // @@author A0138831A
         backupIntoUndoStack();
         internalList.add(toAdd);
     }
@@ -64,7 +62,7 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void updateTask(int index, ReadOnlyTask editedTask) throws DuplicateTaskException {
         assert editedTask != null;
-        //@@author A0138831A
+        // @@author A0138831A
         ObservableList<Task> currList = FXCollections.observableArrayList();
         Task temp;
         for (Task t : internalList) {
@@ -96,7 +94,7 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public boolean remove(ReadOnlyTask toRemove) throws TaskNotFoundException {
         assert toRemove != null;
-      //@@author A0138831A
+        // @@author A0138831A
         backupIntoUndoStack();
 
         final boolean taskFoundAndDeleted = internalList.remove(toRemove);
@@ -105,7 +103,8 @@ public class UniqueTaskList implements Iterable<Task> {
         }
         return taskFoundAndDeleted;
     }
-  //@@author A0138831A
+
+    // @@author A0138831A
     public void backupIntoUndoStack() {
         ObservableList<Task> currList = FXCollections.observableArrayList();
         for (Task t : internalList) {
@@ -116,7 +115,8 @@ public class UniqueTaskList implements Iterable<Task> {
 
     // @@author A0115333U
     /**
-     * Sort the list.
+     * Sort the task list by deadline. Tasks with no deadline are displayed in
+     * front.
      *
      */
     public void sort() {
@@ -133,11 +133,17 @@ public class UniqueTaskList implements Iterable<Task> {
                             : TimeUtil.getDateTime(a.toString()).isAfter(TimeUtil.getDateTime(b.toString())) ? 1 : 0;
                     // CHECKSTYLE.ON: LineLength
                 } else {
+                    if (a == null) {
+                        return -1;
+                    } else {
+                        if (b == null) {
+                            return 1;
+                        }
+                    }
                     return 0;
                 }
             }
         });
-
     }
     // @@author
 
@@ -152,7 +158,8 @@ public class UniqueTaskList implements Iterable<Task> {
         }
         setTasks(replacement);
     }
-  //@@author A0138831A
+
+    // @@author A0138831A
     public void undoTask() throws EmptyStackException {
 
         if (undoStack.size() == 1) {
@@ -163,13 +170,16 @@ public class UniqueTaskList implements Iterable<Task> {
             this.internalList.setAll(prevList);
         }
     }
+
     public UnmodifiableObservableList<Task> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
+
     @Override
     public Iterator<Task> iterator() {
         return internalList.iterator();
     }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -198,9 +208,5 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public static class TaskNotFoundException extends Exception {
     }
-
-
-
-
 
 }

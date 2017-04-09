@@ -69,10 +69,19 @@ Examples:
 * `add Buy gift for mom till:7th September #Birthday #Family`<br>
 * `add Finish studing for mid term from: now till: tomorrow #School #Exam`<br>
 
-### 2.3. Listing all tasks : `list`
+### 2.3. Listing tasks : `list`
 
-Shows a list of all ongoing tasks in the to do list.<br>
-Format: `list`
+Shows tasks of specified types in the to do list.<br>
+Format: `list type`
+
+> List tasks of the specified type.
+> Three types are available: 'all', 'ongoing', 'completed'.
+
+Examples:
+
+* `list ongoing
+  Lists the ongoing tasks.
+
 
 ### 2.4. Editing a task : `edit`
 
@@ -137,23 +146,25 @@ Examples:
   `delete 1`<br>
   Deletes the 1st task in the results of the `find` command.
 
-### 2.7. Completing a task : `complete`
+### 2.7. Completing a task : `edit INDEX c/`
 
 Marks the specified task from the todolist as complete. Can be undone.<br>
-Format: `complete INDEX`
+Format: `edit INDEX c/completion_status`
 
-> Marks the task at the specified `INDEX` complete. <br>
+> Marks the task at the specified `INDEX` ad completed or not completed. <br>
 > The index refers to the index number shown in the most recent listing.<br>
 > The index **must be a positive integer** 1, 2, 3, ...
 
 Examples:
 
 * `list`<br>
-  `complete 3`<br>
-  Deletes the 3rd task in the todolist.
-* `search reports`<br>
-  `delete 2`<br>
-  Deletes the 2nd task in the results of the `search` command.
+  `edit 3 c/yes`<br>
+  Marks the 3rd task in the todolist as complted.
+  Hence the task is no longer displayed as by default ongoing tasks are shown after each edit .
+* `list completed `<br>
+  `edit 2 c/no`<br>
+  Marks the 2nd task in the completed task list as incompleted.
+  After this, the list of ongoing tasks will be shown.
 
 ### 2.8. Clearing all entries : `clear`
 
@@ -172,8 +183,23 @@ There is no need to save manually.
 
 ### 2.11. Undo last action : `undo`
 
-Undo last action from the todolist. Able to undo up to last 11 actions<br>
+Undo last action from the todolist. Able to undo up to last 11 actions.<br>
 Format: `undo`
+
+### 2.12. Set storage location : `set_path LOCATION`
+
+Set the storage location as desired. This can be used to store data at a folder linked to the cloud.
+Note that after set a new storage location, the application need to restart.
+Note that a '.xml' file needs to be specified in the LOCATION paratmeter.<br>
+Format: `set_path LOCATION`
+
+Examples:
+
+* `set_path f:/ToDoList.xml`<br>
+Sets the stroage file to be 'ToDoList.xml' under disk f.
+
+* `set_path default`
+Sets the storage file to be default name under default folder.
 
 ## 3. FAQ
 

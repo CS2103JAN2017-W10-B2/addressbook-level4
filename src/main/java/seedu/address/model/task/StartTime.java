@@ -26,7 +26,7 @@ public class StartTime {
         if (!isValidStartTime(trimmedStartTime)) {
             throw new IllegalValueException(MESSAGE_START_TIME_CONSTRAINTS);
         }
-        this.value = trimmedStartTime;
+        this.value = TimeUtil.getFormattedDateTime(trimmedStartTime);
     }
 
     /**
@@ -45,7 +45,7 @@ public class StartTime {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof StartTime // instanceof handles nulls
+                || (other instanceof StartTime // instance of handles nulls
                         && this.value.equals(((StartTime) other).value)); // state check
     }
 

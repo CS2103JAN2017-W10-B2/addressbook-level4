@@ -372,7 +372,7 @@ public class TestUtil {
 
         final List<Label> collect = Arrays.asList(split).stream().map(e -> {
             try {
-                return new Label(e.replaceFirst("Label: ", ""));
+                return new Label(e.replaceFirst(" #", ""));
             } catch (IllegalValueException e1) {
                 // not possible
                 assert false;
