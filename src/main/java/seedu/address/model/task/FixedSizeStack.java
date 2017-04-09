@@ -12,25 +12,19 @@ import java.util.Stack;
  * @param <T>
  */
 public class FixedSizeStack<T> extends Stack<T> {
-
-	private int maximumSize = 11;
-
-	public FixedSizeStack(){
-		super();
-	}
-
+    private int maximumSize = 11;
+    public FixedSizeStack(){
+        super();
+    }
 	public FixedSizeStack(int size){
-		super();
-		this.maximumSize = size;
-	}
-
+    super();
+        this.maximumSize = size;
+    }
 	@Override
-	public T push(T object) {
+    public T push(T object) {
         while (this.size() >= maximumSize) {
             this.remove(0);
         }
         return super.push(object);
     }
-
-
 }
