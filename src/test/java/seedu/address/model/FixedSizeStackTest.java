@@ -41,7 +41,7 @@ public class FixedSizeStackTest {
     //test the user defined fixed size
     @Test
     public void testUserDefineSize() {
-    	int size = 2;
+        int size = 2;
         fixedSizeStack = new FixedSizeStack<Integer>(size);
         fixedSizeStack.push(1);
         fixedSizeStack.push(2);
