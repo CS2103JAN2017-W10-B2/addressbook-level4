@@ -35,19 +35,22 @@ public class TaskCard extends UiPart<Region> {
         super(FXML);
         title.setText(task.getTitle().fullTitle);
         id.setText(displayedIndex + STOPPER_SYMBOL + SEPARATOR);
-        deadline.setText(SEPARATOR);
-        startTime.setText(SEPARATOR);
-        remarks.setText(SEPARATOR);
         if (task.hasDeadline()) {
             String deadlineValue = task.getDeadline().value;
             deadline.setText(DEADLINE_STARTING_MESSAGE + TimeUtil.getFormattedDateTime(deadlineValue));
+        } else {
+            deadline.setText(SEPARATOR);
         }
         if (task.hasStartTime()) {
             String startTimeValue = task.getStartTime().value;
             startTime.setText(START_TIME_STARTING_MESSAGE + TimeUtil.getFormattedDateTime(startTimeValue));
+        } else {
+            startTime.setText(SEPARATOR);
         }
         if (task.hasRemarks()) {
             remarks.setText(task.getRemarks().value);
+        } else {
+            remarks.setText(SEPARATOR);
         }
         initTags(task);
     }

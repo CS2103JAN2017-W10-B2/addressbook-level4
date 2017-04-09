@@ -57,6 +57,7 @@ public class TimeUtil {
 
     /**
      * Test to see if input string is a valid DateTime
+     * @param = String input
      */
     public static Boolean isValidDateTimeExist(String input) {
         List<DateGroup> groups = parser.parse(input);
@@ -72,8 +73,10 @@ public class TimeUtil {
     }
 
     /**
-     * Returns the most likely DateTime from input string.
-     * Else returns null if unable to detect DateTime from input string.
+     * Function to transform a String sentence of human speech style into a LocalDateTime object.
+     *
+     * @param input: a String containing a date
+     * @return a LocalDateTime object if only a single DateTime is detected in input, else returns null
      */
     public static LocalDateTime getDateTime(String input) {
         List<DateGroup> groups = parser.parse(input);
@@ -85,6 +88,13 @@ public class TimeUtil {
         }
     }
 
+    /**
+     * Function to transform a String sentence of human speech style into a format for display on this
+     * application on the TaskCard.
+     *
+     * @param input: a String containing a date
+     * @return a formatted String if only a single DateTime is detected in input, else returns null
+     */
     public static String getFormattedDateTime(String input) {
         if (isValidDateTimeExist(input)) {
             LocalDateTime dateTime = getDateTime(input);
