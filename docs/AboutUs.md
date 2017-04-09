@@ -7,28 +7,28 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [Tan Rei Yun](https://github.com/zireiyun)
 <img src="images/Reiyun.JPG" width="150"><br>
  Role: Developer <br>
- Responsibilities: GUI, Code Quality
+ Responsibilities: GUI, Code Quality, Testing, Feature 'Find', Documentation, Storage
 
  -----
 
 #### [Wang Ming Rui](https://github.com/mingruimingrui)
 <img src="images/Ray.jpg" width="150"><br>
  Role: Developer <br>
- Responsibilities: Git manager, input command configuration ,date time parsing/display logic
+ Responsibilities: Git manager, Input command configuration, date time parsing/display logic, Part of UI, Model
 
  -----
 
 #### [Mohamed Irfan](http://github.com/mdirfanpm)
 <img src="images/Irfan.JPG" width="150"><br>
  Role: Developer <br>
- Responsibilities: Logic, Testing
+ Responsibilities: Logic, Feature 'Undo', Testing
 
  -----
 
 #### [Hu Zongqi](https://github.com/hzqn1234)
 <img src="images/ZQ.jpg" width="150"><br>
  Role: Developer <br>
- Responsibilities: Feature 'Complete', Feature 'List', Feature 'SetPath', Task Sorting, Part of UI, Testing
+ Responsibilities: Feature 'Complete', Feature 'List', Feature 'SetPath', Task Sorting, Part of UI, Testing, Model
 
  -----
 

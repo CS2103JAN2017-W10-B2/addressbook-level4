@@ -53,26 +53,19 @@ public class TaskCardHandle extends GuiHandle {
     }
 
     private List<String> getTags(Region tagsContainer) {
-        return tagsContainer
-                .getChildrenUnmodifiable()
-                .stream()
-                .map(node -> ((Labeled) node).getText())
+        return tagsContainer.getChildrenUnmodifiable().stream().map(node -> ((Labeled) node).getText())
                 .collect(Collectors.toList());
     }
 
     private List<String> getTags(UniqueLabelList tags) {
-        return tags
-                .asObservableList()
-                .stream()
-                .map(tag -> tag.labelName)
-                .collect(Collectors.toList());
+        return tags.asObservableList().stream().map(tag -> tag.labelName).collect(Collectors.toList());
     }
 
     private Region getTagsContainer() {
         return guiRobot.from(node).lookup(TAGS_FIELD_ID).query();
     }
 
-    //@@author A0143132X
+    // @@author A0143132X
     public boolean isSameTask(ReadOnlyTask person) {
         return getFullName().equals(person.getTitle().fullTitle)
                 && getPhone().equals("Deadline  : " + person.getDeadline().value)
@@ -80,16 +73,14 @@ public class TaskCardHandle extends GuiHandle {
                 && getAddress().equals("Start Time: " + person.getStartTime().value)
                 && getTags().equals(getTags(person.getLabels()));
     }
-    //@@author
+    // @@author
 
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof TaskCardHandle) {
             TaskCardHandle handle = (TaskCardHandle) obj;
-            return getFullName().equals(handle.getFullName())
-                    && getPhone().equals(handle.getPhone())
-                    && getEmail().equals(handle.getEmail())
-                    && getAddress().equals(handle.getAddress())
+            return getFullName().equals(handle.getFullName()) && getPhone().equals(handle.getPhone())
+                    && getEmail().equals(handle.getEmail()) && getAddress().equals(handle.getAddress())
                     && getTags().equals(handle.getTags());
         }
         return super.equals(obj);
