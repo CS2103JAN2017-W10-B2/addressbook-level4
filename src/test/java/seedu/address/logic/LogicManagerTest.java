@@ -191,6 +191,19 @@ public class LogicManagerTest {
         assertCommandSuccess("clear", ClearCommand.MESSAGE_SUCCESS, new ToDoList(), Collections.emptyList());
     }
 
+    //@@author A0138831A
+    @Test
+    public void execute_undo() throws Exception {
+        TestDataHelper helper = new TestDataHelper();
+        Model currmodel = model;
+        model.addTask(helper.generateTask(1));
+        model.addTask(helper.generateTask(2));
+        model.undoTask();
+        model.undoTask();
+
+        assertEquals(currmodel,model);
+    }
+
     /*
      * Irrelavant test case
      *
