@@ -497,7 +497,30 @@ Use case ends.
 > 3a1. ToDoList shows an error message <br>
   Use case resumes at step 2
 
-{More to be added}
+#### Use case: Set storage location
+
+**MSS**
+
+1. User specifies new storage file path.
+2. doitdoit!! updates storage file path.
+
+#### Use case: Undo an action
+
+**MSS**
+
+1. User requests to undo previous action.
+2. doitdoit!! reverts previous action.
+
+**Extensions**
+
+2a. Undo stack is empty (no action to undo)
+> 2a1. ToDoList shows an error message <br>
+  Use case ends
+
+3a. More than 11 undos are called consecutively
+
+> 3a1. ToDoList shows an error message <br>
+  Use case resumes at step 2
 
 ## Appendix C : Non Functional Requirements
 
@@ -537,7 +560,7 @@ Use case ends.
 
 **Todoist**
 
-Author: Rei Yun
+Author: Tan Rei Yun
 
 Pros:
 
@@ -559,7 +582,7 @@ Cons:
 
 **Google Keep**
 
-Author: Ming Rui
+Author: Wang Ming Rui
 
 Pros:
 
