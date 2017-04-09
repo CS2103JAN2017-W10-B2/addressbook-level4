@@ -55,7 +55,13 @@ public class AddCommand extends Command {
     }
     // @@author
 
+//@@author A0135795R
     @Override
+    /**
+     * Executes AddCommand and makes sure that deadline is never before start time.
+     *
+     * @throws DuplicateTaskException if task to be added already exists
+     */
     public CommandResult execute() throws CommandException {
         assert model != null;
         try {
@@ -73,5 +79,6 @@ public class AddCommand extends Command {
         }
 
     }
+//@@author
 
 }
