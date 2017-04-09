@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<todolist>
+    <tasks>
+        <title>Go buy pizza</title>
+        <deadline>1:31am 6 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>asap</labeled>
+    </tasks>
+    <tasks>
+        <title>Stock up on sweets</title>
+        <deadline>1:31am 6 Apr 2017</deadline>
+        <remarks>impt</remarks>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>new example</title>
+        <deadline>1:35am 9 Apr 2017</deadline>
+        <startTime>1:35am 9 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Stock up on stationeries</title>
+        <deadline>1:31am 10 Apr 2017</deadline>
+        <remarks>soon</remarks>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Stock up on pizza</title>
+        <deadline>1:31am 11 Apr 2017</deadline>
+        <startTime>1:31am 6 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <tasks>
+        <title>Go buy stationaries</title>
+        <deadline>1:31am 11 Apr 2017</deadline>
+        <startTime>1:31am 11 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Go buy sweets</title>
+        <deadline>1:31am 11 Apr 2017</deadline>
+        <startTime>1:31am 11 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>important</labeled>
+    </tasks>
+    <tasks>
+        <title>FIN3101 project</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <startTime>1:31am 6 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>MA3252 assignment</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <remarks>quality needed</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <tasks>
+        <title>QF3101 meeting</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>important</labeled>
+    </tasks>
+    <tasks>
+        <title>QF3101 project</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <remarks>urgent</remarks>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>CS2010 assignment</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <startTime>1:31am 10 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>ST3131 homework</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>asap</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2010 project</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <remarks>quality needed</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>asap</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2010 exam</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>ST3131 assignment</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <remarks>quality needed</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>important</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2010 homework</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2103 project</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <startTime>1:31am 10 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>QF3101 exam</title>
+        <deadline>4:00pm 11 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Go shopping with Rei Yun</title>
+        <deadline>6:30pm 16 Apr 2017</deadline>
+        <remarks>at Orchard</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>fun</labeled>
+    </tasks>
+    <tasks>
+        <title>Go shopping with Uncle Soo</title>
+        <deadline>6:30pm 16 Apr 2017</deadline>
+        <remarks>arrive early</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>Funnnnn</labeled>
+    </tasks>
+    <tasks>
+        <title>Have dinner with Rei Yun</title>
+        <deadline>6:30pm 16 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Have dinner with Irfan</title>
+        <deadline>6:30pm 16 Apr 2017</deadline>
+        <startTime>5:00pm 21 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>heart</labeled>
+    </tasks>
+    <tasks>
+        <title>Have dinner with Ray</title>
+        <deadline>6:30pm 16 Apr 2017</deadline>
+        <startTime>6:30pm 16 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>heart</labeled>
+    </tasks>
+    <tasks>
+        <title>Go shopping with Ming Rui</title>
+        <deadline>6:30pm 16 Apr 2017</deadline>
+        <startTime>6:30pm 16 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>Funnnnn</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2103 meeting</title>
+        <deadline>1:31am 17 Apr 2017</deadline>
+        <remarks>urgent</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>asap</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2103 assignment</title>
+        <deadline>1:31am 17 Apr 2017</deadline>
+        <startTime>1:31am 6 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>FIN3101 assignment</title>
+        <deadline>1:31am 17 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>asap</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2103 exam</title>
+        <deadline>1:31am 17 Apr 2017</deadline>
+        <startTime>1:31am 6 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>QF3101 homework</title>
+        <deadline>1:31am 17 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>important</labeled>
+    </tasks>
+    <tasks>
+        <title>ST3131 exam</title>
+        <deadline>1:31am 17 Apr 2017</deadline>
+        <remarks>asap</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>important</labeled>
+    </tasks>
+    <tasks>
+        <title>FIN3101 meeting</title>
+        <deadline>1:31am 17 Apr 2017</deadline>
+        <startTime>1:31am 10 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>asap</labeled>
+    </tasks>
+    <tasks>
+        <title>FIN3101 exam</title>
+        <deadline>1:00pm 17 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <tasks>
+        <title>MA3252 meeting</title>
+        <deadline>1:00pm 17 Apr 2017</deadline>
+        <startTime>1:31am 12 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>QF3101 assignment</title>
+        <deadline>1:00pm 17 Apr 2017</deadline>
+        <remarks>urgent</remarks>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <tasks>
+        <title>MA3252 homework</title>
+        <deadline>1:00pm 17 Apr 2017</deadline>
+        <startTime>1:31am 10 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>important</labeled>
+    </tasks>
+    <tasks>
+        <title>Go shopping with Ray</title>
+        <deadline>5:00pm 21 Apr 2017</deadline>
+        <remarks>Clarke Quay</remarks>
+        <startTime>6:30pm 16 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Go shopping with Zi Rei</title>
+        <deadline>5:00pm 21 Apr 2017</deadline>
+        <startTime>6:30pm 16 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Have dinner with Ming Rui</title>
+        <deadline>5:30pm 22 Apr 2017</deadline>
+        <remarks>arrive early</remarks>
+        <startTime>6:30pm 16 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Have dinner with Zhong Qi</title>
+        <deadline>5:30pm 22 Apr 2017</deadline>
+        <startTime>5:00pm 21 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>fun</labeled>
+    </tasks>
+    <tasks>
+        <title>Have dinner with Uncle Soo</title>
+        <deadline>5:30pm 22 Apr 2017</deadline>
+        <startTime>6:30pm 16 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Go shopping with Irfan</title>
+        <deadline>5:30pm 22 Apr 2017</deadline>
+        <remarks>arrive on time</remarks>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>Have dinner with Zi Rei</title>
+        <deadline>5:30pm 22 Apr 2017</deadline>
+        <startTime>6:30pm 16 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>fun</labeled>
+    </tasks>
+    <tasks>
+        <title>Go shopping with Zhong Qi</title>
+        <deadline>5:30pm 22 Apr 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>fun</labeled>
+    </tasks>
+    <tasks>
+        <title>MA3252 project</title>
+        <deadline>1:31am 1 May 2017</deadline>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>CS2010 meeting</title>
+        <deadline>1:31am 1 May 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>important</labeled>
+    </tasks>
+    <tasks>
+        <title>ST3131 meeting</title>
+        <deadline>1:31am 1 May 2017</deadline>
+        <remarks>urgent</remarks>
+        <startTime>1:31am 12 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>asap</labeled>
+    </tasks>
+    <tasks>
+        <title>FIN3101 homework</title>
+        <deadline>1:31am 1 May 2017</deadline>
+        <isCompleted>false</isCompleted>
+    </tasks>
+    <tasks>
+        <title>ST3131 project</title>
+        <deadline>1:31am 1 May 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <tasks>
+        <title>MA3252 exam</title>
+        <deadline>1:31am 1 May 2017</deadline>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <tasks>
+        <title>CS2103 homework</title>
+        <deadline>1:31am 1 May 2017</deadline>
+        <remarks>asap</remarks>
+        <startTime>1:31am 6 Apr 2017</startTime>
+        <isCompleted>false</isCompleted>
+        <labeled>urgent</labeled>
+    </tasks>
+    <labels>urgent</labels>
+    <labels>asap</labels>
+    <labels>heart</labels>
+    <labels>fun</labels>
+    <labels>important</labels>
+    <labels>Funnnnn</labels>
+    <labels>IMPORTANT</labels>
+</todolist>
