@@ -28,7 +28,7 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [Hu Zongqi](https://github.com/hzqn1234)
 <img src="images/ZQ.jpg" width="150"><br>
  Role: Developer <br>
- Responsibilities: Model, Deliverables
+ Responsibilities: Feature 'Complete', Feature 'List', Feature 'SetPath', Task Sorting, Part of UI, Testing
 
  -----
 
