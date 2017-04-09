@@ -14,7 +14,7 @@ We are a team based in the [School of Computing, National University of Singapor
 #### [Wang Ming Rui](https://github.com/mingruimingrui)
 <img src="images/Ray.jpg" width="150"><br>
  Role: Developer <br>
- Responsibilities: Storage, Git Manager
+ Responsibilities: Git manager, input command configuration ,date time parsing/display logic
 
  -----
 
