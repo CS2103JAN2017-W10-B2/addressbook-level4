@@ -9,7 +9,7 @@ public class UndoCommand extends Command {
 
     public static final String COMMAND_WORD = "undo";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": undo a previous command to doitdoit!!. ";
-    public static final String MESSAGE_SUCCESS = "Previous command undone: %1$s";
+    public static final String MESSAGE_SUCCESS = "Previous command undone!";
     public static final String MESSAGE_EMPTY_STACK = "There is no more task to undo in doitdoit!!";
 
     @Override

@@ -102,7 +102,7 @@ Command Format: `undo`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
 ------------ | ------------- | -------------  | ------------- 
-Undo an action | `delete 1` | 52 tasks listed.  | Previous command undone: %1$s
+Undo an action | `delete 1` | 52 tasks listed.  | Previous command undone!
 
 ## Clear Command
 
