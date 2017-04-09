@@ -8,16 +8,16 @@ import java.util.logging.Level;
  */
 public class Config {
 
-    //@@author A0115333U
+    // @@author A0115333U
     public static final String DEFAULT_CONFIG_FILE = "config.tim";
 
     // Config values customizable through config file
-    private String appTitle = "ToDoList!!";
+    private String appTitle = "doitdoit!!";
     private Level logLevel = Level.INFO;
     private String userPrefsFilePath = "preferences.tim";
     private String toDoListFilePath = "data/ToDoList.xml";
     private String toDoListName = "MyToDoList";
-    //@@author
+    // @@author
 
     public String getAppTitle() {
         return appTitle;
