@@ -50,7 +50,7 @@ Format: `help`
 
 ### 2.2. Adding a task: `add`
 
-Adds a Task to the task list<br>
+Adds a Task to doitdoit!!<br>
 Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remark: REMARK) (#LABELS...)`
 OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remark: REMARK) (#LABELS...)`
 
@@ -71,7 +71,7 @@ Examples:
 
 ### 2.3. Listing tasks : `list`
 
-Shows tasks of specified types in the to do list.<br>
+Shows tasks of specified types in doitdoit!!.<br>
 Format: `list TYPE`
 
 > List tasks of the specified TYPE.
@@ -85,7 +85,7 @@ Examples:
 
 ### 2.4. Editing a task : `edit`
 
-Edits an existing task in the to do list.<br>
+Edits an existing task in doitdoit!!.<br>
 Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remark: REMARK) (#LABELS...)`
 OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remarks: REMARK) (#LABELS...)`
 
@@ -136,7 +136,7 @@ Examples:
 
 ### 2.7. Deleting a task : `delete`
 
-Deletes the specified task from the to do list. Can be undone.<br>
+Deletes the specified task from doitdoit!!. Can be undone.<br>
 Format: `delete INDEX`
 
 > Deletes the task at the specified `INDEX`. <br>
@@ -147,7 +147,7 @@ Examples:
 
 * `list`<br>
   `delete 2`<br>
-  Deletes the 2nd task in the todolist.
+  Deletes the 2nd task in the doitdoit!!.
 * `find homework`<br>
   `delete 1`<br>
   Deletes the 1st task in the results of the `find` command.
@@ -222,6 +222,8 @@ Command | User input format
 **Edit** | `edit INDEX (TITLE) (from: STARTTIME) (till/due: DEADLINE) (remarks: REMARKS) (#LABELS)`
 **Find** | `find (KEYWORDS) (LABEL_KEYWORDS)`
 **Delete** | `delete INDEX`
+**Complete** | `edit INDEX c/`
 **Undo** | `undo`
+**Set Storage Path** | `set_path LOCATION`
 **Clear** | `clear`
 **Exit** | `exit`
