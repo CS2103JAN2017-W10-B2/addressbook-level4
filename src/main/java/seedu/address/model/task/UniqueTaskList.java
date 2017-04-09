@@ -155,25 +155,21 @@ public class UniqueTaskList implements Iterable<Task> {
   //@@author A0138831A
     public void undoTask() throws EmptyStackException {
 
-    	if(undoStack.size() == 1) {
-    		throw new EmptyStackException();
-
-    	} else {
-    		ObservableList<Task> prevList = FXCollections.observableArrayList();
-    		prevList = undoStack.pop();
-    		this.internalList.setAll(prevList);
-    	}
-	}
-
+        if (undoStack.size() == 1) {
+            throw new EmptyStackException();
+        } else {
+            ObservableList<Task> prevList = FXCollections.observableArrayList();
+            prevList = undoStack.pop();
+            this.internalList.setAll(prevList);
+        }
+    }
     public UnmodifiableObservableList<Task> asObservableList() {
         return new UnmodifiableObservableList<>(internalList);
     }
-
     @Override
     public Iterator<Task> iterator() {
         return internalList.iterator();
     }
-
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
