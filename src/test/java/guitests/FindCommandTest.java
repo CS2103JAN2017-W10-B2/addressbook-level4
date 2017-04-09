@@ -12,6 +12,9 @@ public class FindCommandTest extends ToDoListGuiTest {
     @Test
     public void find_nonEmptyList() {
         assertFindResult("find orange"); // no results
+        assertFindResult("find #pokemon"); // no results
+
+        assertFindResult("find #project", td.testExample1);
         assertFindResult("find assignment", td.testExample2, td.testExample4); // multiple
                                                                                // results
 

@@ -250,30 +250,16 @@ public class LogicManagerTest {
         assertEquals(currmodel, model);
     }
 
-
-    /*
-     * Irrelavant test case
-     *
-     * @Test public void execute_add_invalidArgsFormat() { String
-     * expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-     * AddCommand.MESSAGE_USAGE);
-     * assertCommandFailure("add wrong args wrong args", expectedMessage);
-     * assertCommandFailure("add Valid Name 12345 e/valid@email.butNoPhonePrefix a/valid,address"
-     * , expectedMessage);
-     * assertCommandFailure("add Valid Name p/12345 valid@email.butNoPrefix a/valid, address"
-     * , expectedMessage);
-     * assertCommandFailure("add Valid Name p/12345 e/valid@email.butNoAddressPrefix valid, address"
-     * , expectedMessage); }
-     */
-
+    //@@author A0143132X
     @Test
     public void execute_add_invalidPersonData() {
-        assertCommandFailure("add []\\[;] p/12345 e/valid@e.mail a/valid, address", Title.MESSAGE_TITLE_CONSTRAINTS);
-        assertCommandFailure("add Valid Name till:goat stimulator", Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
+        assertCommandFailure("add []\\[;] from:12/12/17 till:12/12/17 remark:valid, remarks", Title.MESSAGE_TITLE_CONSTRAINTS);
+        assertCommandFailure("add Valid Title till:goat stimulator", Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
+        assertCommandFailure("add Valid Title from:mamamia till:12/12/17", StartTime.MESSAGE_START_TIME_CONSTRAINTS);
         assertCommandFailure("add Valid Title remark:invalid#remarks", Remarks.MESSAGE_REMARKS_CONSTRAINTS);
-        assertCommandFailure("add Valid Name #invalid_-[.tag", Label.MESSAGE_LABEL_CONSTRAINTS);
-
+        assertCommandFailure("add Valid Title #invalid_-[.label", Label.MESSAGE_LABEL_CONSTRAINTS);
     }
+    //@@author
 
     @Test
     public void execute_add_successful() throws Exception {
