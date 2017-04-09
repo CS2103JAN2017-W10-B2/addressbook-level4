@@ -201,7 +201,7 @@ public class LogicManagerTest {
         model.undoTask();
         model.undoTask();
 
-        assertEquals(currmodel,model);
+        assertEquals(currmodel, model);
     }
 
     //@@author A0138831A
@@ -214,7 +214,7 @@ public class LogicManagerTest {
         model.deleteTask(target);
         model.undoTask();
 
-        assertEquals(currmodel,model);
+        assertEquals(currmodel, model);
     }
     //@@author A0138831A
     @Test
@@ -226,7 +226,7 @@ public class LogicManagerTest {
         model.resetData(new ToDoList());
         model.undoTask();
 
-        assertEquals(currmodel,model);
+        assertEquals(currmodel, model);
     }
 
     //@@author A0138831A
@@ -246,7 +246,7 @@ public class LogicManagerTest {
         model.undoTask();
         model.undoTask();
 
-        assertEquals(currmodel,model);
+        assertEquals(currmodel, model);
     }
 
 

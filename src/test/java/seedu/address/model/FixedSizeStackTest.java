@@ -19,7 +19,7 @@ public class FixedSizeStackTest {
     //test the default constructor
     @Test
     public void constructor() {
-    	assertEquals(Collections.emptyList(),fixedSizeStack);
+        assertEquals(Collections.emptyList(), fixedSizeStack);
     }
   //test the default fixed size of 11
     @Test
