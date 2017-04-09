@@ -192,7 +192,7 @@ public class LogicManagerTest {
         assertCommandSuccess("clear", ClearCommand.MESSAGE_SUCCESS, new ToDoList(), Collections.emptyList());
     }
 
-    //@@author A0138831A
+    // @@author A0138831A
     @Test
     public void execute_undoAdd() throws Exception {
         TestDataHelper helper = new TestDataHelper();
@@ -205,7 +205,7 @@ public class LogicManagerTest {
         assertEquals(currmodel, model);
     }
 
-    //@@author A0138831A
+    // @@author A0138831A
     @Test
     public void execute_undoDelete() throws Exception {
         TestDataHelper helper = new TestDataHelper();
@@ -217,7 +217,8 @@ public class LogicManagerTest {
 
         assertEquals(currmodel, model);
     }
-    //@@author A0138831A
+
+    // @@author A0138831A
     @Test
     public void execute_undoClear() throws Exception {
         TestDataHelper helper = new TestDataHelper();
@@ -230,7 +231,7 @@ public class LogicManagerTest {
         assertEquals(currmodel, model);
     }
 
-    //@@author A0138831A
+    // @@author A0138831A
     @Test
     public void execute_multipleUndo() throws Exception {
         TestDataHelper helper = new TestDataHelper();
@@ -250,16 +251,16 @@ public class LogicManagerTest {
         assertEquals(currmodel, model);
     }
 
-    //@@author A0143132X
+    // @@author A0143132X
     @Test
     public void execute_add_invalidPersonData() {
-        assertCommandFailure("add []\\[;] from:12/12/17 till:12/12/17 remark:valid, remarks", Title.MESSAGE_TITLE_CONSTRAINTS);
+        assertCommandFailure("add [\\;] from:12/12/17 remark:valid, remarks", Title.MESSAGE_TITLE_CONSTRAINTS);
         assertCommandFailure("add Valid Title till:goat stimulator", Deadline.MESSAGE_DEADLINE_CONSTRAINTS);
         assertCommandFailure("add Valid Title from:mamamia till:12/12/17", StartTime.MESSAGE_START_TIME_CONSTRAINTS);
         assertCommandFailure("add Valid Title remark:invalid#remarks", Remarks.MESSAGE_REMARKS_CONSTRAINTS);
         assertCommandFailure("add Valid Title #invalid_-[.label", Label.MESSAGE_LABEL_CONSTRAINTS);
     }
-    //@@author
+    // @@author
 
     @Test
     public void execute_add_successful() throws Exception {
