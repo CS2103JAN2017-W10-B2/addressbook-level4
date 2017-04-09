@@ -18,7 +18,7 @@ public class UndoCommandParser {
             return new IncorrectCommand(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, UndoCommand.MESSAGE_USAGE));
         }
-       return new UndoCommand();
+        return new UndoCommand();
     }
 
 }
