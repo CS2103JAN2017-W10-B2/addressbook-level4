@@ -194,7 +194,7 @@ Examples:
 Sets the stroage file to be 'ToDoList.xml' under disk f.
 
 * `set_path default`
-Sets the storage file to be deault name under defualt folder. 
+Sets the storage file to be deault name under defualt folder.
 
 ## 3. FAQ
 
