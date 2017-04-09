@@ -44,7 +44,7 @@ public class SetPathCommand extends Command {
 
     @Override
     public CommandResult execute() {
-    	assert model != null;
+        assert model != null;
         try {
             Optional<Config> configOptional = ConfigUtil.readConfig("config.tim");
             initializedConfig = configOptional.orElse(new Config());
