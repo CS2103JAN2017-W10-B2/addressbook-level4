@@ -166,19 +166,34 @@ Examples:
 
 * `list`<br>
   `edit 3 c/yes`<br>
-  Marks the 3rd task in the doitdoit!! as complted.
+  Marks the 3rd task in the todolist as complted.
   Hence the task is no longer displayed as by default ongoing tasks are shown after each edit .
 * `list completed `<br>
   `edit 2 c/no`<br>
   Marks the 2nd task in the completed task list as incompleted.
   After this, the list of ongoing tasks will be shown.
 
-### 2.9. Undo last action : `undo`
+### 2.8. Clearing all entries : `clear`
 
-Undo last action from the doitdoit!!. Able to undo up to last 11 actions.<br>
+Clears all entries from the todolist. Can be undone<br>
+Format: `clear`
+
+### 2.9. Exiting the program : `exit`
+
+Exits the program.<br>
+Format: `exit`
+
+### 2.10. Saving the data
+
+Todolist data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.
+
+### 2.11. Undo last action : `undo`
+
+Undo last action from the todolist. Able to undo up to last 11 actions.<br>
 Format: `undo`
 
-### 2.10. Set storage location : `set_path LOCATION`
+### 2.12. Set storage location : `set_path LOCATION`
 
 Set the storage location as desired. This can be used to store data at a folder linked to the cloud.
 Note that after set a new storage location, the application need to restart.

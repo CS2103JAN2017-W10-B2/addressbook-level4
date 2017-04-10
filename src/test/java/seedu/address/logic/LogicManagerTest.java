@@ -192,7 +192,11 @@ public class LogicManagerTest {
         assertCommandSuccess("clear", ClearCommand.MESSAGE_SUCCESS, new ToDoList(), Collections.emptyList());
     }
 
-    // @@author A0138831A
+    //@@author A0138831A
+    /**
+     * A test to test undo add
+     * @throws Exception
+     */
     @Test
     public void execute_undoAdd() throws Exception {
         TestDataHelper helper = new TestDataHelper();
@@ -205,7 +209,10 @@ public class LogicManagerTest {
         assertEquals(currmodel, model);
     }
 
-    // @@author A0138831A
+    /**
+     * A test to test undo delete
+     * @throws Exception
+     */
     @Test
     public void execute_undoDelete() throws Exception {
         TestDataHelper helper = new TestDataHelper();
@@ -218,7 +225,10 @@ public class LogicManagerTest {
         assertEquals(currmodel, model);
     }
 
-    // @@author A0138831A
+    /**
+     * A test to test undo clear
+     * @throws Exception
+     */
     @Test
     public void execute_undoClear() throws Exception {
         TestDataHelper helper = new TestDataHelper();
@@ -231,7 +241,10 @@ public class LogicManagerTest {
         assertEquals(currmodel, model);
     }
 
-    // @@author A0138831A
+    /**
+     * A test to test multiple undoes
+     * @throws Exception
+     */
     @Test
     public void execute_multipleUndo() throws Exception {
         TestDataHelper helper = new TestDataHelper();

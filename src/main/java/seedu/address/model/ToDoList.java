@@ -63,8 +63,9 @@ public class ToDoList implements ReadOnlyToDoList {
 
     public void resetData(ReadOnlyToDoList newData) {
         assert newData != null;
-
+        //@@author A0138831A
         tasks.backupIntoUndoStack();
+        //@@author
 
         try {
             setTasks(newData.getTaskList());
@@ -163,14 +164,17 @@ public class ToDoList implements ReadOnlyToDoList {
             throw new UniqueTaskList.TaskNotFoundException();
         }
     }
-
+    //@@author A0138831A
     /**
      * undo recent command implementations in uniquetasklist.java
+     * limited to 11 undoes
+     * will undo add,delete, clear, edit
      */
     public void undoTask() throws EmptyStackException {
         tasks.undoTask();
 
     }
+    //@@author
 
     //// label-level operations
 
