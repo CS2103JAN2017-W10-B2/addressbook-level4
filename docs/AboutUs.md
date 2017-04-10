@@ -3,7 +3,7 @@
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
 ## Project Team
- 
+
 #### [Tan Rei Yun](https://github.com/zireiyun) [@zireiyun](https://github.com/zireiyun)
 <img src="images/Reiyun.JPG" width="150"><br>
  Role: Developer <br>
@@ -13,7 +13,7 @@ We are a team based in the [School of Computing, National University of Singapor
    * Find
 * Code written: [[functional code](https://github.com/CS2103JAN2017-W10-B2/main/tree/master/collated/main/A0143132X.md)][[test code](https://github.com/CS2103JAN2017-W10-B2/main/tree/master/collated/test/A0143132X.md)]
 * Other major contributions:
-  * Set up Travis and Coveralls  
+  * Set up Travis and Coveralls
   * Refactored task to accept null values for fields not specified.
   * Refactored most test case to fit to do list in later iterations.
 
