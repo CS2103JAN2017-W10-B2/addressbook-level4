@@ -3,14 +3,14 @@ package seedu.address.logic.commands;
 
 import java.util.EmptyStackException;
 
+import seedu.address.logic.commands.exceptions.CommandException;
+
 /**
  * Undo recent command in Doit!Doit!
  * Undo up to 11 recent commands
  * Command word is 'undo'
  * should not come with any parameters
  */
-import seedu.address.logic.commands.exceptions.CommandException;
-
 public class UndoCommand extends Command {
 
     public static final String COMMAND_WORD = "undo";
