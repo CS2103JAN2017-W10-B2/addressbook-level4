@@ -6,7 +6,7 @@ import java.util.Stack;
 /**
  *
  * @author A0138831A
- * 	       A fixed size stack to prevent overflowing default size is
+ *         A fixed size stack to prevent overflowing default size is
  *         11 however you may self defined in declaration.
  *         To self-define the limit, include an integer in the bracket when instantiating
  *         example: FixedSizeStack<T>(size);
