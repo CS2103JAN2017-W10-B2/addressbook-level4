@@ -14,12 +14,12 @@ By : `Team Just Do It`  &nbsp;&nbsp;&nbsp;&nbsp; Since: `March 2017`  &nbsp;&nbs
 
 ## Quick Start Guide
 
-* **Introduction** doitdoit!! is a to do list application that allows users to store and keep track of tasks they need to do. 
+* **Introduction** doitdoit!! is a to do list application that allows users to store and keep track of tasks they need to do.
 
 * **Task Definitions** Tasks contains:
   * Title (compulsory) - short summary of task
   * Start time -  used to indicate start of task with a timing
-  * Deadline - used to indicate end of task with a timing. 
+  * Deadline - used to indicate end of task with a timing.
   * Remark - more details of a task
   * Label - categories to assign tasks to for easy reference
   * Completion status - false (not completed) by default
@@ -38,7 +38,7 @@ Command Format: `add TITLE (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS)
 OR: `add TITLE (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS...)`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Add a task with all fields | `add go on a diet from: 04/12/17 12am till: next Sunday 12am remark: avoid oily and fatty foods #health #greens` | Task entered at index 16 | New task added: go on a diet Start Time: 0:00am 10 Apr 2017 Deadline: 0:00am 16 Apr 2017 Remarks: avoid oily and fatty foods Labels: [health][greens]
 Add a task with deadline | `add finish math assignment due: 04/19/17 2pm remark: submit during lecture #graded #math` | Task entered at index 34 | New task added: finish math assignment Deadline: 2:00pm 19 Apr 2017 Remarks: submit during lecture Labels: [graded][math]
 Add a task with title only | `add send email to boss` | Task entered at index 1 | New task added: send email to boss
@@ -49,7 +49,7 @@ Command Format: `list [type]`
 List tasks of the specified type. Three types are available: 'all', 'ongoing', 'completed'.
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 List all tasks. | `list all` | 54 tasks listed | Listed all tasks
 List completed tasks. | `list completed` | 4 tasks listed |Listed completed tasks
 List ongoing tasks. | `list ongoing` | 50 tasks listed | Listed ongoing tasks
@@ -57,21 +57,21 @@ List incorrect syntax. | `List` | Command box turns red. |Unknown command. Type 
 
 ## Edit Command
 
-Command Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS)` 
+Command Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remarks: REMARKS) (#LABELS)`
 OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remarks: REMARKS) (#LABELS)`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Edit title of a task. | `edit 3 Go buy stationeries` | Task updated at index 3 | Edited Task: Go buy stationeries Start Time: 1:31am 11 Apr 2017 Deadline: 1:31am 11 Apr 2017
 Edit deadline of a task. | `edit 5 due: 04/14/17 4pm` | Task updated at index 16 | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017
 Edit to remaove labels. | `edit 2 #` | Task updated at index 2 | Edited Task: Go buy pizza Deadline: 1:31am 6 Apr 2017
 
 ## Find Command
 
-Command Format: `find (KEYWORDS...) (#LABEL_KEYWORDS...)` 
+Command Format: `find (KEYWORDS...) (#LABEL_KEYWORDS...)`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Find all dinner plans. | `find dinner` | 7 tasks listed in task panel. | 7 task(s) listed!
 Find tasks with label 'urgent'. | `find #urgent` | 8 tasks listed in task panel. | 8 task(s) listed!
 Find tasks with label 'urgen'. | `find #urgen` | 0 tasks listed in task panel. | 0 task(s) listed!
@@ -79,51 +79,51 @@ Find all project related tasks. | `find project`| 6 tasks listed in task panel. 
 
 ## Delete Command
 
-Command Format: `delete INDEX` 
+Command Format: `delete INDEX`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Delete a task | `delete 1` | Task specified is deleted and removed from task panel. Remaining tasks are renumbered. | Deleted task: QF3101 project Deadline: 4:00pm 11 Apr 2017 Remarks: urgent
 
 ## Complete Command
 
-Command Format: `edit INDEX c/completion_status` 
+Command Format: `edit INDEX c/completion_status`
 completion_status available are: "yes", "no"
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Complete a task | `edit 3 c/yes` | 48 tasks listed. | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017 Completion: true
 Mark an incomplete task as incomplete | `edit 6 c/no` | no change | Edited Task: Stock up on pizza Start Time: 1:31am 6 Apr 2017 Deadline: 1:31am 11 Apr 2017 Labels: [urgent]
 Mark a complete task as incomplete | `list completed` `edit 5 c/no` | 49 tasks listed. Editted task found at index 15. | Edited Task: FIN3101 project Start Time: 1:31am 6 Apr 2017 Deadline: 4:00pm 14 Apr 2017
 
 ## Undo Command
 
-Command Format: `undo` 
+Command Format: `undo`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Undo an action | `undo` | 52 tasks listed.  | Previous command undone!
 
 ## Clear Command
 
-Command Format: `clear` 
+Command Format: `clear`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Clears all data in to do list. | `clear` | 0 task listed.  | doitdoit!! has been cleared!
 
 ## Set storage Command
 
-Command Format: `set_path LOCATION` 
+Command Format: `set_path LOCATION`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Specify location and file name of storage file. | `set_path newFileName.xml` | 0 task listed.  | New storage path set: newFileName.xml. Please restart the App.
 
 ## Exit Command
 
-Command Format: `exit` 
+Command Format: `exit`
 
 Scenario | Input Command  | Expected task panel results | Expected command box results
------------- | ------------- | -------------  | ------------- 
+------------ | ------------- | -------------  | -------------
 Exits doitdoit!!  | `exit` | doitodit!! closes.  | -
