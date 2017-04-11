@@ -88,7 +88,7 @@ Examples:
 
 Edits an existing task in doitdoit!!.<br>
 Format: `edit INDEX (TITLE) (from: STARTTIME) (till: DEADLINE) (remark: REMARK) (#LABELS...)`
-OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remarks: REMARK) (#LABELS...)`
+OR: `edit INDEX (TITLE) (from: STARTTIME) (due: DEADLINE) (remark: REMARK) (#LABELS...)`
 
 > * Edits the task at the specified `INDEX`.
     The index refers to the index number shown in the last task listing.<br>
@@ -218,9 +218,9 @@ There is no need to save manually.
 Command | User input format
 -------- | :--------
 **Help** | `help`
-**Add** | `add TITLE (from: STARTTIME) (till/due: DEADLINE) (remarks: REMARKS) (#LABELS...)`
+**Add** | `add TITLE (from: STARTTIME) (till/due: DEADLINE) (remark: REMARK) (#LABELS...)`
 **List** | `list`
-**Edit** | `edit INDEX (TITLE) (from: STARTTIME) (till/due: DEADLINE) (remarks: REMARKS) (#LABELS)`
+**Edit** | `edit INDEX (TITLE) (from: STARTTIME) (till/due: DEADLINE) (remark: REMARK) (#LABELS)`
 **Find** | `find (KEYWORDS) (LABEL_KEYWORDS)`
 **Delete** | `delete INDEX`
 **Complete** | `edit INDEX c/`
